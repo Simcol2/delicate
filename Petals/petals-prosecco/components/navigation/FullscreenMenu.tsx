@@ -71,7 +71,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
           </div>
           <div>
             <p className="text-[var(--gold-antique)]/60 text-xs uppercase tracking-widest mb-2">Contact</p>
-            <p className="text-[var(--blush-warm)] font-sans text-sm">hello@petalsandprosecco.com</p>
+            <p className="text-[var(--blush-warm)] font-sans text-sm">hello@delicateflowers.co</p>
           </div>
         </div>
       </div>

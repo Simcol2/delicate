@@ -2,26 +2,26 @@
 
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import { Eye, Wine, Flame } from 'lucide-react'
+import { Flower2, Wine, Flame } from 'lucide-react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const services = [
   {
-    icon: Eye,
+    icon: Flower2,
     title: 'The Look',
-    description: 'Custom tablescapes designed to captivate. Every detail curated for visual impact.',
-  },
-  {
-    icon: Wine,
-    title: 'The Treat',
-    description: 'Signature cocktails crafted to complement your gathering with refined taste.',
+    description: 'Curated, high-end floral and tablescape styling designed to transform your dining space into an immersive visual experience.',
   },
   {
     icon: Flame,
     title: 'The Smoke',
-    description: 'Perfectly seasoned fall off the bone smoked brisket or turkey.',
+    description: 'Artisan, slow-smoked heritage meats crafted to provide a rich, savory centerpiece for your curated menu.',
+  },
+  {
+    icon: Wine,
+    title: 'The Treats',
+    description: 'Bespoke, custom-formulated signature cocktails designed to perfectly complement the exact aesthetic and flavor profile of your gathering.',
   },
 ]
 

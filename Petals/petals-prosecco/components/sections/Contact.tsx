@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Mail, Phone, MapPin, Instagram } from 'lucide-react'
+import { Mail, Phone, MapPin, Instagram, CheckCircle, AlertCircle } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -17,6 +17,9 @@ export default function Contact() {
     date: '',
     message: '',
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [statusMessage, setStatusMessage] = useState('')
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -39,10 +42,43 @@ export default function Contact() {
     return () => ctx.revert()
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setStatusMessage('Thank you! Your inquiry has been sent. We\'ll be in touch soon.')
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          eventType: '',
+          date: '',
+          message: '',
+        })
+      } else {
+        setSubmitStatus('error')
+        setStatusMessage(data.error || 'Something went wrong. Please try again.')
+      }
+    } catch (error) {
+      setSubmitStatus('error')
+      setStatusMessage('Failed to send message. Please try again later.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -59,22 +95,22 @@ export default function Contact() {
               Get in Touch
             </span>
             <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-[var(--blush-warm)] leading-tight mb-8">
-              Let's Create
+              Let&apos;s Create
               <br />
               <span className="text-[var(--gold-antique)]">Something Beautiful</span>
             </h2>
             <p className="font-sans text-[var(--blush-warm)]/70 text-lg leading-relaxed mb-12">
-              Ready to elevate your next gathering? We'd love to hear about 
+              Ready to elevate your next gathering? We&apos;d love to hear about 
               your vision. Reach out to schedule a complimentary consultation 
-              where we'll discuss your event, style preferences, and how we 
+              where we&apos;ll discuss your event, style preferences, and how we 
               can bring your dream tablescape to life.
             </p>
 
             {/* Contact Info */}
             <div className="space-y-6">
-              <a href="mailto:hello@petalsandprosecco.com" className="flex items-center gap-4 text-[var(--blush-warm)]/80 hover:text-[var(--gold-antique)] transition-colors group">
+              <a href="mailto:hello@delicateflowers.co" className="flex items-center gap-4 text-[var(--blush-warm)]/80 hover:text-[var(--gold-antique)] transition-colors group">
                 <Mail className="text-[var(--gold-antique)]" size={20} />
-                <span className="font-sans">hello@petalsandprosecco.com</span>
+                <span className="font-sans">hello@delicateflowers.co</span>
               </a>
               <a href="tel:+17605551234" className="flex items-center gap-4 text-[var(--blush-warm)]/80 hover:text-[var(--gold-antique)] transition-colors group">
                 <Phone className="text-[var(--gold-antique)]" size={20} />
@@ -86,7 +122,7 @@ export default function Contact() {
               </div>
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-[var(--blush-warm)]/80 hover:text-[var(--gold-antique)] transition-colors group">
                 <Instagram className="text-[var(--gold-antique)]" size={20} />
-                <span className="font-sans">@petalsandprosecco</span>
+                <span className="font-sans">@delicateflowers</span>
               </a>
             </div>
           </div>
@@ -116,7 +152,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full bg-transparent border-b border-[var(--gold-antique)]/30 py-3 text-[var(--blush-warm)] font-sans focus:border-[var(--gold-antique)] focus:outline-none transition-colors"
-                  placeholder="jane@example.com"
+                  placeholder="jane@email.com"
                   required
                 />
               </div>
@@ -168,11 +204,28 @@ export default function Contact() {
               />
             </div>
 
+            {/* Status Message */}
+            {submitStatus !== 'idle' && (
+              <div className={`flex items-center gap-3 p-4 ${
+                submitStatus === 'success' 
+                  ? 'bg-green-500/20 text-green-400' 
+                  : 'bg-red-500/20 text-red-400'
+              }`}>
+                {submitStatus === 'success' ? (
+                  <CheckCircle size={20} />
+                ) : (
+                  <AlertCircle size={20} />
+                )}
+                <span className="font-sans text-sm">{statusMessage}</span>
+              </div>
+            )}
+
             <button
               type="submit"
-              className="w-full sm:w-auto px-12 py-4 bg-[var(--gold-antique)] text-[var(--plum-deep)] font-sans text-sm tracking-widest uppercase hover:bg-[var(--gold-pale)] transition-colors duration-300 mt-4"
+              disabled={isSubmitting}
+              className="w-full sm:w-auto px-12 py-4 bg-[var(--gold-antique)] text-[var(--plum-deep)] font-sans text-sm tracking-widest uppercase hover:bg-[var(--gold-pale)] transition-colors duration-300 mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Send Inquiry
+              {isSubmitting ? 'Sending...' : 'Send Inquiry'}
             </button>
           </form>
         </div>
