@@ -6,7 +6,6 @@ import { storage, uploadImage, getImagesFromFolder, deleteImage, auth } from '@/
 import { ref, listAll, getDownloadURL } from 'firebase/storage'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 import imageCompression from 'browser-image-compression'
-import heic2any from 'heic2any'
 import { DndProvider, useDrag, useDrop } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { X, Upload, Trash2, GripVertical, Save, FolderPlus, Image as ImageIcon, AlertCircle, LogOut, Loader2 } from 'lucide-react'
@@ -230,7 +229,7 @@ function AdminDashboard() {
     setHasChanges(false)
   }
 
-  // Convert HEIC/HEIF to JPEG
+  // Convert HEIC/HEIF to JPEG (dynamically import heic2any for client-side only)
   const convertHeicToJpg = async (file: File): Promise<File> => {
     const isHeic = file.type === 'image/heic' || 
                    file.type === 'image/heif' ||
@@ -241,6 +240,9 @@ function AdminDashboard() {
 
     try {
       setUploadProgress(prev => prev + ' (converting HEIC...)')
+      // Dynamic import - only runs on client
+      const heic2any = (await import('heic2any')).default
+      
       const blob = await heic2any({
         blob: file,
         toType: 'image/jpeg',
