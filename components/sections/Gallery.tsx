@@ -6,11 +6,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// Only 3 gallery items displayed on homepage
+// Only 4 gallery items displayed on homepage
 const galleryItems = [
-  { id: 1, title: 'Sunset Soiree', image: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png' },
-  { id: 2, title: 'Christmas Eve', image: '/Photo Slides/Christmas/Delicate Flower-5-chrismtas.png' },
-  { id: 3, title: 'Game Night', image: '/Photo Slides/Game Night/Delicate Flower-11.png' },
+  { id: 1, title: 'Celebrations', image: '/Photo Slides/Celebrations/Delicate Flower-3-table setting1.png' },
+  { id: 2, title: 'Floral Arrangements', image: '/Photo Slides/Floral Arrangements/Delicate Flower-13.png' },
+  { id: 3, title: 'Cocktails', image: '/Photo Slides/Cocktails/DSC06742.JPEG' },
+  { id: 4, title: 'Outdoor Soiree', image: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png' },
 ]
 
 export default function Gallery() {
@@ -67,8 +68,8 @@ export default function Gallery() {
           </p>
         </div>
 
-        {/* Gallery Grid - Only 3 cards in one row */}
-        <div ref={gridRef} className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {/* Gallery Grid - 4 cards */}
+        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {galleryItems.map((item) => (
             <div
               key={item.id}
@@ -99,7 +100,7 @@ export default function Gallery() {
             href="/experiences"
             className="inline-block px-10 py-4 border-2 border-[#8f0e04] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#8f0e04] hover:text-[#faf6f0] transition-all duration-300"
           >
-            View Experiences
+            View All Experiences
           </a>
         </div>
       </div>

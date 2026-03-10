@@ -20,7 +20,7 @@ interface PhotoItem {
   source: 'firebase' | 'local'
 }
 
-// Actual folders from public/Photo Slides
+// Actual folders - Game Night and Themed Events are Firebase-only (no local images)
 const FOLDER_NAMES = [
   'Celebrations',
   'Cocktails',
@@ -60,9 +60,7 @@ const LOCAL_IMAGES: Record<string, {name: string, url: string}[]> = {
     { name: 'IMG_9480.jpg', url: '/Photo Slides/Floral Arrangements/IMG_9480.jpg' },
   ],
   'Game Night': [
-    { name: 'Delicate Flower-11.png', url: '/Photo Slides/Game Night/Delicate Flower-11.png' },
-    { name: 'IMG_6440.jpg', url: '/Photo Slides/Game Night/IMG_6440.jpg' },
-    { name: 'IMG_8981.jpg', url: '/Photo Slides/Game Night/IMG_8981.jpg' },
+    // Firebase-only folder - no local images
   ],
   'Outdoor Soiree': [
     { name: 'Delicate Flower-10.png', url: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png' },
@@ -72,7 +70,7 @@ const LOCAL_IMAGES: Record<string, {name: string, url: string}[]> = {
     { name: 'Delicate Flower-10.png', url: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png' },
   ],
   'Themed Events': [
-    { name: 'Delicate Flower-5-chrismtas.png', url: '/Photo Slides/Celebrations/Delicate Flower-5-chrismtas.png' },
+    // Firebase-only folder - no local images
   ],
   'Weddings': [
     { name: 'Delicate Flower-4-drink.png', url: '/Photo Slides/Weddings/Delicate Flower-4-drink.png' },

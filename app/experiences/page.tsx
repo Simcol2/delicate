@@ -1,10 +1,10 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { X, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
+import { X, ChevronLeft, ChevRight, Loader2 } from 'lucide-react'
 import { gsap } from 'gsap'
 import Navbar from '@/components/navigation/Navbar'
-import { getImagesFromFolder, getAllFolders } from '@/lib/firebase'
+import { getImagesFromFolder } from '@/lib/firebase'
 
 interface PhotoFolder {
   id: string
@@ -13,110 +13,150 @@ interface PhotoFolder {
   photos: string[]
 }
 
-// Default folders - showing only 4 main categories
-const DEFAULT_FOLDERS: PhotoFolder[] = [
-  { id: '1', name: 'Celebrations', coverImage: '/Photo Slides/Celebrations/Delicate Flower-3-table setting1.png', photos: [] },
-  { id: '2', name: 'Floral Arrangements', coverImage: '/Photo Slides/Floral Arrangements/Delicate Flower-13.png', photos: [] },
-  { id: '3', name: 'Cocktails', coverImage: '/Photo Slides/Cocktails/DSC06742.JPEG', photos: [] },
-  { id: '4', name: 'Outdoor Soiree', coverImage: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png', photos: [] },
+// All 8 Photo folders
+const photoFolders: PhotoFolder[] = [
+  {
+    id: '1',
+    name: 'Celebrations',
+    coverImage: '/Photo Slides/Celebrations/Delicate Flower-3-table setting1.png',
+    photos: [
+      '/Photo Slides/Celebrations/Delicate Flower-12.png',
+      '/Photo Slides/Celebrations/Delicate Flower-14.png',
+      '/Photo Slides/Celebrations/Delicate Flower-3-table setting1.png',
+      '/Photo Slides/Celebrations/Delicate Flower-3.png',
+      '/Photo Slides/Celebrations/Delicate Flower-5-chrismtas.png',
+      '/Photo Slides/Celebrations/Delicate Flower-6-table3.png',
+      '/Photo Slides/Celebrations/Delicate Flower-7.png',
+      '/Photo Slides/Celebrations/IMG_5548.jpeg',
+      '/Photo Slides/Celebrations/IMG_5714.jpg',
+      '/Photo Slides/Celebrations/IMG_5877.jpg',
+      '/Photo Slides/Celebrations/IMG_9435.jpg',
+    ]
+  },
+  {
+    id: '2',
+    name: 'Cocktails',
+    coverImage: '/Photo Slides/Cocktails/DSC06742.JPEG',
+    photos: [
+      '/Photo Slides/Cocktails/DSC06742.JPEG',
+      '/Photo Slides/Cocktails/DSC06748.JPEG',
+    ]
+  },
+  {
+    id: '3',
+    name: 'Floral Arrangements',
+    coverImage: '/Photo Slides/Floral Arrangements/Delicate Flower-13.png',
+    photos: [
+      '/Photo Slides/Floral Arrangements/Delicate Flower-13.png',
+      '/Photo Slides/Floral Arrangements/IMG_6169.jpg',
+      '/Photo Slides/Floral Arrangements/IMG_8300.jpg',
+      '/Photo Slides/Floral Arrangements/IMG_9442.jpg',
+      '/Photo Slides/Floral Arrangements/IMG_9479.jpg',
+      '/Photo Slides/Floral Arrangements/IMG_9480.jpg',
+    ]
+  },
+  {
+    id: '4',
+    name: 'Game Night',
+    coverImage: '/Photo Slides/Game Night/Delicate Flower-11.png',
+    photos: [
+      '/Photo Slides/Game Night/Delicate Flower-11.png',
+      '/Photo Slides/Game Night/IMG_6440.jpg',
+      '/Photo Slides/Game Night/IMG_8981.jpg',
+    ]
+  },
+  {
+    id: '5',
+    name: 'Outdoor Soiree',
+    coverImage: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png',
+    photos: [
+      '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png',
+      '/Photo Slides/Outdoor Soiree/Delicate Flower-9-outdoor.png',
+    ]
+  },
+  {
+    id: '6',
+    name: 'The Smoker',
+    coverImage: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png',
+    photos: [
+      '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png',
+    ]
+  },
+  {
+    id: '7',
+    name: 'Themed Events',
+    coverImage: '/Photo Slides/Celebrations/Delicate Flower-5-chrismtas.png',
+    photos: [
+      '/Photo Slides/Celebrations/Delicate Flower-5-chrismtas.png',
+    ]
+  },
+  {
+    id: '8',
+    name: 'Weddings',
+    coverImage: '/Photo Slides/Weddings/Delicate Flower-4-drink.png',
+    photos: [
+      '/Photo Slides/Weddings/Delicate Flower-4-drink.png',
+    ]
+  },
 ]
 
 export default function ExperiencesPage() {
-  const [folders, setFolders] = useState<PhotoFolder[]>(DEFAULT_FOLDERS)
+  const [folders, setFolders] = useState<PhotoFolder[]>(photoFolders)
   const [selectedFolder, setSelectedFolder] = useState<PhotoFolder | null>(null)
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  // Load folders from Firebase on mount
-  useEffect(() => {
-    loadFoldersFromFirebase()
-  }, [])
-
-  const loadFoldersFromFirebase = async () => {
-    setIsLoading(true)
-    try {
-      // Get all folders from Firebase
-      const firebaseFolders = await getAllFolders()
-      
-      // Load images for each folder
-      const updatedFolders = await Promise.all(
-        DEFAULT_FOLDERS.map(async (folder) => {
-          const firebaseImages = await getImagesFromFolder(folder.name)
-          
-          if (firebaseImages.length > 0) {
-            // Use Firebase images if available
-            return {
-              ...folder,
-              coverImage: firebaseImages[0].url,
-              photos: firebaseImages.map(img => img.url)
-            }
-          }
-          // Otherwise keep default local images
-          return folder
-        })
-      )
-      
-      setFolders(updatedFolders)
-    } catch (err) {
-      console.error('Error loading from Firebase:', err)
-      setError('Some images may not be up to date. Using local images.')
-    }
-    setIsLoading(false)
-  }
+  const [loadingFolders, setLoadingFolders] = useState<Set<string>>(new Set())
 
   // Animate cards on load
   useEffect(() => {
-    if (!isLoading) {
-      const cards = document.querySelectorAll('.photo-card')
-      gsap.fromTo(
-        cards,
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.08,
-          ease: 'power3.out',
-          delay: 0.2
-        }
-      )
-    }
-  }, [isLoading])
+    const cards = document.querySelectorAll('.photo-card')
+    gsap.fromTo(
+      cards,
+      { y: 60, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        stagger: 0.08,
+        ease: 'power3.out',
+        delay: 0.2
+      }
+    )
+  }, [])
 
-  const openModal = (folder: PhotoFolder) => {
-    // If no Firebase photos, try to load them now
-    if (folder.photos.length === 0) {
-      loadFolderPhotos(folder)
+  const openModal = async (folder: PhotoFolder) => {
+    // Try to load Firebase images for this folder
+    if (!loadingFolders.has(folder.name)) {
+      setLoadingFolders(prev => new Set(prev).add(folder.name))
+      try {
+        const firebaseImages = await getImagesFromFolder(folder.name)
+        if (firebaseImages.length > 0) {
+          // Merge Firebase images with local
+          const firebaseUrls = firebaseImages.map(img => img.url)
+          const updatedFolder = {
+            ...folder,
+            photos: [...firebaseUrls, ...folder.photos]
+          }
+          setFolders(prev => prev.map(f => f.id === folder.id ? updatedFolder : f))
+          setSelectedFolder(updatedFolder)
+        } else {
+          setSelectedFolder(folder)
+        }
+      } catch (err) {
+        setSelectedFolder(folder)
+      }
+      setLoadingFolders(prev => {
+        const newSet = new Set(prev)
+        newSet.delete(folder.name)
+        return newSet
+      })
     } else {
       setSelectedFolder(folder)
-      setCurrentPhotoIndex(0)
-      setIsVisible(true)
-      document.body.style.overflow = 'hidden'
     }
-  }
-
-  const loadFolderPhotos = async (folder: PhotoFolder) => {
-    setIsLoading(true)
-    try {
-      const images = await getImagesFromFolder(folder.name)
-      if (images.length > 0) {
-        const updatedFolder = {
-          ...folder,
-          photos: images.map(img => img.url)
-        }
-        setSelectedFolder(updatedFolder)
-        setCurrentPhotoIndex(0)
-        setIsVisible(true)
-        document.body.style.overflow = 'hidden'
-      } else {
-        setError(`No photos found in ${folder.name}`)
-      }
-    } catch (err) {
-      setError('Failed to load photos')
-    }
-    setIsLoading(false)
+    
+    setCurrentPhotoIndex(0)
+    setIsVisible(true)
+    document.body.style.overflow = 'hidden'
   }
 
   const closeModal = () => {
@@ -172,63 +212,51 @@ export default function ExperiencesPage() {
             </p>
           </div>
 
-          {error && (
-            <div className="max-w-md mx-auto mb-8 p-4 bg-yellow-50 border border-yellow-200 text-yellow-700 text-sm text-center">
-              {error}
-              <button onClick={() => setError(null)} className="ml-2 underline">Dismiss</button>
-            </div>
-          )}
-
-          {isLoading ? (
-            <div className="text-center py-16">
-              <Loader2 className="animate-spin h-12 w-12 text-[#8f0e04] mx-auto mb-4" />
-              <p className="text-[#6b5b52]">Loading experiences...</p>
-            </div>
-          ) : (
-            <>
-              {/* Photo Cards Grid */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
-                {folders.map((folder) => (
-                  <div
-                    key={folder.id}
-                    onClick={() => openModal(folder)}
-                    className="photo-card group cursor-pointer"
-                  >
-                    <div className="relative aspect-[4/5] overflow-hidden rounded-lg mb-4">
-                      <img
-                        src={folder.coverImage}
-                        alt={folder.name}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-[#8f0e04]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span className="text-[#faf6f0] font-sans text-sm tracking-widest uppercase border border-[#faf6f0] px-6 py-3">
-                          View Photos
-                        </span>
-                      </div>
-                      {folder.photos.length > 0 && (
-                        <div className="absolute bottom-3 right-3 bg-black/60 text-[#faf6f0] text-xs px-2 py-1 rounded">
-                          {folder.photos.length} {folder.photos.length === 1 ? 'photo' : 'photos'}
-                        </div>
-                      )}
-                    </div>
-                    <h3 className="font-serif text-2xl text-[#2c2420] mb-1">
-                      {folder.name}
-                    </h3>
+          {/* Photo Cards Grid - 8 cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {folders.map((folder) => (
+              <div
+                key={folder.id}
+                onClick={() => openModal(folder)}
+                className="photo-card group cursor-pointer"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden rounded-lg mb-4">
+                  <img
+                    src={folder.coverImage}
+                    alt={folder.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-[#8f0e04]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="text-[#faf6f0] font-sans text-sm tracking-widest uppercase border border-[#faf6f0] px-6 py-3">
+                      View Photos
+                    </span>
                   </div>
-                ))}
+                  {/* Photo count badge */}
+                  <div className="absolute bottom-3 right-3 bg-black/60 text-[#faf6f0] text-xs px-2 py-1 rounded">
+                    {folder.photos.length} {folder.photos.length === 1 ? 'photo' : 'photos'}
+                  </div>
+                  {loadingFolders.has(folder.name) && (
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                      <Loader2 className="animate-spin h-6 w-6 text-[#faf6f0]" />
+                    </div>
+                  )}
+                </div>
+                <h3 className="font-serif text-2xl text-[#2c2420] mb-1">
+                  {folder.name}
+                </h3>
               </div>
+            ))}
+          </div>
 
-              {/* Back to Home */}
-              <div className="text-center mt-16">
-                <a
-                  href="/"
-                  className="inline-block px-10 py-4 border-2 border-[#8f0e04] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#8f0e04] hover:text-[#faf6f0] transition-all duration-300"
-                >
-                  Back to Home
-                </a>
-              </div>
-            </>
-          )}
+          {/* Back to Home */}
+          <div className="text-center mt-16">
+            <a
+              href="/"
+              className="inline-block px-10 py-4 border-2 border-[#8f0e04] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#8f0e04] hover:text-[#faf6f0] transition-all duration-300"
+            >
+              Back to Home
+            </a>
+          </div>
         </div>
       </main>
 
@@ -260,11 +288,11 @@ export default function ExperiencesPage() {
               )}
 
               <div className="relative w-full h-full flex items-center justify-center p-4">
-                {selectedFolder.photos.length > 0 ? (
-                  <img src={selectedFolder.photos[currentPhotoIndex]} alt={`${selectedFolder.name} - Photo ${currentPhotoIndex + 1}`} className="max-w-full max-h-[70vh] object-contain" />
-                ) : (
-                  <p className="text-[#faf6f0]/60">No photos in this album yet</p>
-                )}
+                <img
+                  src={selectedFolder.photos[currentPhotoIndex]}
+                  alt={`${selectedFolder.name} - Photo ${currentPhotoIndex + 1}`}
+                  className="max-w-full max-h-[70vh] object-contain"
+                />
               </div>
 
               {selectedFolder.photos.length > 1 && (
@@ -274,20 +302,38 @@ export default function ExperiencesPage() {
               )}
             </div>
 
+            {/* Thumbnail Navigation */}
             {selectedFolder.photos.length > 1 && (
               <div className="bg-[#2c2420] p-4">
-                <div className="flex gap-2 overflow-x-auto pb-2 justify-center">
+                <div className="flex gap-2 overflow-x-auto pb-2 justify-center custom-scroll">
                   {selectedFolder.photos.map((photo, index) => (
-                    <button key={index} onClick={() => setCurrentPhotoIndex(index)} className={`flex-shrink-0 w-16 h-16 rounded overflow-hidden transition-all duration-200 ${index === currentPhotoIndex ? 'ring-2 ring-[#c9a96e] opacity-100' : 'opacity-50 hover:opacity-80'}`}>
-                      <img src={photo} alt={`Thumbnail ${index + 1}`} className="w-full h-full object-cover" />
+                    <button
+                      key={index}
+                      onClick={() => setCurrentPhotoIndex(index)}
+                      className={`flex-shrink-0 w-16 h-16 rounded overflow-hidden transition-all duration-200 ${
+                        index === currentPhotoIndex 
+                          ? 'ring-2 ring-[#c9a96e] opacity-100' 
+                          : 'opacity-50 hover:opacity-80'
+                      }`}
+                    >
+                      <img
+                        src={photo}
+                        alt={`Thumbnail ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
                     </button>
                   ))}
                 </div>
               </div>
             )}
 
+            {/* Book a Consultation Button */}
             <div className="bg-[#2c2420] p-4 pt-0 flex justify-center">
-              <a href="/#contact" onClick={closeModal} className="inline-block px-8 py-3 bg-[#8f0e04] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#c9594a]">
+              <a
+                href="/#contact"
+                onClick={closeModal}
+                className="inline-block px-8 py-3 bg-[#8f0e04] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#c9594a] transition-colors duration-300"
+              >
                 Book a Consultation
               </a>
             </div>

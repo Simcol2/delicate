@@ -41,3 +41,6 @@ linkedin_cookies.json
 
 # Scripts node_modules (for Firebase upload)
 scripts/node_modules
+
+# Firebase service account
+scripts/serviceAccountKey.json
