@@ -137,7 +137,7 @@ export default function Hero({ onOpenDesigner }: HeroProps) {
           {/* CTA Buttons */}
           <div ref={ctaRef} className="flex flex-col sm:flex-row items-start gap-4 mb-10 will-change-transform">
             <a
-              href="#services"
+              href="/services"
               className="px-10 py-4 bg-[#d3dcde] text-[var(--navy-midnight)] font-sans text-sm tracking-widest uppercase hover:bg-[#b8c4c7] transition-colors duration-300"
             >
               Explore Services

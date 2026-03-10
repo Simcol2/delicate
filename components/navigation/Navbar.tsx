@@ -50,7 +50,7 @@ export default function Navbar() {
               About
             </a>
             <a 
-              href="#services" 
+              href="/services" 
               className={`text-sm font-sans hover:text-[var(--gold-antique)] transition-colors tracking-widest uppercase ${
                 isScrolled ? 'text-white' : 'text-[var(--plum-deep)]'
               }`}
