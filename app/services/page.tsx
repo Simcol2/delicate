@@ -11,7 +11,7 @@ const packages = [
     badge: 'The Sunset',
     name: 'Sunset',
     guests: 'Up to 8 Guests',
-    description: 'An intimate, beautifully considered tablescape for smaller gatherings where every seat feels special. Thoughtfully styled from centerpiece to place card — we handle it all, so you can simply arrive and enjoy.',
+    description: 'An intimate, beautifully considered tablescape for smaller gatherings where every seat feels special. Thoughtfully styled from centerpiece to place card , we handle it all, so you can simply arrive and enjoy.',
     features: [
       '3 custom floral centerpieces',
       'Tablescaping with charge plates & dinnerware (ours or yours)',
@@ -29,10 +29,10 @@ const packages = [
     badge: 'Most Popular',
     name: 'Champagne',
     guests: 'Up to 20 Guests',
-    description: 'Full-scale table design for the events worth celebrating properly. Every element is considered — from the centerpieces to the bar to the moment your guests walk through the door. This is the package for hosts who want the whole picture to feel intentional.',
+    description: 'Full-scale table design for the events worth celebrating properly. Every element is considered , from the centerpieces to the bar to the moment your guests walk through the door. This is the package for hosts who want the whole picture to feel intentional.',
     features: [
       '3 custom floral centerpieces',
-      'Complete table setting — chargers, cutlery, glassware & china (as needed)',
+      'Complete table setting , chargers, cutlery, glassware & china (as needed)',
       'Full tablescaping & styling',
       'Bar styling with florals included',
       'Entry styling with florals included',
@@ -45,7 +45,7 @@ const packages = [
     badge: 'The Affair',
     name: 'The Affair',
     guests: '20+ Guests',
-    description: 'For the event that commands presence in every room. A full-venue transformation — from the entry to the restrooms — built around a custom design concept that ties every space together. This is the experience guests talk about long after the night ends.',
+    description: 'For the event that commands presence in every room. A full-venue transformation , from the entry to the restrooms , built around a custom design concept that ties every space together. This is the experience guests talk about long after the night ends.',
     features: [
       '3 statement floral centerpieces',
       'Multi-table styling',
@@ -73,7 +73,7 @@ const addOns = [
   },
   {
     name: 'Smoked Meats',
-    description: 'Brisket, turkey, chicken, or pork — expertly smoked and beautifully presented.',
+    description: 'Brisket, turkey, chicken, or pork , expertly smoked and beautifully presented.',
   },
   {
     name: 'Specialty Vases',
@@ -81,26 +81,26 @@ const addOns = [
   },
   {
     name: 'Outdoor Entry Styling',
-    description: 'Set the tone before guests step inside — a styled outdoor welcome moment.',
+    description: 'Set the tone before guests step inside , a styled outdoor welcome moment.',
   },
 ]
 
 const byoItems = [
   {
     name: 'Your Spaces',
-    description: 'Main table, bar, entry, lounge, kitchen, bathroom, outdoors — choose what you want styled.',
+    description: 'Main table, bar, entry, lounge, kitchen, bathroom, outdoors , choose what you want styled.',
   },
   {
     name: 'Your Aesthetic',
-    description: 'Vibe, color palette, theme, floral preferences — we build around your vision, not a template.',
+    description: 'Vibe, color palette, theme, floral preferences , we build around your vision, not a template.',
   },
   {
     name: 'Your Details',
-    description: 'Tableware, linens, place settings, centerpieces — mix our inventory with your own pieces.',
+    description: 'Tableware, linens, place settings, centerpieces , mix our inventory with your own pieces.',
   },
   {
     name: 'Your Add-ons',
-    description: 'Dessert displays, cocktail stations, smoked meats, specialty florals — layer in anything you love.',
+    description: 'Dessert displays, cocktail stations, smoked meats, specialty florals , layer in anything you love.',
   },
 ]
 
@@ -152,7 +152,7 @@ export default function ServicesPage() {
               for <em className="text-[#de6050] italic">moments that matter.</em>
             </h1>
             <p className="font-sans text-[#6b5b52] text-[15px] leading-[1.85] mt-6">
-              Whether you&apos;re hosting eight of your closest friends or staging an event that fills every room, our packages are built around one belief: the table sets the tone for everything that happens around it. Choose the experience that fits your vision — or build your own from the ground up.
+              Whether you&apos;re hosting eight of your closest friends or staging an event that fills every room, our packages are built around one belief: the table sets the tone for everything that happens around it. Choose the experience that fits your vision , or build your own from the ground up.
             </p>
             {/* Divider */}
             <div className="flex items-center justify-center gap-4 mt-9">
@@ -300,7 +300,7 @@ export default function ServicesPage() {
               Build <em className="text-[var(--gold-antique)] italic">Your Own</em>
             </h2>
             <p className="font-sans text-[#9e8d85] text-[15px] leading-[1.85] mt-6 max-w-xl mx-auto">
-              Not every event fits a package — and that&apos;s exactly the point. Tell us your spaces, your vision, and your vibe. We&apos;ll build a custom scope and quote around what matters most to you.
+              Not every event fits a package , and that&apos;s exactly the point. Tell us your spaces, your vision, and your vibe. We&apos;ll build a custom scope and quote around what matters most to you.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[1px] max-w-4xl mx-auto mt-12 border border-[rgba(201,169,110,0.2)]">
