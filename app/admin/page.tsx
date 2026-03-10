@@ -20,15 +20,12 @@ interface PhotoItem {
   source: 'firebase' | 'local'
 }
 
-// Actual folders - Game Night and Themed Events are Firebase-only (no local images)
+// Actual folders - Game Night, Themed Events, The Smoker are Firebase-only
 const FOLDER_NAMES = [
   'Celebrations',
   'Cocktails',
   'Floral Arrangements',
-  'Game Night',
   'Outdoor Soiree',
-  'The Smoker',
-  'Themed Events',
   'Weddings'
 ]
 
@@ -59,19 +56,11 @@ const LOCAL_IMAGES: Record<string, {name: string, url: string}[]> = {
     { name: 'IMG_9479.jpg', url: '/Photo Slides/Floral Arrangements/IMG_9479.jpg' },
     { name: 'IMG_9480.jpg', url: '/Photo Slides/Floral Arrangements/IMG_9480.jpg' },
   ],
-  'Game Night': [
-    // Firebase-only folder - no local images
-  ],
   'Outdoor Soiree': [
     { name: 'Delicate Flower-10.png', url: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png' },
     { name: 'Delicate Flower-9-outdoor.png', url: '/Photo Slides/Outdoor Soiree/Delicate Flower-9-outdoor.png' },
   ],
-  'The Smoker': [
-    // Firebase-only folder - no local images
-  ],
-  'Themed Events': [
-    // Firebase-only folder - no local images
-  ],
+
   'Weddings': [
     { name: 'Delicate Flower-4-drink.png', url: '/Photo Slides/Weddings/Delicate Flower-4-drink.png' },
   ],

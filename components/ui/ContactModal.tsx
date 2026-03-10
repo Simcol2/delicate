@@ -59,21 +59,17 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     const scrollContainer = scrollContainerRef.current
     if (!scrollContainer) return
 
-    // This is the key function - it stops ALL wheel events from propagating
     const handleWheel = (e: WheelEvent) => {
-      // Always stop the event from reaching the body
       e.stopPropagation()
       
       const isAtTop = scrollContainer.scrollTop <= 0
       const isAtBottom = scrollContainer.scrollTop + scrollContainer.clientHeight >= scrollContainer.scrollHeight - 2
       
-      // Only prevent default if at bounds (scroll chaining)
       if ((e.deltaY < 0 && isAtTop) || (e.deltaY > 0 && isAtBottom)) {
         e.preventDefault()
       }
     }
 
-    // Handle touch events for mobile/trackpad
     let startY = 0
     let startScrollTop = 0
 
@@ -91,30 +87,19 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       
       const maxScroll = scrollContainer.scrollHeight - scrollContainer.clientHeight
       
-      // Prevent pull-down/pull-up refresh
       if (newScrollTop < 0 || newScrollTop > maxScroll) {
         e.preventDefault()
       }
     }
 
-    // Add listeners to the scroll container with capture phase
     scrollContainer.addEventListener('wheel', handleWheel, { passive: false, capture: true })
     scrollContainer.addEventListener('touchstart', handleTouchStart, { passive: true })
     scrollContainer.addEventListener('touchmove', handleTouchMove, { passive: false, capture: true })
-
-    // Also add wheel listener to modal content to catch any missed events
-    const content = contentRef.current
-    if (content) {
-      content.addEventListener('wheel', handleWheel, { passive: false, capture: true })
-    }
 
     return () => {
       scrollContainer.removeEventListener('wheel', handleWheel, { capture: true })
       scrollContainer.removeEventListener('touchstart', handleTouchStart)
       scrollContainer.removeEventListener('touchmove', handleTouchMove, { capture: true })
-      if (content) {
-        content.removeEventListener('wheel', handleWheel, { capture: true })
-      }
     }
   }, [isOpen])
 
@@ -170,7 +155,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     >
       <div
         ref={contentRef}
-        className="relative w-full max-w-2xl max-h-[90vh] bg-[#8f0e04] opacity-0 flex flex-col"
+        className="relative w-full max-w-2xl max-h-[90vh] bg-[#fffdf9] opacity-0 flex flex-col"
       >
         <style jsx>{`
           .modal-scroll {
@@ -179,27 +164,27 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             -webkit-overflow-scrolling: touch;
             overscroll-behavior: contain;
             scrollbar-width: thin;
-            scrollbar-color: #faf6f0 rgba(255,255,255,0.1);
+            scrollbar-color: #c9a96e #f5ede0;
           }
           .modal-scroll::-webkit-scrollbar {
             width: 8px;
           }
           .modal-scroll::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
+            background: #f5ede0;
           }
           .modal-scroll::-webkit-scrollbar-thumb {
-            background: #faf6f0;
+            background: #c9a96e;
             border-radius: 4px;
           }
         `}</style>
 
-        <button onClick={handleClose} className="absolute top-4 right-4 z-20 p-2 text-white/60 hover:text-white">
+        <button onClick={handleClose} className="absolute top-4 right-4 z-20 p-2 text-[#2c2420]/60 hover:text-[#8f0e04]">
           <X size={24} />
         </button>
 
-        <div className="p-6 border-b border-white/10 shrink-0">
-          <span className="text-[#faf6f0] text-xs tracking-[0.3em] uppercase block mb-2">Get in Touch</span>
-          <h2 className="font-serif text-2xl md:text-3xl text-white">Book a Consultation</h2>
+        <div className="p-6 border-b border-[#e8d5b0] shrink-0">
+          <span className="text-[#c9594a] text-xs tracking-[0.3em] uppercase block mb-2">Get in Touch</span>
+          <h2 className="font-serif text-2xl md:text-3xl text-[#2c2420]">Book a Consultation</h2>
         </div>
 
         <div 
@@ -210,79 +195,79 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
-                <label className="block text-white/60 text-xs tracking-widest uppercase mb-2">Your Name</label>
+                <label className="block text-[#6b5b52] text-xs tracking-widest uppercase mb-2">Your Name</label>
                 <input type="text" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} 
-                  className="w-full bg-transparent border-b border-white/30 py-2.5 text-white placeholder:text-white/40 text-sm focus:border-[#faf6f0] focus:outline-none" placeholder="Jane Doe" required />
+                  className="w-full bg-transparent border-b border-[#e8d5b0] py-2.5 text-[#2c2420] placeholder:text-[#a89189] text-sm focus:border-[#c9594a] focus:outline-none" placeholder="Jane Doe" required />
               </div>
               <div>
-                <label className="block text-white/60 text-xs tracking-widest uppercase mb-2">Email Address</label>
+                <label className="block text-[#6b5b52] text-xs tracking-widest uppercase mb-2">Email Address</label>
                 <input type="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} 
-                  className="w-full bg-transparent border-b border-white/30 py-2.5 text-white placeholder:text-white/40 text-sm focus:border-[#faf6f0] focus:outline-none" placeholder="jane@email.com" required />
+                  className="w-full bg-transparent border-b border-[#e8d5b0] py-2.5 text-[#2c2420] placeholder:text-[#a89189] text-sm focus:border-[#c9594a] focus:outline-none" placeholder="jane@email.com" required />
               </div>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
-                <label className="block text-white/60 text-xs tracking-widest uppercase mb-2">Event Type</label>
+                <label className="block text-[#6b5b52] text-xs tracking-widest uppercase mb-2">Event Type</label>
                 <select value={formData.eventType} onChange={(e) => setFormData({...formData, eventType: e.target.value})} 
-                  className="w-full bg-transparent border-b border-white/30 py-2.5 text-white text-sm focus:border-[#faf6f0] focus:outline-none" required>
-                  <option value="" className="bg-[#8f0e04]">Select an option</option>
-                  <option value="dinner" className="bg-[#8f0e04]">Intimate Dinner</option>
-                  <option value="brunch" className="bg-[#8f0e04]">Brunch Gathering</option>
-                  <option value="celebration" className="bg-[#8f0e04]">Special Celebration</option>
-                  <option value="corporate" className="bg-[#8f0e04]">Corporate Event</option>
-                  <option value="other" className="bg-[#8f0e04]">Other</option>
+                  className="w-full bg-transparent border-b border-[#e8d5b0] py-2.5 text-[#2c2420] text-sm focus:border-[#c9594a] focus:outline-none" required>
+                  <option value="" className="bg-[#fffdf9]">Select an option</option>
+                  <option value="dinner" className="bg-[#fffdf9]">Intimate Dinner</option>
+                  <option value="brunch" className="bg-[#fffdf9]">Brunch Gathering</option>
+                  <option value="celebration" className="bg-[#fffdf9]">Special Celebration</option>
+                  <option value="corporate" className="bg-[#fffdf9]">Corporate Event</option>
+                  <option value="other" className="bg-[#fffdf9]">Other</option>
                 </select>
               </div>
               <div>
-                <label className="block text-white/60 text-xs tracking-widest uppercase mb-2">Event Date</label>
+                <label className="block text-[#6b5b52] text-xs tracking-widest uppercase mb-2">Event Date</label>
                 <input type="date" value={formData.date} onChange={(e) => setFormData({...formData, date: e.target.value})} 
-                  className="w-full bg-transparent border-b border-white/30 py-2.5 text-white text-sm [color-scheme:dark]" />
+                  className="w-full bg-transparent border-b border-[#e8d5b0] py-2.5 text-[#2c2420] text-sm" />
               </div>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
-                <label className="block text-white/60 text-xs tracking-widest uppercase mb-2">Venue Name</label>
+                <label className="block text-[#6b5b52] text-xs tracking-widest uppercase mb-2">Venue Name</label>
                 <input type="text" value={formData.venueName} onChange={(e) => setFormData({...formData, venueName: e.target.value})} 
-                  className="w-full bg-transparent border-b border-white/30 py-2.5 text-white placeholder:text-white/40 text-sm focus:border-[#faf6f0] focus:outline-none" placeholder="Enter venue name" />
+                  className="w-full bg-transparent border-b border-[#e8d5b0] py-2.5 text-[#2c2420] placeholder:text-[#a89189] text-sm focus:border-[#c9594a] focus:outline-none" placeholder="Enter venue name" />
               </div>
               <div>
-                <label className="block text-white/60 text-xs tracking-widest uppercase mb-2">Venue Location</label>
+                <label className="block text-[#6b5b52] text-xs tracking-widest uppercase mb-2">Venue Location</label>
                 <input type="text" value={formData.venueLocation} onChange={(e) => setFormData({...formData, venueLocation: e.target.value})} 
-                  className="w-full bg-transparent border-b border-white/30 py-2.5 text-white placeholder:text-white/40 text-sm focus:border-[#faf6f0] focus:outline-none" placeholder="Enter venue location" />
+                  className="w-full bg-transparent border-b border-[#e8d5b0] py-2.5 text-[#2c2420] placeholder:text-[#a89189] text-sm focus:border-[#c9594a] focus:outline-none" placeholder="Enter venue location" />
               </div>
             </div>
 
             <div>
-              <label className="block text-white/60 text-xs tracking-widest uppercase mb-2">Guest Size</label>
+              <label className="block text-[#6b5b52] text-xs tracking-widest uppercase mb-2">Guest Size</label>
               <input type="text" value={formData.guestSize} onChange={(e) => setFormData({...formData, guestSize: e.target.value})} 
-                className="w-full bg-transparent border-b border-white/30 py-2.5 text-white placeholder:text-white/40 text-sm focus:border-[#faf6f0] focus:outline-none" placeholder="Number of guests" />
+                className="w-full bg-transparent border-b border-[#e8d5b0] py-2.5 text-[#2c2420] placeholder:text-[#a89189] text-sm focus:border-[#c9594a] focus:outline-none" placeholder="Number of guests" />
             </div>
 
             <div>
-              <label className="block text-white/60 text-xs tracking-widest uppercase mb-2">Tell Us About Your Vision</label>
+              <label className="block text-[#6b5b52] text-xs tracking-widest uppercase mb-2">Tell Us About Your Vision</label>
               <textarea value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} rows={3}
-                className="w-full bg-transparent border-b border-white/30 py-2.5 text-white resize-none placeholder:text-white/40 text-sm focus:border-[#faf6f0] focus:outline-none" placeholder="Share your ideas, guest count, preferred style..." required />
+                className="w-full bg-transparent border-b border-[#e8d5b0] py-2.5 text-[#2c2420] resize-none placeholder:text-[#a89189] text-sm focus:border-[#c9594a] focus:outline-none" placeholder="Share your ideas, guest count, preferred style..." required />
             </div>
 
             <div className="flex items-start gap-3 pt-2">
               <input type="checkbox" id="terms" checked={formData.termsAccepted} 
-                onChange={(e) => setFormData({...formData, termsAccepted: e.target.checked})} className="mt-1 w-4 h-4 accent-[#faf6f0]" />
-              <label htmlFor="terms" className="text-white/80 text-sm">
-                I have read and agree to the <a href="/terms" target="_blank" className="text-[#faf6f0] underline hover:text-white">Terms of Service</a>
+                onChange={(e) => setFormData({...formData, termsAccepted: e.target.checked})} className="mt-1 w-4 h-4 accent-[#8f0e04]" />
+              <label htmlFor="terms" className="text-[#6b5b52] text-sm">
+                I have read and agree to the <a href="/terms" target="_blank" className="text-[#8f0e04] underline hover:text-[#c9594a]">Terms of Service</a>
               </label>
             </div>
 
             {submitStatus !== 'idle' && (
-              <div className={`flex items-center gap-2 p-3 ${submitStatus === 'success' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
+              <div className={`flex items-center gap-2 p-3 ${submitStatus === 'success' ? 'bg-green-500/10 text-green-600' : 'bg-red-500/10 text-red-600'}`}>
                 {submitStatus === 'success' ? <CheckCircle size={18} /> : <AlertCircle size={18} />}
                 <span className="text-sm">{statusMessage}</span>
               </div>
             )}
 
             <button type="submit" disabled={isSubmitting} 
-              className="w-full px-8 py-3 bg-[#faf6f0] text-[#8f0e04] text-sm tracking-widest uppercase hover:bg-white disabled:opacity-50">
+              className="w-full px-8 py-3 bg-[#8f0e04] text-[#faf6f0] text-sm tracking-widest uppercase hover:bg-[#c9594a] transition-colors disabled:opacity-50">
               {isSubmitting ? 'Sending...' : 'Send Inquiry'}
             </button>
           </form>

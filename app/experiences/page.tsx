@@ -13,7 +13,7 @@ interface PhotoFolder {
   photos: string[]
 }
 
-// All 8 Photo folders
+// All 7 Photo folders
 const photoFolders: PhotoFolder[] = [
   {
     id: '1',
@@ -76,14 +76,6 @@ const photoFolders: PhotoFolder[] = [
   },
   {
     id: '6',
-    name: 'The Smoker',
-    coverImage: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png',
-    photos: [
-      '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png',
-    ]
-  },
-  {
-    id: '7',
     name: 'Themed Events',
     coverImage: '/Photo Slides/Celebrations/Delicate Flower-5-chrismtas.png',
     photos: [
@@ -91,7 +83,7 @@ const photoFolders: PhotoFolder[] = [
     ]
   },
   {
-    id: '8',
+    id: '7',
     name: 'Weddings',
     coverImage: '/Photo Slides/Weddings/Delicate Flower-4-drink.png',
     photos: [
