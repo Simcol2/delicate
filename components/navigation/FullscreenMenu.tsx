@@ -12,6 +12,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
     { label: 'About', href: '#about' },
     { label: 'Services', href: '/services' },
     { label: 'Gallery', href: '#gallery' },
+    { label: 'FAQ', href: '/faq' },
     { label: 'Contact', href: '#contact' },
   ]
 

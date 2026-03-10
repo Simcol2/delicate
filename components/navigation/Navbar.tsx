@@ -65,6 +65,14 @@ export default function Navbar() {
             >
               Gallery
             </a>
+            <a 
+              href="/faq" 
+              className={`text-sm font-sans hover:text-[var(--gold-antique)] transition-colors tracking-widest uppercase ${
+                isScrolled ? 'text-white' : 'text-[var(--plum-deep)]'
+              }`}
+            >
+              FAQ
+            </a>
             {/* Book Now - White text and border on scroll */}
             <a 
               href="#contact" 
