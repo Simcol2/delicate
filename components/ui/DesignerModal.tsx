@@ -116,13 +116,12 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
         >
           <div className="flex flex-col md:flex-row">
             {/* Photo Side - Full width on mobile */}
-            <div className="w-full md:w-2/5 relative h-72 sm:h-80 md:h-auto md:min-h-[500px] shrink-0">
+            <div className="w-full md:w-2/5 relative h-64 sm:h-72 md:h-auto md:min-h-[500px] shrink-0">
               <Image
                 src="/images/WhatsApp Image 2026-03-05 at 11.32.29 AM.jpeg"
                 alt="Event Designer"
                 fill
-                className="object-cover"
-                style={{ objectPosition: 'left center' }}
+                className="object-cover object-top md:object-cover md:object-left-center"
                 sizes="(max-width: 768px) 100vw, 40vw"
                 priority
               />

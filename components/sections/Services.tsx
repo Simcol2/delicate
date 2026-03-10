@@ -81,11 +81,11 @@ export default function Services() {
         </div>
 
         {/* Service Cards - 3 columns with images */}
-        <div ref={cardsRef} className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+        <div ref={cardsRef} className="grid md:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto items-stretch">
           {services.map((service) => (
             <div
               key={service.title}
-              className="group relative overflow-hidden rounded-lg flex flex-col"
+              className="group relative overflow-hidden rounded-lg flex flex-col h-64 md:h-auto"
               style={{ aspectRatio: '3/4' }}
             >
               {/* Background Image using img tag */}
