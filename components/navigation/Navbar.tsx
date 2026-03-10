@@ -60,7 +60,7 @@ export default function Navbar() {
               Services
             </a>
             <a 
-              href="#gallery" 
+              href="/experiences" 
               className={`text-sm font-sans hover:text-[#8f0e04] transition-colors tracking-widest uppercase ${
                 isScrolled ? 'text-white' : 'text-[#2c2420]'
               }`}
