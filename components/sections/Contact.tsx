@@ -15,6 +15,9 @@ export default function Contact() {
     email: '',
     eventType: '',
     date: '',
+    venueName: '',
+    venueLocation: '',
+    guestSize: '',
     message: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -67,6 +70,9 @@ export default function Contact() {
           email: '',
           eventType: '',
           date: '',
+          venueName: '',
+          venueLocation: '',
+          guestSize: '',
           message: '',
         })
       } else {
@@ -188,6 +194,50 @@ export default function Contact() {
                   className="w-full bg-transparent border-b border-white/30 py-3 text-white font-sans focus:border-[var(--gold-antique)] focus:outline-none transition-colors"
                 />
               </div>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-white/60 text-xs tracking-widest uppercase font-sans mb-3">
+                  Venue Name
+                </label>
+                <input
+                  type="text"
+                  value={formData.venueName}
+                  onChange={(e) => setFormData({ ...formData, venueName: e.target.value })}
+                  className="w-full bg-transparent border-b border-white/30 py-3 text-white font-sans focus:border-[var(--gold-antique)] focus:outline-none transition-colors placeholder:text-white/40"
+                  placeholder="Enter venue name"
+                />
+              </div>
+              <div>
+                <label className="block text-white/60 text-xs tracking-widest uppercase font-sans mb-3">
+                  Venue Location
+                </label>
+                <select
+                  value={formData.venueLocation}
+                  onChange={(e) => setFormData({ ...formData, venueLocation: e.target.value })}
+                  className="w-full bg-transparent border-b border-white/30 py-3 text-white font-sans focus:border-[var(--gold-antique)] focus:outline-none transition-colors"
+                >
+                  <option value="" className="bg-[var(--navy-midnight)]">Select location</option>
+                  <option value="palm-springs" className="bg-[var(--navy-midnight)]">Palm Springs</option>
+                  <option value="palm-desert" className="bg-[var(--navy-midnight)]">Palm Desert</option>
+                  <option value="coachella-valley" className="bg-[var(--navy-midnight)]">Coachella Valley</option>
+                  <option value="rancho-mirage" className="bg-[var(--navy-midnight)]">Rancho Mirage</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-white/60 text-xs tracking-widest uppercase font-sans mb-3">
+                Guest Size
+              </label>
+              <input
+                type="text"
+                value={formData.guestSize}
+                onChange={(e) => setFormData({ ...formData, guestSize: e.target.value })}
+                className="w-full bg-transparent border-b border-white/30 py-3 text-white font-sans focus:border-[var(--gold-antique)] focus:outline-none transition-colors placeholder:text-white/40"
+                placeholder="Number of guests"
+              />
             </div>
 
             <div>
