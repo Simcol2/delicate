@@ -153,7 +153,7 @@ function AdminLogin({ onLogin }: { onLogin: () => void }) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-3 bg-[#faf6f0] border border-[#e8d5b0] text-[#2c2420] focus:outline-none focus:border-[#c9594a]"
-                placeholder="admin@delicateflowers.com"
+                placeholder="hello@delicateflowers.co"
                 required
               />
             </div>
