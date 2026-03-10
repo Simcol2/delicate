@@ -175,7 +175,7 @@ export default function ServicesPage() {
             {packages.map((pkg) => (
               <div
                 key={pkg.id}
-                className={`pkg-card p-10 md:p-12 relative opacity-0 transition-shadow duration-300 hover:shadow-[0_20px_60px_rgba(44,36,32,0.08)] hover:z-10 ${
+                className={`pkg-card p-10 md:p-12 relative opacity-0 transition-shadow duration-300 hover:shadow-[0_20px_60px_rgba(44,36,32,0.08)] hover:z-10 flex flex-col ${
                   pkg.featured ? 'bg-[#c9594a]' : 'bg-[#fffdf9]'
                 }`}
               >
@@ -230,7 +230,7 @@ export default function ServicesPage() {
                 </ul>
 
                 {/* Price */}
-                <div className={`pt-7 border-t ${
+                <div className={`pt-7 border-t mt-auto ${
                   pkg.featured ? 'border-[#2c2420]/20' : 'border-[#e8d5b0]'
                 }`}>
                   <span className="text-[10px] font-medium tracking-[0.28em] uppercase block mb-1.5 text-[#2c2420]/60">

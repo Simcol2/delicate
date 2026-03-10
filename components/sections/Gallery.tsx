@@ -1,12 +1,12 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// Only 4 gallery items displayed on homepage
 const galleryItems = [
   { id: 1, title: 'Celebrations', image: '/Photo Slides/Celebrations/Delicate Flower-3-table setting1.png' },
   { id: 2, title: 'Floral Arrangements', image: '/Photo Slides/Floral Arrangements/Delicate Flower-13.png' },
@@ -16,13 +16,31 @@ const galleryItems = [
 
 export default function Gallery() {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const gridRef = useRef<HTMLDivElement>(null)
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
 
+  // Check for mobile
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const items = gridRef.current?.children
-      if (!items) return
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
+  // Auto-scroll every 5 seconds on mobile
+  useEffect(() => {
+    if (!isMobile) return
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % galleryItems.length)
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [isMobile])
+
+  // Animate on load (desktop only)
+  useEffect(() => {
+    if (isMobile) return
+    const ctx = gsap.context(() => {
+      const items = document.querySelectorAll('.gallery-item')
       gsap.fromTo(
         items,
         { y: 60, opacity: 0 },
@@ -33,15 +51,17 @@ export default function Gallery() {
           stagger: 0.1,
           ease: 'power3.out',
           scrollTrigger: {
-            trigger: gridRef.current,
+            trigger: sectionRef.current,
             start: 'top 85%',
           },
         }
       )
     }, sectionRef)
-
     return () => ctx.revert()
-  }, [])
+  }, [isMobile])
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % galleryItems.length)
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + galleryItems.length) % galleryItems.length)
 
   return (
     <section
@@ -68,21 +88,70 @@ export default function Gallery() {
           </p>
         </div>
 
-        {/* Gallery Grid - 4 cards */}
-        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        {/* Mobile Carousel */}
+        <div className="md:hidden relative max-w-md mx-auto">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
+            {galleryItems.map((item, index) => (
+              <div
+                key={item.id}
+                className={`absolute inset-0 transition-opacity duration-500 ${
+                  index === currentSlide ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h3 className="font-serif text-2xl text-[#faf6f0]">{item.title}</h3>
+                  <p className="text-[#faf6f0]/70 text-sm mt-1">{index + 1} / {galleryItems.length}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-[#faf6f0]/80 rounded-full text-[#2c2420] hover:bg-[#faf6f0]"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-[#faf6f0]/80 rounded-full text-[#2c2420] hover:bg-[#faf6f0]"
+          >
+            <ChevronRight size={24} />
+          </button>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-4">
+            {galleryItems.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  index === currentSlide ? 'bg-[#8f0e04]' : 'bg-[#e8d5b0]'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Grid - 4 cards */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {galleryItems.map((item) => (
             <div
               key={item.id}
-              className="group relative overflow-hidden rounded-lg aspect-[4/5]"
+              className="gallery-item group relative overflow-hidden rounded-lg aspect-[4/5]"
             >
-              {/* Image */}
               <img
                 src={item.image}
                 alt={item.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              
-              {/* Overlay */}
               <div className="absolute inset-0 bg-[#8f0e04]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                 <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                   <h3 className="font-serif text-2xl text-[#faf6f0]">

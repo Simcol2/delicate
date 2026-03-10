@@ -266,7 +266,7 @@ export default function ExperiencesPage() {
         onClose={() => setIsContactModalOpen(false)} 
       />
 
-      {/* Modal with Photo Carousel -->
+      {/* Modal with Photo Carousel */}
       {selectedFolder && (
         <div 
           className={`fixed inset-0 z-[100] flex items-center justify-center p-4 transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
