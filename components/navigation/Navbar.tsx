@@ -19,9 +19,9 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-10 left-0 right-0 z-[70] transition-all duration-500 ${
+        className={`fixed top-10 left-0 right-0 z-[100] transition-all duration-500 ${
           isScrolled
-            ? 'bg-[#871237]/95 backdrop-blur-md py-4'
+            ? 'bg-[#de6050]/95 backdrop-blur-md py-4'
             : 'bg-transparent py-6'
         }`}
       >
@@ -40,7 +40,7 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-12">
+          <div className="hidden lg:flex items-center gap-12 relative z-10">
             <a 
               href="#about" 
               className={`text-sm font-sans hover:text-[var(--gold-antique)] transition-colors tracking-widest uppercase ${

@@ -81,17 +81,17 @@ export default function FAQPage() {
         <div className="w-full px-6 lg:px-12">
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[#871237] text-sm tracking-[0.3em] uppercase font-sans block mb-4">
+            <span className="text-[#de6050] text-sm tracking-[0.3em] uppercase font-sans block mb-4">
               You have questions
             </span>
             <h1 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-[#2c2420] leading-tight mb-6">
-              We have <em className="text-[#871237] italic">answers.</em>
+              We have <em className="text-[#de6050] italic">answers.</em>
             </h1>
             <p className="font-sans text-[#6b5b52] text-lg max-w-md mx-auto">
               Everything you need to know before we start designing the table of your dreams.
             </p>
             {/* Divider */}
-            <div className="w-[60px] h-[1px] bg-[#871237] mx-auto mt-8" />
+            <div className="w-[60px] h-[1px] bg-[#de6050] mx-auto mt-8" />
           </div>
 
           {/* FAQ Section */}
@@ -99,25 +99,25 @@ export default function FAQPage() {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="faq-item border-t border-[#871237]/30 first:border-t-0 last:border-b last:border-[#871237]/30"
+                className="faq-item border-t border-[#de6050]/30 first:border-t-0 last:border-b last:border-[#de6050]/30"
               >
                 <button
                   onClick={() => toggleFAQ(index)}
                   className="w-full flex items-center justify-between gap-6 py-7 text-left group"
                   aria-expanded={openIndex === index}
                 >
-                  <span className="font-serif text-lg md:text-xl text-[#2c2420] group-hover:text-[#871237] transition-colors duration-300 leading-snug">
+                  <span className="font-serif text-lg md:text-xl text-[#2c2420] group-hover:text-[#de6050] transition-colors duration-300 leading-snug">
                     {faq.question}
                   </span>
                   <span 
-                    className={`flex-shrink-0 w-8 h-8 rounded-full border border-[#871237] flex items-center justify-center transition-all duration-300 ${
-                      openIndex === index ? 'bg-[#871237] rotate-45' : ''
+                    className={`flex-shrink-0 w-8 h-8 rounded-full border border-[#de6050] flex items-center justify-center transition-all duration-300 ${
+                      openIndex === index ? 'bg-[#de6050] rotate-45' : ''
                     }`}
                   >
                     <Plus 
                       size={16} 
                       className={`transition-colors duration-300 ${
-                        openIndex === index ? 'text-white' : 'text-[#871237]'
+                        openIndex === index ? 'text-white' : 'text-[#de6050]'
                       }`} 
                     />
                   </span>
@@ -139,14 +139,14 @@ export default function FAQPage() {
           <div className="max-w-3xl mx-auto mt-16">
             <div className="bg-[var(--plum-deep)] rounded-lg p-10 md:p-12 text-center">
               <p className="font-serif text-2xl md:text-3xl text-[#faf6f0] leading-relaxed">
-                Still have questions? <em className="text-[#871237] italic">We&apos;d love to hear from you.</em>
+                Still have questions? <em className="text-[#de6050] italic">We&apos;d love to hear from you.</em>
               </p>
               <p className="font-sans text-[#a89189] text-sm mt-4 tracking-wide">
                 Call us or book a complimentary 15-minute phone consultation — no commitment required.
               </p>
               <a
                 href="/#contact"
-                className="inline-block mt-8 px-10 py-4 border-2 border-[#871237] text-[#871237] font-sans text-sm tracking-widest uppercase hover:bg-[#871237] hover:text-[var(--plum-deep)] transition-all duration-300"
+                className="inline-block mt-8 px-10 py-4 border-2 border-[#de6050] text-[#de6050] font-sans text-sm tracking-widest uppercase hover:bg-[#de6050] hover:text-[var(--plum-deep)] transition-all duration-300"
               >
                 Schedule a Call
               </a>
@@ -157,7 +157,7 @@ export default function FAQPage() {
           <div className="text-center mt-16">
             <a
               href="/"
-              className="inline-block px-10 py-4 border-2 border-[var(--plum-deep)] text-[var(--plum-deep)] font-sans text-sm tracking-widest uppercase hover:bg-[var(--plum-deep)] hover:text-[#871237] transition-all duration-300"
+              className="inline-block px-10 py-4 border-2 border-[var(--plum-deep)] text-[var(--plum-deep)] font-sans text-sm tracking-widest uppercase hover:bg-[var(--plum-deep)] hover:text-[#de6050] transition-all duration-300"
             >
               Back to Home
             </a>

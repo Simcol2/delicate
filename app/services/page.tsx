@@ -144,12 +144,12 @@ export default function ServicesPage() {
         <div className="w-full">
           {/* Header */}
           <header className="text-center px-6 pt-10 pb-16 max-w-2xl mx-auto">
-            <span className="text-[#871237] text-xs tracking-[0.35em] uppercase font-sans block mb-5">
+            <span className="text-[#de6050] text-xs tracking-[0.35em] uppercase font-sans block mb-5">
               Every detail. Every table. Every time.
             </span>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#2c2420] leading-tight">
               Packages designed<br />
-              for <em className="text-[#871237] italic">moments that matter.</em>
+              for <em className="text-[#de6050] italic">moments that matter.</em>
             </h1>
             <p className="font-sans text-[#6b5b52] text-[15px] leading-[1.85] mt-6">
               Whether you&apos;re hosting eight of your closest friends or staging an event that fills every room, our packages are built around one belief: the table sets the tone for everything that happens around it. Choose the experience that fits your vision — or build your own from the ground up.
@@ -173,40 +173,36 @@ export default function ServicesPage() {
               <div
                 key={pkg.id}
                 className={`pkg-card p-10 md:p-12 relative opacity-0 transition-shadow duration-300 hover:shadow-[0_20px_60px_rgba(44,36,32,0.08)] hover:z-10 ${
-                  pkg.featured ? 'bg-[#2c2420]' : 'bg-[#fffdf9]'
+                  pkg.featured ? 'bg-[#de6050]' : 'bg-[#fffdf9]'
                 }`}
               >
                 {/* Badge */}
                 <span className={`text-[10px] font-medium tracking-[0.3em] uppercase block mb-3 ${
-                  pkg.featured ? 'text-[var(--gold-antique)]' : 'text-[#871237]'
+                  pkg.featured ? 'text-[#2c2420]' : 'text-[#de6050]'
                 }`}>
                   {pkg.badge}
                 </span>
 
                 {/* Name */}
-                <h2 className={`font-serif text-4xl md:text-5xl font-light tracking-tight leading-none ${
-                  pkg.featured ? 'text-[#fffdf9]' : 'text-[#2c2420]'
-                }`}>
+                <h2 className="font-serif text-4xl md:text-5xl font-light tracking-tight leading-none text-[#2c2420]">
                   {pkg.name}
                 </h2>
 
                 {/* Guests */}
                 <span className={`inline-block mt-3 text-xs tracking-[0.12em] uppercase border rounded-full px-4 py-1.5 ${
                   pkg.featured 
-                    ? 'text-[#e8d5b0] border-[rgba(201,169,110,0.35)]' 
+                    ? 'text-[#2c2420] border-[#2c2420]/30' 
                     : 'text-[#a89189] border-[#e8d5b0]'
                 }`}>
                   {pkg.guests}
                 </span>
 
                 {/* Divider */}
-                <div className={`w-9 h-[1px] my-7 ${
-                  pkg.featured ? 'bg-[var(--gold-antique)]' : 'bg-[var(--gold-antique)]'
-                }`} />
+                <div className="w-9 h-[1px] my-7 bg-[#2c2420]" />
 
                 {/* Description */}
                 <p className={`text-sm leading-[1.85] mb-8 ${
-                  pkg.featured ? 'text-[#b8a49c]' : 'text-[#6b5b52]'
+                  pkg.featured ? 'text-[#2c2420]/80' : 'text-[#6b5b52]'
                 }`}>
                   {pkg.description}
                 </p>
@@ -218,7 +214,7 @@ export default function ServicesPage() {
                       key={idx} 
                       className={`flex items-start gap-3 text-sm py-2.5 border-b ${
                         pkg.featured 
-                          ? 'text-[#a89288] border-[rgba(201,169,110,0.15)]' 
+                          ? 'text-[#2c2420]/80 border-[#2c2420]/10' 
                           : 'text-[#6b5b52] border-[#f5ede0]'
                       }`}
                     >
@@ -232,21 +228,15 @@ export default function ServicesPage() {
 
                 {/* Price */}
                 <div className={`pt-7 border-t ${
-                  pkg.featured ? 'border-[rgba(201,169,110,0.25)]' : 'border-[#e8d5b0]'
+                  pkg.featured ? 'border-[#2c2420]/20' : 'border-[#e8d5b0]'
                 }`}>
-                  <span className={`text-[10px] font-medium tracking-[0.28em] uppercase block mb-1.5 ${
-                    pkg.featured ? 'text-[#6b5b52]' : 'text-[#a89189]'
-                  }`}>
+                  <span className="text-[10px] font-medium tracking-[0.28em] uppercase block mb-1.5 text-[#2c2420]/60">
                     Starting at
                   </span>
-                  <span className={`font-serif text-4xl font-light leading-none ${
-                    pkg.featured ? 'text-[var(--gold-antique)]' : 'text-[#2c2420]'
-                  }`}>
+                  <span className="font-serif text-4xl font-light leading-none text-[#2c2420]">
                     {pkg.price}
                   </span>
-                  <p className={`text-xs mt-1 ${
-                    pkg.featured ? 'text-[#5a4d47]' : 'text-[#a89189]'
-                  }`}>
+                  <p className="text-xs mt-1 text-[#2c2420]/60">
                     Final pricing confirmed at consultation
                   </p>
                 </div>
@@ -256,8 +246,8 @@ export default function ServicesPage() {
                   href="/#contact"
                   className={`inline-block mt-7 text-xs font-medium tracking-[0.2em] uppercase border-b pb-0.5 transition-colors duration-200 ${
                     pkg.featured 
-                      ? 'text-[var(--gold-antique)] border-[var(--gold-antique)] hover:text-[#e8d5b0] hover:border-[#e8d5b0]' 
-                      : 'text-[#2c2420] border-[var(--gold-antique)] hover:text-[#871237] hover:border-[#c4897a]'
+                      ? 'text-[#2c2420] border-[#2c2420] hover:text-[#2c2420]/70 hover:border-[#2c2420]/70' 
+                      : 'text-[#2c2420] border-[var(--gold-antique)] hover:text-[#de6050] hover:border-[#de6050]'
                   }`}
                 >
                   Book a consultation
@@ -269,11 +259,11 @@ export default function ServicesPage() {
           {/* Add-ons Section */}
           <section className="max-w-4xl mx-auto mt-20 px-6 pb-16">
             <div className="text-center mb-10">
-              <span className="text-[#871237] text-xs tracking-[0.35em] uppercase font-sans block mb-3">
+              <span className="text-[#de6050] text-xs tracking-[0.35em] uppercase font-sans block mb-3">
                 Elevate your experience
               </span>
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#2c2420] font-light">
-                Curated <em className="text-[#871237] italic">add-ons</em>
+                Curated <em className="text-[#de6050] italic">add-ons</em>
               </h2>
               <p className="font-sans text-[#6b5b52] text-[15px] leading-[1.75] mt-4 max-w-md mx-auto">
                 Layer in something extra. Each add-on is priced individually and can be added to any package during your consultation.
