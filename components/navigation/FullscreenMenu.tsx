@@ -13,6 +13,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
     { label: 'Services', href: '/services' },
     { label: 'Gallery', href: '#gallery' },
     { label: 'FAQ', href: '/faq' },
+    { label: 'Client Portal', href: '/client/login' },
     { label: 'Contact', href: '#contact' },
   ]
 
@@ -30,14 +31,14 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
         {/* Header */}
         <div className="flex items-center justify-between px-6 lg:px-12 py-6">
           <span 
-              className="text-2xl text-[var(--gold-antique)] tracking-wide"
+              className="text-2xl text-[#de6050] tracking-wide"
               style={{ fontFamily: 'var(--font-display), serif' }}
             >
               Delicate Flowers
             </span>
           <button
             onClick={onClose}
-            className="text-[var(--gold-antique)] p-2"
+            className="text-[#de6050] p-2"
             aria-label="Close menu"
           >
             <X size={28} />
@@ -54,10 +55,10 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
               className="group flex items-center gap-6 py-4 border-b border-[var(--gold-antique)]/20"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <span className="text-[var(--gold-antique)]/40 font-sans text-sm">
+              <span className="text-[#de6050]/40 font-sans text-sm">
                 0{index + 1}
               </span>
-              <span className="font-serif text-4xl lg:text-6xl text-[var(--blush-warm)] group-hover:text-[var(--gold-antique)] transition-colors duration-300">
+              <span className="font-serif text-4xl lg:text-6xl text-[var(--blush-warm)] group-hover:text-[#de6050] transition-colors duration-300">
                 {item.label}
               </span>
             </a>

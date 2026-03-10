@@ -137,7 +137,7 @@ export default function FAQPage() {
 
           {/* CTA Banner */}
           <div className="max-w-3xl mx-auto mt-16">
-            <div className="bg-[var(--plum-deep)] rounded-lg p-10 md:p-12 text-center">
+            <div className="bg-[#2c2420] rounded-lg p-10 md:p-12 text-center">
               <p className="font-serif text-2xl md:text-3xl text-[#faf6f0] leading-relaxed">
                 Still have questions? <em className="text-[#de6050] italic">We&apos;d love to hear from you.</em>
               </p>
@@ -157,7 +157,7 @@ export default function FAQPage() {
           <div className="text-center mt-16">
             <a
               href="/"
-              className="inline-block px-10 py-4 border-2 border-[var(--plum-deep)] text-[var(--plum-deep)] font-sans text-sm tracking-widest uppercase hover:bg-[var(--plum-deep)] hover:text-[#de6050] transition-all duration-300"
+              className="inline-block px-10 py-4 border-2 border-[var(--plum-deep)] text-[var(--plum-deep)] font-sans text-sm tracking-widest uppercase hover:bg-[#2c2420] hover:text-[#de6050] transition-all duration-300"
             >
               Back to Home
             </a>

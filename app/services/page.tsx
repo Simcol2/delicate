@@ -156,9 +156,9 @@ export default function ServicesPage() {
             </p>
             {/* Divider */}
             <div className="flex items-center justify-center gap-4 mt-9">
-              <span className="w-[50px] h-[1px] bg-[var(--gold-antique)]" />
-              <span className="font-serif italic text-[var(--gold-antique)] text-lg">✦</span>
-              <span className="w-[50px] h-[1px] bg-[var(--gold-antique)]" />
+              <span className="w-[50px] h-[1px] bg-[#de6050]" />
+              <span className="font-serif italic text-[#de6050] text-lg">✦</span>
+              <span className="w-[50px] h-[1px] bg-[#de6050]" />
             </div>
           </header>
 
@@ -219,7 +219,7 @@ export default function ServicesPage() {
                       }`}
                     >
                       <span className={`w-1 h-1 rounded-full mt-2 flex-shrink-0 ${
-                        pkg.featured ? 'bg-[var(--gold-antique)]' : 'bg-[var(--gold-antique)]'
+                        pkg.featured ? 'bg-[#de6050]' : 'bg-[#de6050]'
                       }`} />
                       <span>{feature}</span>
                     </li>
@@ -247,7 +247,7 @@ export default function ServicesPage() {
                   className={`inline-block mt-7 text-xs font-medium tracking-[0.2em] uppercase border-b pb-0.5 transition-colors duration-200 ${
                     pkg.featured 
                       ? 'text-[#2c2420] border-[#2c2420] hover:text-[#2c2420]/70 hover:border-[#2c2420]/70' 
-                      : 'text-[#2c2420] border-[var(--gold-antique)] hover:text-[#de6050] hover:border-[#de6050]'
+                      : 'text-[#2c2420] border-[#de6050] hover:text-[#de6050] hover:border-[#de6050]'
                   }`}
                 >
                   Book a consultation
@@ -276,14 +276,14 @@ export default function ServicesPage() {
                   key={idx}
                   className="addon-item bg-[#fffdf9] p-7 text-center opacity-0"
                 >
-                  <Sparkles className="w-5 h-5 text-[var(--gold-antique)] mx-auto mb-2.5" />
+                  <Sparkles className="w-5 h-5 text-[#de6050] mx-auto mb-2.5" />
                   <span className="font-serif text-lg text-[#2c2420] block mb-1.5">
                     {addon.name}
                   </span>
                   <span className="text-[11.5px] text-[#a89189] leading-snug block">
                     {addon.description}
                   </span>
-                  <span className="inline-block mt-2.5 text-[10px] tracking-[0.2em] uppercase text-[var(--gold-antique)] border border-[#e8d5b0] px-2.5 py-1 rounded-full">
+                  <span className="inline-block mt-2.5 text-[10px] tracking-[0.2em] uppercase text-[#de6050] border border-[#e8d5b0] px-2.5 py-1 rounded-full">
                     Priced on request
                   </span>
                 </div>
@@ -293,11 +293,11 @@ export default function ServicesPage() {
 
           {/* Build Your Own Section */}
           <section className="bg-[#2c2420] px-6 py-20 text-center mt-[2px]">
-            <span className="text-[var(--gold-antique)] text-xs tracking-[0.35em] uppercase font-sans block mb-4">
+            <span className="text-[#de6050] text-xs tracking-[0.35em] uppercase font-sans block mb-4">
               Fully bespoke
             </span>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#fffdf9] font-light leading-tight">
-              Build <em className="text-[var(--gold-antique)] italic">Your Own</em>
+              Build <em className="text-[#de6050] italic">Your Own</em>
             </h2>
             <p className="font-sans text-[#9e8d85] text-[15px] leading-[1.85] mt-6 max-w-xl mx-auto">
               Not every event fits a package , and that&apos;s exactly the point. Tell us your spaces, your vision, and your vibe. We&apos;ll build a custom scope and quote around what matters most to you.
@@ -321,7 +321,7 @@ export default function ServicesPage() {
 
             <a
               href="/#contact"
-              className="inline-block mt-12 bg-[var(--gold-antique)] text-[#2c2420] text-xs font-medium tracking-[0.22em] uppercase px-9 py-4 hover:bg-[#e8d5b0] transition-colors duration-200"
+              className="inline-block mt-12 bg-[#de6050] text-[#2c2420] text-xs font-medium tracking-[0.22em] uppercase px-9 py-4 hover:bg-[#e8d5b0] transition-colors duration-200"
             >
               Start building your experience
             </a>
@@ -334,7 +334,7 @@ export default function ServicesPage() {
           <div className="text-center py-16 bg-[#faf6f0]">
             <a
               href="/"
-              className="inline-block px-10 py-4 border-2 border-[#2c2420] text-[#2c2420] font-sans text-sm tracking-widest uppercase hover:bg-[#2c2420] hover:text-[var(--gold-antique)] transition-all duration-300"
+              className="inline-block px-10 py-4 border-2 border-[#2c2420] text-[#2c2420] font-sans text-sm tracking-widest uppercase hover:bg-[#2c2420] hover:text-[#de6050] transition-all duration-300"
             >
               Back to Home
             </a>
