@@ -15,183 +15,140 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
   const modalRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
 
+  // Lock body scroll and animate in
   useEffect(() => {
-    if (isOpen) {
-      // Prevent body scroll
-      document.body.style.overflow = 'hidden'
-      document.body.style.touchAction = 'none'
-      
-      // Animate in
-      gsap.to(overlayRef.current, {
-        opacity: 1,
-        duration: 0.3,
-        ease: 'power2.out'
-      })
-      gsap.fromTo(
-        modalRef.current,
-        { opacity: 0, scale: 0.95, y: 20 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: 'power3.out', delay: 0.1 }
-      )
-    } else {
-      document.body.style.overflow = ''
-      document.body.style.touchAction = ''
-    }
+    if (!isOpen) return
+
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+    const originalPaddingRight = document.body.style.paddingRight
+    const originalOverflow = document.body.style.overflow
+    const originalHtmlOverflow = document.documentElement.style.overflow
+    
+    document.body.style.paddingRight = `${scrollbarWidth}px`
+    document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflow = 'hidden'
+
+    gsap.to(overlayRef.current, { opacity: 1, duration: 0.3, ease: 'power2.out' })
+    gsap.fromTo(modalRef.current, { opacity: 0, scale: 0.95, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: 'power3.out', delay: 0.1 })
 
     return () => {
-      document.body.style.overflow = ''
-      document.body.style.touchAction = ''
+      document.body.style.paddingRight = originalPaddingRight
+      document.body.style.overflow = originalOverflow
+      document.documentElement.style.overflow = originalHtmlOverflow
     }
   }, [isOpen])
 
-  // Handle wheel events to prevent body scroll
+  // Handle scroll locking
   useEffect(() => {
-    const modal = modalRef.current
-    if (!modal || !isOpen) return
+    if (!isOpen) return
+
+    const scrollContainer = contentRef.current
+    if (!scrollContainer) return
 
     const handleWheel = (e: WheelEvent) => {
-      const target = e.target as HTMLElement
-      const scrollableContent = contentRef.current
+      e.stopPropagation()
       
-      if (!scrollableContent) return
+      const isAtTop = scrollContainer.scrollTop <= 0
+      const isAtBottom = scrollContainer.scrollTop + scrollContainer.clientHeight >= scrollContainer.scrollHeight - 2
       
-      const isAtTop = scrollableContent.scrollTop === 0
-      const isAtBottom = scrollableContent.scrollTop + scrollableContent.clientHeight >= scrollableContent.scrollHeight - 1
-      
-      // If scrolling up and at top, or scrolling down and at bottom, prevent default
       if ((e.deltaY < 0 && isAtTop) || (e.deltaY > 0 && isAtBottom)) {
         e.preventDefault()
       }
     }
 
-    modal.addEventListener('wheel', handleWheel, { passive: false })
-    return () => modal.removeEventListener('wheel', handleWheel)
+    let startY = 0
+    let startScrollTop = 0
+
+    const handleTouchStart = (e: TouchEvent) => {
+      startY = e.touches[0].clientY
+      startScrollTop = scrollContainer.scrollTop
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      e.stopPropagation()
+      
+      const y = e.touches[0].clientY
+      const deltaY = startY - y
+      const newScrollTop = startScrollTop + deltaY
+      const maxScroll = scrollContainer.scrollHeight - scrollContainer.clientHeight
+      
+      if (newScrollTop < 0 || newScrollTop > maxScroll) {
+        e.preventDefault()
+      }
+    }
+
+    scrollContainer.addEventListener('wheel', handleWheel, { passive: false, capture: true })
+    scrollContainer.addEventListener('touchstart', handleTouchStart, { passive: true })
+    scrollContainer.addEventListener('touchmove', handleTouchMove, { passive: false, capture: true })
+
+    return () => {
+      scrollContainer.removeEventListener('wheel', handleWheel, { capture: true })
+      scrollContainer.removeEventListener('touchstart', handleTouchStart)
+      scrollContainer.removeEventListener('touchmove', handleTouchMove, { capture: true })
+    }
   }, [isOpen])
 
   const handleClose = () => {
-    gsap.to(modalRef.current, {
-      opacity: 0,
-      scale: 0.95,
-      y: 20,
-      duration: 0.2,
-      ease: 'power2.in'
-    })
-    gsap.to(overlayRef.current, {
-      opacity: 0,
-      duration: 0.2,
-      ease: 'power2.in',
-      onComplete: onClose
-    })
-  }
-
-  const handleOverlayClick = (e: React.MouseEvent) => {
-    if (e.target === overlayRef.current) {
-      handleClose()
-    }
+    gsap.to(modalRef.current, { opacity: 0, scale: 0.95, y: 20, duration: 0.2, ease: 'power2.in' })
+    gsap.to(overlayRef.current, { opacity: 0, duration: 0.2, ease: 'power2.in', onComplete: onClose })
   }
 
   if (!isOpen) return null
 
   return (
-    <div
-      ref={overlayRef}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-4 bg-black/60 backdrop-blur-sm opacity-0 overscroll-contain"
-      onClick={handleOverlayClick}
-    >
-      <div
-        ref={modalRef}
-        className="relative w-full h-full md:h-auto md:max-w-4xl md:max-h-[90vh] bg-[#faf6f0] md:rounded-lg shadow-2xl overflow-hidden opacity-0 flex flex-col"
-      >
-        {/* Custom Scrollbar Styles */}
+    <div ref={overlayRef} className="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-4 bg-black/60 backdrop-blur-sm opacity-0" onClick={(e) => e.target === overlayRef.current && handleClose()}>
+      <div ref={modalRef} className="relative w-full h-full md:h-auto md:max-w-4xl md:max-h-[90vh] bg-[#faf6f0] md:rounded-lg shadow-2xl overflow-hidden opacity-0 flex flex-col">
         <style jsx>{`
-          .custom-scroll::-webkit-scrollbar {
+          .modal-scroll {
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+            scrollbar-width: thin;
+            scrollbar-color: #c9a96e #f5ede0;
+          }
+          .modal-scroll::-webkit-scrollbar {
             width: 8px;
           }
-          .custom-scroll::-webkit-scrollbar-track {
-            background: rgba(143, 14, 4, 0.05);
+          .modal-scroll::-webkit-scrollbar-track {
+            background: #f5ede0;
           }
-          .custom-scroll::-webkit-scrollbar-thumb {
+          .modal-scroll::-webkit-scrollbar-thumb {
             background: #c9a96e;
             border-radius: 4px;
           }
-          .custom-scroll::-webkit-scrollbar-thumb:hover {
-            background: #c9594a;
-          }
         `}</style>
 
-        {/* Close Button */}
-        <button
-          onClick={handleClose}
-          className="absolute top-3 right-3 z-20 p-2 bg-[#fffdf9]/90 rounded-full text-[#2c2420]/60 hover:text-[#8f0e04] hover:bg-[#fffdf9] transition-all duration-200 shadow-sm"
-          aria-label="Close modal"
-        >
+        <button onClick={handleClose} className="absolute top-3 right-3 z-20 p-2 bg-white/90 rounded-full text-[#2c2420]/60 hover:text-[#8f0e04] shadow-sm">
           <X size={24} />
         </button>
 
-        <div 
-          ref={contentRef}
-          className="flex-1 overflow-y-auto custom-scroll overscroll-contain"
-        >
+        <div ref={contentRef} className="flex-1 modal-scroll">
           <div className="flex flex-col md:flex-row">
-            {/* Photo Side - Full width on mobile */}
             <div className="w-full md:w-2/5 relative h-64 sm:h-72 md:h-auto md:min-h-[500px] shrink-0">
-              <Image
-                src="/images/WhatsApp Image 2026-03-05 at 11.32.29 AM.jpeg"
-                alt="Event Designer"
-                fill
-                className="object-cover object-top md:object-[25%_center]"
-                sizes="(max-width: 768px) 100vw, 40vw"
-                priority
-              />
+              <Image src="/images/WhatsApp Image 2026-03-05 at 11.32.29 AM.jpeg" alt="Event Designer" fill 
+                className="object-cover object-top md:object-[25%_center]" sizes="(max-width: 768px) 100vw, 40vw" priority />
             </div>
 
-            {/* Bio Side */}
             <div className="w-full md:w-3/5 p-5 sm:p-6 md:p-8 lg:p-10 flex flex-col">
-              <span className="text-[#c9594a] text-xs tracking-[0.3em] uppercase font-sans font-medium mb-2">
-                Meet The Designer
-              </span>
-              
-              <h2 
-                className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#2c2420] mb-2"
-              >
+              <span className="text-[#c9594a] text-xs tracking-[0.3em] uppercase font-medium mb-2">Meet The Designer</span>
+              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#2c2420] mb-2">
                 Creating Tables That
-                <span 
-                  className="block text-[#c9594a] mt-1"
-                  style={{ fontFamily: 'var(--font-script), cursive' }}
-                >
-                  Feel Like Home
-                </span>
+                <span className="block text-[#c9594a] mt-1" style={{ fontFamily: 'var(--font-script), cursive' }}>Feel Like Home</span>
               </h2>
+              <p className="text-[#c4897a] text-sm sm:text-base italic mb-4">April is your local crafty mamma bear that would love an invite to your next event!</p>
 
-              {/* Tagline */}
-              <p className="text-[#c4897a] font-sans text-sm sm:text-base italic mb-4">
-                April is your local crafty mamma bear that would love an invite to your next event!
-              </p>
-
-              <div className="space-y-3 text-[#6b5b52] text-sm sm:text-base leading-relaxed font-sans">
-                <p>
-                  I&apos;m an event stylist who believes a beautiful gathering is really about how people feel when they&apos;re sitting at the table.
-                </p>
-                
-                <p>
-                  I&apos;m known for bold florals, layered place settings, and that golden-hour glow that makes everyone linger a little longer. I design tables that feel warm, welcoming, and thoughtfully put together.
-                </p>
-                
-                <p>
-                  I have spent years perfecting the little details most people overlook. Napkins can be bunny ears and everything should sparkle. My tables feel abundant but effortless, and every guest will always feel like they were considered.
-                </p>
-
+              <div className="space-y-3 text-[#6b5b52] text-sm sm:text-base leading-relaxed">
+                <p>I'm an event stylist who believes a beautiful gathering is really about how people feel when they're sitting at the table.</p>
+                <p>I'm known for bold florals, layered place settings, and that golden-hour glow that makes everyone linger a little longer.</p>
+                <p>I have spent years perfecting the little details most people overlook. Napkins can be bunny ears and everything should sparkle.</p>
                 <p className="text-[#2c2420] font-medium italic border-l-2 border-[#c9a96e] pl-4 mt-4">
                   My philosophy is simple: when people feel cared for, they remember the evening long after the dishes are washed!
                 </p>
               </div>
 
-              {/* CTA Button */}
               <div className="mt-6 pt-5 border-t border-[#e8d5b0]">
-                <a
-                  href="#contact"
-                  onClick={handleClose}
-                  className="inline-block w-full sm:w-auto text-center px-6 py-3 bg-[#8f0e04] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#c9594a] transition-colors duration-300"
-                >
+                <a href="#contact" onClick={handleClose} className="inline-block w-full sm:w-auto text-center px-6 py-3 bg-[#8f0e04] text-[#faf6f0] text-sm tracking-widest uppercase hover:bg-[#c9594a]">
                   Schedule a Consultation
                 </a>
               </div>
