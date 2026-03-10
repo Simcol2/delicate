@@ -9,9 +9,10 @@ gsap.registerPlugin(ScrollTrigger)
 
 interface HeroProps {
   onOpenDesigner: () => void
+  onOpenContact: () => void
 }
 
-export default function Hero({ onOpenDesigner }: HeroProps) {
+export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
   const heroRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const ctaRef = useRef<HTMLDivElement>(null)
@@ -125,12 +126,12 @@ export default function Hero({ onOpenDesigner }: HeroProps) {
             >
               Explore Services
             </a>
-            <a
-              href="#contact"
+            <button
+              onClick={onOpenContact}
               className="px-10 py-4 border-2 border-[#d3dcde] text-[var(--navy-midnight)] font-sans text-sm tracking-widest uppercase hover:bg-[#d3dcde] hover:text-[var(--navy-midnight)] transition-all duration-300"
             >
               Book a Consultation
-            </a>
+            </button>
           </div>
 
           {/* Description - Now below buttons */}

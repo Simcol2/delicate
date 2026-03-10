@@ -6,11 +6,12 @@ import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
 import Services from '@/components/sections/Services'
 import Gallery from '@/components/sections/Gallery'
-import Contact from '@/components/sections/Contact'
 import DesignerModal from '@/components/ui/DesignerModal'
+import ContactModal from '@/components/ui/ContactModal'
 
 export default function Page() {
   const [isDesignerModalOpen, setIsDesignerModalOpen] = useState(false)
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
   return (
     <>
@@ -29,19 +30,27 @@ export default function Page() {
             }}
           />
           
-          <Hero onOpenDesigner={() => setIsDesignerModalOpen(true)} />
+          <Hero 
+            onOpenDesigner={() => setIsDesignerModalOpen(true)} 
+            onOpenContact={() => setIsContactModalOpen(true)}
+          />
           <About />
-          <Services />
+          <Services onOpenContact={() => setIsContactModalOpen(true)} />
         </div>
         
         <Gallery />
-        <Contact />
       </main>
 
       {/* Meet the Designer Modal */}
       <DesignerModal 
         isOpen={isDesignerModalOpen} 
         onClose={() => setIsDesignerModalOpen(false)} 
+      />
+
+      {/* Contact Modal */}
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
       />
     </>
   )

@@ -6,6 +6,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+interface ServicesProps {
+  onOpenContact: () => void
+}
+
 const services = [
   {
     title: 'The Look',
@@ -24,7 +28,7 @@ const services = [
   },
 ]
 
-export default function Services() {
+export default function Services({ onOpenContact }: ServicesProps) {
   const sectionRef = useRef<HTMLDivElement>(null)
   const cardsRef = useRef<HTMLDivElement>(null)
 
@@ -81,7 +85,7 @@ export default function Services() {
         </div>
 
         {/* Service Cards - 3 columns with images */}
-        <div ref={cardsRef} className="grid md:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto items-stretch">
+        <div ref={cardsRef} className="grid md:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto items-stretch justify-items-center">
           {services.map((service) => (
             <div
               key={service.title}
@@ -116,12 +120,12 @@ export default function Services() {
           <p className="font-sans text-[var(--plum-deep)]/80 text-sm mb-6">
             Not sure what you need? Let&apos;s discuss your vision.
           </p>
-          <a
-            href="#contact"
+          <button
+            onClick={onOpenContact}
             className="inline-block px-10 py-4 border-2 border-[var(--plum-deep)] text-[var(--plum-deep)] font-sans text-sm tracking-widest uppercase hover:bg-[var(--plum-deep)] hover:text-[var(--gold-antique)] transition-all duration-300"
           >
             Schedule a Call
-          </a>
+          </button>
         </div>
       </div>
     </section>
