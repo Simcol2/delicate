@@ -20,7 +20,7 @@ interface PhotoItem {
   source: 'firebase' | 'local'
 }
 
-// Actual folders - Game Night, Themed Events, The Smoker are Firebase-only
+// Actual folders - Themed Events and The Smoker are Firebase-only
 const FOLDER_NAMES = [
   'Celebrations',
   'Cocktails',

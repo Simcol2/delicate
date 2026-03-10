@@ -58,16 +58,6 @@ const photoFolders: PhotoFolder[] = [
   },
   {
     id: '4',
-    name: 'Game Night',
-    coverImage: '/Photo Slides/Game Night/Delicate Flower-11.png',
-    photos: [
-      '/Photo Slides/Game Night/Delicate Flower-11.png',
-      '/Photo Slides/Game Night/IMG_6440.jpg',
-      '/Photo Slides/Game Night/IMG_8981.jpg',
-    ]
-  },
-  {
-    id: '5',
     name: 'Outdoor Soiree',
     coverImage: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png',
     photos: [
@@ -76,7 +66,7 @@ const photoFolders: PhotoFolder[] = [
     ]
   },
   {
-    id: '6',
+    id: '5',
     name: 'Themed Events',
     coverImage: '/Photo Slides/Celebrations/Delicate Flower-5-chrismtas.png',
     photos: [
@@ -84,7 +74,7 @@ const photoFolders: PhotoFolder[] = [
     ]
   },
   {
-    id: '7',
+    id: '6',
     name: 'Weddings',
     coverImage: '/Photo Slides/Weddings/Delicate Flower-4-drink.png',
     photos: [

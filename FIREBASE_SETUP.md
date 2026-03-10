@@ -71,7 +71,7 @@ node upload-to-firebase.js
    ├── Backyard BBQ/
    ├── Christmas/
    ├── Easter/
-   ├── Game Night/
+   ├── (deleted - no longer used)/
    ├── Outdoor Soiree/
    ├── Thanksgiving/
    ├── Weddings/
