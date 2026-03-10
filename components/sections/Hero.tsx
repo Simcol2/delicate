@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowDown } from 'lucide-react'
+
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -179,11 +179,6 @@ export default function Hero({ onOpenDesigner }: HeroProps) {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-6 lg:left-12 flex flex-col items-start gap-3 z-10">
-        <span className="text-[var(--plum-royal)]/60 text-xs tracking-widest uppercase font-sans">Scroll</span>
-        <ArrowDown className="text-[var(--plum-royal)]/60 animate-bounce" size={20} />
-      </div>
     </section>
   )
 }
