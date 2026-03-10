@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu } from 'lucide-react'
+import Image from 'next/image'
 import FullscreenMenu from './FullscreenMenu'
 
 export default function Navbar() {
@@ -21,22 +22,23 @@ export default function Navbar() {
       <nav
         className={`fixed top-10 left-0 right-0 z-[100] transition-all duration-500 ${
           isScrolled
-            ? 'bg-[#c9594a]/95 backdrop-blur-md py-4'
-            : 'bg-transparent py-6'
+            ? 'bg-[#c9594a]/95 backdrop-blur-md py-3'
+            : 'bg-transparent py-5'
         }`}
       >
         <div className="w-full px-6 lg:px-12 flex items-center justify-between">
-          {/* Logo - White on scroll (desktop), Dark on scroll (mobile) */}
+          {/* Logo Image */}
           <a 
             href="/" 
-            className={`text-2xl lg:text-3xl tracking-wide transition-colors duration-300 ${
-              isScrolled 
-                ? 'text-white lg:text-white' 
-                : 'text-[#2c2420]'
-            }`}
-            style={{ fontFamily: 'var(--font-display), serif' }}
+            className="relative h-12 w-48 lg:h-14 lg:w-56 transition-all duration-300"
           >
-            Delicate Flowers
+            <Image
+              src="/images/Delicate%20Flower-2-LOGO%20TRANSPARENT%20%281%29.png"
+              alt="Delicate Flowers"
+              fill
+              className="object-contain object-left"
+              priority
+            />
           </a>
 
           {/* Desktop Navigation */}
@@ -83,7 +85,7 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Menu Button - Dark on scroll */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(true)}
             className={`lg:hidden p-2 transition-colors duration-300 ${
