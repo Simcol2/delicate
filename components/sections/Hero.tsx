@@ -138,13 +138,13 @@ export default function Hero({ onOpenDesigner }: HeroProps) {
           <div ref={ctaRef} className="flex flex-col sm:flex-row items-start gap-4 mb-10 will-change-transform">
             <a
               href="#services"
-              className="px-10 py-4 bg-[var(--plum-deep)] text-[var(--gold-antique)] font-sans text-sm tracking-widest uppercase hover:bg-[var(--plum-royal)] transition-colors duration-300"
+              className="px-10 py-4 bg-[#d3dcde] text-[var(--navy-midnight)] font-sans text-sm tracking-widest uppercase hover:bg-[#b8c4c7] transition-colors duration-300"
             >
               Explore Services
             </a>
             <a
               href="#contact"
-              className="px-10 py-4 border-2 border-[var(--plum-deep)] text-[var(--plum-deep)] font-sans text-sm tracking-widest uppercase hover:bg-[var(--plum-deep)] hover:text-[var(--gold-antique)] transition-all duration-300"
+              className="px-10 py-4 border-2 border-[#d3dcde] text-[var(--navy-midnight)] font-sans text-sm tracking-widest uppercase hover:bg-[#d3dcde] hover:text-[var(--navy-midnight)] transition-all duration-300"
             >
               Book a Consultation
             </a>

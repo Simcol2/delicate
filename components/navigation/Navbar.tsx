@@ -22,17 +22,17 @@ export default function Navbar() {
         className={`fixed top-10 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? 'bg-[var(--plum-deep)]/95 backdrop-blur-md py-4'
-            : 'bg-transparent py-6'
+            : 'bg-[#d3dcde] py-6'
         }`}
       >
         <div className="w-full px-6 lg:px-12 flex items-center justify-between">
-          {/* Logo - White on scroll (desktop), Dark on scroll (mobile) */}
+          {/* Logo - White on scroll, Dark when not scrolled */}
           <a 
             href="#" 
             className={`text-2xl lg:text-3xl tracking-wide transition-colors duration-300 ${
               isScrolled 
-                ? 'text-white lg:text-white' 
-                : 'text-[var(--plum-deep)]'
+                ? 'text-white' 
+                : 'text-[var(--navy-midnight)]'
             }`}
             style={{ fontFamily: 'var(--font-display), serif' }}
           >
@@ -43,24 +43,30 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-12">
             <a 
               href="#about" 
-              className={`text-sm font-sans hover:text-[var(--gold-antique)] transition-colors tracking-widest uppercase ${
-                isScrolled ? 'text-white' : 'text-[var(--plum-deep)]'
+              className={`text-sm font-sans transition-colors tracking-widest uppercase ${
+                isScrolled 
+                  ? 'text-white hover:text-[var(--gold-antique)]' 
+                  : 'text-[var(--navy-midnight)] hover:text-[var(--plum-deep)]'
               }`}
             >
               About
             </a>
             <a 
               href="#services" 
-              className={`text-sm font-sans hover:text-[var(--gold-antique)] transition-colors tracking-widest uppercase ${
-                isScrolled ? 'text-white' : 'text-[var(--plum-deep)]'
+              className={`text-sm font-sans transition-colors tracking-widest uppercase ${
+                isScrolled 
+                  ? 'text-white hover:text-[var(--gold-antique)]' 
+                  : 'text-[var(--navy-midnight)] hover:text-[var(--plum-deep)]'
               }`}
             >
               Services
             </a>
             <a 
               href="#gallery" 
-              className={`text-sm font-sans hover:text-[var(--gold-antique)] transition-colors tracking-widest uppercase ${
-                isScrolled ? 'text-white' : 'text-[var(--plum-deep)]'
+              className={`text-sm font-sans transition-colors tracking-widest uppercase ${
+                isScrolled 
+                  ? 'text-white hover:text-[var(--gold-antique)]' 
+                  : 'text-[var(--navy-midnight)] hover:text-[var(--plum-deep)]'
               }`}
             >
               Gallery
@@ -71,18 +77,18 @@ export default function Navbar() {
               className={`px-6 py-3 text-sm tracking-widest uppercase transition-all duration-300 ${
                 isScrolled 
                   ? 'border border-white text-white hover:bg-white hover:text-[var(--plum-deep)]'
-                  : 'border-2 border-[var(--plum-deep)] text-[var(--plum-deep)] hover:bg-[var(--plum-deep)] hover:text-[var(--gold-antique)]'
+                  : 'border-2 border-[var(--navy-midnight)] text-[var(--navy-midnight)] hover:bg-[var(--navy-midnight)] hover:text-white'
               }`}
             >
               Book Now
             </a>
           </div>
 
-          {/* Mobile Menu Button - Dark on scroll */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(true)}
             className={`lg:hidden p-2 transition-colors duration-300 ${
-              isScrolled ? 'text-[var(--plum-deep)]' : 'text-[var(--plum-deep)]'
+              isScrolled ? 'text-white' : 'text-[var(--navy-midnight)]'
             }`}
             aria-label="Open menu"
           >
