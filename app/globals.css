@@ -1,0 +1,109 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--plum-deep: #1a0b1f;
+	--plum-royal: #2d1b33;
+	--gold-antique: #c9a961;
+	--gold-pale: #e5d5b0;
+	--navy-midnight: #0a0f1c;
+	--blush-warm: #f4e9e1;
+	--white-pure: #faf9f7;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: auto;
+}
+
+body {
+	background-color: var(--white-pure);
+	color: var(--navy-midnight);
+	font-family: 'Inter', sans-serif;
+	overflow-x: hidden;
+}
+
+/* Custom Selection */
+::selection {
+	background: var(--gold-antique);
+	color: var(--plum-deep);
+}
+
+/* Luxury Typography */
+.font-serif {
+	font-family: 'Cormorant Garamond', serif;
+}
+
+.font-sans {
+	font-family: 'Inter', sans-serif;
+}
+
+
+/* Smooth Scroll Container */
+.lenis.lenis-smooth {
+	scroll-behavior: auto;
+}
+
+/* Film Grain Overlay */
+.grain-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 9999;
+	opacity: 0.03;
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Gold Gradient Text */
+.text-gold-gradient {
+	background: linear-gradient(135deg, var(--gold-antique) 0%, var(--gold-pale) 50%, var(--gold-antique) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--plum-deep);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--gold-antique);
+	border-radius: 4px;
+}
+
+/* Magnetic Button Base */
+.magnetic-button {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+
+/* Split Text Animation Helper */
+.split-line {
+	overflow: hidden;
+	display: block;
+}
+
+.split-line-inner {
+	display: block;
+	transform: translateY(100%);
+	opacity: 0;
+}
