@@ -18,21 +18,13 @@ export default function Hero({ onOpenDesigner }: HeroProps) {
   const taglineRef = useRef<HTMLParagraphElement>(null)
   const subTaglineRef = useRef<HTMLParagraphElement>(null)
   const descriptionRef = useRef<HTMLParagraphElement>(null)
-  const bannerRef = useRef<HTMLDivElement>(null)
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Initial animation timeline
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
       
-      // Banner fades in first
-      tl.fromTo(
-        bannerRef.current,
-        { y: -20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8 }
-      )
       // Tagline fades in
-      .fromTo(
+      tl.fromTo(
         taglineRef.current,
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 1 },
@@ -90,15 +82,6 @@ export default function Hero({ onOpenDesigner }: HeroProps) {
     >
       {/* Gradient overlay for text legibility */}
       <div className="absolute inset-0 bg-gradient-to-r from-[var(--white-pure)]/90 via-[var(--white-pure)]/60 to-transparent pointer-events-none" />
-
-      {/* Service Area Banner */}
-      <div ref={bannerRef} className="fixed top-0 left-0 right-0 z-[60]">
-        <div className="bg-[#de6050] text-[var(--navy-midnight)] py-2.5 text-center">
-          <p className="text-xs sm:text-sm tracking-wider font-sans font-medium px-4">
-            Serving the Coachella Valley & Beyond
-          </p>
-        </div>
-      </div>
 
       {/* Content */}
       <div className="relative z-10 w-full px-6 lg:px-12 max-w-7xl mx-auto">

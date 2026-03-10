@@ -28,7 +28,7 @@ export default function Navbar() {
         <div className="w-full px-6 lg:px-12 flex items-center justify-between">
           {/* Logo - White on scroll (desktop), Dark on scroll (mobile) */}
           <a 
-            href="#" 
+            href="/" 
             className={`text-2xl lg:text-3xl tracking-wide transition-colors duration-300 ${
               isScrolled 
                 ? 'text-white lg:text-white' 
@@ -42,7 +42,7 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-12 relative z-10">
             <a 
-              href="#about" 
+              href="/about" 
               className={`text-sm font-sans hover:text-[var(--gold-antique)] transition-colors tracking-widest uppercase ${
                 isScrolled ? 'text-white' : 'text-[var(--plum-deep)]'
               }`}
