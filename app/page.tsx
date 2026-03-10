@@ -23,7 +23,7 @@ export default function Page() {
           <div 
             className="absolute inset-0 w-full h-full"
             style={{
-              backgroundImage: 'url(/images/Gemini_Generated_Image_ffk17uffk17uffk1.png)',
+              backgroundImage: 'url(/images/Gemini_Generated_Image_7pemq97pemq97pem.png)',
               backgroundSize: 'cover',
               backgroundPosition: 'center top',
               backgroundAttachment: 'fixed',

@@ -63,7 +63,7 @@ export default function Navbar() {
                 isScrolled ? 'text-white' : 'text-[#2c2420]'
               }`}
             >
-              Gallery
+              Portfolio
             </a>
             <a 
               href="/faq" 

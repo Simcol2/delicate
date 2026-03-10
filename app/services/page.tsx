@@ -1,9 +1,10 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { gsap } from 'gsap'
 import Navbar from '@/components/navigation/Navbar'
 import { Sparkles } from 'lucide-react'
+import ContactModal from '@/components/ui/ContactModal'
 
 const packages = [
   {
@@ -105,6 +106,8 @@ const byoItems = [
 ]
 
 export default function ServicesPage() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
+
   useEffect(() => {
     // Animate packages on load
     const cards = document.querySelectorAll('.pkg-card')
@@ -241,9 +244,9 @@ export default function ServicesPage() {
                   </p>
                 </div>
 
-                {/* CTA */}
-                <a
-                  href="/#contact"
+                {/* CTA - Now opens modal */}
+                <button
+                  onClick={() => setIsContactModalOpen(true)}
                   className={`inline-block mt-7 text-xs font-medium tracking-[0.2em] uppercase border-b pb-0.5 transition-colors duration-200 ${
                     pkg.featured 
                       ? 'text-[#2c2420] border-[#2c2420] hover:text-[#2c2420]/70 hover:border-[#2c2420]/70' 
@@ -251,7 +254,7 @@ export default function ServicesPage() {
                   }`}
                 >
                   Book a consultation
-                </a>
+                </button>
               </div>
             ))}
           </section>
@@ -319,12 +322,12 @@ export default function ServicesPage() {
               ))}
             </div>
 
-            <a
-              href="/#contact"
+            <button
+              onClick={() => setIsContactModalOpen(true)}
               className="inline-block mt-12 bg-[#8f0e04] text-[#faf6f0] text-xs font-medium tracking-[0.22em] uppercase px-9 py-4 hover:bg-[#c9594a] transition-colors duration-200"
             >
               Start building your experience
-            </a>
+            </button>
             <p className="text-xs text-[#a89189] tracking-wide mt-4">
               A consultation is required for all custom packages. The $75 site visit fee is credited to your balance at booking.
             </p>
@@ -341,6 +344,12 @@ export default function ServicesPage() {
           </div>
         </div>
       </main>
+
+      {/* Contact Modal */}
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+      />
     </>
   )
 }

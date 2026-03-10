@@ -11,7 +11,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
   const menuItems = [
     { label: 'About', href: '/about' },
     { label: 'Services', href: '/services' },
-    { label: 'Gallery', href: '/experiences' },
+    { label: 'Portfolio', href: '/experiences' },
     { label: 'FAQ', href: '/faq' },
     { label: 'Client Portal', href: '/client/login' },
   ]

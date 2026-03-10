@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { X, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
 import { gsap } from 'gsap'
 import Navbar from '@/components/navigation/Navbar'
+import ContactModal from '@/components/ui/ContactModal'
 import { getImagesFromFolder } from '@/lib/firebase'
 
 interface PhotoFolder {
@@ -98,6 +99,7 @@ export default function ExperiencesPage() {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
   const [loadingFolders, setLoadingFolders] = useState<Set<string>>(new Set())
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
   // Animate cards on load
   useEffect(() => {
@@ -240,8 +242,14 @@ export default function ExperiencesPage() {
             ))}
           </div>
 
-          {/* Back to Home */}
-          <div className="text-center mt-16">
+          {/* Action Buttons */}
+          <div className="text-center mt-16 flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onClick={() => setIsContactModalOpen(true)}
+              className="inline-block px-10 py-4 bg-[#8f0e04] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#c9594a] transition-all duration-300"
+            >
+              Book a Consultation
+            </button>
             <a
               href="/"
               className="inline-block px-10 py-4 border-2 border-[#8f0e04] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#8f0e04] hover:text-[#faf6f0] transition-all duration-300"
@@ -252,7 +260,13 @@ export default function ExperiencesPage() {
         </div>
       </main>
 
-      {/* Modal with Photo Carousel */}
+      {/* Contact Modal */}
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+      />
+
+      {/* Modal with Photo Carousel -->
       {selectedFolder && (
         <div 
           className={`fixed inset-0 z-[100] flex items-center justify-center p-4 transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
