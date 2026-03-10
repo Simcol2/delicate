@@ -64,17 +64,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
           ))}
         </div>
 
-        {/* Footer Info */}
-        <div className="px-6 lg:px-12 py-8 grid grid-cols-2 gap-8 border-t border-[var(--gold-antique)]/20">
-          <div>
-            <p className="text-[var(--gold-antique)]/60 text-xs uppercase tracking-widest mb-2">Location</p>
-            <p className="text-[var(--blush-warm)] font-sans text-sm">Palm Springs, California</p>
-          </div>
-          <div>
-            <p className="text-[var(--gold-antique)]/60 text-xs uppercase tracking-widest mb-2">Contact</p>
-            <p className="text-[var(--blush-warm)] font-sans text-sm">hello@delicateflowers.co</p>
-          </div>
-        </div>
+
       </div>
     </div>
   )
