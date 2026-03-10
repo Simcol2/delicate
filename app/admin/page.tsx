@@ -6,6 +6,7 @@ import { storage, uploadImage, getImagesFromFolder, deleteImage, auth } from '@/
 import { ref, listAll, getDownloadURL } from 'firebase/storage'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 import imageCompression from 'browser-image-compression'
+import heic2any from 'heic2any'
 import { DndProvider, useDrag, useDrop } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { X, Upload, Trash2, GripVertical, Save, FolderPlus, Image as ImageIcon, AlertCircle, LogOut, Loader2 } from 'lucide-react'
@@ -229,6 +230,32 @@ function AdminDashboard() {
     setHasChanges(false)
   }
 
+  // Convert HEIC/HEIF to JPEG
+  const convertHeicToJpg = async (file: File): Promise<File> => {
+    const isHeic = file.type === 'image/heic' || 
+                   file.type === 'image/heif' ||
+                   file.name.toLowerCase().endsWith('.heic') ||
+                   file.name.toLowerCase().endsWith('.heif')
+    
+    if (!isHeic) return file
+
+    try {
+      setUploadProgress(prev => prev + ' (converting HEIC...)')
+      const blob = await heic2any({
+        blob: file,
+        toType: 'image/jpeg',
+        quality: 0.9
+      })
+      
+      // Create new file from blob
+      const newFileName = file.name.replace(/\.heic$/i, '.jpg').replace(/\.heif$/i, '.jpg')
+      return new File([blob as Blob], newFileName, { type: 'image/jpeg' })
+    } catch (error) {
+      console.error('HEIC conversion error:', error)
+      throw new Error('Failed to convert HEIC image. Please convert manually and try again.')
+    }
+  }
+
   const compressImage = async (file: File): Promise<File> => {
     if (file.size < 500 * 1024) return file
 
@@ -257,7 +284,13 @@ function AdminDashboard() {
       return
     }
 
-    const files = Array.from(e.dataTransfer.files).filter(file => file.type.startsWith('image/'))
+    const files = Array.from(e.dataTransfer.files).filter(file => 
+      file.type.startsWith('image/') || 
+      file.type === 'image/heic' || 
+      file.type === 'image/heif' ||
+      file.name.toLowerCase().endsWith('.heic') ||
+      file.name.toLowerCase().endsWith('.heif')
+    )
     if (files.length === 0) {
       setError('Please drop image files only')
       return
@@ -278,9 +311,11 @@ function AdminDashboard() {
       setUploadProgress(`Uploading ${i + 1}/${files.length}: ${file.name}`)
       
       try {
-        const compressed = await compressImage(file)
+        // First convert HEIC if needed, then compress
+        const converted = await convertHeicToJpg(file)
+        const compressed = await compressImage(converted)
         const timestamp = Date.now()
-        const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g, '-')
+        const safeName = compressed.name.replace(/[^a-zA-Z0-9.-]/g, '-')
         const filename = `${timestamp}-${safeName}`
         const url = await uploadImage(compressed, selectedFolder, filename)
         
@@ -450,11 +485,11 @@ function AdminDashboard() {
                 ) : (
                   <>
                     <p className="font-sans text-[#2c2420] mb-2">Drag & drop images here, or click to select</p>
-                    <p className="text-sm text-[#6b5b52]">Images will be automatically compressed before upload</p>
+                    <p className="text-sm text-[#6b5b52]">Supports JPG, PNG, GIF, WEBP, and HEIC (auto-converted to JPG)</p>
                   </>
                 )}
                 
-                <input type="file" multiple accept="image/*" onChange={handleFileInput} disabled={isUploading} className="hidden" id="file-input" />
+                <input type="file" multiple accept="image/*,.heic,.heif" onChange={handleFileInput} disabled={isUploading} className="hidden" id="file-input" />
                 <label htmlFor="file-input" className={`inline-block mt-4 px-6 py-2 bg-[#8f0e04] text-[#faf6f0] rounded cursor-pointer transition-colors ${isUploading ? 'opacity-50' : 'hover:bg-[#c9594a]'}`}>
                   {isUploading ? 'Uploading...' : 'Select Files'}
                 </label>
