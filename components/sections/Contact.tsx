@@ -112,9 +112,9 @@ export default function Contact() {
                 <Mail className="text-[var(--gold-antique)]" size={20} />
                 <span className="font-sans">hello@delicateflowers.co</span>
               </a>
-              <a href="tel:+17605551234" className="flex items-center gap-4 text-white/80 hover:text-[var(--gold-antique)] transition-colors group">
+              <a href="tel:+17606736636" className="flex items-center gap-4 text-white/80 hover:text-[var(--gold-antique)] transition-colors group">
                 <Phone className="text-[var(--gold-antique)]" size={20} />
-                <span className="font-sans">(760) 555-1234</span>
+                <span className="font-sans">(760) 673-6636</span>
               </a>
               <div className="flex items-center gap-4 text-white/80">
                 <MapPin className="text-[var(--gold-antique)]" size={20} />
