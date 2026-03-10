@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { X, ChevronLeft, ChevRight, Loader2 } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
 import { gsap } from 'gsap'
 import Navbar from '@/components/navigation/Navbar'
 import { getImagesFromFolder } from '@/lib/firebase'
