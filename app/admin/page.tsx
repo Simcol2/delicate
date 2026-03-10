@@ -8,7 +8,7 @@ import { onAuthStateChanged, signOut } from 'firebase/auth'
 import imageCompression from 'browser-image-compression'
 import { DndProvider, useDrag, useDrop } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
-import { X, Upload, Trash2, GripVertical, Save, FolderPlus, Image as ImageIcon, AlertCircle, LogOut, Loader2 } from 'lucide-react'
+import { X, Upload, Trash2, GripVertical, Save, FolderPlus, Image as ImageIcon, AlertCircle, LogOut, Loader2, Cloud, HardDrive } from 'lucide-react'
 
 interface PhotoItem {
   id: string
@@ -17,6 +17,7 @@ interface PhotoItem {
   fullPath: string
   title: string
   description: string
+  source: 'firebase' | 'local'
 }
 
 // Actual folders from public/Photo Slides
@@ -30,6 +31,53 @@ const FOLDER_NAMES = [
   'Themed Events',
   'Weddings'
 ]
+
+// Local images from public/Photo Slides (hardcoded for display)
+const LOCAL_IMAGES: Record<string, {name: string, url: string}[]> = {
+  'Celebrations': [
+    { name: 'Delicate Flower-12.png', url: '/Photo Slides/Celebrations/Delicate Flower-12.png' },
+    { name: 'Delicate Flower-14.png', url: '/Photo Slides/Celebrations/Delicate Flower-14.png' },
+    { name: 'Delicate Flower-3-table setting1.png', url: '/Photo Slides/Celebrations/Delicate Flower-3-table setting1.png' },
+    { name: 'Delicate Flower-3.png', url: '/Photo Slides/Celebrations/Delicate Flower-3.png' },
+    { name: 'Delicate Flower-5-chrismtas.png', url: '/Photo Slides/Celebrations/Delicate Flower-5-chrismtas.png' },
+    { name: 'Delicate Flower-6-table3.png', url: '/Photo Slides/Celebrations/Delicate Flower-6-table3.png' },
+    { name: 'Delicate Flower-7.png', url: '/Photo Slides/Celebrations/Delicate Flower-7.png' },
+    { name: 'IMG_5548.jpeg', url: '/Photo Slides/Celebrations/IMG_5548.jpeg' },
+    { name: 'IMG_5714.jpg', url: '/Photo Slides/Celebrations/IMG_5714.jpg' },
+    { name: 'IMG_5877.jpg', url: '/Photo Slides/Celebrations/IMG_5877.jpg' },
+    { name: 'IMG_9435.jpg', url: '/Photo Slides/Celebrations/IMG_9435.jpg' },
+  ],
+  'Cocktails': [
+    { name: 'DSC06742.JPEG', url: '/Photo Slides/Cocktails/DSC06742.JPEG' },
+    { name: 'DSC06748.JPEG', url: '/Photo Slides/Cocktails/DSC06748.JPEG' },
+  ],
+  'Floral Arrangements': [
+    { name: 'Delicate Flower-13.png', url: '/Photo Slides/Floral Arrangements/Delicate Flower-13.png' },
+    { name: 'IMG_6169.jpg', url: '/Photo Slides/Floral Arrangements/IMG_6169.jpg' },
+    { name: 'IMG_8300.jpg', url: '/Photo Slides/Floral Arrangements/IMG_8300.jpg' },
+    { name: 'IMG_9442.jpg', url: '/Photo Slides/Floral Arrangements/IMG_9442.jpg' },
+    { name: 'IMG_9479.jpg', url: '/Photo Slides/Floral Arrangements/IMG_9479.jpg' },
+    { name: 'IMG_9480.jpg', url: '/Photo Slides/Floral Arrangements/IMG_9480.jpg' },
+  ],
+  'Game Night': [
+    { name: 'Delicate Flower-11.png', url: '/Photo Slides/Game Night/Delicate Flower-11.png' },
+    { name: 'IMG_6440.jpg', url: '/Photo Slides/Game Night/IMG_6440.jpg' },
+    { name: 'IMG_8981.jpg', url: '/Photo Slides/Game Night/IMG_8981.jpg' },
+  ],
+  'Outdoor Soiree': [
+    { name: 'Delicate Flower-10.png', url: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png' },
+    { name: 'Delicate Flower-9-outdoor.png', url: '/Photo Slides/Outdoor Soiree/Delicate Flower-9-outdoor.png' },
+  ],
+  'The Smoker': [
+    { name: 'Delicate Flower-10.png', url: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png' },
+  ],
+  'Themed Events': [
+    { name: 'Delicate Flower-5-chrismtas.png', url: '/Photo Slides/Celebrations/Delicate Flower-5-chrismtas.png' },
+  ],
+  'Weddings': [
+    { name: 'Delicate Flower-4-drink.png', url: '/Photo Slides/Weddings/Delicate Flower-4-drink.png' },
+  ],
+}
 
 // Draggable Photo Component
 function DraggablePhoto({ 
@@ -63,22 +111,38 @@ function DraggablePhoto({
     },
   })
 
+  const isLocal = photo.source === 'local'
+
   return (
     <div
       ref={(node: HTMLDivElement | null) => { drag(drop(node)) }}
-      className={`bg-[#fffdf9] rounded-lg shadow-md overflow-hidden border border-[#e8d5b0] ${isDragging ? 'opacity-50' : 'opacity-100'}`}
+      className={`bg-[#fffdf9] rounded-lg shadow-md overflow-hidden border border-[#e8d5b0] ${isDragging ? 'opacity-50' : 'opacity-100'} ${isLocal ? 'opacity-90' : ''}`}
     >
       <div className="relative aspect-[4/3]">
         <img src={photo.url} alt={photo.title} className="w-full h-full object-cover" />
-        <div className="absolute top-2 left-2 cursor-move bg-[#faf6f0]/90 p-1.5 rounded shadow">
-          <GripVertical size={18} className="text-[#8f0e04]" />
+        
+        {/* Source Badge */}
+        <div className={`absolute top-2 left-2 px-2 py-1 rounded text-xs font-medium flex items-center gap-1 ${
+          isLocal ? 'bg-[#6b5b52] text-white' : 'bg-[#8f0e04] text-[#faf6f0]'
+        }`}>
+          {isLocal ? <HardDrive size={12} /> : <Cloud size={12} />}
+          {isLocal ? 'Local' : 'Cloud'}
         </div>
-        <button
-          onClick={() => deletePhoto(photo)}
-          className="absolute top-2 right-2 bg-[#8f0e04] text-[#faf6f0] p-1.5 rounded hover:bg-[#c9594a] transition-colors shadow"
-        >
-          <Trash2 size={16} />
-        </button>
+
+        {!isLocal && (
+          <button
+            onClick={() => deletePhoto(photo)}
+            className="absolute top-2 right-2 bg-[#8f0e04] text-[#faf6f0] p-1.5 rounded hover:bg-[#c9594a] transition-colors shadow"
+          >
+            <Trash2 size={16} />
+          </button>
+        )}
+        
+        {isLocal && (
+          <div className="absolute top-2 right-2 bg-[#6b5b52] text-white px-2 py-1 rounded text-xs">
+            Read-only
+          </div>
+        )}
       </div>
       <div className="p-4 space-y-3">
         <div>
@@ -86,21 +150,19 @@ function DraggablePhoto({
           <input
             type="text"
             value={photo.title}
-            onChange={(e) => updatePhoto(photo.id, { title: e.target.value })}
-            className="w-full mt-1 px-3 py-2 bg-[#faf6f0] border border-[#e8d5b0] rounded text-[#2c2420] focus:outline-none focus:border-[#c9594a] text-sm"
+            onChange={(e) => !isLocal && updatePhoto(photo.id, { title: e.target.value })}
+            disabled={isLocal}
+            className={`w-full mt-1 px-3 py-2 bg-[#faf6f0] border border-[#e8d5b0] rounded text-[#2c2420] text-sm ${
+              isLocal ? 'cursor-not-allowed opacity-70' : 'focus:outline-none focus:border-[#c9594a]'
+            }`}
             placeholder="Photo title"
           />
         </div>
-        <div>
-          <label className="text-xs font-sans text-[#6b5b52] uppercase tracking-wider">Description</label>
-          <textarea
-            value={photo.description}
-            onChange={(e) => updatePhoto(photo.id, { description: e.target.value })}
-            className="w-full mt-1 px-3 py-2 bg-[#faf6f0] border border-[#e8d5b0] rounded text-[#2c2420] focus:outline-none focus:border-[#c9594a] resize-none text-sm"
-            rows={2}
-            placeholder="Brief description"
-          />
-        </div>
+        {isLocal && (
+          <p className="text-xs text-[#a89189] italic">
+            Local images can&apos;t be edited here. Delete from the codebase directly.
+          </p>
+        )}
       </div>
     </div>
   )
@@ -199,6 +261,8 @@ function AdminDashboard() {
   const [hasChanges, setHasChanges] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [uploadProgress, setUploadProgress] = useState<string>('')
+  const [firebaseCount, setFirebaseCount] = useState(0)
+  const [localCount, setLocalCount] = useState(0)
 
   // Load photos when folder selected
   useEffect(() => {
@@ -210,21 +274,42 @@ function AdminDashboard() {
   const loadPhotos = async (folderName: string) => {
     setIsLoading(true)
     setError(null)
+    
     try {
-      const images = await getImagesFromFolder(folderName)
-      const photoItems: PhotoItem[] = images.map((img, index) => ({
-        id: `${folderName}-${index}-${Date.now()}`,
+      // Load Firebase images
+      const firebaseImages = await getImagesFromFolder(folderName)
+      const firebasePhotos: PhotoItem[] = firebaseImages.map((img, index) => ({
+        id: `firebase-${folderName}-${index}-${Date.now()}`,
         name: img.name,
         url: img.url,
         fullPath: img.fullPath,
         title: img.name.split('.')[0].replace(/-/g, ' '),
-        description: ''
+        description: '',
+        source: 'firebase'
       }))
-      setPhotos(photoItems)
+
+      // Load local images
+      const localImages = LOCAL_IMAGES[folderName] || []
+      const localPhotos: PhotoItem[] = localImages.map((img, index) => ({
+        id: `local-${folderName}-${index}`,
+        name: img.name,
+        url: img.url,
+        fullPath: img.url,
+        title: img.name.split('.')[0].replace(/-/g, ' '),
+        description: '',
+        source: 'local'
+      }))
+
+      // Combine - Firebase first, then local
+      const combinedPhotos = [...firebasePhotos, ...localPhotos]
+      setPhotos(combinedPhotos)
+      setFirebaseCount(firebasePhotos.length)
+      setLocalCount(localPhotos.length)
     } catch (error) {
       console.error('Error loading photos:', error)
       setError('Failed to load photos. Please check your connection.')
     }
+    
     setIsLoading(false)
     setHasChanges(false)
   }
@@ -322,12 +407,13 @@ function AdminDashboard() {
         const url = await uploadImage(compressed, selectedFolder, filename)
         
         const newPhoto: PhotoItem = {
-          id: `${selectedFolder}-${photos.length + i}-${timestamp}`,
+          id: `firebase-${selectedFolder}-${photos.length + i}-${timestamp}`,
           name: filename,
           url,
           fullPath: `experiences/${selectedFolder}/${filename}`,
           title: file.name.split('.')[0].replace(/-/g, ' '),
-          description: ''
+          description: '',
+          source: 'firebase'
         }
         
         setPhotos(prev => [...prev, newPhoto])
@@ -347,6 +433,7 @@ function AdminDashboard() {
     
     if (successCount > 0) {
       setHasChanges(true)
+      setFirebaseCount(prev => prev + successCount)
       if (successCount === files.length) setError(null)
     }
   }
@@ -360,6 +447,9 @@ function AdminDashboard() {
 
   const movePhoto = (dragIndex: number, hoverIndex: number) => {
     const draggedPhoto = photos[dragIndex]
+    // Only allow reordering Firebase photos
+    if (draggedPhoto.source === 'local') return
+    
     const newPhotos = [...photos]
     newPhotos.splice(dragIndex, 1)
     newPhotos.splice(hoverIndex, 0, draggedPhoto)
@@ -373,11 +463,17 @@ function AdminDashboard() {
   }
 
   const deletePhoto = async (photo: PhotoItem) => {
+    if (photo.source === 'local') {
+      setError('Local images cannot be deleted from the admin panel. Remove them from the codebase.')
+      return
+    }
+
     if (!confirm('Are you sure you want to delete this photo?')) return
     
     try {
       await deleteImage(photo.fullPath)
       setPhotos(prev => prev.filter(p => p.id !== photo.id))
+      setFirebaseCount(prev => prev - 1)
       setHasChanges(true)
     } catch (error) {
       console.error('Error deleting:', error)
@@ -396,7 +492,7 @@ function AdminDashboard() {
         description: p.description
       }))))
       
-      alert('Changes saved! Images are already in Firebase.')
+      alert('Changes saved!')
       setHasChanges(false)
     } catch (error) {
       console.error('Error saving:', error)
@@ -466,6 +562,18 @@ function AdminDashboard() {
 
           {selectedFolder && (
             <>
+              {/* Stats */}
+              <div className="flex gap-6 mb-6">
+                <div className="flex items-center gap-2 text-sm">
+                  <Cloud size={16} className="text-[#8f0e04]" />
+                  <span className="text-[#6b5b52]">{firebaseCount} Firebase</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <HardDrive size={16} className="text-[#6b5b52]" />
+                  <span className="text-[#6b5b52]">{localCount} Local</span>
+                </div>
+              </div>
+
               {/* Upload Area */}
               <div
                 onDragOver={(e) => { e.preventDefault(); setDragOver(true) }}
@@ -507,7 +615,7 @@ function AdminDashboard() {
                 <>
                   <div className="flex items-center justify-between mb-6">
                     <h2 className="font-serif text-2xl text-[#2c2420]">Photos ({photos.length})</h2>
-                    <p className="text-sm text-[#6b5b52]">Drag to reorder</p>
+                    <p className="text-sm text-[#6b5b52]">Drag to reorder (Firebase only)</p>
                   </div>
 
                   {photos.length === 0 ? (
@@ -552,6 +660,7 @@ function AdminDashboard() {
             <div className="text-center py-16">
               <FolderPlus size={64} className="mx-auto mb-4 text-[#c9a96e]" />
               <p className="text-[#6b5b52] text-lg">Select a folder above to manage photos</p>
+              <p className="text-[#a89189] text-sm mt-2">Cloud icon = Firebase (editable) | Hard drive icon = Local (read-only)</p>
             </div>
           )}
         </div>
@@ -571,7 +680,6 @@ export default function AdminPage() {
     return () => unsubscribe()
   }, [])
 
-  // Show loading while checking auth
   if (isAuthenticated === null) {
     return (
       <div className="min-h-screen bg-[#faf6f0] flex items-center justify-center">
@@ -580,11 +688,9 @@ export default function AdminPage() {
     )
   }
 
-  // Show login if not authenticated
   if (!isAuthenticated) {
     return <AdminLogin onLogin={() => setIsAuthenticated(true)} />
   }
 
-  // Show dashboard
   return <AdminDashboard />
 }
