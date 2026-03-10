@@ -13,16 +13,12 @@ interface PhotoFolder {
   photos: string[]
 }
 
-// Default folders with local fallback images
+// Default folders - showing only 4 main categories
 const DEFAULT_FOLDERS: PhotoFolder[] = [
   { id: '1', name: 'Celebrations', coverImage: '/Photo Slides/Celebrations/Delicate Flower-3-table setting1.png', photos: [] },
-  { id: '2', name: 'Cocktails', coverImage: '/Photo Slides/Cocktails/DSC06742.JPEG', photos: [] },
-  { id: '3', name: 'Floral Arrangements', coverImage: '/Photo Slides/Floral Arrangements/Delicate Flower-13.png', photos: [] },
-  { id: '4', name: 'Game Night', coverImage: '/Photo Slides/Game Night/Delicate Flower-11.png', photos: [] },
-  { id: '5', name: 'Outdoor Soiree', coverImage: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png', photos: [] },
-  { id: '6', name: 'The Smoker', coverImage: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png', photos: [] },
-  { id: '7', name: 'Themed Events', coverImage: '/Photo Slides/Celebrations/Delicate Flower-5-chrismtas.png', photos: [] },
-  { id: '8', name: 'Weddings', coverImage: '/Photo Slides/Weddings/Delicate Flower-4-drink.png', photos: [] },
+  { id: '2', name: 'Floral Arrangements', coverImage: '/Photo Slides/Floral Arrangements/Delicate Flower-13.png', photos: [] },
+  { id: '3', name: 'Cocktails', coverImage: '/Photo Slides/Cocktails/DSC06742.JPEG', photos: [] },
+  { id: '4', name: 'Outdoor Soiree', coverImage: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png', photos: [] },
 ]
 
 export default function ExperiencesPage() {

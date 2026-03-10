@@ -32,12 +32,10 @@ export default function Navbar() {
             href="/" 
             className="relative h-12 w-48 lg:h-14 lg:w-56 transition-all duration-300"
           >
-            <Image
-              src="/images/Delicate%20Flower-2-LOGO%20TRANSPARENT%20%281%29.png"
+            <img
+              src="/images/Delicate Flower-2-LOGO TRANSPARENT (1).png"
               alt="Delicate Flowers"
-              fill
-              className="object-contain object-left"
-              priority
+              className="h-full w-auto object-contain object-left"
             />
           </a>
 
