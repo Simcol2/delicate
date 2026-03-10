@@ -81,17 +81,6 @@ export default function Navbar() {
             >
               Client Portal
             </a>
-            {/* Book Now - White text and border on scroll */}
-            <a 
-              href="#contact" 
-              className={`px-6 py-3 text-sm tracking-widest uppercase transition-all duration-300 ${
-                isScrolled 
-                  ? 'border border-white text-white hover:bg-white hover:text-[#de6050]'
-                  : 'border-2 border-[var(--plum-deep)] text-[#2c2420] hover:bg-[var(--plum-deep)] hover:text-[#de6050]'
-              }`}
-            >
-              Book Now
-            </a>
           </div>
 
           {/* Mobile Menu Button - Dark on scroll */}

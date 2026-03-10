@@ -14,7 +14,6 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
     { label: 'Gallery', href: '#gallery' },
     { label: 'FAQ', href: '/faq' },
     { label: 'Client Portal', href: '/client/login' },
-    { label: 'Contact', href: '#contact' },
   ]
 
   const handleLinkClick = () => {
@@ -23,9 +22,9 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
 
   return (
     <div
-      className={`fixed inset-0 z-[100] bg-[var(--plum-deep)] transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+      className={`fixed inset-0 z-[100] bg-[#2c2420] transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
         isOpen ? 'translate-y-0' : '-translate-y-full'
-      }`}
+      } ${!isOpen ? 'pointer-events-none' : ''}`}
     >
       <div className="h-full flex flex-col">
         {/* Header */}
