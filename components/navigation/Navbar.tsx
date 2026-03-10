@@ -21,7 +21,7 @@ export default function Navbar() {
       <nav
         className={`fixed top-10 left-0 right-0 z-[70] transition-all duration-500 ${
           isScrolled
-            ? 'bg-[var(--plum-deep)]/95 backdrop-blur-md py-4'
+            ? 'bg-[#871237]/95 backdrop-blur-md py-4'
             : 'bg-transparent py-6'
         }`}
       >

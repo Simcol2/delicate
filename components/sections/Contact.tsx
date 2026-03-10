@@ -213,17 +213,13 @@ export default function Contact() {
                 <label className="block text-white/60 text-xs tracking-widest uppercase font-sans mb-3">
                   Venue Location
                 </label>
-                <select
+                <input
+                  type="text"
                   value={formData.venueLocation}
                   onChange={(e) => setFormData({ ...formData, venueLocation: e.target.value })}
-                  className="w-full bg-transparent border-b border-white/30 py-3 text-white font-sans focus:border-[var(--gold-antique)] focus:outline-none transition-colors"
-                >
-                  <option value="" className="bg-[var(--navy-midnight)]">Select location</option>
-                  <option value="palm-springs" className="bg-[var(--navy-midnight)]">Palm Springs</option>
-                  <option value="palm-desert" className="bg-[var(--navy-midnight)]">Palm Desert</option>
-                  <option value="coachella-valley" className="bg-[var(--navy-midnight)]">Coachella Valley</option>
-                  <option value="rancho-mirage" className="bg-[var(--navy-midnight)]">Rancho Mirage</option>
-                </select>
+                  className="w-full bg-transparent border-b border-white/30 py-3 text-white font-sans focus:border-[var(--gold-antique)] focus:outline-none transition-colors placeholder:text-white/40"
+                  placeholder="Enter venue location"
+                />
               </div>
             </div>
 

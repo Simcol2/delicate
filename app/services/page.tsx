@@ -144,12 +144,12 @@ export default function ServicesPage() {
         <div className="w-full">
           {/* Header */}
           <header className="text-center px-6 pt-10 pb-16 max-w-2xl mx-auto">
-            <span className="text-[#c4897a] text-xs tracking-[0.35em] uppercase font-sans block mb-5">
+            <span className="text-[#871237] text-xs tracking-[0.35em] uppercase font-sans block mb-5">
               Every detail. Every table. Every time.
             </span>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#2c2420] leading-tight">
               Packages designed<br />
-              for <em className="text-[#c4897a] italic">moments that matter.</em>
+              for <em className="text-[#871237] italic">moments that matter.</em>
             </h1>
             <p className="font-sans text-[#6b5b52] text-[15px] leading-[1.85] mt-6">
               Whether you&apos;re hosting eight of your closest friends or staging an event that fills every room, our packages are built around one belief: the table sets the tone for everything that happens around it. Choose the experience that fits your vision — or build your own from the ground up.
@@ -178,7 +178,7 @@ export default function ServicesPage() {
               >
                 {/* Badge */}
                 <span className={`text-[10px] font-medium tracking-[0.3em] uppercase block mb-3 ${
-                  pkg.featured ? 'text-[var(--gold-antique)]' : 'text-[#c4897a]'
+                  pkg.featured ? 'text-[var(--gold-antique)]' : 'text-[#871237]'
                 }`}>
                   {pkg.badge}
                 </span>
@@ -257,7 +257,7 @@ export default function ServicesPage() {
                   className={`inline-block mt-7 text-xs font-medium tracking-[0.2em] uppercase border-b pb-0.5 transition-colors duration-200 ${
                     pkg.featured 
                       ? 'text-[var(--gold-antique)] border-[var(--gold-antique)] hover:text-[#e8d5b0] hover:border-[#e8d5b0]' 
-                      : 'text-[#2c2420] border-[var(--gold-antique)] hover:text-[#c4897a] hover:border-[#c4897a]'
+                      : 'text-[#2c2420] border-[var(--gold-antique)] hover:text-[#871237] hover:border-[#c4897a]'
                   }`}
                 >
                   Book a consultation
@@ -269,11 +269,11 @@ export default function ServicesPage() {
           {/* Add-ons Section */}
           <section className="max-w-4xl mx-auto mt-20 px-6 pb-16">
             <div className="text-center mb-10">
-              <span className="text-[#c4897a] text-xs tracking-[0.35em] uppercase font-sans block mb-3">
+              <span className="text-[#871237] text-xs tracking-[0.35em] uppercase font-sans block mb-3">
                 Elevate your experience
               </span>
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#2c2420] font-light">
-                Curated <em className="text-[#c4897a] italic">add-ons</em>
+                Curated <em className="text-[#871237] italic">add-ons</em>
               </h2>
               <p className="font-sans text-[#6b5b52] text-[15px] leading-[1.75] mt-4 max-w-md mx-auto">
                 Layer in something extra. Each add-on is priced individually and can be added to any package during your consultation.

@@ -95,7 +95,7 @@ export default function Hero({ onOpenDesigner }: HeroProps) {
       <div ref={bannerRef} className="fixed top-0 left-0 right-0 z-[60]">
         <div className="bg-[#d3dcde] text-[var(--navy-midnight)] py-2.5 text-center">
           <p className="text-xs sm:text-sm tracking-wider font-sans font-medium px-4">
-            Service Area: Palm Springs & surrounding area. Coachella Valley consultations available.
+            Serving the Coachella Valley & Beyond
           </p>
         </div>
       </div>
