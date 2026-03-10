@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Cormorant_Garamond, Inter, Great_Vibes, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import { SmoothScrollProvider } from '@/components/providers/SmoothScroll'
+import Footer from '@/components/footer/Footer'
 
 
 const cormorant = Cormorant_Garamond({
@@ -48,6 +49,7 @@ export default function RootLayout({
         <SmoothScrollProvider>
           <div className="grain-overlay" />
           {children}
+          <Footer />
         </SmoothScrollProvider>
       </body>
     </html>
