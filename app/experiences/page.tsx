@@ -27,17 +27,18 @@ const photoFolders: PhotoFolder[] = [
       '/Photo Slides/Celebrations/Delicate Flower-6-table3.png',
       '/Photo Slides/Celebrations/Delicate Flower-7.png',
       '/Photo Slides/Celebrations/IMG_5548.jpeg',
-      '/Photo Slides/Celebrations/IMG_5714.HEIC',
-      '/Photo Slides/Celebrations/IMG_5877.HEIC',
-      '/Photo Slides/Celebrations/IMG_9435.HEIC',
+      '/Photo Slides/Celebrations/IMG_5714.jpg',
+      '/Photo Slides/Celebrations/IMG_5877.jpg',
+      '/Photo Slides/Celebrations/IMG_9435.jpg',
     ]
   },
   {
     id: '2',
     name: 'Cocktails',
-    coverImage: '/Photo Slides/Cocktails/Delicate Flower-4-drink.png',
+    coverImage: '/Photo Slides/Cocktails/DSC06742.JPEG',
     photos: [
-      '/Photo Slides/Cocktails/Delicate Flower-4-drink.png',
+      '/Photo Slides/Cocktails/DSC06742.JPEG',
+      '/Photo Slides/Cocktails/DSC06748.JPEG',
     ]
   },
   {
@@ -46,9 +47,11 @@ const photoFolders: PhotoFolder[] = [
     coverImage: '/Photo Slides/Floral Arrangements/Delicate Flower-13.png',
     photos: [
       '/Photo Slides/Floral Arrangements/Delicate Flower-13.png',
-      '/Photo Slides/Floral Arrangements/IMG_8300.HEIC',
-      '/Photo Slides/Floral Arrangements/IMG_9479.HEIC',
-      '/Photo Slides/Floral Arrangements/IMG_9480.HEIC',
+      '/Photo Slides/Floral Arrangements/IMG_6169.jpg',
+      '/Photo Slides/Floral Arrangements/IMG_8300.jpg',
+      '/Photo Slides/Floral Arrangements/IMG_9442.jpg',
+      '/Photo Slides/Floral Arrangements/IMG_9479.jpg',
+      '/Photo Slides/Floral Arrangements/IMG_9480.jpg',
     ]
   },
   {
@@ -57,8 +60,8 @@ const photoFolders: PhotoFolder[] = [
     coverImage: '/Photo Slides/Game Night/Delicate Flower-11.png',
     photos: [
       '/Photo Slides/Game Night/Delicate Flower-11.png',
-      '/Photo Slides/Game Night/IMG_6440.HEIC',
-      '/Photo Slides/Game Night/IMG_8981.HEIC',
+      '/Photo Slides/Game Night/IMG_6440.jpg',
+      '/Photo Slides/Game Night/IMG_8981.jpg',
     ]
   },
   {
@@ -73,17 +76,17 @@ const photoFolders: PhotoFolder[] = [
   {
     id: '6',
     name: 'The Smoker',
-    coverImage: '/Photo Slides/The Smoker/Delicate Flower-10.png',
+    coverImage: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png',
     photos: [
-      '/Photo Slides/The Smoker/Delicate Flower-10.png',
+      '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png',
     ]
   },
   {
     id: '7',
     name: 'Themed Events',
-    coverImage: '/Photo Slides/Themed Events/Delicate Flower-5-chrismtas.png',
+    coverImage: '/Photo Slides/Celebrations/Delicate Flower-5-chrismtas.png',
     photos: [
-      '/Photo Slides/Themed Events/Delicate Flower-5-chrismtas.png',
+      '/Photo Slides/Celebrations/Delicate Flower-5-chrismtas.png',
     ]
   },
   {
