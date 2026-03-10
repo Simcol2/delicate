@@ -99,12 +99,29 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
     >
       <div
         ref={modalRef}
-        className="relative w-full h-full md:h-auto md:max-w-4xl md:max-h-[90vh] bg-[#faf8f3] md:rounded-lg shadow-2xl overflow-hidden opacity-0 flex flex-col"
+        className="relative w-full h-full md:h-auto md:max-w-4xl md:max-h-[90vh] bg-[#faf6f0] md:rounded-lg shadow-2xl overflow-hidden opacity-0 flex flex-col"
       >
+        {/* Custom Scrollbar Styles */}
+        <style jsx>{`
+          .custom-scroll::-webkit-scrollbar {
+            width: 8px;
+          }
+          .custom-scroll::-webkit-scrollbar-track {
+            background: rgba(143, 14, 4, 0.05);
+          }
+          .custom-scroll::-webkit-scrollbar-thumb {
+            background: #c9a96e;
+            border-radius: 4px;
+          }
+          .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #c9594a;
+          }
+        `}</style>
+
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute top-3 right-3 z-20 p-2 bg-white/80 rounded-full text-[var(--plum-deep)]/60 hover:text-[var(--plum-deep)] hover:bg-white transition-all duration-200 shadow-sm"
+          className="absolute top-3 right-3 z-20 p-2 bg-[#fffdf9]/90 rounded-full text-[#2c2420]/60 hover:text-[#8f0e04] hover:bg-[#fffdf9] transition-all duration-200 shadow-sm"
           aria-label="Close modal"
         >
           <X size={24} />
@@ -112,7 +129,7 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
 
         <div 
           ref={contentRef}
-          className="flex-1 overflow-y-auto overscroll-contain"
+          className="flex-1 overflow-y-auto custom-scroll overscroll-contain"
         >
           <div className="flex flex-col md:flex-row">
             {/* Photo Side - Full width on mobile */}
@@ -129,16 +146,16 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
 
             {/* Bio Side */}
             <div className="w-full md:w-3/5 p-5 sm:p-6 md:p-8 lg:p-10 flex flex-col">
-              <span className="text-[var(--gold-antique)] text-xs tracking-[0.3em] uppercase font-sans font-medium mb-2">
+              <span className="text-[#c9594a] text-xs tracking-[0.3em] uppercase font-sans font-medium mb-2">
                 Meet The Designer
               </span>
               
               <h2 
-                className="font-serif text-2xl sm:text-3xl md:text-4xl text-[var(--plum-deep)] mb-2"
+                className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#2c2420] mb-2"
               >
                 Creating Tables That
                 <span 
-                  className="block text-[var(--plum-deep)] mt-1"
+                  className="block text-[#c9594a] mt-1"
                   style={{ fontFamily: 'var(--font-script), cursive' }}
                 >
                   Feel Like Home
@@ -146,11 +163,11 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
               </h2>
 
               {/* Tagline */}
-              <p className="text-[#c97b6e] font-sans text-sm sm:text-base italic mb-4">
+              <p className="text-[#c4897a] font-sans text-sm sm:text-base italic mb-4">
                 April is your local crafty mamma bear that would love an invite to your next event!
               </p>
 
-              <div className="space-y-3 text-[var(--navy-midnight)]/80 text-sm sm:text-base leading-relaxed font-sans">
+              <div className="space-y-3 text-[#6b5b52] text-sm sm:text-base leading-relaxed font-sans">
                 <p>
                   I&apos;m an event stylist who believes a beautiful gathering is really about how people feel when they&apos;re sitting at the table.
                 </p>
@@ -163,17 +180,17 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
                   I have spent years perfecting the little details most people overlook. Napkins can be bunny ears and everything should sparkle. My tables feel abundant but effortless, and every guest will always feel like they were considered.
                 </p>
 
-                <p className="text-[var(--plum-deep)] font-medium italic border-l-2 border-[var(--gold-antique)] pl-4 mt-4">
+                <p className="text-[#2c2420] font-medium italic border-l-2 border-[#c9a96e] pl-4 mt-4">
                   My philosophy is simple: when people feel cared for, they remember the evening long after the dishes are washed!
                 </p>
               </div>
 
               {/* CTA Button */}
-              <div className="mt-6 pt-5 border-t border-[var(--gold-antique)]/20">
+              <div className="mt-6 pt-5 border-t border-[#e8d5b0]">
                 <a
                   href="#contact"
                   onClick={handleClose}
-                  className="inline-block w-full sm:w-auto text-center px-6 py-3 bg-[var(--plum-deep)] text-[var(--gold-antique)] font-sans text-sm tracking-widest uppercase hover:bg-[var(--plum-royal)] transition-colors duration-300"
+                  className="inline-block w-full sm:w-auto text-center px-6 py-3 bg-[#8f0e04] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#c9594a] transition-colors duration-300"
                 >
                   Schedule a Consultation
                 </a>

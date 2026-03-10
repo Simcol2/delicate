@@ -22,7 +22,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
 
   return (
     <div
-      className={`fixed inset-0 z-[100] bg-[#2c2420] transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+      className={`fixed inset-0 z-[100] bg-[#8f0e04] transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
         isOpen ? 'translate-y-0' : '-translate-y-full'
       } ${!isOpen ? 'pointer-events-none' : ''}`}
     >
@@ -30,14 +30,14 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
         {/* Header */}
         <div className="flex items-center justify-between px-6 lg:px-12 py-6">
           <span 
-              className="text-2xl text-[#de6050] tracking-wide"
+              className="text-2xl text-[#faf6f0] tracking-wide"
               style={{ fontFamily: 'var(--font-display), serif' }}
             >
               Delicate Flowers
             </span>
           <button
             onClick={onClose}
-            className="text-[#de6050] p-2"
+            className="text-[#faf6f0] p-2"
             aria-label="Close menu"
           >
             <X size={28} />
@@ -51,13 +51,13 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
               key={item.label}
               href={item.href}
               onClick={handleLinkClick}
-              className="group flex items-center gap-6 py-4 border-b border-[var(--gold-antique)]/20"
+              className="group flex items-center gap-6 py-4 border-b border-[#c9a96e]/30"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <span className="text-[#de6050]/40 font-sans text-sm">
+              <span className="text-[#faf6f0]/40 font-sans text-sm">
                 0{index + 1}
               </span>
-              <span className="font-serif text-4xl lg:text-6xl text-[var(--blush-warm)] group-hover:text-[#de6050] transition-colors duration-300">
+              <span className="font-serif text-4xl lg:text-6xl text-[#faf6f0] group-hover:text-[#faf6f0] transition-colors duration-300">
                 {item.label}
               </span>
             </a>

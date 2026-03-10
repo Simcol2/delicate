@@ -21,7 +21,7 @@ export default function Navbar() {
       <nav
         className={`fixed top-10 left-0 right-0 z-[100] transition-all duration-500 ${
           isScrolled
-            ? 'bg-[#de6050]/95 backdrop-blur-md py-4'
+            ? 'bg-[#c9594a]/95 backdrop-blur-md py-4'
             : 'bg-transparent py-6'
         }`}
       >
@@ -43,7 +43,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-12 relative z-10">
             <a 
               href="/about" 
-              className={`text-sm font-sans hover:text-[#de6050] transition-colors tracking-widest uppercase ${
+              className={`text-sm font-sans hover:text-[#8f0e04] transition-colors tracking-widest uppercase ${
                 isScrolled ? 'text-white' : 'text-[#2c2420]'
               }`}
             >
@@ -51,7 +51,7 @@ export default function Navbar() {
             </a>
             <a 
               href="/services" 
-              className={`text-sm font-sans hover:text-[#de6050] transition-colors tracking-widest uppercase ${
+              className={`text-sm font-sans hover:text-[#8f0e04] transition-colors tracking-widest uppercase ${
                 isScrolled ? 'text-white' : 'text-[#2c2420]'
               }`}
             >
@@ -59,7 +59,7 @@ export default function Navbar() {
             </a>
             <a 
               href="#gallery" 
-              className={`text-sm font-sans hover:text-[#de6050] transition-colors tracking-widest uppercase ${
+              className={`text-sm font-sans hover:text-[#8f0e04] transition-colors tracking-widest uppercase ${
                 isScrolled ? 'text-white' : 'text-[#2c2420]'
               }`}
             >
@@ -67,7 +67,7 @@ export default function Navbar() {
             </a>
             <a 
               href="/faq" 
-              className={`text-sm font-sans hover:text-[#de6050] transition-colors tracking-widest uppercase ${
+              className={`text-sm font-sans hover:text-[#8f0e04] transition-colors tracking-widest uppercase ${
                 isScrolled ? 'text-white' : 'text-[#2c2420]'
               }`}
             >
@@ -75,7 +75,7 @@ export default function Navbar() {
             </a>
             <a 
               href="/client/login" 
-              className={`text-sm font-sans hover:text-[#de6050] transition-colors tracking-widest uppercase ${
+              className={`text-sm font-sans hover:text-[#8f0e04] transition-colors tracking-widest uppercase ${
                 isScrolled ? 'text-white' : 'text-[#2c2420]'
               }`}
             >

@@ -60,25 +60,25 @@ export default function Services({ onOpenContact }: ServicesProps) {
       id="services"
       className="relative py-32 lg:py-40"
     >
-      {/* Pink overlay at 40% opacity */}
+      {/* Terracotta overlay at 20% opacity */}
       <div 
         className="absolute inset-0 pointer-events-none"
-        style={{ backgroundColor: 'rgba(252, 149, 168, 0.5)' }}
+        style={{ backgroundColor: 'rgba(201, 89, 74, 0.2)' }}
       />
 
       {/* Content */}
       <div className="relative z-10 w-full px-6 lg:px-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-[var(--plum-deep)] text-sm tracking-[0.3em] uppercase font-sans block mb-4 font-medium">
+          <span className="text-[#8f0e04] text-sm tracking-[0.3em] uppercase font-sans block mb-4 font-medium">
             What We Offer
           </span>
-          <h2 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-white leading-tight mb-6 drop-shadow-lg">
+          <h2 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-[#2c2420] leading-tight mb-6 drop-shadow-lg">
             Three Elements
             <br />
-            <span className="text-white drop-shadow-md">Of Style</span>
+            <span className="text-[#faf6f0] drop-shadow-md">Of Style</span>
           </h2>
-          <p className="font-sans text-[var(--plum-deep)]/80 text-lg">
+          <p className="font-sans text-[#2c2420]/80 text-lg">
             Every gathering deserves intentional design. Our curated approach 
             brings together sight, taste, and atmosphere.
           </p>
@@ -100,14 +100,14 @@ export default function Services({ onOpenContact }: ServicesProps) {
               />
               
               {/* Dark Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--plum-deep)] via-[var(--plum-deep)]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2c2420] via-[#2c2420]/40 to-transparent" />
               
               {/* Content at bottom - using flex to align consistently */}
               <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end">
-                <h3 className="font-serif text-3xl text-white mb-3 drop-shadow-lg leading-tight">
+                <h3 className="font-serif text-3xl text-[#faf6f0] mb-3 drop-shadow-lg leading-tight">
                   {service.title}
                 </h3>
-                <p className="font-sans text-white text-sm leading-relaxed drop-shadow-md">
+                <p className="font-sans text-[#faf6f0] text-sm leading-relaxed drop-shadow-md">
                   {service.description}
                 </p>
               </div>
@@ -117,12 +117,12 @@ export default function Services({ onOpenContact }: ServicesProps) {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <p className="font-sans text-[var(--plum-deep)]/80 text-sm mb-6">
+          <p className="font-sans text-[#2c2420]/80 text-sm mb-6">
             Not sure what you need? Let&apos;s discuss your vision.
           </p>
           <button
             onClick={onOpenContact}
-            className="inline-block px-10 py-4 border-2 border-[var(--plum-deep)] text-[var(--plum-deep)] font-sans text-sm tracking-widest uppercase hover:bg-[var(--plum-deep)] hover:text-[var(--gold-antique)] transition-all duration-300"
+            className="inline-block px-10 py-4 border-2 border-[#8f0e04] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#8f0e04] hover:text-[#faf6f0] transition-all duration-300"
           >
             Schedule a Call
           </button>

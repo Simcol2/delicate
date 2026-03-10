@@ -117,17 +117,17 @@ export default function TermsPage() {
         <div className="w-full px-6 lg:px-12">
           {/* Header */}
           <header className="text-center pt-10 pb-16 max-w-2xl mx-auto">
-            <span className="text-[#c4897a] text-xs tracking-[0.38em] uppercase font-sans block mb-5">
+            <span className="text-[#c9594a] text-xs tracking-[0.38em] uppercase font-sans block mb-5">
               Please read before booking
             </span>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#2c2420] leading-tight">
-              Terms of <em className="text-[#c4897a] italic">Service</em>
+              Terms of <em className="text-[#c9594a] italic">Service</em>
             </h1>
             <p className="font-sans text-[#6b5b52] text-[15px] leading-[1.85] mt-6">
               These terms exist to make the experience smooth and transparent for everyone. By booking a service, you are agreeing to the policies outlined below. If you have any questions before signing, please reach out, we&apos;re always happy to talk through the details.
             </p>
             <span className="inline-block mt-5 text-[11px] tracking-[0.2em] uppercase text-[#a89189] border border-[#e8d5b0] px-4 py-1.5 rounded-full">
-              Effective: [Month, Year] &nbsp;&nbsp; Delicate Flowers
+              Effective: March 2026 &nbsp;&nbsp; Delicate Flowers
             </span>
           </header>
 
@@ -137,10 +137,10 @@ export default function TermsPage() {
               <div
                 key={idx}
                 className={`terms-section bg-[#fffdf9] p-8 md:p-12 mb-[2px] opacity-0 ${
-                  section.flagged ? 'border-l-[3px] border-[#c4897a]' : ''
+                  section.flagged ? 'border-l-[3px] border-[#c9594a]' : ''
                 }`}
               >
-                <span className="text-[10px] font-medium tracking-[0.3em] uppercase text-[var(--gold-antique)] block mb-2.5">
+                <span className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#c9a96e] block mb-2.5">
                   {section.number}
                 </span>
                 <h2 className="font-serif text-2xl md:text-3xl text-[#2c2420] mb-5 leading-tight">
@@ -158,7 +158,7 @@ export default function TermsPage() {
                 {section.highlights && section.highlights.map((highlight, hIdx) => (
                   <div 
                     key={hIdx}
-                    className="bg-[#f5ede0] border-l-2 border-[var(--gold-antique)] px-5 py-4 my-4 text-[14px] text-[#6b5b52] leading-[1.8]"
+                    className="bg-[#f5ede0] border-l-2 border-[#c9a96e] px-5 py-4 my-4 text-[14px] text-[#6b5b52] leading-[1.8]"
                     dangerouslySetInnerHTML={{ __html: highlight }}
                   />
                 ))}
@@ -170,7 +170,7 @@ export default function TermsPage() {
                         key={iIdx}
                         className="flex items-start gap-3 text-[14.5px] text-[#6b5b52] py-2 border-b border-[#f5ede0] last:border-b-0"
                       >
-                        <span className="w-1 h-1 rounded-full bg-[var(--gold-antique)] mt-2 flex-shrink-0" />
+                        <span className="w-1 h-1 rounded-full bg-[#c9a96e] mt-2 flex-shrink-0" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -184,19 +184,19 @@ export default function TermsPage() {
                 )}
 
                 {section.note && (
-                  <div className="bg-[#fdf0ed] border-l-2 border-[#c4897a] px-4 py-3 mt-4 text-xs text-[#c4897a] italic">
+                  <div className="bg-[#fdf0ed] border-l-2 border-[#c9594a] px-4 py-3 mt-4 text-xs text-[#c9594a] italic">
                     {section.note}
                   </div>
                 )}
               </div>
             ))}
 
-            {/* Closing */}
-            <div className="bg-[#2c2420] px-8 md:px-12 py-16 text-center mt-[2px]">
-              <p className="font-serif text-xl md:text-2xl text-[#fffdf9] leading-relaxed">
-                Questions before you sign? <em className="text-[var(--gold-antique)] italic">We&apos;d love to hear from you.</em>
+            {/* Closing - Updated to Crimson */}
+            <div className="bg-[#8f0e04] px-8 md:px-12 py-16 text-center mt-[2px]">
+              <p className="font-serif text-xl md:text-2xl text-[#faf6f0] leading-relaxed">
+                Questions before you sign? <em className="text-[#c9a96e] italic">We&apos;d love to hear from you.</em>
               </p>
-              <p className="text-[13px] text-[#a89189] tracking-wide mt-3.5">
+              <p className="text-[13px] text-[#faf6f0]/60 tracking-wide mt-3.5">
                 Reach out any time, a conversation is always the best place to start.
               </p>
             </div>
@@ -206,7 +206,7 @@ export default function TermsPage() {
           <div className="text-center mt-16">
             <a
               href="/"
-              className="inline-block px-10 py-4 border-2 border-[#2c2420] text-[#2c2420] font-sans text-sm tracking-widest uppercase hover:bg-[#2c2420] hover:text-[var(--gold-antique)] transition-all duration-300"
+              className="inline-block px-10 py-4 border-2 border-[#8f0e04] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#8f0e04] hover:text-[#faf6f0] transition-all duration-300"
             >
               Back to Home
             </a>

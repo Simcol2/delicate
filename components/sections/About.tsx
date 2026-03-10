@@ -40,36 +40,36 @@ export default function About() {
       className="relative py-32 lg:py-40"
     >
       {/* Light cream background for the entire section */}
-      <div className="absolute inset-0 bg-[#f5f0e8] pointer-events-none" />
+      <div className="absolute inset-0 bg-[#faf6f0] pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 w-full px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           {/* Text Box with Solid Cream Background */}
-          <div className="bg-[#faf8f3] border border-[var(--gold-antique)]/20 p-8 lg:p-16 max-w-4xl mx-auto shadow-lg">
+          <div className="bg-[#fffdf9] border border-[#c9a96e]/20 p-8 lg:p-16 max-w-4xl mx-auto shadow-lg">
             <div ref={contentRef}>
-              <span className="text-[var(--plum-deep)] text-sm tracking-[0.3em] uppercase font-sans block mb-4 font-medium">
+              <span className="text-[#c9594a] text-sm tracking-[0.3em] uppercase font-sans block mb-4 font-medium">
                 Our Story
               </span>
               
-              <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-[var(--plum-deep)] leading-tight mb-8">
+              <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-[#2c2420] leading-tight mb-8">
                 Creating Moments
                 <br />
                 <span 
-                  className="text-[var(--plum-deep)]"
+                  className="text-[#c9594a]"
                   style={{ fontFamily: 'var(--font-script), cursive' }}
                 >
                   That Linger
                 </span>
               </h2>
               
-              <p className="font-sans text-[var(--plum-deep)]/80 text-lg leading-relaxed mb-6">
+              <p className="font-sans text-[#6b5b52] text-lg leading-relaxed mb-6">
                 Delicate Flowers was born from a simple belief: the most memorable 
                 gatherings happen in the comfort of home. We transform your space 
                 into an immersive experience where every detail whispers luxury.
               </p>
               
-              <p className="font-sans text-[var(--plum-deep)]/80 text-lg leading-relaxed mb-10">
+              <p className="font-sans text-[#6b5b52] text-lg leading-relaxed mb-10">
                 From intimate dinner parties to celebratory brunches, we bring 
                 editorial-level styling to your table. Our approach blends seasonal 
                 florals, vintage textiles, and artisanal tableware to create 
@@ -77,25 +77,25 @@ export default function About() {
               </p>
 
               <p 
-                className="text-[var(--plum-deep)] text-2xl lg:text-3xl leading-relaxed mb-10"
+                className="text-[#c4897a] text-2xl lg:text-3xl leading-relaxed mb-10"
                 style={{ fontFamily: 'var(--font-script), cursive' }}
               >
                 Let us dress your table better than your guests.
               </p>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-8 pt-8 border-t border-[var(--plum-deep)]/20">
+              <div className="grid grid-cols-3 gap-8 pt-8 border-t border-[#e8d5b0]">
                 <div>
-                  <span className="font-serif text-4xl text-[var(--plum-deep)]">150+</span>
-                  <p className="font-sans text-sm text-[var(--plum-deep)]/70 mt-2 uppercase tracking-wider">Events Styled</p>
+                  <span className="font-serif text-4xl text-[#8f0e04]">150+</span>
+                  <p className="font-sans text-sm text-[#6b5b52] mt-2 uppercase tracking-wider">Events Styled</p>
                 </div>
                 <div>
-                  <span className="font-serif text-4xl text-[var(--plum-deep)]">5</span>
-                  <p className="font-sans text-sm text-[var(--plum-deep)]/70 mt-2 uppercase tracking-wider">Years Experience</p>
+                  <span className="font-serif text-4xl text-[#8f0e04]">5</span>
+                  <p className="font-sans text-sm text-[#6b5b52] mt-2 uppercase tracking-wider">Years Experience</p>
                 </div>
                 <div>
-                  <span className="font-serif text-4xl text-[var(--plum-deep)]">100%</span>
-                  <p className="font-sans text-sm text-[var(--plum-deep)]/70 mt-2 uppercase tracking-wider">Happy Clients</p>
+                  <span className="font-serif text-4xl text-[#8f0e04]">100%</span>
+                  <p className="font-sans text-sm text-[#6b5b52] mt-2 uppercase tracking-wider">Happy Clients</p>
                 </div>
               </div>
             </div>

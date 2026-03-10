@@ -173,17 +173,17 @@ export default function ExperiencesPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[var(--white-pure)] pt-32 pb-20">
+      <main className="min-h-screen bg-[#faf6f0] pt-32 pb-20">
         <div className="w-full px-6 lg:px-12">
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[var(--gold-antique)] text-sm tracking-[0.3em] uppercase font-sans block mb-4">
+            <span className="text-[#c9594a] text-sm tracking-[0.3em] uppercase font-sans block mb-4">
               Our Work
             </span>
-            <h1 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-[var(--plum-deep)] leading-tight mb-6">
+            <h1 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-[#2c2420] leading-tight mb-6">
               Experiences
             </h1>
-            <p className="font-sans text-[var(--navy-midnight)]/70 text-lg">
+            <p className="font-sans text-[#6b5b52] text-lg">
               Each gathering tells a unique story. Click on any album to explore the photos.
             </p>
           </div>
@@ -202,17 +202,17 @@ export default function ExperiencesPage() {
                     alt={folder.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-[var(--plum-deep)]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span className="text-white font-sans text-sm tracking-widest uppercase border border-white px-6 py-3">
+                  <div className="absolute inset-0 bg-[#8f0e04]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="text-[#faf6f0] font-sans text-sm tracking-widest uppercase border border-[#faf6f0] px-6 py-3">
                       View Photos
                     </span>
                   </div>
                   {/* Photo count badge */}
-                  <div className="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded">
+                  <div className="absolute bottom-3 right-3 bg-black/60 text-[#faf6f0] text-xs px-2 py-1 rounded">
                     {folder.photos.length} {folder.photos.length === 1 ? 'photo' : 'photos'}
                   </div>
                 </div>
-                <h3 className="font-serif text-2xl text-[var(--plum-deep)] mb-1">
+                <h3 className="font-serif text-2xl text-[#2c2420] mb-1">
                   {folder.name}
                 </h3>
               </div>
@@ -223,7 +223,7 @@ export default function ExperiencesPage() {
           <div className="text-center mt-16">
             <a
               href="/"
-              className="inline-block px-10 py-4 border-2 border-[var(--plum-deep)] text-[var(--plum-deep)] font-sans text-sm tracking-widest uppercase hover:bg-[var(--plum-deep)] hover:text-[var(--gold-antique)] transition-all duration-300"
+              className="inline-block px-10 py-4 border-2 border-[#8f0e04] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#8f0e04] hover:text-[#faf6f0] transition-all duration-300"
             >
               Back to Home
             </a>
@@ -244,12 +244,12 @@ export default function ExperiencesPage() {
           
           {/* Modal Content */}
           <div 
-            className={`relative bg-[#1a1a1a] rounded-lg shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden transition-all duration-300 ${isVisible ? 'scale-100' : 'scale-95'}`}
+            className={`relative bg-[#2c2420] rounded-lg shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden transition-all duration-300 ${isVisible ? 'scale-100' : 'scale-95'}`}
           >
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 z-20 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-all duration-200"
+              className="absolute top-4 right-4 z-20 p-2 bg-[#faf6f0]/10 hover:bg-[#faf6f0]/20 rounded-full text-[#faf6f0] transition-all duration-200"
               aria-label="Close modal"
             >
               <X size={24} />
@@ -257,16 +257,16 @@ export default function ExperiencesPage() {
 
             {/* Header */}
             <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/60 to-transparent p-6">
-              <h2 className="font-serif text-2xl md:text-3xl text-white">
+              <h2 className="font-serif text-2xl md:text-3xl text-[#faf6f0]">
                 {selectedFolder.name}
               </h2>
-              <p className="text-white/60 text-sm mt-1">
+              <p className="text-[#faf6f0]/60 text-sm mt-1">
                 {currentPhotoIndex + 1} / {selectedFolder.photos.length}
               </p>
             </div>
 
             {/* Photo Carousel */}
-            <div className="relative flex items-center justify-center bg-black min-h-[60vh] max-h-[80vh]">
+            <div className="relative flex items-center justify-center bg-[#1a1a1a] min-h-[60vh] max-h-[80vh]">
               {/* Previous Button */}
               {selectedFolder.photos.length > 1 && (
                 <button
@@ -274,7 +274,7 @@ export default function ExperiencesPage() {
                     e.stopPropagation()
                     prevPhoto()
                   }}
-                  className="absolute left-4 z-20 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition-all duration-200 hover:scale-110"
+                  className="absolute left-4 z-20 p-3 bg-[#faf6f0]/10 hover:bg-[#faf6f0]/20 rounded-full text-[#faf6f0] transition-all duration-200 hover:scale-110"
                   aria-label="Previous photo"
                 >
                   <ChevronLeft size={32} />
@@ -297,7 +297,7 @@ export default function ExperiencesPage() {
                     e.stopPropagation()
                     nextPhoto()
                   }}
-                  className="absolute right-4 z-20 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition-all duration-200 hover:scale-110"
+                  className="absolute right-4 z-20 p-3 bg-[#faf6f0]/10 hover:bg-[#faf6f0]/20 rounded-full text-[#faf6f0] transition-all duration-200 hover:scale-110"
                   aria-label="Next photo"
                 >
                   <ChevronRight size={32} />
@@ -307,15 +307,15 @@ export default function ExperiencesPage() {
 
             {/* Thumbnail Navigation */}
             {selectedFolder.photos.length > 1 && (
-              <div className="bg-[#1a1a1a] p-4">
-                <div className="flex gap-2 overflow-x-auto pb-2 justify-center">
+              <div className="bg-[#2c2420] p-4">
+                <div className="flex gap-2 overflow-x-auto pb-2 justify-center custom-scroll">
                   {selectedFolder.photos.map((photo, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentPhotoIndex(index)}
                       className={`flex-shrink-0 w-16 h-16 rounded overflow-hidden transition-all duration-200 ${
                         index === currentPhotoIndex 
-                          ? 'ring-2 ring-[var(--gold-antique)] opacity-100' 
+                          ? 'ring-2 ring-[#c9a96e] opacity-100' 
                           : 'opacity-50 hover:opacity-80'
                       }`}
                     >
@@ -331,11 +331,11 @@ export default function ExperiencesPage() {
             )}
 
             {/* Book a Consultation Button */}
-            <div className="bg-[#1a1a1a] p-4 pt-0 flex justify-center">
+            <div className="bg-[#2c2420] p-4 pt-0 flex justify-center">
               <a
                 href="/#contact"
                 onClick={closeModal}
-                className="inline-block px-8 py-3 bg-[var(--plum-deep)] text-[var(--gold-antique)] font-sans text-sm tracking-widest uppercase hover:bg-[var(--plum-royal)] transition-colors duration-300"
+                className="inline-block px-8 py-3 bg-[#8f0e04] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#c9594a] transition-colors duration-300"
               >
                 Book a Consultation
               </a>

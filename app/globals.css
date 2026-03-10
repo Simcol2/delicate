@@ -5,105 +5,158 @@
 @tailwind utilities;
 
 :root {
-	--plum-deep: #1a0b1f;
-	--plum-royal: #2d1b33;
-	--gold-antique: #c9a961;
-	--gold-pale: #e5d5b0;
-	--navy-midnight: #0a0f1c;
-	--blush-warm: #f4e9e1;
-	--white-pure: #faf9f7;
+  /* Brand Style Guide Colors */
+  --crimson: #8f0e04;
+  --terracotta: #c9594a;
+  --dusty-rose: #c4897a;
+  --gold: #c9a96e;
+  --cream: #faf6f0;
+  --warm-white: #fffdf9;
+  --deep: #2c2420;
+  
+  /* Legacy variables for backward compatibility */
+  --plum-deep: #2c2420;
+  --plum-royal: #8f0e04;
+  --gold-antique: #c9a96e;
+  --gold-pale: #e8d5b0;
+  --navy-midnight: #2c2420;
+  --blush-warm: #faf6f0;
+  --white-pure: #faf6f0;
 }
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-	scroll-behavior: auto;
+  scroll-behavior: auto;
 }
 
 body {
-	background-color: var(--white-pure);
-	color: var(--navy-midnight);
-	font-family: 'Inter', sans-serif;
-	overflow-x: hidden;
+  background-color: var(--cream);
+  color: var(--deep);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
 }
 
 /* Custom Selection */
 ::selection {
-	background: var(--gold-antique);
-	color: var(--plum-deep);
+  background: var(--gold);
+  color: var(--deep);
 }
 
 /* Luxury Typography */
 .font-serif {
-	font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .font-sans {
-	font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
-
 
 /* Smooth Scroll Container */
 .lenis.lenis-smooth {
-	scroll-behavior: auto;
+  scroll-behavior: auto;
 }
 
 /* Film Grain Overlay */
 .grain-overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	pointer-events: none;
-	z-index: 9999;
-	opacity: 0.03;
-	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 /* Gold Gradient Text */
 .text-gold-gradient {
-	background: linear-gradient(135deg, var(--gold-antique) 0%, var(--gold-pale) 50%, var(--gold-antique) 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-pale) 50%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar - Cream/Beige Style */
 ::-webkit-scrollbar {
-	width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-	background: var(--plum-deep);
+  background: var(--cream);
 }
 
 ::-webkit-scrollbar-thumb {
-	background: var(--gold-antique);
-	border-radius: 4px;
+  background: var(--gold);
+  border-radius: 5px;
+  border: 2px solid var(--cream);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--terracotta);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) var(--cream);
+}
+
+/* Modal Scrollbar - Dark Background (Crimson) */
+.modal-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-scroll::-webkit-scrollbar-track {
+  background: rgba(250, 246, 240, 0.1);
+}
+
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: var(--cream);
+  border-radius: 4px;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--warm-white);
+}
+
+/* Date Input Styling for Dark Backgrounds */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+input[type="date"] {
+  color-scheme: dark;
+}
+
+/* Prevent overscroll behavior for modals */
+.overscroll-contain {
+  overscroll-behavior: contain;
 }
 
 /* Magnetic Button Base */
 .magnetic-button {
-	position: relative;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	overflow: hidden;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 /* Split Text Animation Helper */
 .split-line {
-	overflow: hidden;
-	display: block;
+  overflow: hidden;
+  display: block;
 }
 
 .split-line-inner {
-	display: block;
-	transform: translateY(100%);
-	opacity: 0;
+  display: block;
+  transform: translateY(100%);
+  opacity: 0;
 }

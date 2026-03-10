@@ -4,7 +4,6 @@ import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-
 gsap.registerPlugin(ScrollTrigger)
 
 interface HeroProps {
@@ -82,7 +81,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
       className="relative min-h-screen flex items-center justify-center pt-48 pb-20"
     >
       {/* Gradient overlay for text legibility */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--white-pure)]/90 via-[var(--white-pure)]/60 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#faf6f0]/90 via-[#faf6f0]/60 to-transparent pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 w-full px-6 lg:px-12 max-w-7xl mx-auto">
@@ -90,7 +89,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           {/* Top Tagline */}
           <p
             ref={taglineRef}
-            className="text-[var(--plum-royal)] text-sm tracking-[0.3em] uppercase mb-8 font-sans font-medium py-2 will-change-transform"
+            className="text-[#c9594a] text-sm tracking-[0.3em] uppercase mb-8 font-sans font-medium py-2 will-change-transform"
           >
             Luxury Floral & Tablescape Design
           </p>
@@ -98,12 +97,12 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           {/* Main Headline */}
           <h1
             ref={titleRef}
-            className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[var(--plum-deep)] leading-[0.95] will-change-transform"
+            className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#2c2420] leading-[0.95] will-change-transform"
           >
             You Host.
             <br />
             <span 
-              className="text-[var(--plum-deep)]"
+              className="text-[#8f0e04]"
               style={{ fontFamily: 'var(--font-script), cursive' }}
             >
               We Style.
@@ -113,7 +112,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           {/* Sub-tagline */}
           <p 
             ref={subTaglineRef}
-            className="font-serif italic text-[var(--plum-royal)] text-xl md:text-2xl mt-3 mb-8 will-change-transform"
+            className="font-serif italic text-[#c4897a] text-xl md:text-2xl mt-3 mb-8 will-change-transform"
           >
             Dressing your tables better than your guests
           </p>
@@ -122,13 +121,13 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           <div ref={ctaRef} className="flex flex-col sm:flex-row items-start gap-4 mb-10 will-change-transform">
             <a
               href="/services"
-              className="px-10 py-4 bg-[#d3dcde] text-[var(--navy-midnight)] font-sans text-sm tracking-widest uppercase hover:bg-[#b8c4c7] transition-colors duration-300"
+              className="px-10 py-4 bg-[#c9594a] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#8f0e04] transition-colors duration-300"
             >
               Explore Services
             </a>
             <button
               onClick={onOpenContact}
-              className="px-10 py-4 border-2 border-[#d3dcde] text-[var(--navy-midnight)] font-sans text-sm tracking-widest uppercase hover:bg-[#d3dcde] hover:text-[var(--navy-midnight)] transition-all duration-300"
+              className="px-10 py-4 border-2 border-[#c9594a] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#c9594a] hover:text-[#faf6f0] transition-all duration-300"
             >
               Book a Consultation
             </button>
@@ -137,7 +136,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           {/* Description - Now below buttons */}
           <p
             ref={descriptionRef}
-            className="font-sans text-[var(--navy-midnight)]/80 text-lg md:text-xl max-w-xl leading-relaxed will-change-transform mb-8"
+            className="font-sans text-[#2c2420]/80 text-lg md:text-xl max-w-xl leading-relaxed will-change-transform mb-8"
           >
             Curated in-home entertaining experiences for those who appreciate 
             the art of gathering. Serving Palm Springs and surrounding desert communities.
@@ -146,7 +145,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           {/* Meet the Designer Button */}
           <button
             onClick={onOpenDesigner}
-            className="group inline-flex items-center gap-3 px-6 py-3 bg-[#c97b6e] text-white hover:bg-[#b56a5d] transition-all duration-300 shadow-lg"
+            className="group inline-flex items-center gap-3 px-6 py-3 bg-[#8f0e04] text-[#faf6f0] hover:bg-[#c9594a] transition-all duration-300 shadow-lg"
           >
             <span className="font-sans text-sm tracking-[0.2em] uppercase font-medium">
               Meet the Designer
