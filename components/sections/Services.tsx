@@ -102,8 +102,17 @@ export default function Services({ onOpenContact }: ServicesProps) {
               {/* Dark Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#2c2420] via-[#2c2420]/40 to-transparent" />
               
-              {/* Content at bottom - using flex to align consistently */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end">
+              {/* Content at bottom with blurred background */}
+              <div 
+                className="absolute bottom-4 left-4 right-4 p-6 md:p-8"
+                style={{
+                  background: 'rgba(250, 246, 240, 0.15)',
+                  backdropFilter: 'blur(8px)',
+                  WebkitBackdropFilter: 'blur(8px)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  borderRadius: '8px'
+                }}
+              >
                 <h3 className="font-serif text-3xl text-[#faf6f0] mb-3 drop-shadow-lg leading-tight">
                   {service.title}
                 </h3>
