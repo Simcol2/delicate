@@ -67,7 +67,7 @@ const LOCAL_IMAGES: Record<string, {name: string, url: string}[]> = {
     { name: 'Delicate Flower-9-outdoor.png', url: '/Photo Slides/Outdoor Soiree/Delicate Flower-9-outdoor.png' },
   ],
   'The Smoker': [
-    { name: 'Delicate Flower-10.png', url: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png' },
+    // Firebase-only folder - no local images
   ],
   'Themed Events': [
     // Firebase-only folder - no local images

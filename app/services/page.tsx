@@ -291,28 +291,28 @@ export default function ServicesPage() {
             </div>
           </section>
 
-          {/* Build Your Own Section - Updated to Crimson */}
-          <section className="bg-[#8f0e04] px-6 py-20 text-center mt-[2px]">
-            <span className="text-[#faf6f0] text-xs tracking-[0.35em] uppercase font-sans block mb-4">
+          {/* Build Your Own Section - Cream background */}
+          <section className="bg-[#fffdf9] px-6 py-20 text-center mt-[2px] border-t border-[#e8d5b0]">
+            <span className="text-[#c9594a] text-xs tracking-[0.35em] uppercase font-sans block mb-4">
               Fully bespoke
             </span>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#fffdf9] font-light leading-tight">
-              Build <em className="text-[#faf6f0] italic">Your Own</em>
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#2c2420] font-light leading-tight">
+              Build <em className="text-[#c9594a] italic">Your Own</em>
             </h2>
-            <p className="font-sans text-[#faf6f0]/80 text-[15px] leading-[1.85] mt-6 max-w-xl mx-auto">
+            <p className="font-sans text-[#6b5b52] text-[15px] leading-[1.85] mt-6 max-w-xl mx-auto">
               Not every event fits a package, and that&apos;s exactly the point. Tell us your spaces, your vision, and your vibe. We&apos;ll build a custom scope and quote around what matters most to you.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[1px] max-w-4xl mx-auto mt-12 border border-[rgba(250,246,240,0.2)]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[1px] max-w-4xl mx-auto mt-12 border border-[#e8d5b0]">
               {byoItems.map((item, idx) => (
                 <div
                   key={idx}
-                  className="p-8 text-left border-b sm:border-b-0 sm:border-r last:border-r-0 border-[rgba(250,246,240,0.15)]"
+                  className="p-8 text-left border-b sm:border-b-0 sm:border-r last:border-r-0 border-[#e8d5b0] bg-[#faf6f0]"
                 >
-                  <span className="font-serif text-xl text-[#fffdf9] block mb-2">
+                  <span className="font-serif text-xl text-[#2c2420] block mb-2">
                     {item.name}
                   </span>
-                  <span className="text-xs text-[#faf6f0]/60 leading-relaxed block">
+                  <span className="text-xs text-[#6b5b52] leading-relaxed block">
                     {item.description}
                   </span>
                 </div>
@@ -321,11 +321,11 @@ export default function ServicesPage() {
 
             <a
               href="/#contact"
-              className="inline-block mt-12 bg-[#faf6f0] text-[#8f0e04] text-xs font-medium tracking-[0.22em] uppercase px-9 py-4 hover:bg-white transition-colors duration-200"
+              className="inline-block mt-12 bg-[#8f0e04] text-[#faf6f0] text-xs font-medium tracking-[0.22em] uppercase px-9 py-4 hover:bg-[#c9594a] transition-colors duration-200"
             >
               Start building your experience
             </a>
-            <p className="text-xs text-[#faf6f0]/50 tracking-wide mt-4">
+            <p className="text-xs text-[#a89189] tracking-wide mt-4">
               A consultation is required for all custom packages. The $75 site visit fee is credited to your balance at booking.
             </p>
           </section>
