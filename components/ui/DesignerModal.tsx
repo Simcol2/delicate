@@ -121,7 +121,7 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
                 src="/images/WhatsApp Image 2026-03-05 at 11.32.29 AM.jpeg"
                 alt="Event Designer"
                 fill
-                className="object-cover object-top md:object-cover md:object-left-center"
+                className="object-cover object-top md:object-[25%_center]"
                 sizes="(max-width: 768px) 100vw, 40vw"
                 priority
               />
