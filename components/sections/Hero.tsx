@@ -84,40 +84,9 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
         backgroundPosition: 'center center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'scroll', // scroll not fixed - fixed breaks iOS
+        backgroundAttachment: 'scroll',
       }}
     >
-      {/* Responsive background fix for iOS */}
-      <style>{`
-        /* General mobile fix */
-        @media (max-width: 640px) {
-          .bg-hero-image {
-            background-size: contain !important;
-            background-position: top center !important;
-            aspect-ratio: 16/9;
-          }
-        }
-
-        /* iOS specific hack */
-        @media only screen and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 2) {
-          .bg-hero-image {
-            background-size: 100% 100% !important;
-            background-position: top center !important;
-            aspect-ratio: 16/9;
-          }
-        }
-
-        /* iOS Safari hack */
-        @media not all and (min-resolution: 0.001dpcm) {
-          @supports (-webkit-touch-callout: none) {
-            .bg-hero-image {
-              background-size: 100% 100% !important;
-              background-position: top center !important;
-              aspect-ratio: 16/9;
-            }
-          }
-        }
-      `}</style>
 
       {/* Gradient overlay for text legibility */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#faf6f0]/90 via-[#faf6f0]/60 to-transparent pointer-events-none" />
