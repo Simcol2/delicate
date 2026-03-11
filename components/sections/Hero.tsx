@@ -79,7 +79,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
         src="/images/hero-bg.jpg"
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        className="absolute inset-0 w-full h-full object-contain sm:object-cover object-center bg-[#faf6f0]"
       />
 
       {/* Gradient overlay for text legibility */}
