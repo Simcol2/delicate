@@ -21,12 +21,9 @@ export default function Page() {
         <div className="relative">
           {/* Background image that spans all three sections */}
           <div 
-            className="absolute inset-0 w-full h-full"
+            className="fixed inset-0 w-full h-full -z-10 sm:bg-fixed bg-cover bg-center"
             style={{
               backgroundImage: 'url(/images/Gemini_Generated_Image_7pemq97pemq97pem.png)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center top',
-              backgroundAttachment: 'fixed',
             }}
           />
           
