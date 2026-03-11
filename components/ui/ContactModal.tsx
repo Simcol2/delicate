@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { X, CheckCircle, AlertCircle } from 'lucide-react'
 import { gsap } from 'gsap'
+import emailjs from '@emailjs/browser'
 
 interface ContactModalProps {
   isOpen: boolean
@@ -121,24 +122,32 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     setSubmitStatus('idle')
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      })
+      // EmailJS configuration
+      const SERVICE_ID = 'service_ajiko7e'
+      const TEMPLATE_ID = 'template_pl9ghk7'
+      const PUBLIC_KEY = 'JibkW5e7TBEs2vKc0'
 
-      const data = await response.json()
-
-      if (response.ok) {
-        setSubmitStatus('success')
-        setStatusMessage("Thank you! Your inquiry has been sent. We'll be in touch soon.")
-        setFormData({ name: '', email: '', phoneNumber: '', eventType: '', date: '', location: '', guestSize: '', message: '', referredBy: '', termsAccepted: false })
-        setTimeout(() => { handleClose(); setSubmitStatus('idle') }, 2000)
-      } else {
-        setSubmitStatus('error')
-        setStatusMessage(data.error || 'Something went wrong. Please try again.')
+      // Template variables must match EmailJS template
+      const templateParams = {
+        first_name: formData.name,
+        email: formData.email,
+        phoneNumber: formData.phoneNumber || 'Not specified',
+        eventType: formData.eventType || 'Not specified',
+        event_date: formData.date || 'Not specified',
+        event_location: formData.location || 'Not specified',
+        guest_count: formData.guestSize || 'Not specified',
+        message: formData.message,
+        referredBy: formData.referredBy || 'Not specified',
       }
+
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+
+      setSubmitStatus('success')
+      setStatusMessage("Thank you! Your inquiry has been sent. We'll be in touch soon.")
+      setFormData({ name: '', email: '', phoneNumber: '', eventType: '', date: '', location: '', guestSize: '', message: '', referredBy: '', termsAccepted: false })
+      setTimeout(() => { handleClose(); setSubmitStatus('idle') }, 2000)
     } catch (error) {
+      console.error('EmailJS error:', error)
       setSubmitStatus('error')
       setStatusMessage('Failed to send message. Please try again later.')
     } finally {
