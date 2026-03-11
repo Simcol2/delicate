@@ -79,6 +79,11 @@ export default function Navbar() {
             </a>
           </div>
 
+          {/* Mobile Brand Name - Only on mobile */}
+          <span className="lg:hidden font-serif text-xl text-[#1A2744] tracking-wide">
+            Delicate Flowers
+          </span>
+
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(true)}
