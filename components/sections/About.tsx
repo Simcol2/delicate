@@ -1,4 +1,5 @@
 'use client'
+// Color scheme: Fuchsia #CC2A7A, Navy #1A2744, Gold #C9A96E
 
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
