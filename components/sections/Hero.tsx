@@ -77,7 +77,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
       {/* Hero image - contain on mobile (show full image), cover on desktop */}
       <div className="absolute inset-0 w-full h-full bg-[#faf6f0] sm:bg-transparent">
         <img
-          src="/images/hero-bg.jpg"
+          src="/images/Gemini_Generated_Image_7pemq97pemq97pem.png"
           alt=""
           aria-hidden="true"
           className="w-full h-full object-contain sm:object-cover object-center"

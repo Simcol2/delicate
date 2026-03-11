@@ -9,6 +9,7 @@ interface FullscreenMenuProps {
 
 export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps) {
   const menuItems = [
+    { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Services', href: '/services' },
     { label: 'Portfolio', href: '/experiences' },
