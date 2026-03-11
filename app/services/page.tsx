@@ -265,10 +265,10 @@ export default function ServicesPage() {
               <span className="text-[#CC2A7A] text-xs tracking-[0.35em] uppercase font-sans block mb-3">
                 Elevate your experience
               </span>
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white font-light">
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#1A2744] font-bold">
                 Curated <em className="text-[#CC2A7A] italic">add-ons</em>
               </h2>
-              <p className="font-sans text-[#6b5b52] text-[15px] leading-[1.75] mt-4 max-w-md mx-auto">
+              <p className="font-sans text-[#1A2744] text-[15px] leading-[1.75] mt-4 max-w-md mx-auto">
                 Layer in something extra. Each add-on is priced individually and can be added to any package during your consultation.
               </p>
             </div>
@@ -280,10 +280,10 @@ export default function ServicesPage() {
                   className="addon-item bg-[#fffdf9] p-7 text-center opacity-0"
                 >
                   <Sparkles className="w-5 h-5 text-[#CC2A7A] mx-auto mb-2.5" />
-                  <span className="font-serif text-lg text-white block mb-1.5">
+                  <span className="font-serif text-lg text-[#1A2744] block mb-1.5 font-bold">
                     {addon.name}
                   </span>
-                  <span className="text-[11.5px] text-[#a89189] leading-snug block">
+                  <span className="text-sm text-[#1A2744]/80 leading-snug block">
                     {addon.description}
                   </span>
                   <span className="inline-block mt-2.5 text-[10px] tracking-[0.2em] uppercase text-[#CC2A7A] border border-[#e8d5b0] px-2.5 py-1 rounded-full">
@@ -299,7 +299,7 @@ export default function ServicesPage() {
             <span className="text-[#CC2A7A] text-xs tracking-[0.35em] uppercase font-sans block mb-4">
               Fully bespoke
             </span>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white font-light leading-tight">
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#1A2744] font-bold leading-tight">
               Build <em className="text-[#CC2A7A] italic">Your Own</em>
             </h2>
             <p className="font-sans text-[#6b5b52] text-[15px] leading-[1.85] mt-6 max-w-xl mx-auto">
@@ -312,10 +312,10 @@ export default function ServicesPage() {
                   key={idx}
                   className="p-8 text-left border-b sm:border-b-0 sm:border-r last:border-r-0 border-[#e8d5b0] bg-[#faf6f0]"
                 >
-                  <span className="font-serif text-xl text-white block mb-2">
+                  <span className="font-serif text-xl text-[#1A2744] block mb-2 font-bold">
                     {item.name}
                   </span>
-                  <span className="text-xs text-[#6b5b52] leading-relaxed block">
+                  <span className="text-sm text-[#1A2744]/80 leading-relaxed block">
                     {item.description}
                   </span>
                 </div>
