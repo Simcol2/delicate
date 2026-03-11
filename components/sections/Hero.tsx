@@ -88,10 +88,32 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
     >
       {/* Responsive background fix for iOS */}
       <style>{`
+        /* General mobile fix */
         @media (max-width: 640px) {
           .bg-hero-image {
             background-size: contain !important;
             background-position: top center !important;
+            aspect-ratio: 16/9;
+          }
+        }
+
+        /* iOS specific hack */
+        @media only screen and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 2) {
+          .bg-hero-image {
+            background-size: 100% 100% !important;
+            background-position: top center !important;
+            aspect-ratio: 16/9;
+          }
+        }
+
+        /* iOS Safari hack */
+        @media not all and (min-resolution: 0.001dpcm) {
+          @supports (-webkit-touch-callout: none) {
+            .bg-hero-image {
+              background-size: 100% 100% !important;
+              background-position: top center !important;
+              aspect-ratio: 16/9;
+            }
           }
         }
       `}</style>
