@@ -74,7 +74,7 @@ export default function About() {
               </p>
 
               <p 
-                className="text-[#c4897a] text-2xl lg:text-3xl leading-relaxed mb-10"
+                className="text-[#c4897a] font-bold text-3xl lg:text-4xl leading-relaxed mb-10"
                 style={{ fontFamily: 'var(--font-script), cursive' }}
               >
                 Let us dress your table better than your guests.
