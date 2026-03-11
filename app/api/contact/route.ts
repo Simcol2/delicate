@@ -8,12 +8,17 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const TO_EMAIL = 'april@delicateflowers.co';
 
 export async function POST(request: Request) {
+  console.log('API called - RESEND_API_KEY exists:', !!RESEND_API_KEY);
+  
   try {
     const body = await request.json();
+    console.log('Received form data:', body);
+    
     const { name, email, phoneNumber, eventType, date, location, guestSize, message, referredBy } = body;
 
     // Validate required fields
     if (!name || !email || !message) {
+      console.log('Missing required fields:', { name, email, message });
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -22,6 +27,8 @@ export async function POST(request: Request) {
 
     // If Resend API key is configured, send email
     if (RESEND_API_KEY) {
+      console.log('Attempting to send email via Resend...');
+      
       const response = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
@@ -53,10 +60,13 @@ export async function POST(request: Request) {
         const error = await response.text();
         console.error('Resend API error:', error);
         return NextResponse.json(
-          { error: 'Failed to send email' },
+          { error: 'Failed to send email', details: error },
           { status: 500 }
         );
       }
+
+      const data = await response.json();
+      console.log('Email sent successfully:', data);
 
       return NextResponse.json(
         { success: true, message: 'Email sent successfully' },
@@ -64,32 +74,21 @@ export async function POST(request: Request) {
       );
     }
 
-    // If no API key, just log the submission (for testing)
-    console.log('Contact form submission:', {
-      name,
-      email,
-      phoneNumber,
-      eventType,
-      date,
-      location,
-      guestSize,
-      message,
-      referredBy,
-      to: TO_EMAIL,
-    });
-
+    // If no API key, return error so user knows to configure it
+    console.error('RESEND_API_KEY not configured - email not sent');
+    
     return NextResponse.json(
       { 
-        success: true, 
-        message: 'Form submitted successfully (email not sent - configure RESEND_API_KEY)' 
+        success: false, 
+        error: 'Email service not configured. Please add RESEND_API_KEY to environment variables.' 
       },
-      { status: 200 }
+      { status: 503 }
     );
 
   } catch (error) {
     console.error('Contact API error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Internal server error', details: String(error) },
       { status: 500 }
     );
   }
