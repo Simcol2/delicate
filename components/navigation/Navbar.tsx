@@ -26,11 +26,11 @@ export default function Navbar() {
             : 'bg-[#FAF6F0]/20 backdrop-blur-sm py-3'
         }`}
       >
-        <div className="w-full px-6 lg:px-12 flex items-center justify-between">
+        <div className="w-full px-6 lg:px-12 flex items-center justify-between relative">
           {/* Logo Image */}
           <a 
             href="/" 
-            className="relative h-16 w-60 lg:h-20 lg:w-80 transition-all duration-300"
+            className="relative h-16 w-60 lg:h-20 lg:w-80 transition-all duration-300 z-10"
           >
             <img
               src="/images/df-logo.png"
@@ -38,6 +38,11 @@ export default function Navbar() {
               className="h-full w-auto object-contain object-left"
             />
           </a>
+
+          {/* Mobile Brand Name - Centered */}
+          <span className="lg:hidden absolute left-1/2 -translate-x-1/2 font-serif text-lg text-[#1A2744] tracking-wide whitespace-nowrap">
+            Delicate by design.
+          </span>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-12 relative z-10">
