@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 // Add RESEND_API_KEY to your Vercel environment variables
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const TO_EMAIL = 'hello@delicateflowers.co';
+const TO_EMAIL = 'april@delicateflowers.co';
 
 export async function POST(request: Request) {
   try {
