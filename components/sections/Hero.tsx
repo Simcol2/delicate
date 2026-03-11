@@ -21,38 +21,32 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Initial animation timeline
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
-      // Tagline fades in
       tl.fromTo(
         taglineRef.current,
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 1 },
         '-=0.4'
       )
-      // Title fades in with slight delay
       .fromTo(
         titleRef.current,
         { y: 40, opacity: 0 },
         { y: 0, opacity: 1, duration: 1.2 },
         '-=0.6'
       )
-      // Sub-tagline
       .fromTo(
         subTaglineRef.current,
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8 },
         '-=0.8'
       )
-      // CTA buttons
       .fromTo(
         ctaRef.current,
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8 },
         '-=0.4'
       )
-      // Description text
       .fromTo(
         descriptionRef.current,
         { y: 20, opacity: 0 },
@@ -60,7 +54,6 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
         '-=0.4'
       )
 
-      // Parallax for text on scroll — image stays fixed, text moves up
       gsap.to([titleRef.current, subTaglineRef.current, ctaRef.current, descriptionRef.current], {
         yPercent: -10,
         ease: 'none',
@@ -81,21 +74,13 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
       ref={heroRef}
       className="relative min-h-screen flex items-center justify-center pt-48 pb-20 overflow-hidden"
     >
-      {/* ── Hero image ── */}
+      {/* Hero image - object-cover on all screen sizes */}
       <img
         src="/images/hero-bg.jpg"
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover object-center hero-bg-img"
+        className="absolute inset-0 w-full h-full object-cover object-center"
       />
-      {/* Mobile-specific CSS for contain */}
-      <style>{`
-        @media (max-width: 640px) {
-          .hero-bg-img {
-            object-fit: contain !important;
-          }
-        }
-      `}</style>
 
       {/* Gradient overlay for text legibility */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#faf6f0]/90 via-[#faf6f0]/60 to-transparent pointer-events-none" />
@@ -104,8 +89,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
       <div className="relative z-10 w-full px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="max-w-2xl">
           <div className="relative z-10">
-
-          {/* Top Tagline */}
+            {/* Top Tagline */}
             <p
               ref={taglineRef}
               className="text-[#2c2420] text-sm tracking-[0.3em] uppercase mb-8 font-sans font-bold py-2 will-change-transform"
@@ -113,7 +97,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
               Luxury Floral & Tablescape Design
             </p>
 
-          {/* Main Headline */}
+            {/* Main Headline */}
             <h1
               ref={titleRef}
               className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#2c2420] leading-[0.95] will-change-transform"
@@ -128,7 +112,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
               </span>
             </h1>
 
-          {/* Sub-tagline */}
+            {/* Sub-tagline */}
             <p
               ref={subTaglineRef}
               className="font-serif italic font-bold text-[#2c2420] text-2xl md:text-4xl mt-3 mb-8 will-change-transform"
@@ -136,7 +120,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
               Dressing your tables better than your guests
             </p>
 
-          {/* CTA Buttons */}
+            {/* CTA Buttons */}
             <div ref={ctaRef} className="flex flex-col sm:flex-row items-start gap-4 mb-10 will-change-transform">
               <a
                 href="/services"
@@ -152,7 +136,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
               </button>
             </div>
 
-          {/* Description */}
+            {/* Description */}
             <p
               ref={descriptionRef}
               className="font-sans text-[#2c2420]/80 text-lg md:text-xl max-w-xl leading-relaxed will-change-transform mb-8"
@@ -161,7 +145,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
               the art of gathering. Serving Palm Springs and surrounding desert communities.
             </p>
 
-          {/* Meet the Designer Button */}
+            {/* Meet the Designer Button */}
             <button
               onClick={onOpenDesigner}
               className="group inline-flex items-center gap-3 px-6 py-3 bg-[#8f0e04] text-[#faf6f0] hover:bg-[#c9594a] transition-all duration-300 shadow-lg"
@@ -179,7 +163,6 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
               </svg>
             </button>
           </div>
-
         </div>
       </div>
     </section>
