@@ -71,15 +71,16 @@ export default function Services({ onOpenContact }: ServicesProps) {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <div className="relative flex flex-col items-center justify-center mb-20">
-            {/* Blurred box behind header text */}
+            {/* Blurred box behind header and cards */}
             <div
-              className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-xl h-full rounded-2xl"
+              className="absolute left-1/2 -translate-x-1/2 w-full max-w-3xl h-full rounded-2xl"
               style={{
                 background: 'rgba(255,255,255,0.5)',
                 backdropFilter: 'blur(16px)',
                 WebkitBackdropFilter: 'blur(16px)',
                 zIndex: 0,
-                height: '100%',
+                top: 0,
+                height: 'calc(100% + 500px)', // extend down to cover cards
               }}
             />
             <div className="relative z-10 text-center max-w-3xl mx-auto">

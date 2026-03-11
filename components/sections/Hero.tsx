@@ -95,16 +95,6 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
       {/* Content */}
       <div className="relative z-10 w-full px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="max-w-2xl">
-          {/* Blurred background for content */}
-          <div
-            className="absolute inset-0 rounded-xl"
-            style={{
-              background: 'rgba(255,255,255,0.5)',
-              backdropFilter: 'blur(16px)',
-              WebkitBackdropFilter: 'blur(16px)',
-              zIndex: 0,
-            }}
-          />
           <div className="relative z-10">
 
           {/* Top Tagline */}
