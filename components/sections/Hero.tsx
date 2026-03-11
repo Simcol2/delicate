@@ -108,7 +108,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           {/* Top Tagline */}
             <p
               ref={taglineRef}
-              className="text-[#2c2420] text-sm tracking-[0.3em] uppercase mb-8 font-sans font-medium py-2 will-change-transform"
+              className="text-[#2c2420] text-sm tracking-[0.3em] uppercase mb-8 font-sans font-bold py-2 will-change-transform"
             >
               Luxury Floral & Tablescape Design
             </p>
