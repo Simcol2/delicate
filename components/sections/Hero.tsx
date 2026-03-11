@@ -74,13 +74,15 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
       ref={heroRef}
       className="relative min-h-[600px] sm:min-h-screen flex items-center justify-center pt-48 pb-20 overflow-hidden"
     >
-      {/* Hero image - cover on desktop, positioned top on mobile */}
-      <img
-        src="/images/hero-bg.jpg"
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover object-top sm:object-center"
-      />
+      {/* Hero image - contain on mobile (show full image), cover on desktop */}
+      <div className="absolute inset-0 w-full h-full bg-[#faf6f0] sm:bg-transparent">
+        <img
+          src="/images/hero-bg.jpg"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-contain sm:object-cover object-center"
+        />
+      </div>
 
       {/* Gradient overlay for text legibility */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#faf6f0]/90 via-[#faf6f0]/60 to-transparent pointer-events-none" />
