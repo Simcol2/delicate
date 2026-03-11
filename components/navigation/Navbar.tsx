@@ -22,8 +22,8 @@ export default function Navbar() {
       <nav
         className={`fixed top-8 left-0 right-0 z-[100] transition-all duration-500 ${
           isScrolled
-            ? 'bg-[#CC2A7A] py-2'
-            : 'bg-[#CC2A7A] py-3'
+            ? 'bg-[#FAF6F0]/75 backdrop-blur-sm py-2'
+            : 'bg-[#FAF6F0]/20 backdrop-blur-sm py-3'
         }`}
       >
         <div className="w-full px-6 lg:px-12 flex items-center justify-between">
@@ -43,37 +43,37 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-12 relative z-10">
             <a 
               href="/" 
-              className={`text-sm font-sans hover:text-[#C9A96E] transition-colors tracking-widest uppercase font-bold text-white`}
+              className={`text-sm font-sans hover:text-[#CC2A7A] transition-colors tracking-widest uppercase font-bold text-[#1A2744]`}
             >
               Home
             </a>
             <a 
               href="/about" 
-              className={`text-sm font-sans hover:text-[#C9A96E] transition-colors tracking-widest uppercase font-bold text-white`}
+              className={`text-sm font-sans hover:text-[#CC2A7A] transition-colors tracking-widest uppercase font-bold text-[#1A2744]`}
             >
               About
             </a>
             <a 
               href="/services" 
-              className={`text-sm font-sans hover:text-[#C9A96E] transition-colors tracking-widest uppercase font-bold text-white`}
+              className={`text-sm font-sans hover:text-[#CC2A7A] transition-colors tracking-widest uppercase font-bold text-[#1A2744]`}
             >
               Services
             </a>
             <a 
               href="/experiences" 
-              className={`text-sm font-sans hover:text-[#C9A96E] transition-colors tracking-widest uppercase font-bold text-white`}
+              className={`text-sm font-sans hover:text-[#CC2A7A] transition-colors tracking-widest uppercase font-bold text-[#1A2744]`}
             >
               Portfolio
             </a>
             <a 
               href="/faq" 
-              className={`text-sm font-sans hover:text-[#C9A96E] transition-colors tracking-widest uppercase font-bold text-white`}
+              className={`text-sm font-sans hover:text-[#CC2A7A] transition-colors tracking-widest uppercase font-bold text-[#1A2744]`}
             >
               FAQ
             </a>
             <a 
               href="/client/login" 
-              className={`text-sm font-sans hover:text-[#C9A96E] transition-colors tracking-widest uppercase font-bold text-white`}
+              className={`text-sm font-sans hover:text-[#CC2A7A] transition-colors tracking-widest uppercase font-bold text-[#1A2744]`}
             >
               Client Portal
             </a>
@@ -82,9 +82,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(true)}
-            className={`lg:hidden p-2 transition-colors duration-300 ${
-              isScrolled ? 'text-[#2c2420]' : 'text-[#2c2420]'
-            }`}
+            className={`lg:hidden p-2 transition-colors duration-300 text-[#1A2744]`}
             aria-label="Open menu"
           >
             <Menu size={28} />
