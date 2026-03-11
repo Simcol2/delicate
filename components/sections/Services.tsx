@@ -104,7 +104,7 @@ export default function Services({ onOpenContact }: ServicesProps) {
                 >
                   {/* Content at bottom */}
                   <div 
-                    className="absolute bottom-4 left-4 right-4 p-6 md:p-8 flex flex-col justify-center items-center"
+                    className="absolute bottom-4 left-4 right-4 p-6 md:p-8 flex flex-col items-center"
                   >
                     <h3 className="font-serif text-3xl text-[#2c2420] mb-3 drop-shadow-lg leading-tight text-center">
                       <span className="font-bold">{service.title}</span>
