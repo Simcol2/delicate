@@ -17,12 +17,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phoneNumber: '',
     eventType: '',
     date: '',
-    venueName: '',
-    venueLocation: '',
+    location: '',
     guestSize: '',
     message: '',
+    referredBy: '',
     termsAccepted: false,
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -131,7 +132,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       if (response.ok) {
         setSubmitStatus('success')
         setStatusMessage("Thank you! Your inquiry has been sent. We'll be in touch soon.")
-        setFormData({ name: '', email: '', eventType: '', date: '', venueName: '', venueLocation: '', guestSize: '', message: '', termsAccepted: false })
+        setFormData({ name: '', email: '', phoneNumber: '', eventType: '', date: '', location: '', guestSize: '', message: '', referredBy: '', termsAccepted: false })
         setTimeout(() => { handleClose(); setSubmitStatus('idle') }, 2000)
       } else {
         setSubmitStatus('error')
@@ -164,98 +165,103 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             -webkit-overflow-scrolling: touch;
             overscroll-behavior: contain;
             scrollbar-width: thin;
-            scrollbar-color: #c9a96e #f5ede0;
+            scrollbar-color: #C9A96E #FAF6F0;
           }
           .modal-scroll::-webkit-scrollbar {
             width: 8px;
           }
           .modal-scroll::-webkit-scrollbar-track {
-            background: #f5ede0;
+            background: #FAF6F0;
           }
           .modal-scroll::-webkit-scrollbar-thumb {
-            background: #c9a96e;
+            background: #C9A96E;
             border-radius: 4px;
           }
         `}</style>
 
-        <button onClick={handleClose} className="absolute top-4 right-4 z-20 p-2 text-[#2c2420]/60 hover:text-[#8f0e04]">
+        <button onClick={handleClose} className="absolute top-4 right-4 z-20 p-2 text-[#1A2744]/60 hover:text-[#CC2A7A]">
           <X size={24} />
         </button>
 
-        <div className="p-6 border-b border-[#e8d5b0] shrink-0">
-          <span className="text-[#c9594a] text-xs tracking-[0.3em] uppercase block mb-2">Get in Touch</span>
-          <h2 className="font-serif text-2xl md:text-3xl text-[#2c2420]">Book a Consultation</h2>
+        <div className="p-6 border-b border-[#C9A96E] shrink-0 bg-[#FAF6F0]">
+          <span className="text-[#CC2A7A] text-xs tracking-[0.3em] uppercase block mb-2 font-bold">Get in Touch</span>
+          <h2 className="font-serif text-2xl md:text-3xl text-[#1A2744] font-bold">Book a Consultation</h2>
         </div>
 
         <div 
           ref={scrollContainerRef}
-          className="modal-scroll flex-1 p-6"
+          className="modal-scroll flex-1 p-6 bg-[#FAF6F0]"
           style={{ maxHeight: 'calc(90vh - 100px)' }}
         >
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
-                <label className="block text-[#6b5b52] text-xs tracking-widest uppercase mb-2">Your Name</label>
+                <label className="block text-[#1A2744] text-xs tracking-widest uppercase mb-2 font-bold">Your Name</label>
                 <input type="text" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} 
-                  className="w-full bg-transparent border-b border-[#e8d5b0] py-2.5 text-[#2c2420] placeholder:text-[#a89189] text-sm focus:border-[#c9594a] focus:outline-none" placeholder="Jane Doe" required />
+                  className="w-full bg-transparent border-b border-[#C9A96E] py-2.5 text-[#1A2744] placeholder:text-[#1A2744]/50 text-sm focus:border-[#CC2A7A] focus:outline-none" placeholder="Jane Doe" required />
               </div>
               <div>
-                <label className="block text-[#6b5b52] text-xs tracking-widest uppercase mb-2">Email Address</label>
+                <label className="block text-[#1A2744] text-xs tracking-widest uppercase mb-2 font-bold">Email Address</label>
                 <input type="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} 
-                  className="w-full bg-transparent border-b border-[#e8d5b0] py-2.5 text-[#2c2420] placeholder:text-[#a89189] text-sm focus:border-[#c9594a] focus:outline-none" placeholder="jane@email.com" required />
+                  className="w-full bg-transparent border-b border-[#C9A96E] py-2.5 text-[#1A2744] placeholder:text-[#1A2744]/50 text-sm focus:border-[#CC2A7A] focus:outline-none" placeholder="jane@email.com" required />
               </div>
+            </div>
+
+            <div>
+              <label className="block text-[#1A2744] text-xs tracking-widest uppercase mb-2 font-bold">Phone Number</label>
+              <input type="tel" value={formData.phoneNumber} onChange={(e) => setFormData({...formData, phoneNumber: e.target.value})} 
+                className="w-full bg-transparent border-b border-[#C9A96E] py-2.5 text-[#1A2744] placeholder:text-[#1A2744]/50 text-sm focus:border-[#CC2A7A] focus:outline-none" placeholder="(555) 123-4567" />
             </div>
 
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
-                <label className="block text-[#6b5b52] text-xs tracking-widest uppercase mb-2">Event Type</label>
+                <label className="block text-[#1A2744] text-xs tracking-widest uppercase mb-2 font-bold">Event Type</label>
                 <select value={formData.eventType} onChange={(e) => setFormData({...formData, eventType: e.target.value})} 
-                  className="w-full bg-transparent border-b border-[#e8d5b0] py-2.5 text-[#2c2420] text-sm focus:border-[#c9594a] focus:outline-none" required>
-                  <option value="" className="bg-[#fffdf9]">Select an option</option>
-                  <option value="dinner" className="bg-[#fffdf9]">Intimate Dinner</option>
-                  <option value="brunch" className="bg-[#fffdf9]">Brunch Gathering</option>
-                  <option value="celebration" className="bg-[#fffdf9]">Special Celebration</option>
-                  <option value="corporate" className="bg-[#fffdf9]">Corporate Event</option>
-                  <option value="other" className="bg-[#fffdf9]">Other</option>
+                  className="w-full bg-transparent border-b border-[#C9A96E] py-2.5 text-[#1A2744] text-sm focus:border-[#CC2A7A] focus:outline-none" required>
+                  <option value="" className="bg-[#FAF6F0]">Select an option</option>
+                  <option value="dinner" className="bg-[#FAF6F0]">Intimate Dinner</option>
+                  <option value="brunch" className="bg-[#FAF6F0]">Brunch Gathering</option>
+                  <option value="celebration" className="bg-[#FAF6F0]">Special Celebration</option>
+                  <option value="corporate" className="bg-[#FAF6F0]">Corporate Event</option>
+                  <option value="other" className="bg-[#FAF6F0]">Other</option>
                 </select>
               </div>
               <div>
-                <label className="block text-[#6b5b52] text-xs tracking-widest uppercase mb-2">Event Date</label>
+                <label className="block text-[#1A2744] text-xs tracking-widest uppercase mb-2 font-bold">Event Date</label>
                 <input type="date" value={formData.date} onChange={(e) => setFormData({...formData, date: e.target.value})} 
-                  className="w-full bg-transparent border-b border-[#e8d5b0] py-2.5 text-[#2c2420] text-sm" />
-              </div>
-            </div>
-
-            <div className="grid sm:grid-cols-2 gap-5">
-              <div>
-                <label className="block text-[#6b5b52] text-xs tracking-widest uppercase mb-2">Venue Name</label>
-                <input type="text" value={formData.venueName} onChange={(e) => setFormData({...formData, venueName: e.target.value})} 
-                  className="w-full bg-transparent border-b border-[#e8d5b0] py-2.5 text-[#2c2420] placeholder:text-[#a89189] text-sm focus:border-[#c9594a] focus:outline-none" placeholder="Enter venue name" />
-              </div>
-              <div>
-                <label className="block text-[#6b5b52] text-xs tracking-widest uppercase mb-2">Venue Location</label>
-                <input type="text" value={formData.venueLocation} onChange={(e) => setFormData({...formData, venueLocation: e.target.value})} 
-                  className="w-full bg-transparent border-b border-[#e8d5b0] py-2.5 text-[#2c2420] placeholder:text-[#a89189] text-sm focus:border-[#c9594a] focus:outline-none" placeholder="Enter venue location" />
+                  className="w-full bg-transparent border-b border-[#C9A96E] py-2.5 text-[#1A2744] text-sm" />
               </div>
             </div>
 
             <div>
-              <label className="block text-[#6b5b52] text-xs tracking-widest uppercase mb-2">Guest Size</label>
+              <label className="block text-[#1A2744] text-xs tracking-widest uppercase mb-2 font-bold">Location</label>
+              <input type="text" value={formData.location} onChange={(e) => setFormData({...formData, location: e.target.value})} 
+                className="w-full bg-transparent border-b border-[#C9A96E] py-2.5 text-[#1A2744] placeholder:text-[#1A2744]/50 text-sm focus:border-[#CC2A7A] focus:outline-none" placeholder="Enter location" />
+            </div>
+
+            <div>
+              <label className="block text-[#1A2744] text-xs tracking-widest uppercase mb-2 font-bold">Guest Size</label>
               <input type="text" value={formData.guestSize} onChange={(e) => setFormData({...formData, guestSize: e.target.value})} 
-                className="w-full bg-transparent border-b border-[#e8d5b0] py-2.5 text-[#2c2420] placeholder:text-[#a89189] text-sm focus:border-[#c9594a] focus:outline-none" placeholder="Number of guests" />
+                className="w-full bg-transparent border-b border-[#C9A96E] py-2.5 text-[#1A2744] placeholder:text-[#1A2744]/50 text-sm focus:border-[#CC2A7A] focus:outline-none" placeholder="Number of guests" />
             </div>
 
             <div>
-              <label className="block text-[#6b5b52] text-xs tracking-widest uppercase mb-2">Tell Us About Your Vision</label>
+              <label className="block text-[#1A2744] text-xs tracking-widest uppercase mb-2 font-bold">Tell Us About Your Vision</label>
               <textarea value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} rows={3}
-                className="w-full bg-transparent border-b border-[#e8d5b0] py-2.5 text-[#2c2420] resize-none placeholder:text-[#a89189] text-sm focus:border-[#c9594a] focus:outline-none" placeholder="Share your ideas, guest count, preferred style..." required />
+                className="w-full bg-transparent border-b border-[#C9A96E] py-2.5 text-[#1A2744] resize-none placeholder:text-[#1A2744]/50 text-sm focus:border-[#CC2A7A] focus:outline-none" placeholder="Share your ideas, guest count, preferred style..." required />
+            </div>
+
+            <div>
+              <label className="block text-[#1A2744] text-xs tracking-widest uppercase mb-2 font-bold">Referred By</label>
+              <input type="text" value={formData.referredBy} onChange={(e) => setFormData({...formData, referredBy: e.target.value})} 
+                className="w-full bg-transparent border-b border-[#C9A96E] py-2.5 text-[#1A2744] placeholder:text-[#1A2744]/50 text-sm focus:border-[#CC2A7A] focus:outline-none" placeholder="How did you hear about us?" />
             </div>
 
             <div className="flex items-start gap-3 pt-2">
               <input type="checkbox" id="terms" checked={formData.termsAccepted} 
-                onChange={(e) => setFormData({...formData, termsAccepted: e.target.checked})} className="mt-1 w-4 h-4 accent-[#8f0e04]" />
-              <label htmlFor="terms" className="text-[#6b5b52] text-sm">
-                I have read and agree to the <a href="/terms" target="_blank" className="text-[#8f0e04] underline hover:text-[#c9594a]">Terms of Service</a>
+                onChange={(e) => setFormData({...formData, termsAccepted: e.target.checked})} className="mt-1 w-4 h-4 accent-[#CC2A7A]" />
+              <label htmlFor="terms" className="text-[#1A2744] text-sm">
+                I have read and agree to the <a href="/terms" target="_blank" className="text-[#CC2A7A] underline hover:text-[#1A2744]">Terms of Service</a>
               </label>
             </div>
 
@@ -267,7 +273,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             )}
 
             <button type="submit" disabled={isSubmitting} 
-              className="w-full px-8 py-3 bg-[#8f0e04] text-[#faf6f0] text-sm tracking-widest uppercase hover:bg-[#c9594a] transition-colors disabled:opacity-50">
+              className="w-full px-8 py-3 bg-[#CC2A7A] text-white text-sm tracking-widest uppercase hover:bg-[#1A2744] transition-colors disabled:opacity-50 font-bold">
               {isSubmitting ? 'Sending...' : 'Send Inquiry'}
             </button>
           </form>

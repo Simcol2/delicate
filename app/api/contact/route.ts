@@ -10,7 +10,7 @@ const TO_EMAIL = 'hello@delicateflowers.co';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, eventType, date, venueName, venueLocation, guestSize, message } = body;
+    const { name, email, phoneNumber, eventType, date, location, guestSize, message, referredBy } = body;
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -36,13 +36,14 @@ export async function POST(request: Request) {
             <h2>New Contact Form Submission</h2>
             <p><strong>Name:</strong> ${name}</p>
             <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone Number:</strong> ${phoneNumber || 'Not specified'}</p>
             <p><strong>Event Type:</strong> ${eventType || 'Not specified'}</p>
             <p><strong>Event Date:</strong> ${date || 'Not specified'}</p>
-            <p><strong>Venue Name:</strong> ${venueName || 'Not specified'}</p>
-            <p><strong>Venue Location:</strong> ${venueLocation || 'Not specified'}</p>
+            <p><strong>Location:</strong> ${location || 'Not specified'}</p>
             <p><strong>Guest Size:</strong> ${guestSize || 'Not specified'}</p>
             <p><strong>Message:</strong></p>
             <p>${message.replace(/\n/g, '<br>')}</p>
+            <p><strong>Referred By:</strong> ${referredBy || 'Not specified'}</p>
           `,
           reply_to: email,
         }),
@@ -67,12 +68,13 @@ export async function POST(request: Request) {
     console.log('Contact form submission:', {
       name,
       email,
+      phoneNumber,
       eventType,
       date,
-      venueName,
-      venueLocation,
+      location,
       guestSize,
       message,
+      referredBy,
       to: TO_EMAIL,
     });
 
