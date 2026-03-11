@@ -139,7 +139,7 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
               <p className="text-[#c4897a] text-sm sm:text-base italic mb-4">April is your local crafty mamma bear that would love an invite to your next event!</p>
 
               <div className="space-y-3 text-[#6b5b52] text-sm sm:text-base leading-relaxed">
-                <p>I'm an event stylist who believes a beautiful gathering is really about how people feel when they're sitting at the table.</p>
+                <p>I'm an event stylist who believes a beautiful gathering is really about making people feel special when they're sitting at the table.</p>
                 <p>I'm known for bold florals, layered place settings, and that golden-hour glow that makes everyone linger a little longer.</p>
                 <p>I have spent years perfecting the little details most people overlook. Napkins can be bunny ears and everything should sparkle.</p>
                 <p className="text-[#2c2420] font-medium italic border-l-2 border-[#c9a96e] pl-4 mt-4">
