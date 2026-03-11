@@ -124,7 +124,7 @@ export default function FAQPage() {
                   </span>
                   <span 
                     className={`flex-shrink-0 w-8 h-8 rounded-full border border-[#CC2A7A] flex items-center justify-center transition-all duration-300 ${
-                      openIndex === index ? 'bg-[#c9594a] rotate-45' : ''
+                      openIndex === index ? 'bg-[#CC2A7A] rotate-45' : ''
                     }`}
                   >
                     <Plus 
@@ -184,7 +184,7 @@ export default function FAQPage() {
           <div className="text-center mt-16">
             <a
               href="/"
-              className="inline-block px-10 py-4 border-2 border-[#CC2A7A] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#CC2A7A] hover:text-[#faf6f0] transition-all duration-300"
+              className="inline-block px-10 py-4 border-2 border-[#CC2A7A] text-[#CC2A7A] font-sans text-sm tracking-widest uppercase hover:bg-[#CC2A7A] hover:text-[#faf6f0] transition-all duration-300"
             >
               Back to Home
             </a>
