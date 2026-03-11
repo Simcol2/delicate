@@ -86,9 +86,9 @@ export default function Services({ onOpenContact }: ServicesProps) {
               What We Offer
             </span>
             <h2 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-[#2c2420] leading-tight mb-6 drop-shadow-lg">
-              Three Elements
-              <br />
-              <span className="text-[#faf6f0] drop-shadow-md">Of Style</span>
+                Three Elements
+                <br />
+                <span className="text-[#faf6f0] drop-shadow-md" style={{ fontFamily: 'var(--font-script), cursive' }}>Of Style</span>
             </h2>
             <p className="font-sans text-[#2c2420]/80 text-lg mb-10">
               Every gathering deserves intentional design. Our curated approach 
@@ -107,7 +107,7 @@ export default function Services({ onOpenContact }: ServicesProps) {
                     className="absolute bottom-4 left-4 right-4 p-6 md:p-8 flex flex-col justify-center items-center"
                   >
                     <h3 className="font-serif text-3xl text-[#2c2420] mb-3 drop-shadow-lg leading-tight text-center">
-                      {service.title}
+                      <span className="font-bold">{service.title}</span>
                     </h3>
                     <p className="font-sans text-[#2c2420] text-sm leading-relaxed drop-shadow-md text-center">
                       {service.description}
