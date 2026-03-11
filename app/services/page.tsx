@@ -143,14 +143,14 @@ export default function ServicesPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#faf6f0] pt-32 pb-0">
+      <main className="min-h-screen bg-[#FAF6F0] pt-32 pb-0">
         <div className="w-full">
           {/* Header */}
           <header className="text-center px-6 pt-10 pb-16 max-w-2xl mx-auto">
             <span className="text-[#CC2A7A] text-xs tracking-[0.35em] uppercase font-sans block mb-5">
               Every detail. Every table. Every time.
             </span>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white leading-tight">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#1A2744] leading-tight font-bold">
               Packages designed<br />
               for <em className="text-[#CC2A7A] italic">moments that matter.</em>
             </h1>
@@ -166,7 +166,7 @@ export default function ServicesPage() {
           </header>
 
           {/* Pricing Note */}
-          <p className="text-center text-xs tracking-wide text-[#a89189] max-w-md mx-auto px-6 mb-14">
+          <p className="text-center text-xs tracking-wide text-[#1A2744]/70 max-w-md mx-auto px-6 mb-14">
             Pricing shown is a starting figure. Final quotes are tailored to your guest count, styling scope, and add-ons selected. A consultation is required to confirm your custom total.
           </p>
 
@@ -176,7 +176,7 @@ export default function ServicesPage() {
               <div
                 key={pkg.id}
                 className={`pkg-card p-10 md:p-12 relative opacity-0 transition-shadow duration-300 hover:shadow-[0_20px_60px_rgba(44,36,32,0.08)] hover:z-10 flex flex-col ${
-                  pkg.featured ? 'bg-[#1A2744]' : 'bg-[#fffdf9]'
+                  pkg.featured ? 'bg-[#1A2744]' : 'bg-[#FFFDF9]'
                 }`}
               >
                 {/* Badge */}
@@ -187,7 +187,7 @@ export default function ServicesPage() {
                 </span>
 
                 {/* Name */}
-                <h2 className="font-serif text-4xl md:text-5xl font-bold tracking-tight leading-none text-white">
+                <h2 className={`font-serif text-4xl md:text-5xl font-bold tracking-tight leading-none ${pkg.featured ? 'text-white' : 'text-[#1A2744]'}`}>
                   {pkg.name}
                 </h2>
 
@@ -201,7 +201,7 @@ export default function ServicesPage() {
                 </span>
 
                 {/* Divider */}
-                <div className="w-9 h-[1px] my-7 bg-[#c9a96e]" />
+                <div className="w-9 h-[1px] my-7 bg-[#C9A96E]" />
 
                 {/* Description */}
                 <p className={`text-sm leading-[1.85] mb-8 ${
@@ -233,10 +233,10 @@ export default function ServicesPage() {
                 <div className={`pt-7 border-t mt-auto ${
                   pkg.featured ? 'border-white/20' : 'border-[#C9A96E]'
                 }`}>
-                  <span className="text-[10px] font-medium tracking-[0.28em] uppercase block mb-1.5 text-white/70">
+                  <span className={`text-[10px] font-medium tracking-[0.28em] uppercase block mb-1.5 ${pkg.featured ? 'text-white/70' : 'text-[#1A2744]/70'}`}>
                     Starting at
                   </span>
-                  <span className="font-serif text-4xl font-light leading-none text-white">
+                  <span className={`font-serif text-4xl font-light leading-none ${pkg.featured ? 'text-white' : 'text-[#1A2744]'}`}>
                     {pkg.price}
                   </span>
                   <p className="text-xs mt-1 text-white/70">
