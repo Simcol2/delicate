@@ -30,10 +30,10 @@ export default function Navbar() {
           {/* Logo Image */}
           <a 
             href="/" 
-            className="relative h-16 w-64 lg:h-20 lg:w-80 transition-all duration-300"
+            className="relative h-20 w-72 lg:h-28 lg:w-96 transition-all duration-300"
           >
             <img
-              src="/images/Delicate Flower-2-LOGO TRANSPARENT (2).png"
+              src="/images/df-logo.png"
               alt="Delicate Flowers"
               className="h-full w-auto object-contain object-left"
             />
