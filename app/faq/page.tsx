@@ -77,17 +77,17 @@ export default function FAQPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#faf6f0] pt-32 pb-20">
+      <main className="min-h-screen bg-[#FAF6F0] pt-32 pb-20">
         <div className="w-full px-6 lg:px-12">
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[#c9594a] text-sm tracking-[0.3em] uppercase font-sans block mb-4">
+            <span className="text-[#CC2A7A] text-sm tracking-[0.3em] uppercase font-sans block mb-4">
               You have questions
             </span>
-            <h1 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-[#2c2420] leading-tight mb-6">
-              We have <em className="text-[#c9594a] italic">answers.</em>
+            <h1 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-[#1A2744] leading-tight mb-6 font-bold">
+              We have <em className="text-[#CC2A7A] italic">answers.</em>
             </h1>
-            <p className="font-sans text-[#6b5b52] text-lg max-w-md mx-auto">
+            <p className="font-sans text-[#1A2744] text-lg max-w-md mx-auto">
               Everything you need to know before we start designing the table of your dreams.
             </p>
             {/* Divider */}
@@ -99,25 +99,25 @@ export default function FAQPage() {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="faq-item border-t border-[#c9594a]/30 first:border-t-0 last:border-b last:border-[#c9594a]/30"
+                className="faq-item border-t border-[#CC2A7A]/30 first:border-t-0 last:border-b last:border-[#CC2A7A]/30"
               >
                 <button
                   onClick={() => toggleFAQ(index)}
                   className="w-full flex items-center justify-between gap-6 py-7 text-left group"
                   aria-expanded={openIndex === index}
                 >
-                  <span className="font-serif text-lg md:text-xl text-[#2c2420] group-hover:text-[#c9594a] transition-colors duration-300 leading-snug">
+                  <span className="font-serif text-lg md:text-xl text-[#1A2744] group-hover:text-[#CC2A7A] font-bold transition-colors duration-300 leading-snug">
                     {faq.question}
                   </span>
                   <span 
-                    className={`flex-shrink-0 w-8 h-8 rounded-full border border-[#c9594a] flex items-center justify-center transition-all duration-300 ${
+                    className={`flex-shrink-0 w-8 h-8 rounded-full border border-[#CC2A7A] flex items-center justify-center transition-all duration-300 ${
                       openIndex === index ? 'bg-[#c9594a] rotate-45' : ''
                     }`}
                   >
                     <Plus 
                       size={16} 
                       className={`transition-colors duration-300 ${
-                        openIndex === index ? 'text-[#faf6f0]' : 'text-[#c9594a]'
+                        openIndex === index ? 'text-[#faf6f0]' : 'text-[#CC2A7A]'
                       }`} 
                     />
                   </span>
@@ -127,7 +127,7 @@ export default function FAQPage() {
                     openIndex === index ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
                   }`}
                 >
-                  <p className="font-sans text-[#6b5b52] text-[15px] leading-[1.85] pb-7 pr-12 whitespace-pre-line">
+                  <p className="font-sans text-[#1A2744] text-[15px] leading-[1.85] pb-7 pr-12 whitespace-pre-line">
                     {faq.answer}
                   </p>
                 </div>
@@ -137,16 +137,16 @@ export default function FAQPage() {
 
           {/* CTA Banner - Updated to Crimson */}
           <div className="max-w-3xl mx-auto mt-16">
-            <div className="bg-[#8f0e04] rounded-lg p-10 md:p-12 text-center">
+            <div className="bg-[#CC2A7A] rounded-lg p-10 md:p-12 text-center">
               <p className="font-serif text-2xl md:text-3xl text-[#faf6f0] leading-relaxed">
-                Still have questions? <em className="text-[#c9a96e] italic">We&apos;d love to hear from you.</em>
+                Still have questions? <em className="text-[#C9A96E] italic">We&apos;d love to hear from you.</em>
               </p>
               <p className="font-sans text-[#faf6f0]/60 text-sm mt-4 tracking-wide">
                 Call us or book a complimentary 15-minute phone consultation, no commitment required.
               </p>
               <a
                 href="/#contact"
-                className="inline-block mt-8 px-10 py-4 border-2 border-[#faf6f0] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#faf6f0] hover:text-[#8f0e04] transition-all duration-300"
+                className="inline-block mt-8 px-10 py-4 border-2 border-[#faf6f0] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#FAF6F0] hover:text-[#CC2A7A] transition-all duration-300"
               >
                 Schedule a Call
               </a>
@@ -157,7 +157,7 @@ export default function FAQPage() {
           <div className="text-center mt-16">
             <a
               href="/"
-              className="inline-block px-10 py-4 border-2 border-[#8f0e04] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#8f0e04] hover:text-[#faf6f0] transition-all duration-300"
+              className="inline-block px-10 py-4 border-2 border-[#CC2A7A] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#CC2A7A] hover:text-[#faf6f0] transition-all duration-300"
             >
               Back to Home
             </a>

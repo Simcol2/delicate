@@ -33,7 +33,7 @@ export default function Navbar() {
             className="relative h-16 w-60 lg:h-20 lg:w-80 transition-all duration-300 z-10"
           >
             <img
-              src="/images/df-logo.png"
+              src="/images/Delicate Flower-4-LOGO TRANSPARENT.png"
               alt="Delicate Flowers"
               className="h-full w-auto object-contain object-left"
             />

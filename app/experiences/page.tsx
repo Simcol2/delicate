@@ -181,17 +181,17 @@ export default function ExperiencesPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#faf6f0] pt-32 pb-20">
+      <main className="min-h-screen bg-[#FAF6F0] pt-32 pb-20">
         <div className="w-full px-6 lg:px-12">
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[#c9594a] text-sm tracking-[0.3em] uppercase font-sans block mb-4">
+            <span className="text-[#CC2A7A] text-sm tracking-[0.3em] uppercase font-sans block mb-4">
               Our Work
             </span>
-            <h1 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-[#2c2420] leading-tight mb-6">
+            <h1 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-[#1A2744] leading-tight mb-6 font-bold">
               Experiences
             </h1>
-            <p className="font-sans text-[#6b5b52] text-lg">
+            <p className="font-sans text-[#1A2744] text-lg">
               Each gathering tells a unique story. Click on any album to explore the photos.
             </p>
           </div>
@@ -210,7 +210,7 @@ export default function ExperiencesPage() {
                     alt={folder.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-[#8f0e04]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-[#CC2A7A]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <span className="text-[#faf6f0] font-sans text-sm tracking-widest uppercase border border-[#faf6f0] px-6 py-3">
                       View Photos
                     </span>
@@ -225,7 +225,7 @@ export default function ExperiencesPage() {
                     </div>
                   )}
                 </div>
-                <h3 className="font-serif text-2xl text-[#2c2420] mb-1">
+                <h3 className="font-serif text-2xl text-[#1A2744] mb-1 font-bold">
                   {folder.name}
                 </h3>
               </div>
@@ -236,13 +236,13 @@ export default function ExperiencesPage() {
           <div className="text-center mt-16 flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => setIsContactModalOpen(true)}
-              className="inline-block px-10 py-4 bg-[#8f0e04] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#c9594a] transition-all duration-300"
+              className="inline-block px-10 py-4 bg-[#CC2A7A] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#1A2744] transition-all duration-300"
             >
               Book a Consultation
             </button>
             <a
               href="/"
-              className="inline-block px-10 py-4 border-2 border-[#8f0e04] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#8f0e04] hover:text-[#faf6f0] transition-all duration-300"
+              className="inline-block px-10 py-4 border-2 border-[#CC2A7A] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#CC2A7A] hover:text-[#faf6f0] transition-all duration-300"
             >
               Back to Home
             </a>
@@ -264,8 +264,8 @@ export default function ExperiencesPage() {
         >
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
           
-          <div className={`relative bg-[#2c2420] rounded-lg shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden transition-all duration-300 ${isVisible ? 'scale-100' : 'scale-95'}`}>
-            <button onClick={closeModal} className="absolute top-4 right-4 z-20 p-2 bg-[#faf6f0]/10 hover:bg-[#faf6f0]/20 rounded-full text-[#faf6f0]">
+          <div className={`relative bg-[#1A2744] rounded-lg shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden transition-all duration-300 ${isVisible ? 'scale-100' : 'scale-95'}`}>
+            <button onClick={closeModal} className="absolute top-4 right-4 z-20 p-2 bg-[#FAF6F0]/10 hover:bg-[#FAF6F0]/20 rounded-full text-[#faf6f0]">
               <X size={24} />
             </button>
 
@@ -278,7 +278,7 @@ export default function ExperiencesPage() {
 
             <div className="relative flex items-center justify-center bg-[#1a1a1a] min-h-[60vh] max-h-[80vh]">
               {selectedFolder.photos.length > 1 && (
-                <button onClick={(e) => { e.stopPropagation(); prevPhoto() }} className="absolute left-4 z-20 p-3 bg-[#faf6f0]/10 hover:bg-[#faf6f0]/20 rounded-full text-[#faf6f0]">
+                <button onClick={(e) => { e.stopPropagation(); prevPhoto() }} className="absolute left-4 z-20 p-3 bg-[#FAF6F0]/10 hover:bg-[#FAF6F0]/20 rounded-full text-[#faf6f0]">
                   <ChevronLeft size={32} />
                 </button>
               )}
@@ -292,7 +292,7 @@ export default function ExperiencesPage() {
               </div>
 
               {selectedFolder.photos.length > 1 && (
-                <button onClick={(e) => { e.stopPropagation(); nextPhoto() }} className="absolute right-4 z-20 p-3 bg-[#faf6f0]/10 hover:bg-[#faf6f0]/20 rounded-full text-[#faf6f0]">
+                <button onClick={(e) => { e.stopPropagation(); nextPhoto() }} className="absolute right-4 z-20 p-3 bg-[#FAF6F0]/10 hover:bg-[#FAF6F0]/20 rounded-full text-[#faf6f0]">
                   <ChevronRight size={32} />
                 </button>
               )}
@@ -300,7 +300,7 @@ export default function ExperiencesPage() {
 
             {/* Thumbnail Navigation */}
             {selectedFolder.photos.length > 1 && (
-              <div className="bg-[#2c2420] p-4">
+              <div className="bg-[#1A2744] p-4">
                 <div className="flex gap-2 overflow-x-auto pb-2 justify-center custom-scroll">
                   {selectedFolder.photos.map((photo, index) => (
                     <button
@@ -308,7 +308,7 @@ export default function ExperiencesPage() {
                       onClick={() => setCurrentPhotoIndex(index)}
                       className={`flex-shrink-0 w-16 h-16 rounded overflow-hidden transition-all duration-200 ${
                         index === currentPhotoIndex 
-                          ? 'ring-2 ring-[#c9a96e] opacity-100' 
+                          ? 'ring-2 ring-[#C9A96E] opacity-100' 
                           : 'opacity-50 hover:opacity-80'
                       }`}
                     >
@@ -324,11 +324,11 @@ export default function ExperiencesPage() {
             )}
 
             {/* Book a Consultation Button */}
-            <div className="bg-[#2c2420] p-4 pt-0 flex justify-center">
+            <div className="bg-[#1A2744] p-4 pt-0 flex justify-center">
               <a
                 href="/#contact"
                 onClick={closeModal}
-                className="inline-block px-8 py-3 bg-[#8f0e04] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#c9594a] transition-colors duration-300"
+                className="inline-block px-8 py-3 bg-[#CC2A7A] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#1A2744] transition-colors duration-300"
               >
                 Book a Consultation
               </a>
