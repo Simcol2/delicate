@@ -83,7 +83,7 @@ export default function Services({ onOpenContact }: ServicesProps) {
           />
           <div className="relative z-10 text-center max-w-3xl mx-auto py-10">
             <span className="text-[#8f0e04] text-sm tracking-[0.3em] uppercase font-sans block mb-4 font-medium">
-              What We Offer
+              <span className="font-bold">What We Offer</span>
             </span>
             <h2 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-[#2c2420] leading-tight mb-6 drop-shadow-lg">
                 Three Elements

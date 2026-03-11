@@ -49,7 +49,7 @@ export default function About() {
           <div className="bg-[#fffdf9] border border-[#c9a96e]/20 p-8 lg:p-16 max-w-4xl mx-auto shadow-lg">
             <div ref={contentRef}>
               <span className="text-[#c9594a] text-sm tracking-[0.3em] uppercase font-sans block mb-4 font-medium">
-                Our Story
+                <span className="font-bold">Our Story</span>
               </span>
               
               <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-[#2c2420] leading-tight mb-8">
