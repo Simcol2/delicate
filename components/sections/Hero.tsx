@@ -80,10 +80,11 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
       ref={heroRef}
       className="relative min-h-screen flex items-center justify-center pt-48 pb-20 bg-hero-image bg-cover bg-center"
       style={{
-        backgroundImage: 'url(/images/hero-bg.jpg)', // Update path as needed
-        backgroundPosition: 'center',
+        backgroundImage: 'url(/images/hero-bg.jpg)',
+        backgroundPosition: 'center center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'scroll', // scroll not fixed - fixed breaks iOS
       }}
     >
       {/* Responsive background fix for iOS */}
