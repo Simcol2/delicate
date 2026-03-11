@@ -27,10 +27,10 @@ export default function Navbar() {
         }`}
       >
         <div className="w-full px-6 lg:px-12 flex items-center justify-between">
-          {/* Logo Image - Desktop only */}
+          {/* Logo Image */}
           <a 
             href="/" 
-            className="hidden lg:block relative h-16 w-60 lg:h-20 lg:w-80 transition-all duration-300"
+            className="relative h-16 w-60 lg:h-20 lg:w-80 transition-all duration-300"
           >
             <img
               src="/images/df-logo.png"
@@ -38,11 +38,6 @@ export default function Navbar() {
               className="h-full w-auto object-contain object-left"
             />
           </a>
-
-          {/* Mobile Brand Name - Centered */}
-          <span className="lg:hidden absolute left-1/2 -translate-x-1/2 font-serif text-lg text-[#1A2744] tracking-wide whitespace-nowrap">
-            Delicate by design.
-          </span>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-12 relative z-10">
