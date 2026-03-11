@@ -42,6 +42,14 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-12 relative z-10">
             <a 
+              href="/" 
+              className={`text-sm font-sans hover:text-[#8f0e04] transition-colors tracking-widest uppercase ${
+                isScrolled ? 'text-white' : 'text-[#2c2420]'
+              }`}
+            >
+              Home
+            </a>
+            <a 
               href="/about" 
               className={`text-sm font-sans hover:text-[#8f0e04] transition-colors tracking-widest uppercase ${
                 isScrolled ? 'text-white' : 'text-[#2c2420]'
