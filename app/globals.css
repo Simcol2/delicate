@@ -56,6 +56,11 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+/* Nav links and uppercase tracking text should be bold */
+.font-sans.tracking-widest.uppercase {
+  font-weight: 700;
+}
+
 /* Smooth Scroll Container */
 .lenis.lenis-smooth {
   scroll-behavior: auto;
