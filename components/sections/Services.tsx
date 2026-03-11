@@ -121,12 +121,12 @@ export default function Services({ onOpenContact }: ServicesProps) {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <p className="font-sans text-[#2c2420]/80 text-sm mb-6">
+          <p className="font-sans text-white font-bold text-sm mb-6">
             Not sure what you need? Let&apos;s discuss your vision.
           </p>
           <button
             onClick={onOpenContact}
-            className="inline-block px-10 py-4 border-2 border-[#8f0e04] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#8f0e04] hover:text-[#faf6f0] transition-all duration-300"
+            className="inline-block px-10 py-4 bg-[#c9594a] text-white font-sans text-sm tracking-widest uppercase hover:bg-[#8f0e04] hover:text-[#faf6f0] transition-all duration-300 border-2 border-[#c9594a]"
           >
             Schedule a Call
           </button>
