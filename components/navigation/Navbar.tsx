@@ -20,17 +20,17 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-10 left-0 right-0 z-[100] transition-all duration-500 ${
+        className={`fixed top-8 left-0 right-0 z-[100] transition-all duration-500 ${
           isScrolled
-            ? 'bg-[#c9594a]/95 backdrop-blur-md py-3'
-            : 'bg-transparent py-5'
+            ? 'bg-[#c9594a]/95 backdrop-blur-md py-2'
+            : 'bg-transparent py-3'
         }`}
       >
         <div className="w-full px-6 lg:px-12 flex items-center justify-between">
           {/* Logo Image */}
           <a 
             href="/" 
-            className="relative h-20 w-72 lg:h-28 lg:w-96 transition-all duration-300"
+            className="relative h-16 w-60 lg:h-20 lg:w-80 transition-all duration-300"
           >
             <img
               src="/images/df-logo.png"
