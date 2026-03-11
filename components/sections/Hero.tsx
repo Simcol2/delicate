@@ -127,7 +127,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           {/* Top Tagline */}
           <p
             ref={taglineRef}
-            className="text-[#c9594a] text-sm tracking-[0.3em] uppercase mb-8 font-sans font-medium py-2 will-change-transform"
+            className="text-[#8f0e04] text-sm tracking-[0.3em] uppercase mb-8 font-sans font-medium py-2 will-change-transform"
           >
             Luxury Floral & Tablescape Design
           </p>
@@ -148,7 +148,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           {/* Sub-tagline */}
           <p 
             ref={subTaglineRef}
-            className="font-serif italic text-[#c4897a] text-xl md:text-2xl mt-3 mb-8 will-change-transform"
+            className="font-serif italic text-[#8f0e04] text-xl md:text-2xl mt-3 mb-8 will-change-transform"
           >
             Dressing your tables better than your guests
           </p>
