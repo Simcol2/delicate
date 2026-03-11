@@ -74,15 +74,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
       ref={heroRef}
       className="relative min-h-[600px] sm:min-h-screen flex items-center justify-center pt-48 pb-20 overflow-hidden"
     >
-      {/* Hero image */}
-      <img
-        src="/images/Gemini_Generated_Image_7pemq97pemq97pem.png"
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover object-center"
-      />
-
-      {/* Gradient overlay for text legibility */}
+      {/* Gradient overlay for text legibility - lets page background show through */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#faf6f0]/90 via-[#faf6f0]/60 to-transparent pointer-events-none" />
 
       {/* Content */}
