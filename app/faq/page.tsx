@@ -18,7 +18,20 @@ For clients who are ready to move forward, we require a site visit consultation 
   },
   {
     question: 'What types of events do you style?',
-    answer: `We love them all, weddings, bridal and baby showers, birthday dinners, corporate gatherings, holiday celebrations, intimate dinner parties, and everything in between. If you're bringing people together around a beautiful table, we want to be part of it.`
+    answer: `We love them all:
+
+• Weddings
+• Bridal Events
+• Baby Showers
+• Birthday Dinners
+• Corporate Gatherings
+• Holiday Celebrations
+• Intimate Dinner Parties
+
+And everything in between!
+
+If you're bringing people together around a beautiful table, we want to be part of it.`,
+    hasScriptLine: true
   },
   {
     question: 'How far in advance should I book?',
@@ -91,7 +104,7 @@ export default function FAQPage() {
               Everything you need to know before we start designing the table of your dreams.
             </p>
             {/* Divider */}
-            <div className="w-[60px] h-[1px] bg-[#c9594a] mx-auto mt-8" />
+            <div className="w-[60px] h-[1px] bg-[#CC2A7A] mx-auto mt-8" />
           </div>
 
           {/* FAQ Section */}
@@ -124,12 +137,26 @@ export default function FAQPage() {
                 </button>
                 <div 
                   className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-                    openIndex === index ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
+                    openIndex === index ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
                   }`}
                 >
-                  <p className="font-sans text-[#1A2744] text-[15px] leading-[1.85] pb-7 pr-12 whitespace-pre-line">
-                    {faq.answer}
-                  </p>
+                  {faq.hasScriptLine ? (
+                    <div className="font-sans text-[#1A2744] text-[15px] leading-[1.85] pb-7 pr-12 whitespace-pre-line">
+                      {faq.answer.split('\n').map((line, i) => (
+                        line === 'And everything in between!' ? (
+                          <span key={i} style={{ fontFamily: 'var(--font-script), cursive' }} className="text-[#CC2A7A] text-xl block my-2">
+                            {line}
+                          </span>
+                        ) : (
+                          <span key={i} className="block">{line}</span>
+                        )
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="font-sans text-[#1A2744] text-[15px] leading-[1.85] pb-7 pr-12 whitespace-pre-line">
+                      {faq.answer}
+                    </p>
+                  )}
                 </div>
               </div>
             ))}
