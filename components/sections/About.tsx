@@ -53,7 +53,7 @@ export default function About() {
                 Creating Moments
                 <br />
                 <span 
-                  className="text-[#c9594a] font-bold"
+                  className="text-[#CC2A7A] font-bold"
                   style={{ fontFamily: 'var(--font-script), cursive' }}
                 >
                   That Linger

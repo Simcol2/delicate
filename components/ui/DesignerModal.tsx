@@ -105,21 +105,21 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
             -webkit-overflow-scrolling: touch;
             overscroll-behavior: contain;
             scrollbar-width: thin;
-            scrollbar-color: #c9a96e #f5ede0;
+            scrollbar-color: #C9A96E #FAF6F0;
           }
           .modal-scroll::-webkit-scrollbar {
             width: 8px;
           }
           .modal-scroll::-webkit-scrollbar-track {
-            background: #f5ede0;
+            background: #FAF6F0;
           }
           .modal-scroll::-webkit-scrollbar-thumb {
-            background: #c9a96e;
+            background: #C9A96E;
             border-radius: 4px;
           }
         `}</style>
 
-        <button onClick={handleClose} className="absolute top-3 right-3 z-20 p-2 bg-white/90 rounded-full text-[#2c2420]/60 hover:text-[#8f0e04] shadow-sm">
+        <button onClick={handleClose} className="absolute top-3 right-3 z-20 p-2 bg-white/90 rounded-full text-[#1A2744]/60 hover:text-[#CC2A7A] shadow-sm">
           <X size={24} />
         </button>
 
@@ -131,23 +131,23 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
             </div>
 
             <div className="w-full md:w-3/5 p-5 sm:p-6 md:p-8 lg:p-10 flex flex-col">
-              <span className="text-[#c9594a] text-xs tracking-[0.3em] uppercase font-medium mb-2">Meet The Designer</span>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#2c2420] mb-4">
+              <span className="text-[#CC2A7A] text-xs tracking-[0.3em] uppercase font-medium mb-2">Meet The Designer</span>
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#1A2744] mb-4">
                 Creating Tables That
-                <span className="block text-[#c9594a] mt-1" style={{ fontFamily: 'var(--font-script), cursive' }}>Feel Like Home</span>
+                <span className="block text-[#CC2A7A] mt-1" style={{ fontFamily: 'var(--font-script), cursive' }}>Feel Like Home</span>
               </h2>
-              <p className="text-[#c4897a] text-sm sm:text-base italic mb-4">April is your local crafty mamma bear that would love an invite to your next event!</p>
+              <p className="text-[#CC2A7A] text-sm sm:text-base italic mb-4">April is your local crafty mamma bear that would love an invite to your next event!</p>
 
-              <div className="space-y-3 text-[#6b5b52] text-base sm:text-lg leading-relaxed">
+              <div className="space-y-3 text-[#1A2744] text-base sm:text-lg leading-relaxed">
                 <p>I'm an event stylist who believes a beautiful gathering is really about making people feel special when they're sitting at the table.</p>
                 <p>I'm known for bold florals, layered place settings, and that golden-hour glow that makes everyone linger a little longer.</p>
                 <p>I have spent years perfecting the little details most people overlook. Napkins can be bunny ears and everything should sparkle.</p>
-                <p className="text-[#2c2420] font-medium italic border-l-2 border-[#c9a96e] pl-4 mt-4">
+                <p className="text-[#2c2420] font-medium italic border-l-2 border-[#C9A96E] pl-4 mt-4">
                   <span className="text-lg sm:text-xl">My philosophy is simple: when people feel cared for, they remember the evening long after the dishes are washed!</span>
                 </p>
               </div>
 
-              <div className="mt-6 pt-5 border-t border-[#e8d5b0]">
+              <div className="mt-6 pt-5 border-t border-[#C9A96E]">
                 <a href="#contact" onClick={handleClose} className="inline-block w-full sm:w-auto text-center px-6 py-3 bg-[#8f0e04] text-[#faf6f0] text-sm tracking-widest uppercase hover:bg-[#c9594a]">
                   Schedule a Consultation
                 </a>
