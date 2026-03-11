@@ -37,7 +37,7 @@ export default function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative py-32 lg:py-40"
+      className="relative py-32 lg:py-40 bg-[#FAF6F0]/50"
     >
       {/* Content */}
       <div className="relative z-10 w-full px-6 lg:px-12">
