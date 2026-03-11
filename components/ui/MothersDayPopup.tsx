@@ -1,10 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { X } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
-export default function MothersDayPopup() {
+function MothersDayPopupContent() {
   const [isVisible, setIsVisible] = useState(false)
   const router = useRouter()
 
@@ -68,5 +68,13 @@ export default function MothersDayPopup() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function MothersDayPopup() {
+  return (
+    <Suspense fallback={null}>
+      <MothersDayPopupContent />
+    </Suspense>
   )
 }
