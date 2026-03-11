@@ -60,6 +60,15 @@ export default function Services({ onOpenContact }: ServicesProps) {
       id="services"
       className="relative py-32 lg:py-40"
     >
+      {/* Blurred white box behind section, 50% opacity */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'rgba(255,255,255,0.5)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+        }}
+      />
       {/* Terracotta overlay at 20% opacity */}
       <div 
         className="absolute inset-0 pointer-events-none"
@@ -98,27 +107,16 @@ export default function Services({ onOpenContact }: ServicesProps) {
                 alt={service.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 hidden md:block"
               />
-              {/* Light blurred box for mobile and desktop */}
+              {/* Content at bottom */}
               <div 
-                className="absolute inset-0 flex items-center justify-center"
+                className="absolute bottom-4 left-4 right-4 p-6 md:p-8 flex flex-col justify-center items-center"
               >
-                <div
-                  className="w-full h-full flex flex-col justify-center items-center p-6 md:p-8"
-                  style={{
-                    background: 'rgba(250, 246, 240, 0.85)',
-                    backdropFilter: 'blur(12px)',
-                    WebkitBackdropFilter: 'blur(12px)',
-                    border: '1px solid rgba(255,255,255,0.15)',
-                    borderRadius: '8px',
-                  }}
-                >
-                  <h3 className="font-serif text-3xl text-[#2c2420] mb-3 drop-shadow-lg leading-tight text-center">
-                    {service.title}
-                  </h3>
-                  <p className="font-sans text-[#2c2420] text-sm leading-relaxed drop-shadow-md text-center">
-                    {service.description}
-                  </p>
-                </div>
+                <h3 className="font-serif text-3xl text-[#2c2420] mb-3 drop-shadow-lg leading-tight text-center">
+                  {service.title}
+                </h3>
+                <p className="font-sans text-[#2c2420] text-sm leading-relaxed drop-shadow-md text-center">
+                  {service.description}
+                </p>
               </div>
             </div>
           ))}
