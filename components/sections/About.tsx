@@ -49,24 +49,24 @@ export default function About() {
                 <span className="font-bold">Our Story</span>
               </span>
               
-              <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-[#2c2420] leading-tight mb-8">
+              <h2 className="font-serif font-bold text-4xl lg:text-5xl xl:text-6xl text-[#2c2420] leading-tight mb-8">
                 Creating Moments
                 <br />
                 <span 
-                  className="text-[#c9594a]"
+                  className="text-[#c9594a] font-bold"
                   style={{ fontFamily: 'var(--font-script), cursive' }}
                 >
                   That Linger
                 </span>
               </h2>
               
-              <p className="font-sans text-[#6b5b52] text-lg leading-relaxed mb-6">
+              <p className="font-sans text-black text-lg leading-relaxed mb-6">
                 Delicate Flowers was born from a simple belief: the most memorable 
                 gatherings happen in the comfort of home. We transform your space 
                 into an immersive experience where every detail whispers luxury.
               </p>
               
-              <p className="font-sans text-[#6b5b52] text-lg leading-relaxed mb-10">
+              <p className="font-sans text-black text-lg leading-relaxed mb-10">
                 From intimate dinner parties to celebratory brunches, we bring 
                 editorial-level styling to your table. Our approach blends seasonal 
                 florals, vintage textiles, and artisanal tableware to create 
@@ -84,15 +84,15 @@ export default function About() {
               <div className="grid grid-cols-3 gap-8 pt-8 border-t border-[#e8d5b0]">
                 <div>
                   <span className="font-serif text-4xl text-[#8f0e04]">150+</span>
-                  <p className="font-sans text-sm text-[#6b5b52] mt-2 uppercase tracking-wider">Events Styled</p>
+                  <p className="font-sans text-sm text-[#6b5b52] mt-2 uppercase tracking-wider font-bold">Events Styled</p>
                 </div>
                 <div>
                   <span className="font-serif text-4xl text-[#8f0e04]">5</span>
-                  <p className="font-sans text-sm text-[#6b5b52] mt-2 uppercase tracking-wider">Years Experience</p>
+                  <p className="font-sans text-sm text-[#6b5b52] mt-2 uppercase tracking-wider font-bold">Years Experience</p>
                 </div>
                 <div>
                   <span className="font-serif text-4xl text-[#8f0e04]">100%</span>
-                  <p className="font-sans text-sm text-[#6b5b52] mt-2 uppercase tracking-wider">Happy Clients</p>
+                  <p className="font-sans text-sm text-[#6b5b52] mt-2 uppercase tracking-wider font-bold">Happy Clients</p>
                 </div>
               </div>
             </div>
