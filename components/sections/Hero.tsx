@@ -78,8 +78,24 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center pt-48 pb-20"
+      className="relative min-h-screen flex items-center justify-center pt-48 pb-20 bg-hero-image bg-cover bg-center"
+      style={{
+        backgroundImage: 'url(/images/hero-bg.jpg)', // Update path as needed
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+      }}
     >
+      {/* Responsive background fix for iOS */}
+      <style>{`
+        @media (max-width: 640px) {
+          .bg-hero-image {
+            background-size: contain !important;
+            background-position: top center !important;
+          }
+        }
+      `}</style>
+
       {/* Gradient overlay for text legibility */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#faf6f0]/90 via-[#faf6f0]/60 to-transparent pointer-events-none" />
 
@@ -93,7 +109,6 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           >
             Luxury Floral & Tablescape Design
           </p>
-          
           {/* Main Headline */}
           <h1
             ref={titleRef}
@@ -108,7 +123,6 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
               We Style.
             </span>
           </h1>
-          
           {/* Sub-tagline */}
           <p 
             ref={subTaglineRef}
@@ -116,7 +130,6 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           >
             Dressing your tables better than your guests
           </p>
-          
           {/* CTA Buttons */}
           <div ref={ctaRef} className="flex flex-col sm:flex-row items-start gap-4 mb-10 will-change-transform">
             <a
@@ -132,7 +145,6 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
               Book a Consultation
             </button>
           </div>
-
           {/* Description - Now below buttons */}
           <p
             ref={descriptionRef}
@@ -141,7 +153,6 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
             Curated in-home entertaining experiences for those who appreciate 
             the art of gathering. Serving Palm Springs and surrounding desert communities.
           </p>
-
           {/* Meet the Designer Button */}
           <button
             onClick={onOpenDesigner}
@@ -161,7 +172,6 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           </button>
         </div>
       </div>
-
     </section>
   )
 }
