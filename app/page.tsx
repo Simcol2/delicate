@@ -8,6 +8,7 @@ import Services from '@/components/sections/Services'
 import Gallery from '@/components/sections/Gallery'
 import DesignerModal from '@/components/ui/DesignerModal'
 import ContactModal from '@/components/ui/ContactModal'
+import MothersDayPopup from '@/components/ui/MothersDayPopup'
 
 export default function Page() {
   const [isDesignerModalOpen, setIsDesignerModalOpen] = useState(false)
@@ -49,6 +50,9 @@ export default function Page() {
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 
       />
+
+      {/* Mother's Day Promo Popup */}
+      <MothersDayPopup />
     </>
   )
 }
