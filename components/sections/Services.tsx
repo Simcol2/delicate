@@ -108,12 +108,6 @@ export default function Services({ onOpenContact }: ServicesProps) {
               className="group relative overflow-hidden rounded-lg flex flex-col h-64 md:h-auto w-full max-w-xs md:max-w-none"
               style={{ aspectRatio: '3/4' }}
             >
-              {/* Background Image using img tag - hidden on mobile */}
-              <img
-                src={service.image}
-                alt={service.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 hidden md:block"
-              />
               {/* Content at bottom */}
               <div 
                 className="absolute bottom-4 left-4 right-4 p-6 md:p-8 flex flex-col justify-center items-center"
