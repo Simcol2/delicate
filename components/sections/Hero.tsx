@@ -131,7 +131,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           {/* Sub-tagline */}
             <p
               ref={subTaglineRef}
-              className="font-serif italic text-[#2c2420] text-xl md:text-2xl mt-3 mb-8 will-change-transform"
+              className="font-serif italic font-bold text-[#2c2420] text-2xl md:text-4xl mt-3 mb-8 will-change-transform"
             >
               Dressing your tables better than your guests
             </p>
