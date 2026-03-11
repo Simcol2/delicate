@@ -68,59 +68,55 @@ export default function Services({ onOpenContact }: ServicesProps) {
 
       {/* Content */}
       <div className="relative z-10 w-full px-6 lg:px-12">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="relative flex flex-col items-center justify-center mb-20">
-            {/* Blurred box behind header and cards */}
-            <div
-              className="absolute left-1/2 -translate-x-1/2 w-full max-w-3xl h-full rounded-2xl"
-              style={{
-                background: 'rgba(255,255,255,0.5)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
-                zIndex: 0,
-                top: 0,
-                height: 'calc(100% + 500px)', // extend down to cover cards
-              }}
-            />
-            <div className="relative z-10 text-center max-w-3xl mx-auto">
-              <span className="text-[#8f0e04] text-sm tracking-[0.3em] uppercase font-sans block mb-4 font-medium">
-                What We Offer
-              </span>
-              <h2 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-[#2c2420] leading-tight mb-6 drop-shadow-lg">
-                Three Elements
-                <br />
-                <span className="text-[#faf6f0] drop-shadow-md">Of Style</span>
-              </h2>
-              <p className="font-sans text-[#2c2420]/80 text-lg">
-                Every gathering deserves intentional design. Our curated approach 
-                brings together sight, taste, and atmosphere.
-              </p>
+        {/* Blurred box behind header and cards */}
+        <div className="relative flex flex-col items-center justify-center mb-20">
+          <div
+            className="absolute left-1/2 -translate-x-1/2 w-full max-w-3xl h-full rounded-2xl"
+            style={{
+              background: 'rgba(255,255,255,0.5)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+              zIndex: 0,
+              top: 0,
+              height: '100%',
+            }}
+          />
+          <div className="relative z-10 text-center max-w-3xl mx-auto py-10">
+            <span className="text-[#8f0e04] text-sm tracking-[0.3em] uppercase font-sans block mb-4 font-medium">
+              What We Offer
+            </span>
+            <h2 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-[#2c2420] leading-tight mb-6 drop-shadow-lg">
+              Three Elements
+              <br />
+              <span className="text-[#faf6f0] drop-shadow-md">Of Style</span>
+            </h2>
+            <p className="font-sans text-[#2c2420]/80 text-lg mb-10">
+              Every gathering deserves intentional design. Our curated approach 
+              brings together sight, taste, and atmosphere.
+            </p>
+            {/* Service Cards - 3 columns */}
+            <div ref={cardsRef} className="grid md:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto items-stretch justify-items-center">
+              {services.map((service) => (
+                <div
+                  key={service.title}
+                  className="group relative overflow-hidden rounded-lg flex flex-col h-64 md:h-auto w-full max-w-xs md:max-w-none"
+                  style={{ aspectRatio: '3/4' }}
+                >
+                  {/* Content at bottom */}
+                  <div 
+                    className="absolute bottom-4 left-4 right-4 p-6 md:p-8 flex flex-col justify-center items-center"
+                  >
+                    <h3 className="font-serif text-3xl text-[#2c2420] mb-3 drop-shadow-lg leading-tight text-center">
+                      {service.title}
+                    </h3>
+                    <p className="font-sans text-[#2c2420] text-sm leading-relaxed drop-shadow-md text-center">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-
-        {/* Service Cards - 3 columns with images */}
-        <div ref={cardsRef} className="grid md:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto items-stretch justify-items-center">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="group relative overflow-hidden rounded-lg flex flex-col h-64 md:h-auto w-full max-w-xs md:max-w-none"
-              style={{ aspectRatio: '3/4' }}
-            >
-              {/* Content at bottom */}
-              <div 
-                className="absolute bottom-4 left-4 right-4 p-6 md:p-8 flex flex-col justify-center items-center"
-              >
-                <h3 className="font-serif text-3xl text-[#2c2420] mb-3 drop-shadow-lg leading-tight text-center">
-                  {service.title}
-                </h3>
-                <p className="font-sans text-[#2c2420] text-sm leading-relaxed drop-shadow-md text-center">
-                  {service.description}
-                </p>
-              </div>
-            </div>
-          ))}
         </div>
 
         {/* CTA */}
