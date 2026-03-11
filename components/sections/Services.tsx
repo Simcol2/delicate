@@ -63,7 +63,7 @@ export default function Services({ onOpenContact }: ServicesProps) {
       {/* Terracotta overlay at 20% opacity */}
       <div 
         className="absolute inset-0 pointer-events-none"
-        style={{ backgroundColor: 'rgba(201, 89, 74, 0.2)' }}
+        style={{ backgroundColor: 'rgba(204, 42, 122, 0.15)' }}
       />
 
       {/* Content */}
@@ -82,15 +82,15 @@ export default function Services({ onOpenContact }: ServicesProps) {
             }}
           />
           <div className="relative z-10 text-center max-w-3xl mx-auto py-10">
-            <span className="text-[#8f0e04] text-sm tracking-[0.3em] uppercase font-sans block mb-4 font-medium">
+            <span className="text-[#CC2A7A] text-sm tracking-[0.3em] uppercase font-sans block mb-4 font-medium">
               <span className="font-bold">What We Offer</span>
             </span>
-            <h2 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-[#2c2420] leading-tight mb-6 drop-shadow-lg">
+            <h2 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-[#1A2744] leading-tight mb-6 drop-shadow-lg font-bold">
                 Three Elements
                 <br />
                 <span className="text-[#faf6f0] drop-shadow-md" style={{ fontFamily: 'var(--font-script), cursive' }}>Of Style</span>
             </h2>
-            <p className="font-sans text-[#2c2420]/80 text-lg mb-10">
+            <p className="font-sans text-[#1A2744]/80 text-lg mb-10">
               Every gathering deserves intentional design. Our curated approach 
               brings together sight, taste, and atmosphere.
             </p>
@@ -106,10 +106,10 @@ export default function Services({ onOpenContact }: ServicesProps) {
                   <div 
                     className="absolute bottom-4 left-4 right-4 p-6 md:p-8 flex flex-col items-center"
                   >
-                    <h3 className="font-serif text-3xl text-[#2c2420] mb-3 drop-shadow-lg leading-tight text-center">
+                    <h3 className="font-serif text-3xl text-[#1A2744] mb-3 drop-shadow-lg leading-tight text-center">
                       <span className="font-bold">{service.title}</span>
                     </h3>
-                    <p className="font-sans text-[#2c2420] text-sm leading-relaxed drop-shadow-md text-center">
+                    <p className="font-sans text-[#1A2744] text-sm leading-relaxed drop-shadow-md text-center">
                       {service.description}
                     </p>
                   </div>
@@ -126,7 +126,7 @@ export default function Services({ onOpenContact }: ServicesProps) {
           </p>
           <button
             onClick={onOpenContact}
-            className="inline-block px-10 py-4 bg-[#c9594a] text-white font-sans text-sm tracking-widest uppercase hover:bg-[#8f0e04] hover:text-[#faf6f0] transition-all duration-300 border-2 border-[#c9594a]"
+            className="inline-block px-10 py-4 bg-[#CC2A7A] text-white font-sans text-sm tracking-widest uppercase hover:bg-[#1A2744] hover:text-[#faf6f0] transition-all duration-300 border-2 border-[#CC2A7A]"
           >
             Schedule a Call
           </button>

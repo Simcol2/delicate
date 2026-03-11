@@ -84,7 +84,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
             {/* Top Tagline */}
             <p
               ref={taglineRef}
-              className="text-[#2c2420] text-sm tracking-[0.3em] uppercase mb-8 font-sans font-bold py-2 will-change-transform"
+              className="text-[#1A2744] text-sm tracking-[0.3em] uppercase mb-8 font-sans font-bold py-2 will-change-transform"
             >
               Luxury Floral & Tablescape Design
             </p>
@@ -92,12 +92,12 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
             {/* Main Headline */}
             <h1
               ref={titleRef}
-              className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#2c2420] leading-[0.95] will-change-transform"
+              className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#1A2744] leading-[0.95] will-change-transform font-bold"
             >
               You Host.
               <br />
               <span
-                className="text-[#8f0e04]"
+                className="text-[#CC2A7A]"
                 style={{ fontFamily: 'var(--font-script), cursive' }}
               >
                 We Style.
@@ -107,7 +107,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
             {/* Sub-tagline */}
             <p
               ref={subTaglineRef}
-              className="font-serif italic font-bold text-[#2c2420] text-2xl md:text-4xl mt-3 mb-8 will-change-transform"
+              className="font-serif italic font-bold text-[#1A2744] text-2xl md:text-4xl mt-3 mb-8 will-change-transform"
             >
               Dressing your tables better than your guests
             </p>
@@ -116,13 +116,13 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
             <div ref={ctaRef} className="flex flex-col sm:flex-row items-start gap-4 mb-10 will-change-transform">
               <a
                 href="/services"
-                className="px-10 py-4 bg-[#c9594a] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#8f0e04] transition-colors duration-300"
+                className="px-10 py-4 bg-[#CC2A7A] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#1A2744] transition-colors duration-300"
               >
                 Explore Services
               </a>
               <button
                 onClick={onOpenContact}
-                className="px-10 py-4 border-2 border-[#c9594a] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#c9594a] hover:text-[#faf6f0] transition-all duration-300"
+                className="px-10 py-4 border-2 border-[#CC2A7A] text-[#CC2A7A] font-sans text-sm tracking-widest uppercase hover:bg-[#CC2A7A] hover:text-[#faf6f0] transition-all duration-300"
               >
                 Book a Consultation
               </button>
@@ -131,7 +131,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
             {/* Description */}
             <p
               ref={descriptionRef}
-              className="font-sans text-[#2c2420]/80 text-lg md:text-xl max-w-xl leading-relaxed will-change-transform mb-8"
+              className="font-sans text-[#1A2744]/80 text-lg md:text-xl max-w-xl leading-relaxed will-change-transform mb-8"
             >
               Curated in-home entertaining experiences for those who appreciate
               the art of gathering. Serving Palm Springs and surrounding desert communities.
@@ -140,7 +140,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
             {/* Meet the Designer Button */}
             <button
               onClick={onOpenDesigner}
-              className="group inline-flex items-center gap-3 px-6 py-3 bg-[#8f0e04] text-[#faf6f0] hover:bg-[#c9594a] transition-all duration-300 shadow-lg"
+              className="group inline-flex items-center gap-3 px-6 py-3 bg-[#CC2A7A] text-[#faf6f0] hover:bg-[#CC2A7A] transition-all duration-300 shadow-lg"
             >
               <span className="font-sans text-sm tracking-[0.2em] uppercase font-medium">
                 Meet the Designer

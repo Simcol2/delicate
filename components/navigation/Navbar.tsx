@@ -22,8 +22,8 @@ export default function Navbar() {
       <nav
         className={`fixed top-8 left-0 right-0 z-[100] transition-all duration-500 ${
           isScrolled
-            ? 'bg-[#c9594a]/95 backdrop-blur-md py-2'
-            : 'bg-transparent py-3'
+            ? 'bg-[#CC2A7A] py-2'
+            : 'bg-[#CC2A7A] py-3'
         }`}
       >
         <div className="w-full px-6 lg:px-12 flex items-center justify-between">
@@ -43,49 +43,37 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-12 relative z-10">
             <a 
               href="/" 
-              className={`text-sm font-sans hover:text-[#8f0e04] transition-colors tracking-widest uppercase ${
-                isScrolled ? 'text-white' : 'text-[#2c2420]'
-              }`}
+              className={`text-sm font-sans hover:text-[#C9A96E] transition-colors tracking-widest uppercase font-bold text-white`}
             >
               Home
             </a>
             <a 
               href="/about" 
-              className={`text-sm font-sans hover:text-[#8f0e04] transition-colors tracking-widest uppercase ${
-                isScrolled ? 'text-white' : 'text-[#2c2420]'
-              }`}
+              className={`text-sm font-sans hover:text-[#C9A96E] transition-colors tracking-widest uppercase font-bold text-white`}
             >
               About
             </a>
             <a 
               href="/services" 
-              className={`text-sm font-sans hover:text-[#8f0e04] transition-colors tracking-widest uppercase ${
-                isScrolled ? 'text-white' : 'text-[#2c2420]'
-              }`}
+              className={`text-sm font-sans hover:text-[#C9A96E] transition-colors tracking-widest uppercase font-bold text-white`}
             >
               Services
             </a>
             <a 
               href="/experiences" 
-              className={`text-sm font-sans hover:text-[#8f0e04] transition-colors tracking-widest uppercase ${
-                isScrolled ? 'text-white' : 'text-[#2c2420]'
-              }`}
+              className={`text-sm font-sans hover:text-[#C9A96E] transition-colors tracking-widest uppercase font-bold text-white`}
             >
               Portfolio
             </a>
             <a 
               href="/faq" 
-              className={`text-sm font-sans hover:text-[#8f0e04] transition-colors tracking-widest uppercase ${
-                isScrolled ? 'text-white' : 'text-[#2c2420]'
-              }`}
+              className={`text-sm font-sans hover:text-[#C9A96E] transition-colors tracking-widest uppercase font-bold text-white`}
             >
               FAQ
             </a>
             <a 
               href="/client/login" 
-              className={`text-sm font-sans hover:text-[#8f0e04] transition-colors tracking-widest uppercase ${
-                isScrolled ? 'text-white' : 'text-[#2c2420]'
-              }`}
+              className={`text-sm font-sans hover:text-[#C9A96E] transition-colors tracking-widest uppercase font-bold text-white`}
             >
               Client Portal
             </a>

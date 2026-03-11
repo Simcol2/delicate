@@ -6,20 +6,21 @@
 
 :root {
   /* Brand Style Guide Colors */
-  --crimson: #8f0e04;
-  --terracotta: #c9594a;
-  --dusty-rose: #c4897a;
-  --gold: #c9a96e;
+  --fuchsia: #CC2A7A;
+  --deep-navy: #1A2744;
+  --terracotta: #CC2A7A;
+  --dusty-rose: #E8A9C0;
+  --gold: #C9A96E;
   --cream: #faf6f0;
   --warm-white: #fffdf9;
-  --deep: #2c2420;
+  --deep: #1A2744;
   
   /* Legacy variables for backward compatibility */
-  --plum-deep: #2c2420;
-  --plum-royal: #8f0e04;
+  --plum-deep: #1A2744;
+  --plum-royal: #CC2A7A;
   --gold-antique: #c9a96e;
   --gold-pale: #e8d5b0;
-  --navy-midnight: #2c2420;
+  --navy-midnight: #1A2744;
   --blush-warm: #faf6f0;
   --white-pure: #faf6f0;
 }
@@ -36,7 +37,7 @@ html {
 
 body {
   background-color: var(--cream);
-  color: var(--deep);
+  color: var(--deep-navy);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
 }
