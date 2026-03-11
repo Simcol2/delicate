@@ -33,8 +33,7 @@ function MothersDayPopupContent() {
   }
 
   const handleBookConsult = () => {
-    setIsVisible(false)
-    router.push('/consultation')
+    window.open('https://calendar.app.google/mEhKoq1ZgiX9uZUa8', '_blank')
   }
 
   if (!isVisible) return null
@@ -74,12 +73,14 @@ function MothersDayPopupContent() {
 
         {/* CTA Button */}
         <div className="p-4 bg-white shrink-0">
-          <button
-            onClick={handleBookConsult}
-            className="w-full px-8 py-4 bg-[#CC2A7A] text-white font-sans text-sm tracking-widest uppercase hover:bg-[#1A2744] transition-colors font-bold"
+          <a
+            href="https://calendar.app.google/mEhKoq1ZgiX9uZUa8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full text-center px-8 py-4 bg-[#CC2A7A] text-white font-sans text-sm tracking-widest uppercase hover:bg-[#1A2744] transition-colors font-bold"
           >
             Book Your Consultation
-          </button>
+          </a>
         </div>
       </div>
     </div>

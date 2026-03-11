@@ -244,17 +244,19 @@ export default function ServicesPage() {
                   </p>
                 </div>
 
-                {/* CTA - Now opens modal */}
-                <button
-                  onClick={() => setIsContactModalOpen(true)}
+                {/* CTA - Opens Google Calendar */}
+                <a
+                  href="https://calendar.app.google/mEhKoq1ZgiX9uZUa8"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`inline-block mt-7 text-xs font-medium tracking-[0.2em] uppercase border-b pb-0.5 transition-colors duration-200 ${
                     pkg.featured 
-                      ? 'text-white border-[#2c2420] hover:text-white/70 hover:border-[#2c2420]/70' 
-                      : 'text-white border-[#CC2A7A] hover:text-[#CC2A7A] hover:border-[#CC2A7A]'
+                      ? 'text-white border-white hover:text-[#C9A96E] hover:border-[#C9A96E]' 
+                      : 'text-[#1A2744] border-[#CC2A7A] hover:text-[#CC2A7A]'
                   }`}
                 >
                   Book a consultation
-                </button>
+                </a>
               </div>
             ))}
           </section>

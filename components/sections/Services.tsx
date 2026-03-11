@@ -124,12 +124,14 @@ export default function Services({ onOpenContact }: ServicesProps) {
           <p className="font-sans text-white font-bold text-sm mb-6">
             Not sure what you need? Let&apos;s discuss your vision.
           </p>
-          <button
-            onClick={onOpenContact}
+          <a
+            href="https://calendar.app.google/mEhKoq1ZgiX9uZUa8"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block px-10 py-4 bg-[#CC2A7A] text-white font-sans text-sm tracking-widest uppercase hover:bg-[#1A2744] hover:text-[#faf6f0] transition-all duration-300 border-2 border-[#CC2A7A]"
           >
             Schedule a Call
-          </button>
+          </a>
         </div>
       </div>
     </section>

@@ -234,12 +234,14 @@ export default function ExperiencesPage() {
 
           {/* Action Buttons */}
           <div className="text-center mt-16 flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => setIsContactModalOpen(true)}
-              className="inline-block px-10 py-4 bg-[#CC2A7A] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#1A2744] transition-all duration-300"
+            <a
+              href="https://calendar.app.google/mEhKoq1ZgiX9uZUa8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-10 py-4 bg-[#CC2A7A] text-white font-sans text-sm tracking-widest uppercase hover:bg-[#1A2744] transition-all duration-300"
             >
               Book a Consultation
-            </button>
+            </a>
             <a
               href="/"
               className="inline-block px-10 py-4 border-2 border-[#CC2A7A] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#CC2A7A] hover:text-[#faf6f0] transition-all duration-300"
@@ -326,9 +328,11 @@ export default function ExperiencesPage() {
             {/* Book a Consultation Button */}
             <div className="bg-[#1A2744] p-4 pt-0 flex justify-center">
               <a
-                href="/#contact"
+                href="https://calendar.app.google/mEhKoq1ZgiX9uZUa8"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={closeModal}
-                className="inline-block px-8 py-3 bg-[#CC2A7A] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#1A2744] transition-colors duration-300"
+                className="inline-block px-8 py-3 bg-[#CC2A7A] text-white font-sans text-sm tracking-widest uppercase hover:bg-[#FAF6F0] hover:text-[#CC2A7A] transition-colors duration-300"
               >
                 Book a Consultation
               </a>

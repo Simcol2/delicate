@@ -172,7 +172,9 @@ export default function FAQPage() {
                 Call us or book a complimentary 15-minute phone consultation, no commitment required.
               </p>
               <a
-                href="/#contact"
+                href="https://calendar.app.google/mEhKoq1ZgiX9uZUa8"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block mt-8 px-10 py-4 border-2 border-[#faf6f0] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#FAF6F0] hover:text-[#CC2A7A] transition-all duration-300"
               >
                 Schedule a Call

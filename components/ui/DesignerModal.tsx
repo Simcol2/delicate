@@ -148,7 +148,13 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
               </div>
 
               <div className="mt-6 pt-5 border-t border-[#C9A96E]">
-                <a href="#contact" onClick={handleClose} className="inline-block w-full sm:w-auto text-center px-6 py-3 bg-[#8f0e04] text-[#faf6f0] text-sm tracking-widest uppercase hover:bg-[#c9594a]">
+                <a 
+                  href="https://calendar.app.google/mEhKoq1ZgiX9uZUa8" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleClose} 
+                  className="inline-block w-full sm:w-auto text-center px-6 py-3 bg-[#CC2A7A] text-white text-sm tracking-widest uppercase hover:bg-[#1A2744]"
+                >
                   Schedule a Consultation
                 </a>
               </div>
