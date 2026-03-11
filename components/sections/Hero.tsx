@@ -78,7 +78,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center pt-48 pb-20 bg-hero-image bg-cover bg-center"
+      className="relative min-h-screen flex items-center justify-center pt-48 pb-20"
       style={{
         backgroundImage: 'url(/images/hero-bg.jpg)',
         backgroundPosition: 'center center',
