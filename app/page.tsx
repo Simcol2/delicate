@@ -35,7 +35,7 @@ export default function Page() {
           <Services onOpenContact={() => setIsContactModalOpen(true)} />
         </div>
         
-        <Gallery />
+        <Gallery onOpenContact={() => setIsContactModalOpen(true)} />
       </main>
 
       {/* Meet the Designer Modal */}

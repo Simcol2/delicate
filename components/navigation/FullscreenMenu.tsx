@@ -23,7 +23,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
 
   return (
     <div
-      className={`fixed inset-0 z-[100] bg-[#8f0e04] transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+      className={`fixed inset-0 z-[100] bg-[#CC2A7A] transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
         isOpen ? 'translate-y-0' : '-translate-y-full'
       } ${!isOpen ? 'pointer-events-none' : ''}`}
     >
@@ -52,7 +52,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
               key={item.label}
               href={item.href}
               onClick={handleLinkClick}
-              className="group flex items-center gap-6 py-4 border-b border-[#c9a96e]/30"
+              className="group flex items-center gap-6 py-4 border-b border-[#C9A96E]/30"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <span className="text-[#faf6f0]/40 font-sans text-sm">

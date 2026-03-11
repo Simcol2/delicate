@@ -14,7 +14,11 @@ const galleryItems = [
   { id: 4, title: 'Outdoor Soiree', image: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png' },
 ]
 
-export default function Gallery() {
+interface GalleryProps {
+  onOpenContact: () => void
+}
+
+export default function Gallery({ onOpenContact }: GalleryProps) {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
@@ -73,16 +77,16 @@ export default function Gallery() {
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between max-w-7xl mx-auto mb-16">
           <div>
-            <span className="text-[#c9594a] text-sm tracking-[0.3em] uppercase font-sans block mb-4">
+            <span className="text-[#CC2A7A] text-sm tracking-[0.3em] uppercase font-sans block mb-4">
               Portfolio
             </span>
-            <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-[#2c2420] leading-tight">
+            <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-[#1A2744] leading-tight">
               Recent
               <br />
-              <span className="text-[#c9594a]">Experiences</span>
+              <span className="text-[#CC2A7A]">Experiences</span>
             </h2>
           </div>
-          <p className="font-sans text-[#6b5b52] text-lg max-w-md mt-6 lg:mt-0">
+          <p className="font-sans text-[#1A2744] text-lg max-w-md mt-6 lg:mt-0">
             Each gathering tells a unique story. Here&apos;s a glimpse into 
             the moments we&apos;ve helped create.
           </p>
@@ -115,13 +119,13 @@ export default function Gallery() {
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-[#faf6f0]/80 rounded-full text-[#2c2420] hover:bg-[#faf6f0]"
+            className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-[#faf6f0]/80 rounded-full text-[#1A2744] hover:bg-[#faf6f0]"
           >
             <ChevronLeft size={24} />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-[#faf6f0]/80 rounded-full text-[#2c2420] hover:bg-[#faf6f0]"
+            className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-[#faf6f0]/80 rounded-full text-[#1A2744] hover:bg-[#faf6f0]"
           >
             <ChevronRight size={24} />
           </button>
@@ -133,7 +137,7 @@ export default function Gallery() {
                 key={index}
                 onClick={() => setCurrentSlide(index)}
                 className={`w-2 h-2 rounded-full transition-colors ${
-                  index === currentSlide ? 'bg-[#8f0e04]' : 'bg-[#e8d5b0]'
+                  index === currentSlide ? 'bg-[#CC2A7A]' : 'bg-[#e8d5b0]'
                 }`}
               />
             ))}
@@ -152,7 +156,7 @@ export default function Gallery() {
                 alt={item.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-[#8f0e04]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+              <div className="absolute inset-0 bg-[#CC2A7A]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                 <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                   <h3 className="font-serif text-2xl text-[#faf6f0]">
                     {item.title}
@@ -167,7 +171,7 @@ export default function Gallery() {
         <div className="text-center mt-16">
           <a
             href="/experiences"
-            className="inline-block px-10 py-4 border-2 border-[#8f0e04] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#8f0e04] hover:text-[#faf6f0] transition-all duration-300"
+            className="inline-block px-10 py-4 border-2 border-[#CC2A7A] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#CC2A7A] hover:text-[#faf6f0] transition-all duration-300"
           >
             View All Experiences
           </a>
