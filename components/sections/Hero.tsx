@@ -72,14 +72,14 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center pt-48 pb-20 overflow-hidden"
+      className="relative min-h-[600px] sm:min-h-screen flex items-center justify-center pt-48 pb-20 overflow-hidden"
     >
-      {/* Hero image - object-cover on all screen sizes */}
+      {/* Hero image - cover on desktop, positioned top on mobile */}
       <img
         src="/images/hero-bg.jpg"
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-contain sm:object-cover object-center bg-[#faf6f0]"
+        className="absolute inset-0 w-full h-full object-cover object-top sm:object-center"
       />
 
       {/* Gradient overlay for text legibility */}
