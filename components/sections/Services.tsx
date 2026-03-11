@@ -98,7 +98,7 @@ export default function Services({ onOpenContact }: ServicesProps) {
           {services.map((service) => (
             <div
               key={service.title}
-              className="group relative overflow-hidden rounded-lg flex flex-col h-64 md:h-auto"
+              className="group relative overflow-hidden rounded-lg flex flex-col h-64 md:h-auto w-full max-w-xs md:max-w-none"
               style={{ aspectRatio: '3/4' }}
             >
               {/* Background Image using img tag - hidden on mobile */}
