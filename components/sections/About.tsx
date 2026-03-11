@@ -39,14 +39,11 @@ export default function About() {
       id="about"
       className="relative py-32 lg:py-40"
     >
-      {/* Light cream background for the entire section */}
-      <div className="absolute inset-0 bg-[#faf6f0] pointer-events-none" />
-
       {/* Content */}
       <div className="relative z-10 w-full px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
-          {/* Text Box with Solid Cream Background */}
-          <div className="bg-[#fffdf9] border border-[#c9a96e]/20 p-8 lg:p-16 max-w-4xl mx-auto shadow-lg">
+          {/* Text Box with Cream Background */}
+          <div className="bg-[#fffdf9]/75 border border-[#c9a96e]/20 p-8 lg:p-16 max-w-4xl mx-auto shadow-lg">
             <div ref={contentRef}>
               <span className="text-[#c9594a] text-sm tracking-[0.3em] uppercase font-sans block mb-4 font-medium">
                 <span className="font-bold">Our Story</span>
