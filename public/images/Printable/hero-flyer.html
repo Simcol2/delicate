@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delicate Flowers - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FAF6F0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    /* 5x7 ratio container (500px x 700px for high-res printing) */
+    .flyer {
+      width: 500px;
+      height: 700px;
+      background: #FAF6F0;
+      padding: 50px 45px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+    
+    /* Logo placeholder area */
+    .logo-area {
+      width: 120px;
+      height: 60px;
+      margin-bottom: 40px;
+      border: 2px dashed #C9A96E;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #C9A96E;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    .tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #1A2744;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    
+    .headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 700;
+      color: #1A2744;
+      line-height: 0.95;
+      margin-bottom: 12px;
+    }
+    
+    .headline .script {
+      font-family: 'Great Vibes', cursive;
+      color: #CC2A7A;
+      font-size: 56px;
+      font-weight: 400;
+      display: block;
+      margin-top: 5px;
+    }
+    
+    .subheadline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-style: italic;
+      font-weight: 700;
+      color: #1A2744;
+      margin-bottom: 24px;
+    }
+    
+    .description {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #1A2744;
+      opacity: 0.9;
+      max-width: 380px;
+    }
+    
+    /* Image placeholder area at bottom */
+    .image-area {
+      margin-top: 40px;
+      width: 100%;
+      height: 180px;
+      border: 2px dashed #C9A96E;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #C9A96E;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    
+    .footer-text {
+      margin-top: 20px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 20px;
+      color: #CC2A7A;
+      text-align: center;
+    }
+    
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .flyer {
+        box-shadow: none;
+        width: 5in;
+        height: 7in;
+        padding: 0.5in;
+      }
+      .logo-area, .image-area {
+        border: 1px solid #C9A96E;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="flyer">
+    <!-- Logo Placeholder -->
+    <div class="logo-area">Logo</div>
+    
+    <div class="tagline">Luxury Floral & Tablescape Design</div>
+    
+    <h1 class="headline">
+      You Host.<br>
+      <span class="script">We Style.</span>
+    </h1>
+    
+    <div class="subheadline">Dressing your tables better than your guests</div>
+    
+    <p class="description">
+      Curated in-home entertaining experiences for those who appreciate the art of gathering. Serving Palm Springs and surrounding desert communities.
+    </p>
+    
+    <!-- Image Placeholder -->
+    <div class="image-area">Add Image Here</div>
+    
+    <div class="footer-text">Delicate Flowers</div>
+  </div>
+</body>
+</html>
