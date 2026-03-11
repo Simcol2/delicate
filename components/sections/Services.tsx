@@ -60,15 +60,6 @@ export default function Services({ onOpenContact }: ServicesProps) {
       id="services"
       className="relative py-32 lg:py-40"
     >
-      {/* Blurred white box behind section, 50% opacity */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'rgba(255,255,255,0.5)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-        }}
-      />
       {/* Terracotta overlay at 20% opacity */}
       <div 
         className="absolute inset-0 pointer-events-none"
@@ -79,18 +70,33 @@ export default function Services({ onOpenContact }: ServicesProps) {
       <div className="relative z-10 w-full px-6 lg:px-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-[#8f0e04] text-sm tracking-[0.3em] uppercase font-sans block mb-4 font-medium">
-            What We Offer
-          </span>
-          <h2 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-[#2c2420] leading-tight mb-6 drop-shadow-lg">
-            Three Elements
-            <br />
-            <span className="text-[#faf6f0] drop-shadow-md">Of Style</span>
-          </h2>
-          <p className="font-sans text-[#2c2420]/80 text-lg">
-            Every gathering deserves intentional design. Our curated approach 
-            brings together sight, taste, and atmosphere.
-          </p>
+          <div className="relative flex flex-col items-center justify-center mb-20">
+            {/* Blurred box behind header text */}
+            <div
+              className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-xl h-full rounded-2xl"
+              style={{
+                background: 'rgba(255,255,255,0.5)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                zIndex: 0,
+                height: '100%',
+              }}
+            />
+            <div className="relative z-10 text-center max-w-3xl mx-auto">
+              <span className="text-[#8f0e04] text-sm tracking-[0.3em] uppercase font-sans block mb-4 font-medium">
+                What We Offer
+              </span>
+              <h2 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-[#2c2420] leading-tight mb-6 drop-shadow-lg">
+                Three Elements
+                <br />
+                <span className="text-[#faf6f0] drop-shadow-md">Of Style</span>
+              </h2>
+              <p className="font-sans text-[#2c2420]/80 text-lg">
+                Every gathering deserves intentional design. Our curated approach 
+                brings together sight, taste, and atmosphere.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Service Cards - 3 columns with images */}
