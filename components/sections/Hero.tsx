@@ -81,13 +81,21 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
       ref={heroRef}
       className="relative min-h-screen flex items-center justify-center pt-48 pb-20 overflow-hidden"
     >
-      {/* ── Hero image — object-cover + object-center is bulletproof on all devices ── */}
+      {/* ── Hero image ── */}
       <img
         src="/images/hero-bg.jpg"
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        className="absolute inset-0 w-full h-full object-cover object-center hero-bg-img"
       />
+      {/* Mobile-specific CSS for contain */}
+      <style>{`
+        @media (max-width: 640px) {
+          .hero-bg-img {
+            object-fit: contain !important;
+          }
+        }
+      `}</style>
 
       {/* Gradient overlay for text legibility */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#faf6f0]/90 via-[#faf6f0]/60 to-transparent pointer-events-none" />
