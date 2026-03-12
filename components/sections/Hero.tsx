@@ -75,7 +75,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
       className="relative min-h-[600px] sm:min-h-screen flex items-center justify-center pt-48 pb-20 overflow-hidden"
     >
       {/* Gradient overlay for text legibility - lets page background show through */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#faf6f0]/90 via-[#faf6f0]/60 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#faf6f0]/95 via-[#faf6f0]/75 to-transparent pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 w-full px-6 lg:px-12 max-w-7xl mx-auto">
@@ -131,7 +131,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
             {/* Description */}
             <p
               ref={descriptionRef}
-              className="font-serif text-[#1A2744]/80 text-lg md:text-xl max-w-xl leading-relaxed will-change-transform mb-8 font-semibold"
+              className="font-serif text-[#1A2744] text-lg md:text-xl max-w-xl leading-relaxed will-change-transform mb-8 font-semibold"
             >
               From intimate dinner parties under the palms to full in-home transformations, every event is an opportunity to create something completely unforgettable.
               <br /><br />
