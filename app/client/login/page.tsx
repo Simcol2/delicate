@@ -42,7 +42,7 @@ export default function ClientLogin() {
             </p>
           </div>
 
-          <div className="bg-[#FFFDF9] p-8 md:p-10">
+          <div className="bg-white p-8 md:p-10">
             <form onSubmit={handleLogin} className="space-y-6">
               <div>
                 <label className="block text-[#1A2744] text-xs tracking-widest uppercase font-sans mb-2">
@@ -89,8 +89,8 @@ export default function ClientLogin() {
             <div className="mt-8 pt-6 border-t border-[#C9A96E] text-center">
               <p className="text-xs text-[#1A2744]/70">
                 Need help? Contact us at{' '}
-                <a href="mailto:hello@delicateflowers.com" className="text-[#CC2A7A] hover:underline">
-                  hello@delicateflowers.com
+                <a href="mailto:april@delicateflowers.co" className="text-[#CC2A7A] hover:underline">
+                  april@delicateflowers.co
                 </a>
               </p>
             </div>

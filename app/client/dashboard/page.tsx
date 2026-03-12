@@ -58,9 +58,9 @@ export default function ClientDashboard() {
       case 'PAID':
         return <CheckCircle className="w-4 h-4 text-green-600" />
       case 'UNPAID':
-        return <Clock className="w-4 h-4 text-[#c9594a]" />
+        return <Clock className="w-4 h-4 text-[#CC2A7A]" />
       default:
-        return <AlertCircle className="w-4 h-4 text-[#a89189]" />
+        return <AlertCircle className="w-4 h-4 text-[#1A2744]/50" />
     }
   }
 
@@ -83,11 +83,11 @@ export default function ClientDashboard() {
     return (
       <>
         <Navbar />
-        <main className="min-h-screen bg-[#faf6f0] pt-32 pb-20">
+        <main className="min-h-screen bg-[#FAF6F0] pt-32 pb-20">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <div className="animate-pulse">
-              <div className="h-8 bg-[#e8d5b0] rounded w-1/3 mx-auto mb-4"></div>
-              <div className="h-4 bg-[#e8d5b0] rounded w-1/2 mx-auto"></div>
+              <div className="h-8 bg-[#C9A96E]/30 rounded w-1/3 mx-auto mb-4"></div>
+              <div className="h-4 bg-[#C9A96E]/30 rounded w-1/2 mx-auto"></div>
             </div>
           </div>
         </main>
@@ -98,21 +98,21 @@ export default function ClientDashboard() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#faf6f0] pt-28 pb-20">
+      <main className="min-h-screen bg-[#FAF6F0] pt-28 pb-20">
         <div className="max-w-5xl mx-auto px-6">
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
             <div>
-              <span className="text-[#c9594a] text-xs tracking-[0.3em] uppercase font-sans block mb-2">
+              <span className="text-[#CC2A7A] text-xs tracking-[0.3em] uppercase font-sans block mb-2">
                 Welcome back
               </span>
-              <h1 className="font-serif text-3xl md:text-4xl text-[#2c2420]">
+              <h1 className="font-serif text-3xl md:text-4xl text-[#1A2744]">
                 {user?.email?.split('@')[0]}
               </h1>
             </div>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 text-[#6b5b52] hover:text-[#c9594a] transition-colors text-sm"
+              className="flex items-center gap-2 px-4 py-2 text-[#1A2744]/70 hover:text-[#CC2A7A] transition-colors text-sm"
             >
               <LogOut className="w-4 h-4" />
               Sign Out
@@ -120,10 +120,10 @@ export default function ClientDashboard() {
           </div>
 
           {/* Terms Notice */}
-          <div className="bg-[#fffdf9] border-l-4 border-[#c9594a] p-4 mb-8">
-            <p className="text-sm text-[#6b5b52]">
+          <div className="bg-[#FAF6F0] border-l-4 border-[#CC2A7A] p-4 mb-8">
+            <p className="text-sm text-[#1A2744]/70">
               Please review our{' '}
-              <a href="/terms" target="_blank" className="text-[#c9594a] hover:underline font-medium">
+              <a href="/terms" target="_blank" className="text-[#CC2A7A] hover:underline font-medium">
                 Terms of Service
               </a>{' '}
               before proceeding with any bookings or payments. By making a payment, you agree to these terms.
@@ -139,34 +139,34 @@ export default function ClientDashboard() {
           {/* Dashboard Grid */}
           <div className="grid md:grid-cols-2 gap-6">
             {/* Contracts Card */}
-            <div className="bg-[#fffdf9] p-8">
+            <div className="bg-white p-8">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-[#8f0e04] flex items-center justify-center">
-                  <FileText className="w-5 h-5 text-[#faf6f0]" />
+                <div className="w-10 h-10 bg-[#1A2744] flex items-center justify-center">
+                  <FileText className="w-5 h-5 text-[#FAF6F0]" />
                 </div>
                 <div>
-                  <h2 className="font-serif text-xl text-[#2c2420]">Your Contracts</h2>
-                  <p className="text-xs text-[#a89189]">Event agreements and documents</p>
+                  <h2 className="font-serif text-xl text-[#1A2744]">Your Contracts</h2>
+                  <p className="text-xs text-[#1A2744]/50">Event agreements and documents</p>
                 </div>
               </div>
 
               {contracts.length === 0 ? (
-                <div className="text-center py-8 border-2 border-dashed border-[#e8d5b0]">
-                  <FileText className="w-8 h-8 text-[#a89189] mx-auto mb-2" />
-                  <p className="text-sm text-[#6b5b52]">No contracts yet</p>
-                  <p className="text-xs text-[#a89189] mt-1">
+                <div className="text-center py-8 border-2 border-dashed border-[#C9A96E]/30">
+                  <FileText className="w-8 h-8 text-[#1A2744]/30 mx-auto mb-2" />
+                  <p className="text-sm text-[#1A2744]/70">No contracts yet</p>
+                  <p className="text-xs text-[#1A2744]/50 mt-1">
                     Contracts will appear here once your event is confirmed.
                   </p>
                 </div>
               ) : (
                 <div className="space-y-3">
                   {contracts.map((contract) => (
-                    <div key={contract.id} className="flex items-center justify-between p-4 border border-[#e8d5b0]">
+                    <div key={contract.id} className="flex items-center justify-between p-4 border border-[#C9A96E]/30">
                       <div>
-                        <p className="font-serif text-[#2c2420]">{contract.name}</p>
-                        <p className="text-xs text-[#a89189]">{contract.status}</p>
+                        <p className="font-serif text-[#1A2744]">{contract.name}</p>
+                        <p className="text-xs text-[#1A2744]/50">{contract.status}</p>
                       </div>
-                      <a href={contract.url} className="text-[#c9594a] hover:underline text-sm">
+                      <a href={contract.url} className="text-[#CC2A7A] hover:underline text-sm">
                         View
                       </a>
                     </div>
@@ -174,10 +174,10 @@ export default function ClientDashboard() {
                 </div>
               )}
 
-              <div className="mt-6 pt-6 border-t border-[#e8d5b0]">
-                <p className="text-xs text-[#a89189]">
+              <div className="mt-6 pt-6 border-t border-[#C9A96E]/30">
+                <p className="text-xs text-[#1A2744]/50">
                   Questions about your contract?{' '}
-                  <a href="mailto:hello@delicateflowers.com" className="text-[#c9594a] hover:underline">
+                  <a href="mailto:april@delicateflowers.co" className="text-[#CC2A7A] hover:underline">
                     Contact us
                   </a>
                 </p>
@@ -185,43 +185,43 @@ export default function ClientDashboard() {
             </div>
 
             {/* Invoices Card */}
-            <div className="bg-[#fffdf9] p-8">
+            <div className="bg-white p-8">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-[#8f0e04] flex items-center justify-center">
-                  <CreditCard className="w-5 h-5 text-[#faf6f0]" />
+                <div className="w-10 h-10 bg-[#1A2744] flex items-center justify-center">
+                  <CreditCard className="w-5 h-5 text-[#FAF6F0]" />
                 </div>
                 <div>
-                  <h2 className="font-serif text-xl text-[#2c2420]">Your Invoices</h2>
-                  <p className="text-xs text-[#a89189]">Payments and balances</p>
+                  <h2 className="font-serif text-xl text-[#1A2744]">Your Invoices</h2>
+                  <p className="text-xs text-[#1A2744]/50">Payments and balances</p>
                 </div>
               </div>
 
               {invoices.length === 0 ? (
-                <div className="text-center py-8 border-2 border-dashed border-[#e8d5b0]">
-                  <CreditCard className="w-8 h-8 text-[#a89189] mx-auto mb-2" />
-                  <p className="text-sm text-[#6b5b52]">No invoices yet</p>
-                  <p className="text-xs text-[#a89189] mt-1">
+                <div className="text-center py-8 border-2 border-dashed border-[#C9A96E]/30">
+                  <CreditCard className="w-8 h-8 text-[#1A2744]/30 mx-auto mb-2" />
+                  <p className="text-sm text-[#1A2744]/70">No invoices yet</p>
+                  <p className="text-xs text-[#1A2744]/50 mt-1">
                     Invoices will appear here once your event is booked.
                   </p>
                 </div>
               ) : (
                 <div className="space-y-3">
                   {invoices.map((invoice) => (
-                    <div key={invoice.id} className="p-4 border border-[#e8d5b0]">
+                    <div key={invoice.id} className="p-4 border border-[#C9A96E]/30">
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center gap-2">
                           {getStatusIcon(invoice.status)}
-                          <span className="font-serif text-[#2c2420]">
+                          <span className="font-serif text-[#1A2744]">
                             Invoice #{invoice.invoiceNumber}
                           </span>
                         </div>
-                        <span className="font-serif text-lg text-[#2c2420]">
+                        <span className="font-serif text-lg text-[#1A2744]">
                           ${invoice.amount}
                         </span>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className={`text-xs ${
-                          invoice.status === 'PAID' ? 'text-green-600' : 'text-[#c9594a]'
+                          invoice.status === 'PAID' ? 'text-green-600' : 'text-[#CC2A7A]'
                         }`}>
                           {getStatusText(invoice.status)}
                         </span>
@@ -230,7 +230,7 @@ export default function ClientDashboard() {
                             href={invoice.url} 
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-1 text-sm text-[#c9594a] hover:underline"
+                            className="flex items-center gap-1 text-sm text-[#CC2A7A] hover:underline"
                           >
                             Pay Now
                             <ExternalLink className="w-3 h-3" />
@@ -238,7 +238,7 @@ export default function ClientDashboard() {
                         )}
                       </div>
                       {invoice.dueDate && (
-                        <p className="text-xs text-[#a89189] mt-2">
+                        <p className="text-xs text-[#1A2744]/50 mt-2">
                           Due: {new Date(invoice.dueDate).toLocaleDateString()}
                         </p>
                       )}
@@ -247,8 +247,8 @@ export default function ClientDashboard() {
                 </div>
               )}
 
-              <div className="mt-6 pt-6 border-t border-[#e8d5b0]">
-                <p className="text-xs text-[#a89189]">
+              <div className="mt-6 pt-6 border-t border-[#C9A96E]/30">
+                <p className="text-xs text-[#1A2744]/50">
                   All payments are securely processed through Square.
                 </p>
               </div>
@@ -260,24 +260,24 @@ export default function ClientDashboard() {
             <a 
               href="/terms" 
               target="_blank"
-              className="bg-[#fffdf9] p-4 text-center hover:bg-[#faf6f0] transition-colors"
+              className="bg-white p-4 text-center hover:bg-[#FAF6F0] transition-colors"
             >
-              <FileText className="w-5 h-5 text-[#c9594a] mx-auto mb-2" />
-              <span className="text-sm text-[#2c2420]">Terms of Service</span>
+              <FileText className="w-5 h-5 text-[#CC2A7A] mx-auto mb-2" />
+              <span className="text-sm text-[#1A2744]">Terms of Service</span>
             </a>
             <a 
               href="/#contact" 
-              className="bg-[#fffdf9] p-4 text-center hover:bg-[#faf6f0] transition-colors"
+              className="bg-white p-4 text-center hover:bg-[#FAF6F0] transition-colors"
             >
-              <ExternalLink className="w-5 h-5 text-[#c9594a] mx-auto mb-2" />
-              <span className="text-sm text-[#2c2420]">Contact Us</span>
+              <ExternalLink className="w-5 h-5 text-[#CC2A7A] mx-auto mb-2" />
+              <span className="text-sm text-[#1A2744]">Contact Us</span>
             </a>
             <a 
               href="/services" 
-              className="bg-[#fffdf9] p-4 text-center hover:bg-[#faf6f0] transition-colors"
+              className="bg-white p-4 text-center hover:bg-[#FAF6F0] transition-colors"
             >
-              <CreditCard className="w-5 h-5 text-[#c9594a] mx-auto mb-2" />
-              <span className="text-sm text-[#2c2420]">View Packages</span>
+              <CreditCard className="w-5 h-5 text-[#CC2A7A] mx-auto mb-2" />
+              <span className="text-sm text-[#1A2744]">View Packages</span>
             </a>
           </div>
         </div>
