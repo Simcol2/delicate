@@ -49,7 +49,31 @@ export default function ClientLogin() {
     }
 
     try {
+      // Create Firebase account
       await createUserWithEmailAndPassword(auth, email, password)
+      
+      // Create Square customer
+      try {
+        const response = await fetch('/api/square/customers', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            email,
+            givenName: email.split('@')[0]
+          })
+        })
+        
+        if (response.ok) {
+          const data = await response.json()
+          console.log('Square customer:', data.message)
+        } else {
+          console.error('Failed to create Square customer')
+        }
+      } catch (squareErr) {
+        console.error('Square API error:', squareErr)
+        // Don't block account creation if Square fails
+      }
+      
       setSuccess('Account created successfully! Redirecting to dashboard...')
       setTimeout(() => {
         router.push('/client/dashboard')
