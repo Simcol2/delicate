@@ -103,14 +103,14 @@ function DraggablePhoto({
   return (
     <div
       ref={(node: HTMLDivElement | null) => { drag(drop(node)) }}
-      className={`bg-[#fffdf9] rounded-lg shadow-md overflow-hidden border border-[#e8d5b0] ${isDragging ? 'opacity-50' : 'opacity-100'} ${isLocal ? 'opacity-90' : ''}`}
+      className={`bg-[white] rounded-lg shadow-md overflow-hidden border border-[#C9A96E] ${isDragging ? 'opacity-50' : 'opacity-100'} ${isLocal ? 'opacity-90' : ''}`}
     >
       <div className="relative aspect-[4/3]">
         <img src={photo.url} alt={photo.title} className="w-full h-full object-cover" />
         
         {/* Source Badge */}
         <div className={`absolute top-2 left-2 px-2 py-1 rounded text-xs font-medium flex items-center gap-1 ${
-          isLocal ? 'bg-[#6b5b52] text-white' : 'bg-[#8f0e04] text-[#faf6f0]'
+          isLocal ? 'bg-[#1A2744] text-white' : 'bg-[#CC2A7A] text-[#faf6f0]'
         }`}>
           {isLocal ? <HardDrive size={12} /> : <Cloud size={12} />}
           {isLocal ? 'Local' : 'Cloud'}
@@ -119,28 +119,28 @@ function DraggablePhoto({
         {!isLocal && (
           <button
             onClick={() => deletePhoto(photo)}
-            className="absolute top-2 right-2 bg-[#8f0e04] text-[#faf6f0] p-1.5 rounded hover:bg-[#c9594a] transition-colors shadow"
+            className="absolute top-2 right-2 bg-[#CC2A7A] text-[#faf6f0] p-1.5 rounded hover:bg-[#CC2A7A] transition-colors shadow"
           >
             <Trash2 size={16} />
           </button>
         )}
         
         {isLocal && (
-          <div className="absolute top-2 right-2 bg-[#6b5b52] text-white px-2 py-1 rounded text-xs">
+          <div className="absolute top-2 right-2 bg-[#1A2744] text-white px-2 py-1 rounded text-xs">
             Read-only
           </div>
         )}
       </div>
       <div className="p-4 space-y-3">
         <div>
-          <label className="text-xs font-sans text-[#6b5b52] uppercase tracking-wider">Title</label>
+          <label className="text-xs font-sans text-[#1A2744] uppercase tracking-wider">Title</label>
           <input
             type="text"
             value={photo.title}
             onChange={(e) => !isLocal && updatePhoto(photo.id, { title: e.target.value })}
             disabled={isLocal}
-            className={`w-full mt-1 px-3 py-2 bg-[#faf6f0] border border-[#e8d5b0] rounded text-[#2c2420] text-sm ${
-              isLocal ? 'cursor-not-allowed opacity-70' : 'focus:outline-none focus:border-[#c9594a]'
+            className={`w-full mt-1 px-3 py-2 bg-[#faf6f0] border border-[#C9A96E] rounded text-[#1A2744] text-sm ${
+              isLocal ? 'cursor-not-allowed opacity-70' : 'focus:outline-none focus:border-[#CC2A7A]'
             }`}
             placeholder="Photo title"
           />
@@ -182,11 +182,11 @@ function AdminLogin({ onLogin }: { onLogin: () => void }) {
     <div className="min-h-screen bg-[#faf6f0] flex items-center justify-center p-6">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="font-serif text-3xl text-[#2c2420] mb-2">Admin Portal</h1>
-          <p className="text-[#6b5b52] text-sm">Sign in to manage your experiences</p>
+          <h1 className="font-serif text-3xl text-[#1A2744] mb-2">Admin Portal</h1>
+          <p className="text-[#1A2744] text-sm">Sign in to manage your experiences</p>
         </div>
 
-        <div className="bg-[#fffdf9] p-8 border border-[#e8d5b0] shadow-lg">
+        <div className="bg-[white] p-8 border border-[#C9A96E] shadow-lg">
           {error && (
             <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 text-sm flex items-center gap-2">
               <AlertCircle size={16} />
@@ -196,23 +196,23 @@ function AdminLogin({ onLogin }: { onLogin: () => void }) {
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-xs text-[#6b5b52] uppercase tracking-wider mb-2">Email</label>
+              <label className="block text-xs text-[#1A2744] uppercase tracking-wider mb-2">Email</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 bg-[#faf6f0] border border-[#e8d5b0] text-[#2c2420] focus:outline-none focus:border-[#c9594a]"
+                className="w-full px-4 py-3 bg-[#faf6f0] border border-[#C9A96E] text-[#1A2744] focus:outline-none focus:border-[#CC2A7A]"
                 placeholder="hello@delicateflowers.co"
                 required
               />
             </div>
             <div>
-              <label className="block text-xs text-[#6b5b52] uppercase tracking-wider mb-2">Password</label>
+              <label className="block text-xs text-[#1A2744] uppercase tracking-wider mb-2">Password</label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 bg-[#faf6f0] border border-[#e8d5b0] text-[#2c2420] focus:outline-none focus:border-[#c9594a]"
+                className="w-full px-4 py-3 bg-[#faf6f0] border border-[#C9A96E] text-[#1A2744] focus:outline-none focus:border-[#CC2A7A]"
                 placeholder="••••••••"
                 required
               />
@@ -220,7 +220,7 @@ function AdminLogin({ onLogin }: { onLogin: () => void }) {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-[#8f0e04] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#c9594a] transition-colors disabled:opacity-50"
+              className="w-full py-3 bg-[#CC2A7A] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#CC2A7A] transition-colors disabled:opacity-50"
             >
               {loading ? 'Signing in...' : 'Sign In'}
             </button>
@@ -228,7 +228,7 @@ function AdminLogin({ onLogin }: { onLogin: () => void }) {
         </div>
 
         <p className="text-center text-xs text-[#a89189] mt-6">
-          <a href="/" className="text-[#c9594a] hover:underline">← Back to website</a>
+          <a href="/" className="text-[#CC2A7A] hover:underline">← Back to website</a>
         </p>
       </div>
     </div>
@@ -497,7 +497,7 @@ function AdminDashboard() {
     <DndProvider backend={HTML5Backend}>
       <div className="min-h-screen bg-[#faf6f0]">
         {/* Header */}
-        <header className="bg-[#8f0e04] text-[#faf6f0] py-6 px-6 lg:px-12">
+        <header className="bg-[#CC2A7A] text-[#faf6f0] py-6 px-6 lg:px-12">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div>
               <h1 className="font-serif text-3xl">Admin Dashboard</h1>
@@ -527,7 +527,7 @@ function AdminDashboard() {
 
           {/* Folder Selection */}
           <div className="mb-8">
-            <label className="text-sm font-sans text-[#6b5b52] uppercase tracking-wider block mb-3">
+            <label className="text-sm font-sans text-[#1A2744] uppercase tracking-wider block mb-3">
               Select Experience Folder
             </label>
             <div className="flex flex-wrap gap-3">
@@ -537,8 +537,8 @@ function AdminDashboard() {
                   onClick={() => setSelectedFolder(folder)}
                   className={`px-4 py-2 rounded-lg font-sans text-sm transition-all border ${
                     selectedFolder === folder
-                      ? 'bg-[#8f0e04] text-[#faf6f0] border-[#8f0e04]'
-                      : 'bg-[#fffdf9] border-[#e8d5b0] text-[#2c2420] hover:border-[#c9594a]'
+                      ? 'bg-[#CC2A7A] text-[#faf6f0] border-[#CC2A7A]'
+                      : 'bg-[white] border-[#C9A96E] text-[#1A2744] hover:border-[#CC2A7A]'
                   }`}
                 >
                   {folder}
@@ -552,12 +552,12 @@ function AdminDashboard() {
               {/* Stats */}
               <div className="flex gap-6 mb-6">
                 <div className="flex items-center gap-2 text-sm">
-                  <Cloud size={16} className="text-[#8f0e04]" />
-                  <span className="text-[#6b5b52]">{firebaseCount} Firebase</span>
+                  <Cloud size={16} className="text-[#CC2A7A]" />
+                  <span className="text-[#1A2744]">{firebaseCount} Firebase</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
-                  <HardDrive size={16} className="text-[#6b5b52]" />
-                  <span className="text-[#6b5b52]">{localCount} Local</span>
+                  <HardDrive size={16} className="text-[#1A2744]" />
+                  <span className="text-[#1A2744]">{localCount} Local</span>
                 </div>
               </div>
 
@@ -569,25 +569,25 @@ function AdminDashboard() {
                 className={`border-2 border-dashed rounded-xl p-12 text-center transition-all mb-8 ${
                   dragOver 
                     ? 'border-[#c9a96e] bg-[#c9a96e]/5' 
-                    : 'border-[#e8d5b0]'
+                    : 'border-[#C9A96E]'
                 } ${isUploading ? 'opacity-50 pointer-events-none' : ''}`}
               >
-                <Upload size={48} className="mx-auto mb-4 text-[#c9594a]" />
+                <Upload size={48} className="mx-auto mb-4 text-[#CC2A7A]" />
                 
                 {isUploading ? (
                   <div>
-                    <Loader2 className="animate-spin h-8 w-8 text-[#8f0e04] mx-auto mb-2" />
-                    <p className="text-[#2c2420]">{uploadProgress}</p>
+                    <Loader2 className="animate-spin h-8 w-8 text-[#CC2A7A] mx-auto mb-2" />
+                    <p className="text-[#1A2744]">{uploadProgress}</p>
                   </div>
                 ) : (
                   <>
-                    <p className="font-sans text-[#2c2420] mb-2">Drag & drop images here, or click to select</p>
-                    <p className="text-sm text-[#6b5b52]">Supports JPG, PNG, GIF, WEBP, and HEIC (auto-converted to JPG)</p>
+                    <p className="font-sans text-[#1A2744] mb-2">Drag & drop images here, or click to select</p>
+                    <p className="text-sm text-[#1A2744]">Supports JPG, PNG, GIF, WEBP, and HEIC (auto-converted to JPG)</p>
                   </>
                 )}
                 
                 <input type="file" multiple accept="image/*,.heic,.heif" onChange={handleFileInput} disabled={isUploading} className="hidden" id="file-input" />
-                <label htmlFor="file-input" className={`inline-block mt-4 px-6 py-2 bg-[#8f0e04] text-[#faf6f0] rounded cursor-pointer transition-colors ${isUploading ? 'opacity-50' : 'hover:bg-[#c9594a]'}`}>
+                <label htmlFor="file-input" className={`inline-block mt-4 px-6 py-2 bg-[#CC2A7A] text-[#faf6f0] rounded cursor-pointer transition-colors ${isUploading ? 'opacity-50' : 'hover:bg-[#CC2A7A]'}`}>
                   {isUploading ? 'Uploading...' : 'Select Files'}
                 </label>
               </div>
@@ -595,20 +595,20 @@ function AdminDashboard() {
               {/* Photos Grid */}
               {isLoading ? (
                 <div className="text-center py-12">
-                  <Loader2 className="animate-spin h-12 w-12 text-[#8f0e04] mx-auto mb-4" />
-                  <p className="text-[#6b5b52]">Loading photos...</p>
+                  <Loader2 className="animate-spin h-12 w-12 text-[#CC2A7A] mx-auto mb-4" />
+                  <p className="text-[#1A2744]">Loading photos...</p>
                 </div>
               ) : (
                 <>
                   <div className="flex items-center justify-between mb-6">
-                    <h2 className="font-serif text-2xl text-[#2c2420]">Photos ({photos.length})</h2>
-                    <p className="text-sm text-[#6b5b52]">Drag to reorder (Firebase only)</p>
+                    <h2 className="font-serif text-2xl text-[#1A2744]">Photos ({photos.length})</h2>
+                    <p className="text-sm text-[#1A2744]">Drag to reorder (Firebase only)</p>
                   </div>
 
                   {photos.length === 0 ? (
-                    <div className="text-center py-16 bg-[#fffdf9] rounded-xl border-2 border-dashed border-[#e8d5b0]">
+                    <div className="text-center py-16 bg-[white] rounded-xl border-2 border-dashed border-[#C9A96E]">
                       <ImageIcon size={48} className="mx-auto mb-4 text-[#c9a96e]" />
-                      <p className="text-[#6b5b52]">No photos yet. Upload some!</p>
+                      <p className="text-[#1A2744]">No photos yet. Upload some!</p>
                     </div>
                   ) : (
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -631,7 +631,7 @@ function AdminDashboard() {
                       <button
                         onClick={saveChanges}
                         disabled={isSaving}
-                        className="flex items-center gap-2 px-6 py-3 bg-[#c9a96e] text-[#2c2420] rounded-lg shadow-lg hover:bg-[#e8d5b0] transition-colors disabled:opacity-50 font-medium"
+                        className="flex items-center gap-2 px-6 py-3 bg-[#c9a96e] text-[#1A2744] rounded-lg shadow-lg hover:bg-[#C9A96E] transition-colors disabled:opacity-50 font-medium"
                       >
                         <Save size={20} />
                         {isSaving ? 'Saving...' : 'Save Changes'}
@@ -646,7 +646,7 @@ function AdminDashboard() {
           {!selectedFolder && (
             <div className="text-center py-16">
               <FolderPlus size={64} className="mx-auto mb-4 text-[#c9a96e]" />
-              <p className="text-[#6b5b52] text-lg">Select a folder above to manage photos</p>
+              <p className="text-[#1A2744] text-lg">Select a folder above to manage photos</p>
               <p className="text-[#a89189] text-sm mt-2">Cloud icon = Firebase (editable) | Hard drive icon = Local (read-only)</p>
             </div>
           )}
@@ -670,7 +670,7 @@ export default function AdminPage() {
   if (isAuthenticated === null) {
     return (
       <div className="min-h-screen bg-[#faf6f0] flex items-center justify-center">
-        <Loader2 className="animate-spin h-8 w-8 text-[#8f0e04]" />
+        <Loader2 className="animate-spin h-8 w-8 text-[#CC2A7A]" />
       </div>
     )
   }

@@ -27,28 +27,21 @@ This document tracks what still needs to be done to complete the Square API inte
 
 ### 1. Square API Credentials (REQUIRED)
 
-**Status:** ✅ PROVIDED - Sandbox credentials configured
+**Status:** ✅ PRODUCTION MODE
 
-**Sandbox Credentials:**
-- Application ID: `sandbox-sq0idb-HpA2eN6j-K-5exsCT_slhw`
-- Access Token: `EAAAl-G0uqxOkiyNsU8IPfjTUCTA6fpsbNNQn7aFGapD_Ruv86gVb_YC1DShNoZP`
+**Production Credentials:**
+- Application ID: `sq0idp-1uXiH9Dyu_iCs3epkjRUog`
+- Access Token: `EAAAl6FBDYesgVPe7at67vvesWbmP5aAM_dFhxmSewcUQorZbCm-Ub8ZI2cfyyAe`
+- Location ID: `LV5Z9NCMKKGF4`
 
 **Next Steps:**
-1. ✅ Local `.env.local` file created
+1. ✅ API route updated to production
 2. **Add to Vercel:** Go to Project Settings → Environment Variables and add:
    ```
-   SQUARE_ACCESS_TOKEN=EAAAl-G0uqxOkiyNsU8IPfjTUCTA6fpsbNNQn7aFGapD_Ruv86gVb_YC1DShNoZP
-   SQUARE_ENVIRONMENT=sandbox
+   SQUARE_ACCESS_TOKEN=EAAAl6FBDYesgVPe7at67vvesWbmP5aAM_dFhxmSewcUQorZbCm-Ub8ZI2cfyyAe
+   SQUARE_LOCATION_ID=LV5Z9NCMKKGF4
    ```
 3. **Redeploy** the site after adding environment variables
-
-**For Production (when ready):**
-- Switch to Production credentials in Square Developer Dashboard
-- Update Vercel environment variables:
-  ```
-  SQUARE_ACCESS_TOKEN=your-production-token
-  SQUARE_ENVIRONMENT=production
-  ```
 
 ---
 

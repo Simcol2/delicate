@@ -1,9 +1,6 @@
 import { NextResponse } from 'next/server'
 
-const SQUARE_ENVIRONMENT = process.env.SQUARE_ENVIRONMENT || 'sandbox'
-const SQUARE_API_URL = SQUARE_ENVIRONMENT === 'production' 
-  ? 'https://connect.squareup.com/v2'
-  : 'https://connect.squareupsandbox.com/v2'
+const SQUARE_API_URL = 'https://connect.squareup.com/v2'
 const SQUARE_ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN
 
 export async function GET(request: Request) {
