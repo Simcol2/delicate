@@ -5,11 +5,12 @@ const SQUARE_ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN
 
 export async function GET(request: Request) {
   try {
-    console.log('Square API URL:', SQUARE_API_URL)
-    console.log('Token exists:', !!SQUARE_ACCESS_TOKEN)
-    
     const { searchParams } = new URL(request.url)
     const customerEmail = searchParams.get('email')
+    
+    console.log('Request email:', customerEmail)
+    console.log('Token exists:', !!SQUARE_ACCESS_TOKEN)
+    console.log('Token length:', SQUARE_ACCESS_TOKEN?.length)
 
     if (!customerEmail) {
       return NextResponse.json(
@@ -51,8 +52,10 @@ export async function GET(request: Request) {
     }
 
     const customerData = await customerResponse.json()
+    console.log('Customer search result:', customerData.customers ? `Found ${customerData.customers.length} customers` : 'No customers found')
     
     if (!customerData.customers || customerData.customers.length === 0) {
+      console.log('No customer found with email:', customerEmail)
       return NextResponse.json({ invoices: [] })
     }
 
