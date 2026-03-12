@@ -1,10 +1,17 @@
 import { NextResponse } from 'next/server'
 
-const SQUARE_API_URL = 'https://connect.squareup.com/v2'
+const SQUARE_ENVIRONMENT = process.env.SQUARE_ENVIRONMENT || 'sandbox'
+const SQUARE_API_URL = SQUARE_ENVIRONMENT === 'production' 
+  ? 'https://connect.squareup.com/v2'
+  : 'https://connect.squareupsandbox.com/v2'
 const SQUARE_ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN
 
 export async function GET(request: Request) {
   try {
+    console.log('Square API Environment:', SQUARE_ENVIRONMENT)
+    console.log('Square API URL:', SQUARE_API_URL)
+    console.log('Token exists:', !!SQUARE_ACCESS_TOKEN)
+    
     const { searchParams } = new URL(request.url)
     const customerEmail = searchParams.get('email')
 
@@ -42,7 +49,9 @@ export async function GET(request: Request) {
     })
 
     if (!customerResponse.ok) {
-      throw new Error('Failed to fetch customer from Square')
+      const errorText = await customerResponse.text()
+      console.error('Square customer search error:', customerResponse.status, errorText)
+      throw new Error(`Failed to fetch customer from Square: ${customerResponse.status}`)
     }
 
     const customerData = await customerResponse.json()
@@ -64,7 +73,9 @@ export async function GET(request: Request) {
     })
 
     if (!invoicesResponse.ok) {
-      throw new Error('Failed to fetch invoices from Square')
+      const errorText = await invoicesResponse.text()
+      console.error('Square invoices error:', invoicesResponse.status, errorText)
+      throw new Error(`Failed to fetch invoices from Square: ${invoicesResponse.status}`)
     }
 
     const invoicesData = await invoicesResponse.json()
@@ -82,10 +93,10 @@ export async function GET(request: Request) {
 
     return NextResponse.json({ invoices: formattedInvoices })
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Square API error:', error)
     return NextResponse.json(
-      { error: 'Failed to fetch invoices' },
+      { error: 'Failed to fetch invoices', details: error.message },
       { status: 500 }
     )
   }
