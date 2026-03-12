@@ -1,29 +1,35 @@
 'use client'
 
 import { useState } from 'react'
-import { useAllConversations } from '@/hooks/useMessages'
-import { MessageCircle, Send, CheckCircle } from 'lucide-react'
+import { useAllConversations, useConversationMessages } from '@/hooks/useMessages'
+import { MessageCircle, Send } from 'lucide-react'
 
 export default function MessagesManager() {
-  const { conversations, loading, replyToConversation, markConversationAsReadByAdmin } = useAllConversations()
-  const [selectedConversation, setSelectedConversation] = useState<string | null>(null)
+  const { conversations, loading: convsLoading, replyToConversation, markConversationAsReadByAdmin } = useAllConversations()
+  const [selectedConversationId, setSelectedConversationId] = useState<string | null>(null)
   const [replyContent, setReplyContent] = useState('')
   const [sending, setSending] = useState(false)
 
-  const selectedConv = conversations.find(c => c.id === selectedConversation)
+  const selectedConv = conversations.find(c => c.id === selectedConversationId)
+  const { messages, loading: msgsLoading } = useConversationMessages(selectedConversationId)
 
   const handleSendReply = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!replyContent.trim() || !selectedConversation) return
+    if (!replyContent.trim() || !selectedConversationId || !selectedConv) return
 
     setSending(true)
-    await replyToConversation(selectedConversation, replyContent, selectedConv?.customerEmail || '')
-    setReplyContent('')
-    setSending(false)
+    try {
+      await replyToConversation(selectedConversationId, replyContent, selectedConv.customerEmail)
+      setReplyContent('')
+    } catch (error) {
+      console.error('Failed to send reply:', error)
+    } finally {
+      setSending(false)
+    }
   }
 
   const handleSelectConversation = (convId: string) => {
-    setSelectedConversation(convId)
+    setSelectedConversationId(convId)
     markConversationAsReadByAdmin(convId)
   }
 
@@ -34,9 +40,9 @@ export default function MessagesManager() {
           <MessageCircle className="w-5 h-5" />
           <h2 className="font-serif text-lg">Client Messages</h2>
         </div>
-        {conversations.some(c => c.unreadByAdmin > 0) && (
+        {conversations.some(c => (c.unreadByAdmin || 0) > 0) && (
           <span className="bg-[#CC2A7A] text-white text-xs px-2 py-1 rounded-full">
-            {conversations.reduce((sum, c) => sum + c.unreadByAdmin, 0)} unread
+            {conversations.reduce((sum, c) => sum + (c.unreadByAdmin || 0), 0)} unread
           </span>
         )}
       </div>
@@ -44,8 +50,8 @@ export default function MessagesManager() {
       <div className="grid md:grid-cols-3 min-h-[500px]">
         {/* Conversations List */}
         <div className="border-r border-gray-200 overflow-y-auto max-h-[500px]">
-          {loading ? (
-            <p className="p-4 text-sm text-gray-500">Loading...</p>
+          {convsLoading ? (
+            <p className="p-4 text-sm text-gray-500">Loading conversations...</p>
           ) : conversations.length === 0 ? (
             <p className="p-4 text-sm text-gray-500">No messages yet</p>
           ) : (
@@ -54,21 +60,19 @@ export default function MessagesManager() {
                 key={conv.id}
                 onClick={() => handleSelectConversation(conv.id)}
                 className={`w-full p-4 text-left border-b border-gray-100 hover:bg-gray-50 transition-colors ${
-                  selectedConversation === conv.id ? 'bg-gray-50 border-l-4 border-l-[#CC2A7A]' : ''
+                  selectedConversationId === conv.id ? 'bg-gray-50 border-l-4 border-l-[#CC2A7A]' : ''
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <span className="font-medium text-sm text-[#1A2744]">{conv.customerEmail}</span>
-                  {conv.unreadByAdmin > 0 && (
+                  {(conv.unreadByAdmin || 0) > 0 && (
                     <span className="bg-[#CC2A7A] text-white text-xs px-2 py-0.5 rounded-full">
                       {conv.unreadByAdmin}
                     </span>
                   )}
                 </div>
-                <p className="text-xs text-gray-500 mt-1 truncate">{conv.lastMessage}</p>
-                <p className="text-xs text-gray-400 mt-1">
-                  {conv.lastUpdated?.toDate?.().toLocaleDateString()}
-                </p>
+                <p className="text-xs text-gray-500 mt-1 truncate">{conv.subject}</p>
+                <p className="text-xs text-gray-400 mt-1 truncate">{conv.lastMessage}</p>
               </button>
             ))
           )}
@@ -84,11 +88,27 @@ export default function MessagesManager() {
               </div>
 
               <div className="flex-1 overflow-y-auto p-4 space-y-4 max-h-[350px]">
-                {/* Messages would be fetched here - placeholder for now */}
-                <div className="bg-[#1A2744]/5 p-3 rounded-lg mr-8">
-                  <span className="text-xs text-gray-500">Client</span>
-                  <p className="text-sm mt-1">{selectedConv.lastMessage}</p>
-                </div>
+                {msgsLoading ? (
+                  <p className="text-center text-gray-500 text-sm">Loading messages...</p>
+                ) : messages.length === 0 ? (
+                  <p className="text-center text-gray-500 text-sm">No messages in this conversation</p>
+                ) : (
+                  messages.map((msg) => (
+                    <div 
+                      key={msg.id} 
+                      className={`p-3 rounded-lg max-w-[80%] ${
+                        msg.from === 'admin' 
+                          ? 'bg-[#CC2A7A] text-white ml-auto' 
+                          : 'bg-gray-100 text-[#1A2744]'
+                      }`}
+                    >
+                      <span className="text-xs opacity-70 block mb-1">
+                        {msg.from === 'admin' ? 'You' : 'Client'} • {msg.timestamp?.toDate?.().toLocaleString() || 'Just now'}
+                      </span>
+                      <p className="text-sm">{msg.content}</p>
+                    </div>
+                  ))
+                )}
               </div>
 
               <form onSubmit={handleSendReply} className="p-4 border-t border-gray-200">

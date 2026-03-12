@@ -14,32 +14,41 @@ export default function MessagesPanel({ customerEmail }: MessagesPanelProps) {
   const [subject, setSubject] = useState('')
   const [isExpanded, setIsExpanded] = useState(false)
   const [showNewMessageForm, setShowNewMessageForm] = useState(false)
+  const [sending, setSending] = useState(false)
 
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!newMessage.trim()) return
     
-    await sendMessage(newMessage, subject || 'General Inquiry')
-    
-    // Send email notification to admin
+    setSending(true)
     try {
-      await fetch('/api/notifications/email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          to: 'april@delicateflowers.co',
-          toName: 'April',
-          subject: `New Client Message: ${subject || 'General Inquiry'}`,
-          message: `New message from ${customerEmail}:\n\n${newMessage}\n\nReply in the admin portal.`
+      await sendMessage(newMessage, subject || 'General Inquiry')
+      
+      // Send email notification to admin
+      try {
+        await fetch('/api/notifications/email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            to: 'april@delicateflowers.co',
+            toName: 'April',
+            subject: `New Client Message: ${subject || 'General Inquiry'}`,
+            message: `New message from ${customerEmail}:\n\n${newMessage}\n\nReply in the admin portal.`
+          })
         })
-      })
-    } catch (err) {
-      console.error('Failed to send notification:', err)
+      } catch (err) {
+        console.error('Failed to send notification:', err)
+      }
+      
+      setNewMessage('')
+      setSubject('')
+      setShowNewMessageForm(false)
+    } catch (error) {
+      console.error('Failed to send message:', error)
+      alert('Failed to send message. Please try again.')
+    } finally {
+      setSending(false)
     }
-    
-    setNewMessage('')
-    setSubject('')
-    setShowNewMessageForm(false)
   }
 
   const handleMarkRead = (messageId: string) => {
@@ -84,15 +93,15 @@ export default function MessagesPanel({ customerEmail }: MessagesPanelProps) {
               </p>
             </div>
           ) : (
-            <div className="space-y-4 max-h-96 overflow-y-auto mb-6">
-              {[...messages].reverse().map((msg) => (
+            <div className="space-y-4 max-h-96 overflow-y-auto mb-6 border border-[#C9A96E]/20 rounded-lg p-4">
+              {messages.map((msg) => (
                 <div 
                   key={msg.id} 
                   className={`p-4 rounded-lg ${
                     msg.from === 'client' 
-                      ? 'bg-[#FAF6F0] ml-8' 
-                      : 'bg-[#1A2744]/5 mr-8'
-                  } ${!msg.read && msg.from === 'admin' ? 'border-l-4 border-[#CC2A7A]' : ''}`}
+                      ? 'bg-[#FAF6F0] ml-8 border-l-4 border-[#C9A96E]' 
+                      : 'bg-[#1A2744]/5 mr-8 border-l-4 border-[#CC2A7A]'
+                  }`}
                   onClick={() => !msg.read && msg.from === 'admin' && handleMarkRead(msg.id)}
                 >
                   <div className="flex items-center justify-between mb-2">
@@ -104,9 +113,9 @@ export default function MessagesPanel({ customerEmail }: MessagesPanelProps) {
                     </span>
                   </div>
                   {!msg.read && msg.from === 'admin' && (
-                    <span className="text-xs text-[#CC2A7A] font-medium">NEW</span>
+                    <span className="text-xs text-[#CC2A7A] font-medium mb-1 block">NEW</span>
                   )}
-                  <p className="text-sm text-[#1A2744] mt-1">{msg.content}</p>
+                  <p className="text-sm text-[#1A2744]">{msg.content}</p>
                 </div>
               ))}
             </div>
@@ -142,10 +151,11 @@ export default function MessagesPanel({ customerEmail }: MessagesPanelProps) {
               <div className="flex gap-3">
                 <button
                   type="submit"
-                  className="flex items-center gap-2 bg-[#CC2A7A] text-white px-4 py-2 text-sm hover:bg-[#1A2744] transition-colors"
+                  disabled={sending}
+                  className="flex items-center gap-2 bg-[#CC2A7A] text-white px-4 py-2 text-sm hover:bg-[#1A2744] transition-colors disabled:opacity-50"
                 >
                   <Send className="w-4 h-4" />
-                  Send Message
+                  {sending ? 'Sending...' : 'Send Message'}
                 </button>
                 <button
                   type="button"
