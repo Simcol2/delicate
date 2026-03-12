@@ -126,6 +126,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       const SERVICE_ID = 'service_ajiko7e'
       const TEMPLATE_ID = 'template_pl9ghk7'
       const PUBLIC_KEY = 'JibkW5e7TBEs2vKc0'
+      const OWNER_EMAIL = 'april@delicateflowers.co'
 
       // Template variables must match EmailJS template
       const templateParams = {
@@ -139,6 +140,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         message: formData.message,
         referredBy: formData.referredBy || 'Not specified',
         reply_to: formData.email,
+        to_email: OWNER_EMAIL,  // Send to you
       }
 
       await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
