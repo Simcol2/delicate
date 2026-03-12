@@ -131,8 +131,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
             {/* Description */}
             <p
               ref={descriptionRef}
-              className="text-[#1A2744]/80 text-lg md:text-xl max-w-xl leading-relaxed will-change-transform mb-8"
-              style={{ fontFamily: 'var(--font-serif), Cormorant Garamond, serif', fontWeight: 400 }}
+              className="font-serif text-[#1A2744]/80 text-lg md:text-xl max-w-xl leading-relaxed will-change-transform mb-8 font-semibold"
             >
               From intimate dinner parties under the palms to full in-home transformations, every event is an opportunity to create something completely unforgettable.
               <br /><br />
