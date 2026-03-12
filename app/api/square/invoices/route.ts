@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 
 const SQUARE_API_URL = 'https://connect.squareup.com/v2'
 const SQUARE_ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN
+const SQUARE_LOCATION_ID = process.env.SQUARE_LOCATION_ID
 
 export async function GET(request: Request) {
   try {
@@ -62,7 +63,7 @@ export async function GET(request: Request) {
     const customerId = customerData.customers[0].id
 
     // Fetch invoices for this customer
-    const invoicesResponse = await fetch(`${SQUARE_API_URL}/invoices?customer_id=${customerId}`, {
+    const invoicesResponse = await fetch(`${SQUARE_API_URL}/invoices?customer_id=${customerId}&location_id=${SQUARE_LOCATION_ID}`, {
       method: 'GET',
       headers: {
         'Square-Version': '2024-01-18',
