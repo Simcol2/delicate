@@ -147,7 +147,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
 
       // Also save to Google Sheet (fire and forget - CORS workaround)
-      const SHEET_SCRIPT_URL = 'https://script.google.com/a/macros/delicateflowers.co/s/AKfycbyXa5jlOnpSwOaGduMF0ytJLHxytHHxT19AywYbxhk3Ucgz9dJG4kdOcAF-2WxseHD4qw/exec'
+      const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbymCKBlAvMPzx5os5sSXDz45_Iwazyf8qmlQPdOaQ1akjjEqSMde4b2Nc0SAtOZ8XEisw/exec'
       
       // Use no-cors mode for Google Apps Script
       fetch(SHEET_SCRIPT_URL, {
