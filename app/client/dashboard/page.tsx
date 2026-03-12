@@ -5,6 +5,7 @@ import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { auth } from '@/lib/firebase'
 import { useRouter } from 'next/navigation'
 import Navbar from '@/components/navigation/Navbar'
+import MessagesPanel from '@/components/client/MessagesPanel'
 import { FileText, CreditCard, LogOut, ExternalLink, Clock, CheckCircle, AlertCircle } from 'lucide-react'
 
 interface Invoice {
@@ -137,7 +138,7 @@ export default function ClientDashboard() {
           )}
 
           {/* Dashboard Grid */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
             {/* Contracts Card */}
             <div className="bg-white p-8">
               <div className="flex items-center gap-3 mb-6">
@@ -254,6 +255,9 @@ export default function ClientDashboard() {
               </div>
             </div>
           </div>
+
+          {/* Messages Section */}
+          <MessagesPanel customerEmail={user?.email} />
 
           {/* Quick Links */}
           <div className="mt-8 grid sm:grid-cols-3 gap-4">
