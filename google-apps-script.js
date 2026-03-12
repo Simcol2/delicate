@@ -3,16 +3,20 @@
 
 function doPost(e) {
   Logger.log('Received POST request');
-  Logger.log('Post data: ' + JSON.stringify(e));
+  Logger.log('Post data type: ' + (e.postData ? typeof e.postData : 'undefined'));
   
   try {
-    // Parse the incoming data
-    var postData = e.postData;
-    if (!postData || !postData.contents) {
-      throw new Error('No postData received');
+    // Check if postData exists
+    if (!e || !e.postData || !e.postData.contents) {
+      Logger.log('No postData received - this is normal when running from editor');
+      return ContentService.createTextOutput(JSON.stringify({
+        result: 'error',
+        error: 'No data received. Run testEmail() to test.'
+      })).setMimeType(ContentService.MimeType.JSON);
     }
     
-    var data = JSON.parse(postData.contents);
+    // Parse the incoming data
+    var data = JSON.parse(e.postData.contents);
     Logger.log('Parsed data: ' + JSON.stringify(data));
     
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
@@ -35,12 +39,8 @@ function doPost(e) {
     Logger.log('Row added to sheet');
     
     // Send email notification to April
-    try {
-      sendNotificationEmail(data);
-      Logger.log('Email sent successfully');
-    } catch (emailError) {
-      Logger.log('Email error: ' + emailError.toString());
-    }
+    sendNotificationEmail(data);
+    Logger.log('Email sent');
     
     // Return success
     var output = ContentService.createTextOutput(JSON.stringify({
@@ -95,8 +95,8 @@ function sendNotificationEmail(data) {
   Logger.log('Notification email sent to: ' + recipient);
 }
 
-// TEST FUNCTION - Run this to test
-function testEmail() {
+// TEST FUNCTION - Run this to test both sheet and email
+function testFull() {
   var testData = {
     name: 'Test User',
     email: 'test@example.com',
@@ -123,9 +123,9 @@ function testEmail() {
     testData.message,
     testData.referredBy
   ]);
-  Logger.log('Test row added');
+  Logger.log('Test row added to sheet');
   
   // Test email
   sendNotificationEmail(testData);
-  Logger.log('Test email sent! Check april@delicateflowers.co');
+  Logger.log('Test email sent to april@delicateflowers.co');
 }
