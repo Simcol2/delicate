@@ -1,119 +1,95 @@
 // Google Apps Script Code for Delicate Flowers Contact Form
-// Paste this in: Extensions → Apps Script
+// Instructions:
+// 1. Paste this code in Extensions > Apps Script
+// 2. Click Deploy > New Deployment
+// 3. Type: Web app
+// 4. Execute as: Me
+// 5. Who has access: ANYONE (this is required for CORS)
+// 6. Click Deploy and copy the URL
 
 function doPost(e) {
-  Logger.log('Received POST request');
-  Logger.log('Post data type: ' + (e.postData ? typeof e.postData : 'undefined'));
-  
   try {
-    // Check if postData exists
-    if (!e || !e.postData || !e.postData.contents) {
-      Logger.log('No postData received - this is normal when running from editor');
-      var output = ContentService.createTextOutput(JSON.stringify({
-        result: 'error',
-        error: 'No data received. Run testFull() to test.'
-      }));
-      output.setMimeType(ContentService.MimeType.JSON);
-      return output;
-    }
+    // Parse form data
+    var postData = e.postData;
+    var data = JSON.parse(postData.contents);
     
-    // Parse the incoming data
-    var data = JSON.parse(e.postData.contents);
-    Logger.log('Parsed data: ' + JSON.stringify(data));
+    // Log for debugging
+    Logger.log('Received data: ' + JSON.stringify(data));
     
+    // Add to spreadsheet
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    sheet.appendRow([
+      new Date(),
+      data.name || '',
+      data.email || '',
+      data.phoneNumber || '',
+      data.eventType || '',
+      data.eventDate || '',
+      data.location || '',
+      data.guestSize || '',
+      data.message || '',
+      data.referredBy || ''
+    ]);
     
-    // Add data to next row
-    var row = [
-      new Date(),                    // A: Timestamp
-      data.name || '',               // B: Name
-      data.email || '',              // C: Email
-      data.phoneNumber || '',        // D: Phone
-      data.eventType || '',          // E: Event Type
-      data.eventDate || '',          // F: Date
-      data.location || '',           // G: Location
-      data.guestSize || '',          // H: Guest Size
-      data.message || '',            // I: Message
-      data.referredBy || ''          // J: Referred By
-    ];
-    
-    sheet.appendRow(row);
-    Logger.log('Row added to sheet');
-    
-    // Send email notification to April
+    // Send notification email
     sendNotificationEmail(data);
-    Logger.log('Email sent');
     
-    // Return success
-    var output = ContentService.createTextOutput(JSON.stringify({
-      result: 'success',
-      message: 'Data saved and email sent'
-    }));
-    output.setMimeType(ContentService.MimeType.JSON);
-    return output;
+    // Return success with text output (CORS friendly)
+    return ContentService
+      .createTextOutput(JSON.stringify({result: 'success'}))
+      .setMimeType(ContentService.MimeType.JSON);
       
   } catch (error) {
     Logger.log('Error: ' + error.toString());
-    var output = ContentService.createTextOutput(JSON.stringify({
-      result: 'error',
-      error: error.toString()
-    }));
-    output.setMimeType(ContentService.MimeType.JSON);
-    return output;
+    return ContentService
+      .createTextOutput(JSON.stringify({result: 'error', error: error.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
   }
 }
 
-// Handle GET requests for testing
 function doGet(e) {
-  var output = ContentService.createTextOutput(JSON.stringify({
-    result: 'success',
-    message: 'Script is working! Use POST to submit form data.'
-  }));
-  output.setMimeType(ContentService.MimeType.JSON);
-  return output;
+  return ContentService
+    .createTextOutput(JSON.stringify({status: 'working'}))
+    .setMimeType(ContentService.MimeType.JSON);
 }
 
 function sendNotificationEmail(data) {
-  var recipient = 'april@delicateflowers.co';
-  var subject = 'New Consultation Booking - ' + (data.name || 'Unknown');
-  
-  var body = 'Hello April,\n\n' +
-    'A new consultation form has been submitted:\n\n' +
-    'NAME: ' + (data.name || '') + '\n' +
-    'EMAIL: ' + (data.email || '') + '\n' +
-    'PHONE: ' + (data.phoneNumber || 'Not provided') + '\n\n' +
-    'EVENT DETAILS:\n' +
-    '- Type: ' + (data.eventType || 'Not specified') + '\n' +
-    '- Date: ' + (data.eventDate || 'Not specified') + '\n' +
-    '- Location: ' + (data.location || 'Not specified') + '\n' +
-    '- Guest Count: ' + (data.guestSize || 'Not specified') + '\n\n' +
-    'MESSAGE:\n' + (data.message || 'No message') + '\n\n' +
-    'REFERRED BY: ' + (data.referredBy || 'Not specified') + '\n\n' +
-    '---\n' +
-    'View all submissions: https://docs.google.com/spreadsheets/d/1E1p0Ofl-yCoK16Bb3hqWIRNXwMRHmV167CxDOz1oX_U/edit';
-  
-  MailApp.sendEmail(recipient, subject, body, {
-    name: 'Delicate Flowers Website'
-  });
-  
-  Logger.log('Notification email sent to: ' + recipient);
+  try {
+    var recipient = 'april@delicateflowers.co';
+    var subject = 'New Booking - ' + (data.name || 'Unknown');
+    
+    var body = 'New consultation submission:\n\n' +
+      'Name: ' + (data.name || 'N/A') + '\n' +
+      'Email: ' + (data.email || 'N/A') + '\n' +
+      'Phone: ' + (data.phoneNumber || 'N/A') + '\n' +
+      'Event Type: ' + (data.eventType || 'N/A') + '\n' +
+      'Date: ' + (data.eventDate || 'N/A') + '\n' +
+      'Location: ' + (data.location || 'N/A') + '\n' +
+      'Guests: ' + (data.guestSize || 'N/A') + '\n\n' +
+      'Message:\n' + (data.message || 'None') + '\n\n' +
+      'Referred By: ' + (data.referredBy || 'N/A');
+    
+    MailApp.sendEmail(recipient, subject, body);
+    Logger.log('Email sent to ' + recipient);
+  } catch (emailError) {
+    Logger.log('Email error: ' + emailError.toString());
+  }
 }
 
-// TEST FUNCTION - Run this to test both sheet and email
-function testFull() {
+// Test function - run this to verify setup
+function testSubmission() {
   var testData = {
     name: 'Test User',
-    email: 'test@example.com',
-    phoneNumber: '(555) 123-4567',
-    eventType: 'Mother\'s Day Special',
-    eventDate: '2026-05-10',
+    email: 'test@test.com',
+    phoneNumber: '555-1234',
+    eventType: 'Dinner',
+    eventDate: '2024-12-25',
     location: 'Palm Springs',
     guestSize: '8',
-    message: 'This is a test message',
+    message: 'Test message',
     referredBy: 'Google'
   };
   
-  // Test sheet
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   sheet.appendRow([
     new Date(),
@@ -127,9 +103,7 @@ function testFull() {
     testData.message,
     testData.referredBy
   ]);
-  Logger.log('Test row added to sheet');
   
-  // Test email
   sendNotificationEmail(testData);
-  Logger.log('Test email sent to april@delicateflowers.co');
+  Logger.log('Test completed!');
 }

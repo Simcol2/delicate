@@ -56,37 +56,28 @@ export default function ConsultationPage() {
       // Send email via EmailJS
       await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
 
-      // Also save to Google Sheet
+      // Also save to Google Sheet (fire and forget - CORS workaround)
       const SHEET_SCRIPT_URL = 'https://script.google.com/a/macros/delicateflowers.co/s/AKfycbyXa5jlOnpSwOaGduMF0ytJLHxytHHxT19AywYbxhk3Ucgz9dJG4kdOcAF-2WxseHD4qw/exec'
       
-      try {
-        const sheetResponse = await fetch(SHEET_SCRIPT_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            phoneNumber: formData.phoneNumber || '',
-            eventType: formData.eventType || '',
-            eventDate: formData.date || '',
-            location: formData.location || '',
-            guestSize: formData.guestSize || '',
-            message: formData.message,
-            referredBy: formData.referredBy || '',
-          }),
-        });
-        
-        const sheetData = await sheetResponse.json();
-        console.log('Sheet response:', sheetData);
-        
-        if (sheetData.result !== 'success') {
-          console.error('Sheet error:', sheetData.error);
-        }
-      } catch (err) {
-        console.error('Sheet submission error:', err);
-      }
+      // Use no-cors mode for Google Apps Script
+      fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phoneNumber: formData.phoneNumber || '',
+          eventType: formData.eventType || '',
+          eventDate: formData.date || '',
+          location: formData.location || '',
+          guestSize: formData.guestSize || '',
+          message: formData.message,
+          referredBy: formData.referredBy || '',
+        }),
+      }).catch(err => console.log('Sheet logging:', err))
 
       setSubmitStatus('success')
       setStatusMessage("Thank you! Your inquiry has been sent. We'll be in touch soon.")
