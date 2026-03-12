@@ -50,6 +50,7 @@ export default function ConsultationPage() {
         guest_count: formData.guestSize || 'Not specified',
         message: formData.message,
         referredBy: formData.referredBy || 'Not specified',
+        reply_to: formData.email,
       }
 
       await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
