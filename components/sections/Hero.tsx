@@ -131,10 +131,12 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
             {/* Description */}
             <p
               ref={descriptionRef}
-              className="font-sans text-[#1A2744]/80 text-lg md:text-xl max-w-xl leading-relaxed will-change-transform mb-8"
+              className="text-[#1A2744]/80 text-lg md:text-xl max-w-xl leading-relaxed will-change-transform mb-8"
+              style={{ fontFamily: 'var(--font-serif), Cormorant Garamond, serif', fontWeight: 400 }}
             >
-              Curated in-home entertaining experiences for those who appreciate
-              the art of gathering. Serving Palm Springs and surrounding desert communities.
+              From intimate dinner parties under the palms to full in-home transformations, every event is an opportunity to create something completely unforgettable.
+              <br /><br />
+              April Garrow brings a signature warmth and artistry to every table she touches, because the most beautiful things deserve to be handled with care.
             </p>
 
             {/* Meet the Designer Button */}
