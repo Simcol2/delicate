@@ -8,9 +8,12 @@ import Image from 'next/image'
 function MothersDayPopupContent() {
   const [isVisible, setIsVisible] = useState(false)
   const [imageError, setImageError] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
+    setMounted(true)
+    
     // Check if popup was shown today
     const lastShown = localStorage.getItem('mothersDayPopupLastShown')
     const today = new Date().toDateString()
@@ -42,13 +45,15 @@ function MothersDayPopupContent() {
 
   const handleClose = () => {
     setIsVisible(false)
+    // Ensure the date is set when closed
+    localStorage.setItem('mothersDayPopupLastShown', new Date().toDateString())
   }
 
   const handleBookConsult = () => {
     window.open('https://calendar.app.google/mEhKoq1ZgiX9uZUa8', '_blank')
   }
 
-  if (!isVisible) return null
+  if (!mounted || !isVisible) return null
 
   return (
     <div className="fixed inset-0 z-[300] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overscroll-contain">
