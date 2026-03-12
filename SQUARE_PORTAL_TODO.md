@@ -27,21 +27,28 @@ This document tracks what still needs to be done to complete the Square API inte
 
 ### 1. Square API Credentials (REQUIRED)
 
-**Status:** Waiting for April to provide
+**Status:** ✅ PROVIDED - Sandbox credentials configured
 
-**What you need to do:**
-1. Go to [https://developer.squareup.com/](https://developer.squareup.com/)
-2. Sign in with your Square account
-3. Create a new application called "Delicate Flowers Portal"
-4. Get your **Sandbox Access Token** (for testing)
-5. Get your **Production Access Token** (for live)
-6. Add to Vercel environment variables:
-   ```
-   SQUARE_ACCESS_TOKEN=sq0atp-your-token-here
-   SQUARE_ENVIRONMENT=sandbox  # Change to 'production' when ready
-   ```
+**Sandbox Credentials:**
+- Application ID: `sandbox-sq0idb-HpA2eN6j-K-5exsCT_slhw`
+- Access Token: `EAAAl-G0uqxOkiyNsU8IPfjTUCTA6fpsbNNQn7aFGapD_Ruv86gVb_YC1DShNoZP`
 
-**Why this matters:** Without the access token, the client portal cannot fetch invoices from Square.
+**Next Steps:**
+1. ✅ Local `.env.local` file created
+2. **Add to Vercel:** Go to Project Settings → Environment Variables and add:
+   ```
+   SQUARE_ACCESS_TOKEN=EAAAl-G0uqxOkiyNsU8IPfjTUCTA6fpsbNNQn7aFGapD_Ruv86gVb_YC1DShNoZP
+   SQUARE_ENVIRONMENT=sandbox
+   ```
+3. **Redeploy** the site after adding environment variables
+
+**For Production (when ready):**
+- Switch to Production credentials in Square Developer Dashboard
+- Update Vercel environment variables:
+  ```
+  SQUARE_ACCESS_TOKEN=your-production-token
+  SQUARE_ENVIRONMENT=production
+  ```
 
 ---
 
