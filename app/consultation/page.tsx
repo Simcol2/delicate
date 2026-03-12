@@ -53,7 +53,31 @@ export default function ConsultationPage() {
         reply_to: formData.email,
       }
 
+      // Send email via EmailJS
       await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+
+      // Also save to Google Sheet
+      const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/1Y7wvAyu5OWX--eEOAbw-QgsL1wKfrgnMYP5ozGQpzm-mHsBCfrJUQk3F/exec'
+      
+      fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          timestamp: new Date().toISOString(),
+          name: formData.name,
+          email: formData.email,
+          phoneNumber: formData.phoneNumber || '',
+          eventType: formData.eventType || '',
+          eventDate: formData.date || '',
+          location: formData.location || '',
+          guestSize: formData.guestSize || '',
+          message: formData.message,
+          referredBy: formData.referredBy || '',
+        }),
+      }).catch(err => console.log('Sheet logging (non-critical):', err))
 
       setSubmitStatus('success')
       setStatusMessage("Thank you! Your inquiry has been sent. We'll be in touch soon.")
