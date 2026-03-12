@@ -81,7 +81,7 @@ export default function ConsultationPage() {
         const sheetData = await sheetResponse.json();
         console.log('Sheet response:', sheetData);
         
-        if (!sheetData.result === 'success') {
+        if (sheetData.result !== 'success') {
           console.error('Sheet error:', sheetData.error);
         }
       } catch (err) {
