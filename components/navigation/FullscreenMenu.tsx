@@ -24,8 +24,9 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
   return (
     <div
       className={`fixed inset-0 z-[100] bg-[#CC2A7A] transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
-        isOpen ? 'translate-y-0' : '-translate-y-full'
+        isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
       } ${!isOpen ? 'pointer-events-none' : ''}`}
+      style={{ visibility: isOpen ? 'visible' : 'hidden' }}
     >
       <div className="h-full flex flex-col">
         {/* Header */}
