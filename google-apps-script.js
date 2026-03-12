@@ -9,10 +9,12 @@ function doPost(e) {
     // Check if postData exists
     if (!e || !e.postData || !e.postData.contents) {
       Logger.log('No postData received - this is normal when running from editor');
-      return ContentService.createTextOutput(JSON.stringify({
+      var output = ContentService.createTextOutput(JSON.stringify({
         result: 'error',
-        error: 'No data received. Run testEmail() to test.'
-      })).setMimeType(ContentService.MimeType.JSON);
+        error: 'No data received. Run testFull() to test.'
+      }));
+      output.setMimeType(ContentService.MimeType.JSON);
+      return output;
     }
     
     // Parse the incoming data
@@ -63,10 +65,12 @@ function doPost(e) {
 
 // Handle GET requests for testing
 function doGet(e) {
-  return ContentService.createTextOutput(JSON.stringify({
+  var output = ContentService.createTextOutput(JSON.stringify({
     result: 'success',
     message: 'Script is working! Use POST to submit form data.'
-  })).setMimeType(ContentService.MimeType.JSON);
+  }));
+  output.setMimeType(ContentService.MimeType.JSON);
+  return output;
 }
 
 function sendNotificationEmail(data) {
