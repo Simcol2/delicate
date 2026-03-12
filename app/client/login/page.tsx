@@ -86,13 +86,27 @@ export default function ClientLogin() {
               </button>
             </form>
 
-            <div className="mt-8 pt-6 border-t border-[#C9A96E] text-center">
-              <p className="text-xs text-[#1A2744]/70">
-                Need help? Contact us at{' '}
-                <a href="mailto:april@delicateflowers.co" className="text-[#CC2A7A] hover:underline">
-                  april@delicateflowers.co
-                </a>
-              </p>
+            <div className="mt-8 pt-6 border-t border-[#C9A96E] text-center space-y-4">
+              <div>
+                <p className="text-sm text-[#1A2744]">
+                  Don't have an account?{' '}
+                  <a href="mailto:april@delicateflowers.co?subject=Request Client Portal Access" className="text-[#CC2A7A] hover:underline font-medium">
+                    Request Access
+                  </a>
+                </p>
+                <p className="text-xs text-[#1A2744]/50 mt-1">
+                  New clients can request portal access via email
+                </p>
+              </div>
+              
+              <div className="pt-4 border-t border-[#C9A96E]/30">
+                <p className="text-xs text-[#1A2744]/70">
+                  Need help? Contact us at{' '}
+                  <a href="mailto:april@delicateflowers.co" className="text-[#CC2A7A] hover:underline">
+                    april@delicateflowers.co
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
 

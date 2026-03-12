@@ -12,7 +12,7 @@ interface Invoice {
   invoiceNumber: string
   amount: string
   status: 'PAID' | 'UNPAID' | 'PARTIALLY_PAID' | 'CANCELED' | string
-  url: string
+  squareUrl: string
   dueDate?: string
 }
 
@@ -225,9 +225,9 @@ export default function ClientDashboard() {
                         }`}>
                           {getStatusText(invoice.status)}
                         </span>
-                        {invoice.status !== 'PAID' && invoice.url && (
+                        {invoice.status !== 'PAID' && invoice.squareUrl && invoice.squareUrl !== '#' && (
                           <a 
-                            href={invoice.url} 
+                            href={invoice.squareUrl} 
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-1 text-sm text-[#CC2A7A] hover:underline"
