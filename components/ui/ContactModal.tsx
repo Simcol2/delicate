@@ -149,25 +149,34 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       // Also save to Google Sheet
       const SHEET_SCRIPT_URL = 'https://script.google.com/a/macros/delicateflowers.co/s/AKfycbyXa5jlOnpSwOaGduMF0ytJLHxytHHxT19AywYbxhk3Ucgz9dJG4kdOcAF-2WxseHD4qw/exec'
       
-      fetch(SHEET_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          timestamp: new Date().toISOString(),
-          name: formData.name,
-          email: formData.email,
-          phoneNumber: formData.phoneNumber || '',
-          eventType: formData.eventType || '',
-          eventDate: formData.date || '',
-          location: formData.location || '',
-          guestSize: formData.guestSize || '',
-          message: formData.message,
-          referredBy: formData.referredBy || '',
-        }),
-      }).catch(err => console.log('Sheet logging (non-critical):', err))
+      try {
+        const sheetResponse = await fetch(SHEET_SCRIPT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phoneNumber: formData.phoneNumber || '',
+            eventType: formData.eventType || '',
+            eventDate: formData.date || '',
+            location: formData.location || '',
+            guestSize: formData.guestSize || '',
+            message: formData.message,
+            referredBy: formData.referredBy || '',
+          }),
+        });
+        
+        const sheetData = await sheetResponse.json();
+        console.log('Sheet response:', sheetData);
+        
+        if (!sheetData.result === 'success') {
+          console.error('Sheet error:', sheetData.error);
+        }
+      } catch (err) {
+        console.error('Sheet submission error:', err);
+      }
 
       setSubmitStatus('success')
       setStatusMessage("Thank you! Your inquiry has been sent. We'll be in touch soon.")
