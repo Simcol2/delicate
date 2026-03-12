@@ -5,7 +5,6 @@ const SQUARE_ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN
 
 export async function GET(request: Request) {
   try {
-    console.log('Square API Environment:', SQUARE_ENVIRONMENT)
     console.log('Square API URL:', SQUARE_API_URL)
     console.log('Token exists:', !!SQUARE_ACCESS_TOKEN)
     
