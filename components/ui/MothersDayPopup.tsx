@@ -28,6 +28,18 @@ function MothersDayPopupContent() {
     return () => clearTimeout(timer)
   }, [])
 
+  // Lock body scroll when popup is visible
+  useEffect(() => {
+    if (isVisible) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isVisible])
+
   const handleClose = () => {
     setIsVisible(false)
   }
@@ -39,8 +51,8 @@ function MothersDayPopupContent() {
   if (!isVisible) return null
 
   return (
-    <div className="fixed inset-0 z-[300] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div className="relative bg-white rounded-lg shadow-2xl w-full max-w-[90vw] md:max-w-md max-h-[90vh] overflow-hidden flex flex-col">
+    <div className="fixed inset-0 z-[300] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overscroll-contain">
+      <div className="relative bg-white rounded-lg shadow-2xl w-full max-w-[90vw] md:max-w-md max-h-[90vh] overflow-hidden flex flex-col overscroll-contain">
         {/* Close button */}
         <button 
           onClick={handleClose}
@@ -50,7 +62,12 @@ function MothersDayPopupContent() {
         </button>
 
         {/* Mother's Day Image - Scrollable if too tall */}
-        <div className="relative w-full overflow-y-auto" style={{ maxHeight: 'calc(90vh - 80px)' }}>
+        <div 
+          className="relative w-full overflow-y-auto overscroll-contain" 
+          style={{ maxHeight: 'calc(90vh - 80px)' }}
+          onWheel={(e) => e.stopPropagation()}
+          onTouchMove={(e) => e.stopPropagation()}
+        >
           {imageError ? (
             <div className="aspect-[3/4] w-full bg-gradient-to-b from-[#CC2A7A] to-[#1A2744] flex flex-col items-center justify-center text-white p-8 text-center">
               <span className="font-serif text-3xl mb-2">Mother&apos;s Day Special</span>
