@@ -37,6 +37,9 @@ function doPost(e) {
       name: 'Delicate Flowers Website'
     });
     
+    // Create Google Task
+    createConsultationTask(data.name);
+    
     // Return success
     return ContentService
       .createTextOutput('{"result":"success"}')
@@ -64,6 +67,27 @@ function buildEmailBody(data) {
     'REFERRED BY: ' + (data.referredBy || 'Not specified') + '\n\n' +
     '---\n' +
     'View all submissions in Google Sheets';
+}
+
+// Create Google Task for new consultation
+function createConsultationTask(customerName) {
+  try {
+    // Use '@default' for the default task list, or specify a task list ID
+    var taskListId = '@default';
+    
+    var task = {
+      title: 'New Consult Requested - Contact ' + (customerName || 'New Lead'),
+      notes: 'Follow up with this consultation request from the website.\nSubmitted: ' + new Date().toLocaleString(),
+      status: 'needsAction'
+    };
+    
+    Tasks.Tasks.insert(task, taskListId);
+    Logger.log('Task created: ' + task.title);
+    
+  } catch (error) {
+    // Log error but don't fail the submission if task creation fails
+    Logger.log('Error creating task: ' + error.toString());
+  }
 }
 
 // TEST - Run this to make sure it works
