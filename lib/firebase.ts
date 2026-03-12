@@ -2,6 +2,7 @@ import { initializeApp, getApps, getApp } from 'firebase/app'
 import { getStorage, ref, uploadBytes, getDownloadURL, listAll, deleteObject } from 'firebase/storage'
 import { getAuth } from 'firebase/auth'
 import { getAnalytics } from 'firebase/analytics'
+import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: "AIzaSyD4MQ7rLPoX5qk0EV4MWQ3VFuAVkMKZQsY",
@@ -16,6 +17,7 @@ const firebaseConfig = {
 const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig)
 export const storage = getStorage(app)
 export const auth = getAuth(app)
+export const db = getFirestore(app)
 
 // Analytics only runs on client side
 export const getFirebaseAnalytics = () => {
