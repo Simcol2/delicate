@@ -1,169 +1,334 @@
-
-/* Cache bust: v2 */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* Brand Style Guide Colors */
-  --fuchsia: #CC2A7A;
-  --deep-navy: #1A2744;
-  --terracotta: #CC2A7A;
-  --dusty-rose: #E8A9C0;
-  --gold: #C9A96E;
-  --cream: #faf6f0;
-  --warm-white: #fffdf9;
-  --deep: #1A2744;
-  
-  /* Legacy variables for backward compatibility */
-  --plum-deep: #1A2744;
-  --plum-royal: #CC2A7A;
-  --gold-antique: #c9a96e;
-  --gold-pale: #e8d5b0;
-  --navy-midnight: #1A2744;
-  --blush-warm: #faf6f0;
-  --white-pure: #faf6f0;
-}
+/* ── GOOGLE FONTS ── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Jost:wght@200;300;400;500&display=swap');
 
-* {
+/* ── BASE ── */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--cream);
-  color: var(--deep-navy);
-  font-family: 'Inter', sans-serif;
+  background: #FAF6EF;
+  color: #3D2E28;
+  font-family: 'Jost', system-ui, sans-serif;
+  font-weight: 300;
   overflow-x: hidden;
 }
 
-/* Custom Selection */
-::selection {
-  background: var(--gold);
-  color: var(--deep);
-}
-
-/* Luxury Typography */
-.font-serif {
-  font-family: 'Cormorant Garamond', serif;
-}
-
-.font-sans {
-  font-family: 'Inter', sans-serif;
-}
-
-/* Nav links and uppercase tracking text should be bold */
-.font-sans.tracking-widest.uppercase {
-  font-weight: 700;
-}
-
-/* Smooth Scroll Container */
-.lenis.lenis-smooth {
-  scroll-behavior: auto;
-}
-
-/* Film Grain Overlay */
-.grain-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-/* Gold Gradient Text */
-.text-gold-gradient {
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-pale) 50%, var(--gold) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Custom Scrollbar - Cream/Beige Style */
+/* ── SCROLLBAR ── */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--cream);
+  background: #F2EDE4;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gold);
-  border-radius: 5px;
-  border: 2px solid var(--cream);
+  background: #C2965A;
+  border-radius: 3px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--terracotta);
+/* ── TYPOGRAPHY UTILITIES ── */
+.font-serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
-/* Firefox scrollbar */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--gold) var(--cream);
+.font-serif-sc {
+  font-family: 'Cormorant SC', Georgia, serif;
 }
 
-/* Modal Scrollbar - Dark Background (Crimson) */
-.modal-scroll::-webkit-scrollbar {
-  width: 8px;
+.font-sans {
+  font-family: 'Jost', system-ui, sans-serif;
 }
 
-.modal-scroll::-webkit-scrollbar-track {
-  background: rgba(250, 246, 240, 0.1);
+/* ── SECTION LABEL ── */
+.section-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: #C2965A;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.modal-scroll::-webkit-scrollbar-thumb {
-  background: var(--cream);
-  border-radius: 4px;
+.section-label::before {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: #C2965A;
 }
 
-.modal-scroll::-webkit-scrollbar-thumb:hover {
-  background: var(--warm-white);
+.section-label-center {
+  justify-content: center;
 }
 
-/* Date Input Styling for Dark Backgrounds */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
+.section-label-center::before {
+  display: none;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: #2A1F1A;
+  letter-spacing: -0.01em;
+}
+
+.section-title em {
+  font-style: italic;
+  color: #C9897A;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: #C2965A;
+  color: #FAF6EF;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  border: none;
   cursor: pointer;
 }
 
-input[type="date"] {
-  color-scheme: dark;
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: #2A1F1A;
+  transition: left 0.4s ease;
 }
 
-/* Prevent overscroll behavior for modals */
-.overscroll-contain {
-  overscroll-behavior: contain;
+.btn-primary:hover::before {
+  left: 0;
 }
 
-/* Magnetic Button Base */
-.magnetic-button {
+.btn-primary span,
+.btn-primary > * {
   position: relative;
+  z-index: 1;
+}
+
+.btn-text {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #6B5248;
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  gap: 0.6rem;
+  transition: color 0.3s;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-/* Split Text Animation Helper */
-.split-line {
-  overflow: hidden;
-  display: block;
+.btn-text:hover {
+  color: #C2965A;
 }
 
-.split-line-inner {
-  display: block;
-  transform: translateY(100%);
+.btn-text::after {
+  content: '→';
+  transition: transform 0.3s;
+}
+
+.btn-text:hover::after {
+  transform: translateX(4px);
+}
+
+.btn-dark {
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  background: #2A1F1A;
+  color: #EDD9AA;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.4s;
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-dark:hover {
+  background: #C2965A;
+  color: #FAF6EF;
+}
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal {
   opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── TICKER ── */
+.ticker {
+  background: #2A1F1A;
+  padding: 0.9rem 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker-track {
+  display: flex;
+  gap: 0;
+  animation: tickerMove 30s linear infinite;
+  white-space: nowrap;
+}
+
+.ticker-item {
+  font-family: 'Cormorant SC', serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  color: #EDD9AA;
+  padding: 0 3rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.ticker-item::after {
+  content: '✦';
+  color: #C2965A;
+  font-size: 0.5rem;
+}
+
+@keyframes tickerMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── SERVICE CARDS ── */
+.service-card {
+  background: #FAF6EF;
+  padding: 3rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  cursor: default;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #C2965A, #EDD9AA);
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+}
+
+.service-card:hover {
+  background: #F2EDE4;
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: rgba(194, 150, 90, 0.18);
+  line-height: 1;
+  margin-bottom: 1rem;
+  transition: color 0.4s;
+}
+
+.service-card:hover .service-num {
+  color: rgba(194, 150, 90, 0.35);
+}
+
+/* ── TESTIMONIAL CARDS ── */
+.testimonial-card {
+  border-top: 1px solid rgba(194, 150, 90, 0.3);
+  padding-top: 2rem;
+  position: relative;
+}
+
+/* ── FORM ELEMENTS ── */
+input, textarea, select {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #C2965A;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .btn-primary,
+  .btn-dark {
+    padding: 0.9rem 2rem;
+  }
+}
+
+/* ── LEGACY UTILITIES (for compatibility) ── */
+.grain-overlay {
+  display: none;
+}
+
+/* ── SELECTION ── */
+::selection {
+  background: rgba(194, 150, 90, 0.3);
+  color: #2A1F1A;
 }

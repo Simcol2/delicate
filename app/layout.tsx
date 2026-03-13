@@ -1,42 +1,36 @@
 import type { Metadata, Viewport } from 'next'
-import { Cormorant_Garamond, Inter, Great_Vibes, Playfair_Display } from 'next/font/google'
+import { Cormorant_Garamond, Cormorant_SC, Jost } from 'next/font/google'
 import './globals.css'
 import { SmoothScrollProvider } from '@/components/providers/SmoothScroll'
 import Footer from '@/components/footer/Footer'
 import PWARegister from '@/components/PWARegister'
-
+import { Navbar } from '@/components/navigation/Navbar'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  weight: ['300', '400', '600'],
+  weight: ['300', '400', '500', '600'],
+  style: ['normal', 'italic'],
   variable: '--font-serif',
   display: 'swap',
 })
 
-const inter = Inter({
+const cormorantSC = Cormorant_SC({
   subsets: ['latin'],
   weight: ['300', '400', '500'],
+  variable: '--font-serif-sc',
+  display: 'swap',
+})
+
+const jost = Jost({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500'],
   variable: '--font-sans',
   display: 'swap',
 })
 
-const greatVibes = Great_Vibes({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-script',
-  display: 'swap',
-})
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-display',
-  display: 'swap',
-})
-
 export const metadata: Metadata = {
-  title: 'Delicate Flowers | Luxury Floral & Tablescape Design',
-  description: 'You host. We style. Luxury in-home entertaining experiences in Palm Springs.',
+  title: 'Delicate Flowers | Palm Springs',
+  description: 'Bespoke floral artistry rooted in the light and landscape of Palm Springs. We design with the precision of an architect and the soul of a botanist.',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
@@ -49,13 +43,13 @@ export const metadata: Metadata = {
       { url: '/icons/icon-512x512.png', sizes: '512x512' },
     ],
     apple: [
-      { url: '/icons/icon-192x192.png', sizes: '192x192' },
+      { url: '/icons/icon-180x180.png', sizes: '180x180' },
     ],
   },
 }
 
 export const viewport: Viewport = {
-  themeColor: '#CC2A7A',
+  themeColor: '#C2965A',
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
@@ -67,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable} ${greatVibes.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${cormorantSC.variable} ${jost.variable}`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="application-name" content="Delicate Flowers" />
@@ -76,23 +70,16 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Delicate Flowers" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="msapplication-TileColor" content="#CC2A7A" />
+        <meta name="msapplication-TileColor" content="#C2965A" />
         <meta name="msapplication-tap-highlight" content="no" />
-        
-        {/* iOS Icons */}
         <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png" />
         <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
         <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-152x152.png" />
-        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
-        
-        {/* Favicon */}
         <link rel="shortcut icon" href="/icons/icon-192x192.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-72x72.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-72x72.png" />
       </head>
-      <body>
+      <body className="bg-cream text-text font-sans font-light antialiased">
         <SmoothScrollProvider>
-          <div className="grain-overlay" />
+          <Navbar />
           {children}
           <Footer />
         </SmoothScrollProvider>
