@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '@/lib/firebase'
 import { useRouter } from 'next/navigation'
-import Navbar from '@/components/navigation/Navbar'
 
 export default function ClientLogin() {
   const [email, setEmail] = useState('')
@@ -23,7 +22,7 @@ export default function ClientLogin() {
     try {
       await signInWithEmailAndPassword(auth, email, password)
       router.push('/client/dashboard')
-    } catch (err: any) {
+    } catch (err) {
       setError('Invalid email or password')
     } finally {
       setLoading(false)
@@ -49,7 +48,6 @@ export default function ClientLogin() {
     }
 
     try {
-      // Create Firebase account
       await createUserWithEmailAndPassword(auth, email, password)
       
       // Create Square customer
@@ -66,12 +64,9 @@ export default function ClientLogin() {
         if (response.ok) {
           const data = await response.json()
           console.log('Square customer:', data.message)
-        } else {
-          console.error('Failed to create Square customer')
         }
       } catch (squareErr) {
         console.error('Square API error:', squareErr)
-        // Don't block account creation if Square fails
       }
       
       setSuccess('Account created successfully! Redirecting to dashboard...')
@@ -100,134 +95,131 @@ export default function ClientLogin() {
   }
 
   return (
-    <>
-      <Navbar />
-      <main className="min-h-screen bg-[#FAF6F0] pt-32 pb-20">
-        <div className="max-w-md mx-auto px-6">
-          <div className="text-center mb-10">
-            <span className="text-[#CC2A7A] text-xs tracking-[0.3em] uppercase font-sans block mb-4">
-              {isCreatingAccount ? 'Get Started' : 'Welcome back'}
-            </span>
-            <h1 className="font-serif text-4xl text-[#1A2744] mb-3 font-bold">
-              {isCreatingAccount ? 'Create Account' : 'Client Portal'}
-            </h1>
-            <p className="text-[#1A2744] text-sm">
-              {isCreatingAccount 
-                ? 'Create an account to view your invoices, contracts, and event details.'
-                : 'Sign in to view your invoices, contracts, and event details.'}
-            </p>
-          </div>
+    <main className="min-h-screen bg-cream pt-32 lg:pt-40 pb-20">
+      <div className="max-w-md mx-auto px-6">
+        <div className="text-center mb-10">
+          <span className="text-gold text-xs tracking-[0.3em] uppercase font-sans block mb-4">
+            {isCreatingAccount ? 'Get Started' : 'Welcome back'}
+          </span>
+          <h1 className="font-serif text-4xl text-dark mb-3 font-light">
+            {isCreatingAccount ? 'Create Account' : 'Client Portal'}
+          </h1>
+          <p className="text-text-mid text-sm">
+            {isCreatingAccount 
+              ? 'Create an account to view your invoices, contracts, and event details.'
+              : 'Sign in to view your invoices, contracts, and event details.'}
+          </p>
+        </div>
 
-          <div className="bg-white p-8 md:p-10">
-            <form onSubmit={isCreatingAccount ? handleCreateAccount : handleLogin} className="space-y-6">
+        <div className="bg-ivory p-8 md:p-10">
+          <form onSubmit={isCreatingAccount ? handleCreateAccount : handleLogin} className="space-y-6">
+            <div>
+              <label className="block text-dark text-xs tracking-widest uppercase font-sans mb-2">
+                Email Address
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full bg-transparent border-b border-gold py-3 text-dark focus:border-rose focus:outline-none transition-colors"
+                placeholder="you@email.com"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-dark text-xs tracking-widest uppercase font-sans mb-2">
+                Password
+              </label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full bg-transparent border-b border-gold py-3 text-dark focus:border-rose focus:outline-none transition-colors"
+                placeholder="••••••••"
+                required
+                minLength={6}
+              />
+            </div>
+            
+            {isCreatingAccount && (
               <div>
-                <label className="block text-[#1A2744] text-xs tracking-widest uppercase font-sans mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-transparent border-b border-[#C9A96E] py-3 text-[#1A2744] focus:border-[#CC2A7A] focus:outline-none transition-colors"
-                  placeholder="you@email.com"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-[#1A2744] text-xs tracking-widest uppercase font-sans mb-2">
-                  Password
+                <label className="block text-dark text-xs tracking-widest uppercase font-sans mb-2">
+                  Confirm Password
                 </label>
                 <input
                   type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-transparent border-b border-[#C9A96E] py-3 text-[#1A2744] focus:border-[#CC2A7A] focus:outline-none transition-colors"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="w-full bg-transparent border-b border-gold py-3 text-dark focus:border-rose focus:outline-none transition-colors"
                   placeholder="••••••••"
                   required
                   minLength={6}
                 />
               </div>
-              
-              {isCreatingAccount && (
-                <div>
-                  <label className="block text-[#1A2744] text-xs tracking-widest uppercase font-sans mb-2">
-                    Confirm Password
-                  </label>
-                  <input
-                    type="password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="w-full bg-transparent border-b border-[#C9A96E] py-3 text-[#1A2744] focus:border-[#CC2A7A] focus:outline-none transition-colors"
-                    placeholder="••••••••"
-                    required
-                    minLength={6}
-                  />
-                </div>
-              )}
+            )}
 
-              {error && (
-                <div className="p-3 bg-red-500/10 text-red-600 text-sm text-center">
-                  {error}
-                </div>
-              )}
-
-              {success && (
-                <div className="p-3 bg-green-500/10 text-green-600 text-sm text-center">
-                  {success}
-                </div>
-              )}
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-[#CC2A7A] text-[#faf6f0] py-4 font-sans text-sm tracking-widest uppercase hover:bg-[#1A2744] transition-colors disabled:opacity-50"
-              >
-                {loading 
-                  ? (isCreatingAccount ? 'Creating Account...' : 'Signing in...') 
-                  : (isCreatingAccount ? 'Create Account' : 'Sign In')}
-              </button>
-            </form>
-
-            <div className="mt-8 pt-6 border-t border-[#C9A96E] text-center space-y-4">
-              <div>
-                <p className="text-sm text-[#1A2744]">
-                  {isCreatingAccount 
-                    ? "Already have an account? " 
-                    : "Don't have an account? "}
-                  <button 
-                    onClick={toggleMode}
-                    className="text-[#CC2A7A] hover:underline font-medium"
-                  >
-                    {isCreatingAccount ? 'Sign In' : 'Create Account'}
-                  </button>
-                </p>
-                <p className="text-xs text-[#1A2744]/50 mt-1">
-                  {isCreatingAccount 
-                    ? 'Sign in to access your existing account'
-                    : 'New clients can create an account here'}
-                </p>
+            {error && (
+              <div className="p-3 bg-red-500/10 text-red-600 text-sm text-center">
+                {error}
               </div>
-              
-              <div className="pt-4 border-t border-[#C9A96E]/30">
-                <p className="text-xs text-[#1A2744]/70">
-                  Need help? Contact us at{' '}
-                  <a href="mailto:april@delicateflowers.co" className="text-[#CC2A7A] hover:underline">
-                    april@delicateflowers.co
-                  </a>
-                </p>
+            )}
+
+            {success && (
+              <div className="p-3 bg-green-500/10 text-green-600 text-sm text-center">
+                {success}
               </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-gold text-cream py-4 font-sans text-sm tracking-widest uppercase hover:bg-dark transition-colors disabled:opacity-50"
+            >
+              {loading 
+                ? (isCreatingAccount ? 'Creating Account...' : 'Signing in...') 
+                : (isCreatingAccount ? 'Create Account' : 'Sign In')}
+            </button>
+          </form>
+
+          <div className="mt-8 pt-6 border-t border-gold text-center space-y-4">
+            <div>
+              <p className="text-sm text-dark">
+                {isCreatingAccount 
+                  ? "Already have an account? " 
+                  : "Don't have an account? "}
+                <button 
+                  onClick={toggleMode}
+                  className="text-rose hover:underline font-medium"
+                >
+                  {isCreatingAccount ? 'Sign In' : 'Create Account'}
+                </button>
+              </p>
+              <p className="text-xs text-text-light mt-1">
+                {isCreatingAccount 
+                  ? 'Sign in to access your existing account'
+                  : 'New clients can create an account here'}
+              </p>
+            </div>
+            
+            <div className="pt-4 border-t border-gold/30">
+              <p className="text-xs text-text-mid">
+                Need help? Contact us at{' '}
+                <a href="mailto:april@delicateflowers.co" className="text-rose hover:underline">
+                  april@delicateflowers.co
+                </a>
+              </p>
             </div>
           </div>
-
-          {/* Terms Note */}
-          <p className="text-center text-xs text-[#1A2744]/70 mt-6">
-            By using this portal, you agree to our{' '}
-            <a href="/terms" target="_blank" className="text-[#CC2A7A] hover:underline">
-              Terms of Service
-            </a>
-          </p>
         </div>
-      </main>
-    </>
+
+        {/* Terms Note */}
+        <p className="text-center text-xs text-text-mid mt-6">
+          By using this portal, you agree to our{' '}
+          <a href="/terms" target="_blank" className="text-rose hover:underline">
+            Terms of Service
+          </a>
+        </p>
+      </div>
+    </main>
   )
 }
