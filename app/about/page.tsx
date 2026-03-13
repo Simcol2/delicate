@@ -1,106 +1,129 @@
 'use client'
 
-import { useEffect } from 'react'
-import { gsap } from 'gsap'
-import Navbar from '@/components/navigation/Navbar'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 export default function AboutPage() {
+  const [mounted, setMounted] = useState(false)
+
   useEffect(() => {
-    // Animate content on load
-    const content = document.querySelector('.about-content')
-    gsap.fromTo(
-      content,
-      { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: 'power3.out',
-      }
-    )
+    setMounted(true)
   }, [])
 
   return (
-    <>
-      <Navbar />
-      <main className="min-h-screen bg-[#faf6f0] pt-32 pb-20">
-        <div className="w-full px-6 lg:px-12 max-w-6xl mx-auto">
-          <div className="about-content flex flex-col md:flex-row bg-[#fffdf9] rounded-xl shadow-xl overflow-hidden">
-            {/* Photo Side */}
-            <div className="w-full md:w-2/5 relative h-72 md:h-auto md:min-h-[600px] shrink-0">
+    <main className="min-h-screen bg-cream pt-32 lg:pt-40 pb-20 lg:pb-32">
+      <div className="max-w-7xl mx-auto px-6 lg:px-20">
+        {/* Header */}
+        <div 
+          className={`text-center mb-16 transition-all duration-1000 ${
+            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <p className="section-label justify-center">Meet The Designer</p>
+          <h1 className="section-title">Creating Tables That<br><em className="text-rose">Feel Like Home</em></br></h1>
+        </div>
+
+        {/* Main Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Photo */}
+          <div 
+            className={`relative aspect-[3/4] lg:aspect-auto lg:h-[700px] overflow-hidden transition-all duration-1000 delay-200 ${
+              mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <div className="absolute inset-0 bg-ivory">
               <Image
                 src="/images/WhatsApp Image 2026-03-05 at 11.32.29 AM.jpeg"
-                alt="Event Designer"
+                alt="April Garrow - Event Designer"
                 fill
-                className="object-cover object-top md:object-[25%_center]"
-                sizes="(max-width: 768px) 100vw, 40vw"
+                className="object-cover object-top"
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
             </div>
+            {/* Gold frame accent */}
+            <div className="absolute -bottom-4 -right-4 w-full h-full border border-gold/30 pointer-events-none"></div>
+          </div>
 
-            {/* Bio Side */}
-            <div className="w-full md:w-3/5 p-8 md:p-12 lg:p-14 flex flex-col justify-center">
-              <span className="text-[#c9594a] text-xs tracking-[0.3em] uppercase font-sans font-medium mb-3">
-                Meet The Designer
-              </span>
-              
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#2c2420] mb-3 leading-tight">
-                Creating Tables That
-                <span 
-                  className="block text-[#c9594a] mt-2"
-                  style={{ fontFamily: 'var(--font-script), cursive' }}
-                >
-                  Feel Like Home
-                </span>
-              </h1>
+          {/* Bio */}
+          <div 
+            className={`transition-all duration-1000 delay-400 ${
+              mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <p className="font-serif text-rose text-lg italic mb-8">
+              April is your local crafty mamma bear that would love an invite to your next event!
+            </p>
 
-              {/* Tagline */}
-              <p className="text-[#c4897a] font-sans text-base italic mb-6">
-                April is your local crafty mamma bear that would love an invite to your next event!
+            <div className="space-y-6 font-sans text-base font-light leading-relaxed text-text-mid">
+              <p>
+                I&apos;m an event stylist who believes a beautiful gathering is really about how people feel when they&apos;re sitting at the table.
               </p>
+              
+              <p>
+                I&apos;m known for bold florals, layered place settings, and that golden-hour glow that makes everyone linger a little longer. I design tables that feel warm, welcoming, and thoughtfully put together.
+              </p>
+              
+              <p>
+                I have spent years perfecting the little details most people overlook. Napkins can be bunny ears and everything should sparkle. My tables feel abundant but effortless, and every guest will always feel like they were considered.
+              </p>
+            </div>
 
-              <div className="space-y-4 text-[#6b5b52] text-base leading-relaxed font-sans">
-                <p>
-                  I&apos;m an event stylist who believes a beautiful gathering is really about how people feel when they&apos;re sitting at the table.
-                </p>
-                
-                <p>
-                  I&apos;m known for bold florals, layered place settings, and that golden-hour glow that makes everyone linger a little longer. I design tables that feel warm, welcoming, and thoughtfully put together.
-                </p>
-                
-                <p>
-                  I have spent years perfecting the little details most people overlook. Napkins can be bunny ears and everything should sparkle. My tables feel abundant but effortless, and every guest will always feel like they were considered.
-                </p>
+            <blockquote className="mt-10 pl-6 border-l-2 border-gold">
+              <p className="font-serif text-lg text-dark italic">
+                My philosophy is simple: when people feel cared for, they remember the evening long after the dishes are washed!
+              </p>
+            </blockquote>
 
-                <p className="text-[#2c2420] font-medium italic border-l-2 border-[#c9a96e] pl-4 mt-6">
-                  My philosophy is simple: when people feel cared for, they remember the evening long after the dishes are washed!
-                </p>
-              </div>
+            {/* Signature */}
+            <div className="mt-10 flex items-center gap-4">
+              <div className="w-12 h-[1px] bg-gold"></div>
+              <span className="font-serif italic text-text-light">April Garrow</span>
+            </div>
 
-              {/* CTA Button */}
-              <div className="mt-8 pt-6 border-t border-[#e8d5b0]">
-                <a
-                  href="/#contact"
-                  className="inline-block px-8 py-4 bg-[#8f0e04] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#c9594a] transition-colors duration-300"
-                >
-                  Schedule a Consultation
-                </a>
-              </div>
+            {/* CTA */}
+            <div className="mt-12 flex flex-col sm:flex-row gap-4">
+              <a href="/consultation" className="btn-primary text-center">
+                <span>Book a Consultation</span>
+              </a>
+              <a href="/" className="btn-text justify-center">
+                Back to Home
+              </a>
             </div>
           </div>
-
-          {/* Back to Home */}
-          <div className="text-center mt-16">
-            <a
-              href="/"
-              className="inline-block px-10 py-4 border-2 border-[#8f0e04] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#8f0e04] hover:text-[#faf6f0] transition-all duration-300"
-            >
-              Back to Home
-            </a>
-          </div>
         </div>
-      </main>
-    </>
+
+        {/* Values Section */}
+        <div className="mt-24 lg:mt-32 grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              title: 'Intentional Design',
+              desc: 'Every element is chosen with purpose, from the angle of a bloom to the weight of a napkin fold.',
+            },
+            {
+              title: 'Warmth First',
+              desc: 'Beauty means nothing if guests dont feel at ease. We design for connection, not just aesthetics.',
+            },
+            {
+              title: 'Desert Soul',
+              desc: 'Palm Springs light and landscape inform everything we create. Bold, sculptural, sun-drenched.',
+            },
+          ].map((value, i) => (
+            <div 
+              key={i}
+              className="p-8 border-t-2 border-gold/20 bg-ivory/50"
+            >
+              <span className="font-serif text-4xl text-gold/20">0{i + 1}</span>
+              <h3 className="font-serif-sc text-lg tracking-[0.08em] text-dark mt-4 mb-3">
+                {value.title}
+              </h3>
+              <p className="font-sans text-sm font-light text-text-mid leading-relaxed">
+                {value.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </main>
   )
 }

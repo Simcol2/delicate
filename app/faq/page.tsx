@@ -1,8 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { gsap } from 'gsap'
-import Navbar from '@/components/navigation/Navbar'
 import { Plus } from 'lucide-react'
 
 const faqs = [
@@ -31,7 +29,6 @@ For clients who are ready to move forward, we require a site visit consultation 
 And everything in between!
 
 If you're bringing people together around a beautiful table, we want to be part of it.`,
-    hasScriptLine: true
   },
   {
     question: 'How far in advance should I book?',
@@ -65,22 +62,10 @@ If you're bringing people together around a beautiful table, we want to be part 
 
 export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    // Animate FAQ items on load
-    const items = document.querySelectorAll('.faq-item')
-    gsap.fromTo(
-      items,
-      { y: 20, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.5,
-        stagger: 0.05,
-        ease: 'power3.out',
-        delay: 0.2,
-      }
-    )
+    setMounted(true)
   }, [])
 
   const toggleFAQ = (index: number) => {
@@ -88,111 +73,101 @@ export default function FAQPage() {
   }
 
   return (
-    <>
-      <Navbar />
-      <main className="min-h-screen bg-[#FAF6F0] pt-32 pb-20">
-        <div className="w-full px-6 lg:px-12">
-          {/* Header */}
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[#CC2A7A] text-sm tracking-[0.3em] uppercase font-sans block mb-4">
-              You have questions
-            </span>
-            <h1 className="font-serif text-5xl lg:text-6xl xl:text-7xl text-[#1A2744] leading-tight mb-6 font-bold">
-              We have <em className="text-[#CC2A7A] italic">answers.</em>
-            </h1>
-            <p className="font-sans text-[#1A2744] text-lg max-w-md mx-auto">
-              Everything you need to know before we start designing the table of your dreams.
-            </p>
-            {/* Divider */}
-            <div className="w-[60px] h-[1px] bg-[#CC2A7A] mx-auto mt-8" />
-          </div>
+    <main className="min-h-screen bg-cream pt-32 lg:pt-40 pb-20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <p className="section-label justify-center">You have questions</p>
+          <h1 className="section-title">
+            We have <em className="text-rose">answers.</em>
+          </h1>
+          <p className="font-sans text-text-mid text-lg max-w-md mx-auto mt-6">
+            Everything you need to know before we start designing the table of your dreams.
+          </p>
+          <div className="w-[60px] h-[1px] bg-gold mx-auto mt-8" />
+        </div>
 
-          {/* FAQ Section */}
-          <div className="max-w-3xl mx-auto">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="faq-item border-t border-[#CC2A7A]/30 first:border-t-0 last:border-b last:border-[#CC2A7A]/30"
+        {/* FAQ Section */}
+        <div className="max-w-3xl mx-auto">
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className={`border-t border-gold/30 first:border-t-0 last:border-b last:border-gold/30 transition-all duration-700 ${
+                mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+              style={{ transitionDelay: `${index * 50 + 200}ms` }}
+            >
+              <button
+                onClick={() => toggleFAQ(index)}
+                className="w-full flex items-center justify-between gap-6 py-7 text-left group"
+                aria-expanded={openIndex === index}
               >
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full flex items-center justify-between gap-6 py-7 text-left group"
-                  aria-expanded={openIndex === index}
-                >
-                  <span className="font-serif text-lg md:text-xl text-[#1A2744] group-hover:text-[#CC2A7A] font-bold transition-colors duration-300 leading-snug">
-                    {faq.question}
-                  </span>
-                  <span 
-                    className={`flex-shrink-0 w-8 h-8 rounded-full border border-[#CC2A7A] flex items-center justify-center transition-all duration-300 ${
-                      openIndex === index ? 'bg-[#CC2A7A] rotate-45' : ''
-                    }`}
-                  >
-                    <Plus 
-                      size={16} 
-                      className={`transition-colors duration-300 ${
-                        openIndex === index ? 'text-[#faf6f0]' : 'text-[#CC2A7A]'
-                      }`} 
-                    />
-                  </span>
-                </button>
-                <div 
-                  className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-                    openIndex === index ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
+                <span className="font-serif text-lg md:text-xl text-dark group-hover:text-rose transition-colors duration-300 leading-snug">
+                  {faq.question}
+                </span>
+                <span 
+                  className={`flex-shrink-0 w-8 h-8 rounded-full border border-rose flex items-center justify-center transition-all duration-300 ${
+                    openIndex === index ? 'bg-rose rotate-45' : ''
                   }`}
                 >
-                  {faq.hasScriptLine ? (
-                    <div className="font-sans text-[#1A2744] text-[15px] leading-[1.85] pb-7 pr-12 whitespace-pre-line">
-                      {faq.answer.split('\n').map((line, i) => (
-                        line === 'And everything in between!' ? (
-                          <span key={i} style={{ fontFamily: 'var(--font-script), cursive' }} className="text-[#CC2A7A] text-xl block my-2">
-                            {line}
-                          </span>
-                        ) : (
-                          <span key={i} className="block">{line}</span>
-                        )
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="font-sans text-[#1A2744] text-[15px] leading-[1.85] pb-7 pr-12 whitespace-pre-line">
-                      {faq.answer}
-                    </p>
-                  )}
+                  <Plus 
+                    size={16} 
+                    className={`transition-colors duration-300 ${
+                      openIndex === index ? 'text-cream' : 'text-rose'
+                    }`} 
+                  />
+                </span>
+              </button>
+              <div 
+                className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                  openIndex === index ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
+                }`}
+              >
+                <div className="font-sans text-text text-[15px] leading-[1.85] pb-7 pr-12 whitespace-pre-line">
+                  {faq.answer.split('\n').map((line, i) => (
+                    line.startsWith('•') ? (
+                      <span key={i} className="block pl-4">{line}</span>
+                    ) : line === "And everything in between!" ? (
+                      <em key={i} className="font-serif text-rose text-xl block my-2">
+                        {line}
+                      </em>
+                    ) : (
+                      <span key={i} className="block">{line}</span>
+                    )
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* CTA Banner - Updated to Crimson */}
-          <div className="max-w-3xl mx-auto mt-16">
-            <div className="bg-[#CC2A7A] rounded-lg p-10 md:p-12 text-center">
-              <p className="font-serif text-2xl md:text-3xl text-[#faf6f0] leading-relaxed">
-                Still have questions? <em className="text-[#C9A96E] italic">We&apos;d love to hear from you.</em>
-              </p>
-              <p className="font-sans text-[#faf6f0]/60 text-sm mt-4 tracking-wide">
-                Call us or book a complimentary 15-minute phone consultation, no commitment required.
-              </p>
-              <a
-                href="https://calendar.app.google/mEhKoq1ZgiX9uZUa8"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mt-8 px-10 py-4 border-2 border-[#faf6f0] text-[#faf6f0] font-sans text-sm tracking-widest uppercase hover:bg-[#FAF6F0] hover:text-[#CC2A7A] transition-all duration-300"
-              >
-                Schedule a Call
-              </a>
             </div>
-          </div>
+          ))}
+        </div>
 
-          {/* Back to Home */}
-          <div className="text-center mt-16">
+        {/* CTA Banner */}
+        <div className="max-w-3xl mx-auto mt-16">
+          <div className="bg-dark p-10 md:p-12 text-center">
+            <p className="font-serif text-2xl md:text-3xl text-cream leading-relaxed">
+              Still have questions? <em className="text-gold italic">We&apos;d love to hear from you.</em>
+            </p>
+            <p className="font-sans text-cream/60 text-sm mt-4 tracking-wide">
+              Call us or book a complimentary 15-minute phone consultation, no commitment required.
+            </p>
             <a
-              href="/"
-              className="inline-block px-10 py-4 border-2 border-[#CC2A7A] text-[#CC2A7A] font-sans text-sm tracking-widest uppercase hover:bg-[#CC2A7A] hover:text-[#faf6f0] transition-all duration-300"
+              href="https://calendar.app.google/mEhKoq1ZgiX9uZUa8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-8 px-10 py-4 border-2 border-cream text-cream font-sans text-sm tracking-widest uppercase hover:bg-cream hover:text-dark transition-all duration-300"
             >
-              Back to Home
+              Schedule a Call
             </a>
           </div>
         </div>
-      </main>
-    </>
+
+        {/* Back to Home */}
+        <div className="text-center mt-16">
+          <a href="/" className="btn-text">
+            Back to Home
+          </a>
+        </div>
+      </div>
+    </main>
   )
 }
