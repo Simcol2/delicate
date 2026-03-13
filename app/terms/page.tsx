@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import { gsap } from 'gsap'
-import Navbar from '@/components/navigation/Navbar'
+import { Navbar } from '@/components/navigation/Navbar'
 
 const termsSections = [
   {

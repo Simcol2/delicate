@@ -31,7 +31,7 @@ export default function Page() {
 
           <div className="relative z-10">
             <p className="section-label">Our Philosophy</p>
-            <h2 className="section-title">Where the<br>desert meets<br><em>artistry.</em></h2>
+            <h2 className="section-title">Where the<br />desert meets<br /><em>artistry.</em></h2>
             <p className="font-serif text-xl lg:text-[1.25rem] font-light leading-[1.75] text-text-mid mt-8">
               Palm Springs is unlike anywhere else on earth. Its light is <strong className="font-medium text-dark">golden and relentless.</strong>{' '}
               Its architecture, a love letter to geometry and glass. Its mood, effortlessly glamorous{' '}
@@ -94,7 +94,7 @@ export default function Page() {
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 gap-6">
             <div>
               <p className="section-label">What We Offer</p>
-              <h2 className="section-title">Floral services<br>for every <em>occasion.</em></h2>
+              <h2 className="section-title">Floral services<br />for every <em>occasion.</em></h2>
             </div>
             <a href="/services" className="btn-text">Full Service List</a>
           </div>
@@ -207,7 +207,7 @@ export default function Page() {
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 items-center relative z-10">
             <div>
               <h2 className="font-serif text-4xl lg:text-[clamp(2.5rem,4.5vw,4rem)] font-light text-dark leading-[1.15] mb-6">
-                Begin your<br><em className="italic text-dark/70">floral story.</em>
+                Begin your<br /><em className="italic text-dark/70">floral story.</em>
               </h2>
               <p className="font-sans text-sm font-light text-text-mid leading-relaxed max-w-md">
                 Every extraordinary event starts with a single conversation. We would love to learn about yours 

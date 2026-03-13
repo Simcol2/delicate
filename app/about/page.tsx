@@ -20,7 +20,7 @@ export default function AboutPage() {
           }`}
         >
           <p className="section-label justify-center">Meet The Designer</p>
-          <h1 className="section-title">Creating Tables That<br><em className="text-rose">Feel Like Home</em></br></h1>
+          <h1 className="section-title">Creating Tables That<br /><em className="text-rose">Feel Like Home</em></h1>
         </div>
 
         {/* Main Content */}

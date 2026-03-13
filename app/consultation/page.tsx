@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Navbar from '@/components/navigation/Navbar'
+import { Navbar } from '@/components/navigation/Navbar'
 import { CheckCircle, AlertCircle } from 'lucide-react'
 import emailjs from '@emailjs/browser'
 
