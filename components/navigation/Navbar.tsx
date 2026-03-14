@@ -31,15 +31,7 @@ export function Navbar() {
   return (
     <>
       <nav 
-        className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 lg:px-12 py-4 transition-all duration-400"
-        style={{
-          background: 'rgba(250, 246, 239, 0.85)',
-          backdropFilter: 'blur(20px) saturate(180%)',
-          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-          borderBottom: scrolled 
-            ? '1px solid rgba(31, 77, 79, 0.2)' 
-            : '1px solid rgba(31, 77, 79, 0.1)',
-        }}
+        className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 lg:px-12 py-4 transition-all duration-400 bg-cream border-b border-midnight/10"
       >
         {/* Logo Image */}
         <Link href="/" className="no-underline">
