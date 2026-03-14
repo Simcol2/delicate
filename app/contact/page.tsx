@@ -50,7 +50,7 @@ export default function ContactPage() {
 
       <div className="max-w-4xl mx-auto px-6 lg:px-12 relative z-10">
         <div ref={contentRef} className="text-center mb-16">
-          <span className="section-label justify-center">Get in Touch</span>
+          <span className="section-label justify-center font-semibold">Get in Touch</span>
           <h1 
             className="text-4xl lg:text-5xl xl:text-6xl text-midnight mb-6"
             style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}
@@ -72,7 +72,7 @@ export default function ContactPage() {
             <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-midnight/10">
               <Phone className="w-5 h-5 text-midnight" />
             </div>
-            <h3 className="font-display text-lg text-midnight mb-2" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}>
+            <h3 className="font-display text-lg text-midnight mb-2 font-bold" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
               Call
             </h3>
             <a 
@@ -88,7 +88,7 @@ export default function ContactPage() {
             <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-midnight/10">
               <Mail className="w-5 h-5 text-midnight" />
             </div>
-            <h3 className="font-display text-lg text-midnight mb-2" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}>
+            <h3 className="font-display text-lg text-midnight mb-2 font-bold" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
               Email
             </h3>
             <a 
@@ -104,7 +104,7 @@ export default function ContactPage() {
             <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-midnight/10">
               <MapPin className="w-5 h-5 text-midnight" />
             </div>
-            <h3 className="font-display text-lg text-midnight mb-2" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}>
+            <h3 className="font-display text-lg text-midnight mb-2 font-bold" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
               Location
             </h3>
             <p className="font-sans font-semibold text-midnight">
@@ -132,7 +132,7 @@ export default function ContactPage() {
             href="https://calendar.app.google/mEhKoq1ZgiX9uZUa8"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-10 py-4 bg-coral text-cream font-sans text-sm tracking-widest uppercase hover:bg-turquoise transition-all duration-300"
+            className="inline-block px-10 py-4 bg-coral text-cream font-sans text-sm font-bold tracking-widest uppercase hover:bg-turquoise transition-all duration-300"
             style={{ backgroundColor: '#FF6F61' }}
           >
             Schedule a Call

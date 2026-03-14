@@ -101,7 +101,7 @@ export default function Services({ onOpenContact }: ServicesProps) {
             <br />
             <em className="not-italic" style={{ color: '#FF6F61' }}>Of Style</em>
           </h2>
-          <p className="font-sans text-text-mid text-base lg:text-lg max-w-xl mx-auto">
+          <p className="font-sans text-text-mid text-base lg:text-lg font-semibold max-w-xl mx-auto">
             Every gathering deserves intentional design. Our curated approach 
             brings together sight, taste, and atmosphere.
           </p>
@@ -128,7 +128,7 @@ export default function Services({ onOpenContact }: ServicesProps) {
               >
                 {service.title}
               </h3>
-              <p className="font-sans text-sm text-text-mid leading-relaxed">
+              <p className="font-sans text-sm text-text-mid font-semibold leading-relaxed">
                 {service.description}
               </p>
             </div>
@@ -137,7 +137,7 @@ export default function Services({ onOpenContact }: ServicesProps) {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <p className="font-sans text-text-mid text-sm mb-6">
+          <p className="font-sans text-text-mid text-sm font-semibold mb-6">
             Not sure what you need? Let&apos;s discuss your vision.
           </p>
           <a

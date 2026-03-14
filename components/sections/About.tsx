@@ -53,7 +53,7 @@ export default function About() {
               <em className="not-italic" style={{ color: '#FF6F61' }}>That Linger</em>
             </h2>
             
-            <div className="space-y-6 text-text-mid text-base lg:text-lg leading-relaxed">
+            <div className="space-y-6 text-text-mid text-base lg:text-lg font-semibold leading-relaxed">
               <p>
                 Delicate Flowers was born from a simple belief: the most memorable 
                 gatherings happen in the comfort of home. We transform your space 
@@ -67,7 +67,7 @@ export default function About() {
                 tablescapes that tell your unique story.
               </p>
 
-              <p className="font-serif text-xl lg:text-2xl italic pt-4" style={{ color: '#FF6F61' }}>
+              <p className="font-serif text-xl lg:text-2xl italic font-bold pt-4" style={{ color: '#FF6F61' }}>
                 Let us dress your table better than your guests.
               </p>
             </div>
@@ -81,7 +81,7 @@ export default function About() {
                 >
                   150+
                 </span>
-                <p className="font-sans text-xs text-text-mid mt-2 uppercase tracking-[0.2em]">Events Styled</p>
+                <p className="font-sans text-xs text-text-mid font-bold mt-2 uppercase tracking-[0.2em]">Events Styled</p>
               </div>
               <div>
                 <span 

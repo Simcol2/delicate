@@ -43,7 +43,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
 
         {/* Eyebrow */}
         <p 
-          className={`font-sans text-[0.65rem] font-normal tracking-[0.4em] uppercase text-midnight mb-8 flex items-center gap-4 transition-all duration-1000 ${
+          className={`font-sans text-[0.65rem] font-bold tracking-[0.4em] uppercase text-midnight mb-8 flex items-center gap-4 transition-all duration-1000 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
           style={{ transitionDelay: '0.3s' }}
@@ -69,7 +69,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
 
         {/* Sub-tagline */}
         <p 
-          className={`font-serif text-xl lg:text-2xl text-midnight italic mb-8 transition-all duration-1000 ${
+          className={`font-serif text-xl lg:text-2xl text-midnight italic font-bold mb-8 transition-all duration-1000 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
           style={{ transitionDelay: '0.6s' }}
@@ -79,7 +79,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
 
         {/* Description */}
         <p 
-          className={`font-sans text-base lg:text-lg font-light text-text-mid leading-relaxed max-w-md mb-10 transition-all duration-1000 ${
+          className={`font-sans text-base lg:text-lg font-semibold text-text-mid leading-relaxed max-w-md mb-10 transition-all duration-1000 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
           style={{ transitionDelay: '0.7s' }}
@@ -111,7 +111,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           }`}
           style={{ transitionDelay: '1.1s' }}
         >
-          <span className="font-sans text-sm tracking-[0.2em] uppercase font-medium">
+          <span className="font-sans text-sm tracking-[0.2em] uppercase font-bold">
             Meet the Designer
           </span>
           <svg

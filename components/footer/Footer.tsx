@@ -38,7 +38,7 @@ export default function Footer() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="font-sans text-[0.75rem] font-light text-ivory/55 no-underline tracking-[0.08em] transition-colors duration-300 hover:text-gold-pale"
+                  className="font-sans text-[0.75rem] font-semibold text-ivory/70 no-underline tracking-[0.08em] transition-colors duration-300 hover:text-gold-pale"
                 >
                   {link.label}
                 </Link>
@@ -63,7 +63,7 @@ export default function Footer() {
               <li key={service}>
                 <Link
                   href="/services"
-                  className="font-sans text-[0.75rem] font-light text-ivory/55 no-underline tracking-[0.08em] transition-colors duration-300 hover:text-gold-pale"
+                  className="font-sans text-[0.75rem] font-semibold text-ivory/70 no-underline tracking-[0.08em] transition-colors duration-300 hover:text-gold-pale"
                 >
                   {service}
                 </Link>
@@ -84,7 +84,7 @@ export default function Footer() {
               </div>
               <a 
                 href="tel:7606736636"
-                className="font-sans text-[0.78rem] font-light text-ivory/60 no-underline hover:text-gold-pale transition-colors"
+                className="font-sans text-[0.78rem] font-semibold text-ivory/80 no-underline hover:text-gold-pale transition-colors"
               >
                 (760) 673-6636
               </a>
@@ -95,7 +95,7 @@ export default function Footer() {
               </div>
               <a 
                 href="mailto:april@delicateflowers.co"
-                className="font-sans text-[0.78rem] font-light text-ivory/60 no-underline hover:text-gold-pale transition-colors"
+                className="font-sans text-[0.78rem] font-semibold text-ivory/80 no-underline hover:text-gold-pale transition-colors"
               >
                 april@delicateflowers.co
               </a>
@@ -104,7 +104,7 @@ export default function Footer() {
               <div className="font-sans text-[0.58rem] tracking-[0.3em] uppercase text-gold mb-1">
                 Location
               </div>
-              <div className="font-sans text-[0.78rem] font-light text-ivory/60">
+              <div className="font-sans text-[0.78rem] font-semibold text-ivory/80">
                 Palm Springs, CA
               </div>
             </div>
@@ -112,7 +112,7 @@ export default function Footer() {
               <div className="font-sans text-[0.58rem] tracking-[0.3em] uppercase text-gold mb-1">
                 Hours
               </div>
-              <div className="font-sans text-[0.78rem] font-light text-ivory/60">
+              <div className="font-sans text-[0.78rem] font-semibold text-ivory/80">
                 Mon – Sat · 9am – 6pm
               </div>
             </div>

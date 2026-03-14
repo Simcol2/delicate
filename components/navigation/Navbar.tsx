@@ -18,6 +18,7 @@ export function Navbar() {
   }, [])
 
   const navLinks = [
+    { href: '/', label: 'Home' },
     { href: '/about', label: 'Story' },
     { href: '/services', label: 'Services' },
     { href: '/experiences', label: 'Gallery' },
@@ -75,7 +76,7 @@ export function Navbar() {
           <li>
             <Link
               href="/client/login"
-              className="px-6 py-3 border border-midnight text-midnight font-sans text-[0.65rem] tracking-[0.25em] uppercase no-underline transition-all duration-350 hover:bg-midnight hover:text-cream"
+              className="px-6 py-3 border border-midnight text-midnight font-sans text-[0.65rem] font-bold tracking-[0.25em] uppercase no-underline transition-all duration-350 hover:bg-midnight hover:text-cream"
             >
               Client Portal
             </Link>
