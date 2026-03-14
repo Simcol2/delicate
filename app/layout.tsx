@@ -62,7 +62,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${cormorantSC.variable} ${jost.variable}`}>
       <head>
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="manifest" href="/manifest.json?v=3" />
         <meta name="application-name" content="Delicate Flowers" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -74,10 +74,10 @@ export default function RootLayout({
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
-        <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-152x152.png" />
-        <link rel="shortcut icon" href="/images/df-logo.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png?v=3" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png?v=3" />
+        <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-152x152.png?v=3" />
+        <link rel="shortcut icon" href="/images/df-logo.png?v=3" />
       </head>
       <body className="bg-cream text-text font-sans font-light antialiased">
         <SmoothScrollProvider>

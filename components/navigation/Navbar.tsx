@@ -36,7 +36,7 @@ export function Navbar() {
         {/* Logo Image */}
         <Link href="/" className="no-underline">
           <img 
-            src="/images/Delicate Flower-12 (4).png" 
+            src="/images/Delicate Flower-12 (4).png?v=3" 
             alt="Delicate Flowers" 
             className="h-20 lg:h-12 w-auto object-contain"
           />
