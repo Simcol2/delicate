@@ -83,8 +83,8 @@ export default function Services({ onOpenContact }: ServicesProps) {
       <div 
         className="absolute inset-0 pointer-events-none opacity-30"
         style={{
-          backgroundImage: `radial-gradient(circle at 20% 80%, rgba(194,150,90,0.08) 0%, transparent 50%),
-                           radial-gradient(circle at 80% 20%, rgba(155,173,152,0.08) 0%, transparent 50%)`,
+          backgroundImage: `radial-gradient(circle at 20% 80%, rgba(242, 140, 56, 0.08) 0%, transparent 50%),
+                           radial-gradient(circle at 80% 20%, rgba(79, 122, 90, 0.08) 0%, transparent 50%)`,
         }}
       />
 
@@ -92,10 +92,14 @@ export default function Services({ onOpenContact }: ServicesProps) {
         {/* Header */}
         <div ref={headerRef} className="text-center mb-16 lg:mb-20">
           <span className="section-label justify-center">What We Offer</span>
-          <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-dark mt-4 mb-6">
+          {/* Playfair Display Bold */}
+          <h2 
+            className="text-4xl lg:text-5xl xl:text-6xl font-bold text-midnight mt-4 mb-6"
+            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+          >
             Three Elements
             <br />
-            <em className="text-rose not-italic">Of Style</em>
+            <em className="text-coral not-italic">Of Style</em>
           </h2>
           <p className="font-sans text-text-mid text-base lg:text-lg max-w-xl mx-auto">
             Every gathering deserves intentional design. Our curated approach 
@@ -108,10 +112,20 @@ export default function Services({ onOpenContact }: ServicesProps) {
           {services.map((service) => (
             <div
               key={service.title}
-              className="group bg-cream border border-gold/20 p-8 lg:p-10 hover:border-gold/50 transition-all duration-500"
+              className="group bg-cream border border-tangerine/20 p-8 lg:p-10 hover:border-tangerine/50 transition-all duration-500"
             >
-              <span className="font-serif text-5xl lg:text-6xl text-gold/30">{service.num}</span>
-              <h3 className="font-serif text-xl lg:text-2xl text-dark mt-4 mb-4">
+              {/* Playfair Display Bold for numbers */}
+              <span 
+                className="text-5xl lg:text-6xl text-tangerine/30"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}
+              >
+                {service.num}
+              </span>
+              {/* Playfair Display Bold for titles */}
+              <h3 
+                className="text-xl lg:text-2xl text-midnight mt-4 mb-4"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}
+              >
                 {service.title}
               </h3>
               <p className="font-sans text-sm text-text-mid leading-relaxed">

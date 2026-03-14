@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 interface HeroProps {
@@ -24,49 +24,52 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           className="absolute inset-0 pointer-events-none opacity-40"
           style={{
             backgroundImage: `
-              linear-gradient(135deg, rgba(194,150,90,0.04) 25%, transparent 25%),
-              linear-gradient(225deg, rgba(194,150,90,0.04) 25%, transparent 25%),
-              linear-gradient(315deg, rgba(194,150,90,0.04) 25%, transparent 25%),
-              linear-gradient(45deg, rgba(194,150,90,0.04) 25%, transparent 25%)
+              linear-gradient(135deg, rgba(242, 140, 56, 0.04) 25%, transparent 25%),
+              linear-gradient(225deg, rgba(242, 140, 56, 0.04) 25%, transparent 25%),
+              linear-gradient(315deg, rgba(242, 140, 56, 0.04) 25%, transparent 25%),
+              linear-gradient(45deg, rgba(242, 140, 56, 0.04) 25%, transparent 25%)
             `,
             backgroundSize: '60px 60px',
           }}
         />
 
-        {/* Gold Bar */}
+        {/* Gold Bar - Now Tangerine */}
         <div 
           className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-32 hidden lg:block"
           style={{
-            background: 'linear-gradient(to bottom, transparent, #C2965A, transparent)',
+            background: 'linear-gradient(to bottom, transparent, #F28C38, transparent)',
           }}
         />
 
         {/* Eyebrow */}
         <p 
-          className={`font-sans text-[0.65rem] font-normal tracking-[0.4em] uppercase text-gold mb-8 flex items-center gap-4 transition-all duration-1000 ${
+          className={`font-sans text-[0.65rem] font-normal tracking-[0.4em] uppercase text-tangerine mb-8 flex items-center gap-4 transition-all duration-1000 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
           style={{ transitionDelay: '0.3s' }}
         >
-          <span className="block w-10 h-[1px] bg-gold"></span>
+          <span className="block w-10 h-[1px] bg-tangerine"></span>
           Luxury Floral & Tablescape Design
         </p>
 
-        {/* Title */}
+        {/* Title - Playfair Display Bold */}
         <h1 
-          className={`font-serif text-5xl sm:text-6xl lg:text-[clamp(3.2rem,5.5vw,5.5rem)] font-light leading-[1.05] text-dark tracking-[-0.01em] mb-8 transition-all duration-1000 ${
+          className={`text-5xl sm:text-6xl lg:text-[clamp(3.2rem,5.5vw,5.5rem)] font-bold leading-[1.05] text-midnight tracking-[-0.01em] mb-8 transition-all duration-1000 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
-          style={{ transitionDelay: '0.5s' }}
+          style={{ 
+            transitionDelay: '0.5s',
+            fontFamily: "'Playfair Display', Georgia, serif"
+          }}
         >
           You Host.
           <br />
-          <em className="text-rose not-italic">We Style.</em>
+          <em className="text-coral not-italic">We Style.</em>
         </h1>
 
         {/* Sub-tagline */}
         <p 
-          className={`font-serif text-xl lg:text-2xl text-dark italic mb-8 transition-all duration-1000 ${
+          className={`font-serif text-xl lg:text-2xl text-midnight italic mb-8 transition-all duration-1000 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
           style={{ transitionDelay: '0.6s' }}
@@ -103,7 +106,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
         {/* Meet Designer Button */}
         <button
           onClick={onOpenDesigner}
-          className={`group inline-flex items-center gap-3 px-6 py-4 bg-gold text-cream hover:bg-dark transition-all duration-400 shadow-lg w-fit transition-all duration-1000 ${
+          className={`group inline-flex items-center gap-3 px-6 py-4 bg-tangerine text-cream hover:bg-midnight transition-all duration-400 shadow-lg w-fit transition-all duration-1000 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
           style={{ transitionDelay: '1.1s' }}
@@ -131,7 +134,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           <div 
             className="w-[1px] h-12"
             style={{
-              background: 'linear-gradient(to bottom, #C2965A, transparent)',
+              background: 'linear-gradient(to bottom, #F28C38, transparent)',
               animation: 'scrollDrop 2s ease infinite',
             }}
           />
@@ -142,12 +145,12 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
       </div>
 
       {/* Right Side - Visual */}
-      <div className="relative overflow-hidden min-h-[400px] lg:min-h-screen bg-gradient-to-br from-blue-light via-blush to-sage-light">
-        {/* Sun Orb */}
+      <div className="relative overflow-hidden min-h-[400px] lg:min-h-screen bg-gradient-to-br from-turquoise/30 via-blush to-cactus/30">
+        {/* Sun Orb - Now Tangerine */}
         <div 
           className="absolute top-[12%] right-[15%] w-28 h-28 lg:w-32 lg:h-32 rounded-full animate-pulse-orb"
           style={{
-            background: 'radial-gradient(circle, rgba(223,192,138,0.6) 0%, rgba(194,150,90,0.1) 60%, transparent 100%)',
+            background: 'radial-gradient(circle, rgba(242, 140, 56, 0.6) 0%, rgba(242, 140, 56, 0.1) 60%, transparent 100%)',
           }}
         />
 
@@ -162,7 +165,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
 
         {/* Overlay Text */}
         <div 
-          className="absolute bottom-6 right-6 font-serif text-sm italic text-dark/50 tracking-[0.06em]"
+          className="absolute bottom-6 right-6 font-serif text-sm italic text-midnight/50 tracking-[0.06em]"
           style={{ writingMode: 'vertical-rl' }}
         >
           Palm Springs · California · Floral Atelier

@@ -8,33 +8,40 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // New Bold Desert Accents palette
+        'cactus': '#4F7A5A',
+        'turquoise': '#2DA9C2',
+        'coral': '#FF6F61',
+        'tangerine': '#F28C38',
+        'midnight': '#1F4D4F',
+        
+        // Neutral base colors
         cream: '#FAF6EF',
         ivory: '#F2EDE4',
+        dark: '#1F4D4F',
+        'dark-text': '#2A2A2A',
+        'text-mid': '#5A5A5A',
+        'text-light': '#8A8A8A',
+        
+        // Legacy mappings for compatibility (map old names to new colors)
         blush: '#E8C0B0',
-        rose: '#C9897A',
-        'dusty-pink': '#D4A59A',
-        sage: '#9BAD98',
-        'sage-light': '#C8D8C5',
-        'dusty-blue': '#A8BDD0',
-        'blue-light': '#D0DDE8',
-        gold: '#C2965A',
-        'gold-light': '#DFC08A',
-        'gold-pale': '#EDD9AA',
-        dark: '#2A1F1A',
-        text: '#3D2E28',
-        'text-mid': '#6B5248',
-        'text-light': '#9A7E76',
-        // Legacy colors mapped for compatibility
-        'brand-gold': '#C2965A',
-        'brand-navy': '#2A1F1A',
-        'brand-pink': '#C9897A',
+        rose: '#FF6F61',
+        sage: '#4F7A5A',
+        'sage-light': '#6B9A7A',
+        gold: '#F28C38',
+        'gold-light': '#FFB366',
+        'gold-pale': '#FFD9B3',
+        'dusty-blue': '#2DA9C2',
+        'blue-light': '#7DD3E8',
       },
       fontFamily: {
+        // New Playfair Display for headers
+        display: ['Playfair Display', 'Georgia', 'serif'],
+        // Keep Cormorant for body serif text
         serif: ['Cormorant Garamond', 'Georgia', 'serif'],
         'serif-sc': ['Cormorant SC', 'Georgia', 'serif'],
         sans: ['Jost', 'system-ui', 'sans-serif'],
-        // Legacy font mappings
-        display: ['Cormorant SC', 'Georgia', 'serif'],
+        // Legacy mappings
         script: ['Cormorant Garamond', 'Georgia', 'serif'],
       },
       letterSpacing: {

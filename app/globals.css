@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* ── GOOGLE FONTS ── */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Jost:wght@200;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Jost:wght@200;300;400;500&display=swap');
 
 /* ── BASE ── */
 *, *::before, *::after {
@@ -18,7 +18,7 @@ html {
 
 body {
   background: #FAF6EF;
-  color: #3D2E28;
+  color: #2A2A2A;
   font-family: 'Jost', system-ui, sans-serif;
   font-weight: 300;
   overflow-x: hidden;
@@ -34,11 +34,15 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C2965A;
+  background: #F28C38;
   border-radius: 3px;
 }
 
 /* ── TYPOGRAPHY UTILITIES ── */
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
 .font-serif {
   font-family: 'Cormorant Garamond', Georgia, serif;
 }
@@ -58,7 +62,7 @@ body {
   font-weight: 400;
   letter-spacing: 0.45em;
   text-transform: uppercase;
-  color: #C2965A;
+  color: #F28C38;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -70,7 +74,7 @@ body {
   display: block;
   width: 30px;
   height: 1px;
-  background: #C2965A;
+  background: #F28C38;
 }
 
 .section-label-center {
@@ -81,25 +85,26 @@ body {
   display: none;
 }
 
+/* ── SECTION TITLE (Playfair Display Bold) ── */
 .section-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Playfair Display', serif;
   font-size: clamp(2.4rem, 4vw, 3.8rem);
-  font-weight: 300;
+  font-weight: 700;
   line-height: 1.1;
-  color: #2A1F1A;
+  color: #1F4D4F;
   letter-spacing: -0.01em;
 }
 
 .section-title em {
   font-style: italic;
-  color: #C9897A;
+  color: #FF6F61;
 }
 
 /* ── BUTTONS ── */
 .btn-primary {
   display: inline-block;
   padding: 1rem 2.5rem;
-  background: #C2965A;
+  background: #F28C38;
   color: #FAF6EF;
   font-family: 'Jost', sans-serif;
   font-size: 0.65rem;
@@ -121,7 +126,7 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: #2A1F1A;
+  background: #1F4D4F;
   transition: left 0.4s ease;
 }
 
@@ -141,7 +146,7 @@ body {
   font-weight: 400;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #6B5248;
+  color: #5A5A5A;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -153,7 +158,7 @@ body {
 }
 
 .btn-text:hover {
-  color: #C2965A;
+  color: #F28C38;
 }
 
 .btn-text::after {
@@ -168,8 +173,8 @@ body {
 .btn-dark {
   display: inline-block;
   padding: 1.2rem 3rem;
-  background: #2A1F1A;
-  color: #EDD9AA;
+  background: #1F4D4F;
+  color: #FFD9B3;
   font-family: 'Jost', sans-serif;
   font-size: 0.65rem;
   font-weight: 500;
@@ -183,7 +188,7 @@ body {
 }
 
 .btn-dark:hover {
-  background: #C2965A;
+  background: #F28C38;
   color: #FAF6EF;
 }
 
@@ -206,7 +211,7 @@ body {
 
 /* ── TICKER ── */
 .ticker {
-  background: #2A1F1A;
+  background: #1F4D4F;
   padding: 0.9rem 0;
   overflow: hidden;
   position: relative;
@@ -224,7 +229,7 @@ body {
   font-size: 0.75rem;
   font-weight: 300;
   letter-spacing: 0.3em;
-  color: #EDD9AA;
+  color: #FFD9B3;
   padding: 0 3rem;
   display: flex;
   align-items: center;
@@ -233,7 +238,7 @@ body {
 
 .ticker-item::after {
   content: '✦';
-  color: #C2965A;
+  color: #F28C38;
   font-size: 0.5rem;
 }
 
@@ -259,7 +264,7 @@ body {
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(to right, #C2965A, #EDD9AA);
+  background: linear-gradient(to right, #F28C38, #FFB366);
   transform: scaleX(0);
   transition: transform 0.5s ease;
 }
@@ -273,22 +278,22 @@ body {
 }
 
 .service-num {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 3.5rem;
-  font-weight: 300;
-  color: rgba(194, 150, 90, 0.18);
+  font-weight: 700;
+  color: rgba(242, 140, 56, 0.18);
   line-height: 1;
   margin-bottom: 1rem;
   transition: color 0.4s;
 }
 
 .service-card:hover .service-num {
-  color: rgba(194, 150, 90, 0.35);
+  color: rgba(242, 140, 56, 0.35);
 }
 
 /* ── TESTIMONIAL CARDS ── */
 .testimonial-card {
-  border-top: 1px solid rgba(194, 150, 90, 0.3);
+  border-top: 1px solid rgba(242, 140, 56, 0.3);
   padding-top: 2rem;
   position: relative;
 }
@@ -301,7 +306,7 @@ input, textarea, select {
 
 input:focus, textarea:focus, select:focus {
   outline: none;
-  border-color: #C2965A;
+  border-color: #F28C38;
 }
 
 /* ── RESPONSIVE ── */
@@ -329,6 +334,6 @@ input:focus, textarea:focus, select:focus {
 
 /* ── SELECTION ── */
 ::selection {
-  background: rgba(194, 150, 90, 0.3);
-  color: #2A1F1A;
+  background: rgba(242, 140, 56, 0.3);
+  color: #1F4D4F;
 }

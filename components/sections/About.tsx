@@ -43,10 +43,14 @@ export default function About() {
           <div ref={contentRef}>
             <span className="section-label">Our Story</span>
             
-            <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-dark leading-[1.1] mb-8">
+            {/* Playfair Display Bold */}
+            <h2 
+              className="text-4xl lg:text-5xl xl:text-6xl font-bold text-midnight leading-[1.1] mb-8"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            >
               Creating Moments
               <br />
-              <em className="text-rose not-italic">That Linger</em>
+              <em className="text-coral not-italic">That Linger</em>
             </h2>
             
             <div className="space-y-6 text-text-mid text-base lg:text-lg leading-relaxed">
@@ -63,23 +67,38 @@ export default function About() {
                 tablescapes that tell your unique story.
               </p>
 
-              <p className="font-serif text-xl lg:text-2xl text-rose italic pt-4">
+              <p className="font-serif text-xl lg:text-2xl text-coral italic pt-4">
                 Let us dress your table better than your guests.
               </p>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 pt-10 mt-10 border-t border-gold/30">
+            <div className="grid grid-cols-3 gap-8 pt-10 mt-10 border-t border-tangerine/30">
               <div>
-                <span className="font-serif text-3xl lg:text-4xl text-gold">150+</span>
+                <span 
+                  className="text-3xl lg:text-4xl text-tangerine"
+                  style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}
+                >
+                  150+
+                </span>
                 <p className="font-sans text-xs text-text-mid mt-2 uppercase tracking-[0.2em]">Events Styled</p>
               </div>
               <div>
-                <span className="font-serif text-3xl lg:text-4xl text-gold">5</span>
+                <span 
+                  className="text-3xl lg:text-4xl text-tangerine"
+                  style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}
+                >
+                  5
+                </span>
                 <p className="font-sans text-xs text-text-mid mt-2 uppercase tracking-[0.2em]">Years Experience</p>
               </div>
               <div>
-                <span className="font-serif text-3xl lg:text-4xl text-gold">100%</span>
+                <span 
+                  className="text-3xl lg:text-4xl text-tangerine"
+                  style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}
+                >
+                  100%
+                </span>
                 <p className="font-sans text-xs text-text-mid mt-2 uppercase tracking-[0.2em]">Happy Clients</p>
               </div>
             </div>
@@ -87,10 +106,10 @@ export default function About() {
 
           {/* Right Visual */}
           <div className="relative h-[400px] lg:h-[500px]">
-            <div className="absolute inset-0 bg-gradient-to-br from-sage-light via-blush to-gold-pale opacity-50" />
-            <div className="absolute inset-4 border border-gold/30" />
+            <div className="absolute inset-0 bg-gradient-to-br from-cactus/40 via-blush to-tangerine/30 opacity-70" />
+            <div className="absolute inset-4 border border-tangerine/30" />
             <div className="absolute bottom-8 left-8 right-8 bg-cream/90 backdrop-blur-sm p-6">
-              <p className="font-serif italic text-dark text-center">
+              <p className="font-serif italic text-midnight text-center">
                 &ldquo;Every petal placed with purpose.&rdquo;
               </p>
             </div>
