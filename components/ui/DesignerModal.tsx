@@ -131,7 +131,7 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
             </div>
 
             <div className="w-full md:w-3/5 p-5 sm:p-6 md:p-8 lg:p-10 flex flex-col">
-              <span className="text-gold text-xs tracking-[0.3em] uppercase font-medium mb-2">Meet The Designer</span>
+              <span className="text-midnight text-xs tracking-[0.3em] uppercase font-medium mb-2">Meet The Designer</span>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-dark mb-4">
                 Creating Tables That
                 <span className="block text-rose mt-1 italic">Feel Like Home</span>
@@ -142,18 +142,18 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
                 <p>I&apos;m an event stylist who believes a beautiful gathering is really about making people feel special when they&apos;re sitting at the table.</p>
                 <p>I&apos;m known for bold florals, layered place settings, and that golden-hour glow that makes everyone linger a little longer.</p>
                 <p>I have spent years perfecting the little details most people overlook. Napkins can be bunny ears and everything should sparkle.</p>
-                <p className="text-dark font-medium italic border-l-2 border-gold pl-4 mt-4">
+                <p className="text-dark font-medium italic border-l-2 border-midnight pl-4 mt-4">
                   <span className="text-lg sm:text-xl">My philosophy is simple: when people feel cared for, they remember the evening long after the dishes are washed!</span>
                 </p>
               </div>
 
-              <div className="mt-6 pt-5 border-t border-gold/30">
+              <div className="mt-6 pt-5 border-t border-midnight/30">
                 <a 
                   href="https://calendar.app.google/mEhKoq1ZgiX9uZUa8" 
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleClose} 
-                  className="inline-block w-full sm:w-auto text-center px-8 py-3 bg-gold text-cream text-sm tracking-[0.2em] uppercase hover:bg-dark transition-colors duration-400"
+                  className="inline-block w-full sm:w-auto text-center px-8 py-3 bg-coral text-cream text-sm tracking-[0.2em] uppercase hover:bg-midnight transition-colors duration-400"
                 >
                   Schedule a Consultation
                 </a>

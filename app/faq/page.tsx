@@ -84,7 +84,7 @@ export default function FAQPage() {
           <p className="font-sans text-text-mid text-lg max-w-md mx-auto mt-6">
             Everything you need to know before we start designing the table of your dreams.
           </p>
-          <div className="w-[60px] h-[1px] bg-gold mx-auto mt-8" />
+          <div className="w-[60px] h-[1px] bg-midnight mx-auto mt-8" />
         </div>
 
         {/* FAQ Section */}
@@ -92,7 +92,7 @@ export default function FAQPage() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className={`border-t border-gold/30 first:border-t-0 last:border-b last:border-gold/30 transition-all duration-700 ${
+              className={`border-t border-midnight/30 first:border-t-0 last:border-b last:border-midnight/30 transition-all duration-700 ${
                 mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
               style={{ transitionDelay: `${index * 50 + 200}ms` }}
@@ -145,7 +145,7 @@ export default function FAQPage() {
         <div className="max-w-3xl mx-auto mt-16">
           <div className="bg-dark p-10 md:p-12 text-center">
             <p className="font-serif text-2xl md:text-3xl text-cream leading-relaxed">
-              Still have questions? <em className="text-gold italic">We&apos;d love to hear from you.</em>
+              Still have questions? <em className="text-midnight italic">We&apos;d love to hear from you.</em>
             </p>
             <p className="font-sans text-cream/60 text-sm mt-4 tracking-wide">
               Call us or book a complimentary 15-minute phone consultation, no commitment required.

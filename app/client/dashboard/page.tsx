@@ -84,8 +84,8 @@ export default function ClientDashboard() {
       <main className="min-h-screen bg-cream pt-32 pb-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <div className="animate-pulse">
-            <div className="h-8 bg-gold/20 rounded w-1/3 mx-auto mb-4"></div>
-            <div className="h-4 bg-gold/20 rounded w-1/2 mx-auto"></div>
+            <div className="h-8 bg-midnight/20 rounded w-1/3 mx-auto mb-4"></div>
+            <div className="h-4 bg-midnight/20 rounded w-1/2 mx-auto"></div>
           </div>
         </div>
       </main>
@@ -98,7 +98,7 @@ export default function ClientDashboard() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
           <div>
-            <span className="text-gold text-xs tracking-[0.3em] uppercase font-sans block mb-2">
+            <span className="text-midnight text-xs tracking-[0.3em] uppercase font-sans block mb-2">
               Welcome back
             </span>
             <h1 className="font-serif text-3xl md:text-4xl text-dark">
@@ -146,7 +146,7 @@ export default function ClientDashboard() {
             </div>
 
             {contracts.length === 0 ? (
-              <div className="text-center py-8 border-2 border-dashed border-gold/30">
+              <div className="text-center py-8 border-2 border-dashed border-midnight/30">
                 <FileText className="w-8 h-8 text-text-light mx-auto mb-2" />
                 <p className="text-sm text-text-mid">No contracts yet</p>
                 <p className="text-xs text-text-light mt-1">
@@ -156,7 +156,7 @@ export default function ClientDashboard() {
             ) : (
               <div className="space-y-3">
                 {contracts.map((contract) => (
-                  <div key={contract.id} className="flex items-center justify-between p-4 border border-gold/30">
+                  <div key={contract.id} className="flex items-center justify-between p-4 border border-midnight/30">
                     <div>
                       <p className="font-serif text-dark">{contract.name}</p>
                       <p className="text-xs text-text-light">{contract.status}</p>
@@ -169,7 +169,7 @@ export default function ClientDashboard() {
               </div>
             )}
 
-            <div className="mt-6 pt-6 border-t border-gold/30">
+            <div className="mt-6 pt-6 border-t border-midnight/30">
               <p className="text-xs text-text-light">
                 Questions about your contract?{' '}
                 <a href="mailto:april@delicateflowers.co" className="text-rose hover:underline">
@@ -192,7 +192,7 @@ export default function ClientDashboard() {
             </div>
 
             {invoices.length === 0 ? (
-              <div className="text-center py-8 border-2 border-dashed border-gold/30">
+              <div className="text-center py-8 border-2 border-dashed border-midnight/30">
                 <CreditCard className="w-8 h-8 text-text-light mx-auto mb-2" />
                 <p className="text-sm text-text-mid">No invoices yet</p>
                 <p className="text-xs text-text-light mt-1">
@@ -202,7 +202,7 @@ export default function ClientDashboard() {
             ) : (
               <div className="space-y-3">
                 {invoices.map((invoice) => (
-                  <div key={invoice.id} className="p-4 border border-gold/30">
+                  <div key={invoice.id} className="p-4 border border-midnight/30">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
                         {getStatusIcon(invoice.status)}
@@ -242,7 +242,7 @@ export default function ClientDashboard() {
               </div>
             )}
 
-            <div className="mt-6 pt-6 border-t border-gold/30">
+            <div className="mt-6 pt-6 border-t border-midnight/30">
               <p className="text-xs text-text-light">
                 All payments are securely processed through Square.
               </p>

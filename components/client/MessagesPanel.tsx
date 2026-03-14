@@ -85,7 +85,7 @@ export default function MessagesPanel({ customerEmail }: MessagesPanelProps) {
           {loading ? (
             <p className="text-sm text-text-mid text-center py-4">Loading messages...</p>
           ) : messages.length === 0 ? (
-            <div className="text-center py-8 border-2 border-dashed border-gold/30">
+            <div className="text-center py-8 border-2 border-dashed border-midnight/30">
               <MessageCircle className="w-8 h-8 text-text-light mx-auto mb-2" />
               <p className="text-sm text-text-mid">No messages yet</p>
               <p className="text-xs text-text-light mt-1">
@@ -93,13 +93,13 @@ export default function MessagesPanel({ customerEmail }: MessagesPanelProps) {
               </p>
             </div>
           ) : (
-            <div className="space-y-4 max-h-96 overflow-y-auto mb-6 border border-gold/20 p-4 bg-cream">
+            <div className="space-y-4 max-h-96 overflow-y-auto mb-6 border border-midnight/20 p-4 bg-cream">
               {messages.map((msg) => (
                 <div 
                   key={msg.id} 
                   className={`p-4 ${
                     msg.from === 'client' 
-                      ? 'bg-ivory ml-8 border-l-4 border-gold' 
+                      ? 'bg-ivory ml-8 border-l-4 border-midnight' 
                       : 'bg-cream mr-8 border-l-4 border-rose'
                   }`}
                   onClick={() => !msg.read && msg.from === 'admin' && handleMarkRead(msg.id)}
@@ -131,7 +131,7 @@ export default function MessagesPanel({ customerEmail }: MessagesPanelProps) {
                   type="text"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
-                  className="w-full bg-transparent border-b border-gold py-2 text-dark focus:border-rose focus:outline-none transition-colors text-sm"
+                  className="w-full bg-transparent border-b border-midnight py-2 text-dark focus:border-rose focus:outline-none transition-colors text-sm"
                   placeholder="What's this about?"
                 />
               </div>
@@ -142,7 +142,7 @@ export default function MessagesPanel({ customerEmail }: MessagesPanelProps) {
                 <textarea
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
-                  className="w-full bg-transparent border-b border-gold py-2 text-dark focus:border-rose focus:outline-none transition-colors text-sm resize-none"
+                  className="w-full bg-transparent border-b border-midnight py-2 text-dark focus:border-rose focus:outline-none transition-colors text-sm resize-none"
                   rows={3}
                   placeholder="Type your message..."
                   required

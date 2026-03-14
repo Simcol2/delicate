@@ -205,11 +205,11 @@ export default function ExperiencesPage() {
                   </div>
                 )}
               </div>
-              <div className="border-t border-gold/10 pt-4">
+              <div className="border-t border-midnight/10 pt-4">
                 <h3 className="font-serif-sc text-base tracking-[0.1em] text-dark">
                   {folder.name}
                 </h3>
-                <p className="font-sans text-[0.65rem] tracking-[0.2em] uppercase text-gold mt-1">
+                <p className="font-sans text-[0.65rem] tracking-[0.2em] uppercase text-midnight mt-1">
                   View Gallery
                 </p>
               </div>
@@ -291,7 +291,7 @@ export default function ExperiencesPage() {
                       onClick={() => setCurrentPhotoIndex(index)}
                       className={`flex-shrink-0 w-16 h-16 overflow-hidden transition-all duration-200 ${
                         index === currentPhotoIndex 
-                          ? 'ring-2 ring-gold opacity-100' 
+                          ? 'ring-2 ring-midnight opacity-100' 
                           : 'opacity-50 hover:opacity-80'
                       }`}
                     >

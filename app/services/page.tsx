@@ -124,9 +124,9 @@ export default function ServicesPage() {
           Whether you&apos;re hosting eight of your closest friends or staging an event that fills every room, our packages are built around one belief: the table sets the tone for everything that happens around it.
         </p>
         <div className="flex items-center justify-center gap-4 mt-9">
-          <span className="w-[50px] h-[1px] bg-gold" />
-          <span className="font-serif italic text-gold text-lg">✦</span>
-          <span className="w-[50px] h-[1px] bg-gold" />
+          <span className="w-[50px] h-[1px] bg-midnight" />
+          <span className="font-serif italic text-midnight text-lg">✦</span>
+          <span className="w-[50px] h-[1px] bg-midnight" />
         </div>
       </header>
 
@@ -147,7 +147,7 @@ export default function ServicesPage() {
           >
             {/* Badge */}
             <span className={`text-[10px] font-medium tracking-[0.3em] uppercase block mb-3 ${
-              pkg.featured ? 'text-gold-pale' : 'text-rose'
+              pkg.featured ? 'text-cream' : 'text-rose'
             }`}>
               {pkg.badge}
             </span>
@@ -159,13 +159,13 @@ export default function ServicesPage() {
 
             {/* Guests */}
             <span className={`inline-block mt-3 text-xs tracking-[0.12em] uppercase border rounded-full px-4 py-1.5 ${
-              pkg.featured ? 'text-cream border-cream/30' : 'text-dark border-gold'
+              pkg.featured ? 'text-cream border-cream/30' : 'text-dark border-midnight'
             }`}>
               {pkg.guests}
             </span>
 
             {/* Divider */}
-            <div className="w-9 h-[1px] my-7 bg-gold" />
+            <div className="w-9 h-[1px] my-7 bg-midnight" />
 
             {/* Description */}
             <p className={`text-sm leading-[1.85] mb-8 ${
@@ -180,11 +180,11 @@ export default function ServicesPage() {
                 <li 
                   key={idx} 
                   className={`flex items-start gap-3 text-sm py-2.5 border-b ${
-                    pkg.featured ? 'text-cream/90 border-cream/20' : 'text-text border-gold/20'
+                    pkg.featured ? 'text-cream/90 border-cream/20' : 'text-text border-midnight/20'
                   }`}
                 >
                   <span className={`w-1 h-1 rounded-full mt-2 flex-shrink-0 ${
-                    pkg.featured ? 'bg-gold' : 'bg-rose'
+                    pkg.featured ? 'bg-midnight' : 'bg-rose'
                   }`} />
                   <span>{feature}</span>
                 </li>
@@ -193,7 +193,7 @@ export default function ServicesPage() {
 
             {/* Price */}
             <div className={`pt-7 border-t mt-auto ${
-              pkg.featured ? 'border-cream/20' : 'border-gold'
+              pkg.featured ? 'border-cream/20' : 'border-midnight'
             }`}>
               <span className={`text-[10px] font-medium tracking-[0.28em] uppercase block mb-1.5 ${pkg.featured ? 'text-cream/70' : 'text-text-mid'}`}>
                 Starting at
@@ -213,7 +213,7 @@ export default function ServicesPage() {
               rel="noopener noreferrer"
               className={`inline-block mt-7 text-xs font-medium tracking-[0.2em] uppercase border-b pb-0.5 transition-colors duration-200 ${
                 pkg.featured 
-                  ? 'text-cream border-cream hover:text-gold hover:border-gold' 
+                  ? 'text-cream border-cream hover:text-coral hover:border-coral' 
                   : 'text-dark border-rose hover:text-rose'
               }`}
             >
@@ -235,7 +235,7 @@ export default function ServicesPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-[2px] mt-9 bg-gold/15">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-[2px] mt-9 bg-midnight/15">
           {addOns.map((addon, idx) => (
             <div
               key={idx}
@@ -248,7 +248,7 @@ export default function ServicesPage() {
               <span className="text-sm text-text-mid leading-snug block">
                 {addon.description}
               </span>
-              <span className="inline-block mt-2.5 text-[10px] tracking-[0.2em] uppercase text-rose border border-gold/20 px-2.5 py-1">
+              <span className="inline-block mt-2.5 text-[10px] tracking-[0.2em] uppercase text-rose border border-midnight/20 px-2.5 py-1">
                 Priced on request
               </span>
             </div>
@@ -257,7 +257,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Build Your Own Section */}
-      <section className="bg-ivory px-6 py-20 text-center mt-[2px] border-t border-gold/20">
+      <section className="bg-ivory px-6 py-20 text-center mt-[2px] border-t border-midnight/20">
         <p className="section-label justify-center">Fully bespoke</p>
         <h2 className="section-title">
           Build <em className="text-rose">Your Own</em>
@@ -266,11 +266,11 @@ export default function ServicesPage() {
           Not every event fits a package, and that&apos;s exactly the point. Tell us your spaces, your vision, and your vibe. We&apos;ll build a custom scope and quote around what matters most to you.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[1px] max-w-4xl mx-auto mt-12 border border-gold/20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[1px] max-w-4xl mx-auto mt-12 border border-midnight/20">
           {byoItems.map((item, idx) => (
             <div
               key={idx}
-              className="p-8 text-left border-b sm:border-b-0 sm:border-r last:border-r-0 border-gold/20 bg-cream"
+              className="p-8 text-left border-b sm:border-b-0 sm:border-r last:border-r-0 border-midnight/20 bg-cream"
             >
               <span className="font-serif text-xl text-dark block mb-2">
                 {item.name}

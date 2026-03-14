@@ -98,7 +98,7 @@ export default function ClientLogin() {
     <main className="min-h-screen bg-cream pt-32 lg:pt-40 pb-20">
       <div className="max-w-md mx-auto px-6">
         <div className="text-center mb-10">
-          <span className="text-gold text-xs tracking-[0.3em] uppercase font-sans block mb-4">
+          <span className="text-midnight text-xs tracking-[0.3em] uppercase font-sans block mb-4">
             {isCreatingAccount ? 'Get Started' : 'Welcome back'}
           </span>
           <h1 className="font-serif text-4xl text-dark mb-3 font-light">
@@ -121,7 +121,7 @@ export default function ClientLogin() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-transparent border-b border-gold py-3 text-dark focus:border-rose focus:outline-none transition-colors"
+                className="w-full bg-transparent border-b border-midnight py-3 text-dark focus:border-rose focus:outline-none transition-colors"
                 placeholder="you@email.com"
                 required
               />
@@ -134,7 +134,7 @@ export default function ClientLogin() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-transparent border-b border-gold py-3 text-dark focus:border-rose focus:outline-none transition-colors"
+                className="w-full bg-transparent border-b border-midnight py-3 text-dark focus:border-rose focus:outline-none transition-colors"
                 placeholder="••••••••"
                 required
                 minLength={6}
@@ -150,7 +150,7 @@ export default function ClientLogin() {
                   type="password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full bg-transparent border-b border-gold py-3 text-dark focus:border-rose focus:outline-none transition-colors"
+                  className="w-full bg-transparent border-b border-midnight py-3 text-dark focus:border-rose focus:outline-none transition-colors"
                   placeholder="••••••••"
                   required
                   minLength={6}
@@ -173,7 +173,7 @@ export default function ClientLogin() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gold text-cream py-4 font-sans text-sm tracking-widest uppercase hover:bg-dark transition-colors disabled:opacity-50"
+              className="w-full bg-coral text-cream py-4 font-sans text-sm tracking-widest uppercase hover:bg-dark transition-colors disabled:opacity-50"
             >
               {loading 
                 ? (isCreatingAccount ? 'Creating Account...' : 'Signing in...') 
@@ -181,7 +181,7 @@ export default function ClientLogin() {
             </button>
           </form>
 
-          <div className="mt-8 pt-6 border-t border-gold text-center space-y-4">
+          <div className="mt-8 pt-6 border-t border-midnight text-center space-y-4">
             <div>
               <p className="text-sm text-dark">
                 {isCreatingAccount 
@@ -201,7 +201,7 @@ export default function ClientLogin() {
               </p>
             </div>
             
-            <div className="pt-4 border-t border-gold/30">
+            <div className="pt-4 border-t border-midnight/30">
               <p className="text-xs text-text-mid">
                 Need help? Contact us at{' '}
                 <a href="mailto:april@delicateflowers.co" className="text-rose hover:underline">

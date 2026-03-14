@@ -42,7 +42,7 @@ export default function AboutPage() {
               />
             </div>
             {/* Gold frame accent */}
-            <div className="absolute -bottom-4 -right-4 w-full h-full border border-gold/30 pointer-events-none"></div>
+            <div className="absolute -bottom-4 -right-4 w-full h-full border border-midnight/30 pointer-events-none"></div>
           </div>
 
           {/* Bio */}
@@ -69,7 +69,7 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <blockquote className="mt-10 pl-6 border-l-2 border-gold">
+            <blockquote className="mt-10 pl-6 border-l-2 border-midnight">
               <p className="font-serif text-lg text-dark italic">
                 My philosophy is simple: when people feel cared for, they remember the evening long after the dishes are washed!
               </p>
@@ -77,7 +77,7 @@ export default function AboutPage() {
 
             {/* Signature */}
             <div className="mt-10 flex items-center gap-4">
-              <div className="w-12 h-[1px] bg-gold"></div>
+              <div className="w-12 h-[1px] bg-midnight"></div>
               <span className="font-serif italic text-text-light">April Garrow</span>
             </div>
 
@@ -111,9 +111,9 @@ export default function AboutPage() {
           ].map((value, i) => (
             <div 
               key={i}
-              className="p-8 border-t-2 border-gold/20 bg-ivory/50"
+              className="p-8 border-t-2 border-midnight/20 bg-ivory/50"
             >
-              <span className="font-serif text-4xl text-gold/20">0{i + 1}</span>
+              <span className="font-serif text-4xl text-midnight/20">0{i + 1}</span>
               <h3 className="font-serif-sc text-lg tracking-[0.08em] text-dark mt-4 mb-3">
                 {value.title}
               </h3>

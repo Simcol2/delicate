@@ -124,24 +124,6 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           </svg>
         </button>
 
-        {/* Scroll Hint */}
-        <div 
-          className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-1000 ${
-            mounted ? 'opacity-100' : 'opacity-0'
-          }`}
-          style={{ transitionDelay: '1.6s' }}
-        >
-          <div 
-            className="w-[1px] h-12"
-            style={{
-              background: 'linear-gradient(to bottom, #1F4D4F, transparent)',
-              animation: 'scrollDrop 2s ease infinite',
-            }}
-          />
-          <span className="font-sans text-[0.6rem] tracking-[0.3em] uppercase text-text-light">
-            Scroll
-          </span>
-        </div>
       </div>
 
       {/* Right Side - Visual */}

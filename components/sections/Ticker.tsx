@@ -17,10 +17,10 @@ export default function Ticker() {
         {allItems.map((item, index) => (
           <span
             key={index}
-            className="font-serif-sc text-xs font-light tracking-[0.3em] text-gold-pale py-2 px-12 flex items-center gap-12 whitespace-nowrap"
+            className="font-serif-sc text-xs font-light tracking-[0.3em] text-cream py-2 px-12 flex items-center gap-12 whitespace-nowrap"
           >
             {item}
-            <span className="text-gold text-[0.5rem]">✦</span>
+            <span className="text-midnight text-[0.5rem]">✦</span>
           </span>
         ))}
       </div>
