@@ -96,8 +96,8 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
   if (!isOpen) return null
 
   return (
-    <div ref={overlayRef} className="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-4 bg-black/60 backdrop-blur-sm opacity-0" onClick={(e) => e.target === overlayRef.current && handleClose()}>
-      <div ref={modalRef} className="relative w-full h-full md:h-auto md:max-w-4xl md:max-h-[90vh] bg-[#faf6f0] md:rounded-lg shadow-2xl overflow-hidden opacity-0 flex flex-col">
+    <div ref={overlayRef} className="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-4 bg-dark/60 backdrop-blur-sm opacity-0" onClick={(e) => e.target === overlayRef.current && handleClose()}>
+      <div ref={modalRef} className="relative w-full h-full md:h-auto md:max-w-4xl md:max-h-[90vh] bg-cream md:rounded-sm shadow-2xl overflow-hidden opacity-0 flex flex-col">
         <style jsx>{`
           .modal-scroll {
             overflow-y: auto;
@@ -105,7 +105,7 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
             -webkit-overflow-scrolling: touch;
             overscroll-behavior: contain;
             scrollbar-width: thin;
-            scrollbar-color: #C9A96E #FAF6F0;
+            scrollbar-color: #C2965A #FAF6F0;
           }
           .modal-scroll::-webkit-scrollbar {
             width: 8px;
@@ -114,12 +114,12 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
             background: #FAF6F0;
           }
           .modal-scroll::-webkit-scrollbar-thumb {
-            background: #C9A96E;
+            background: #C2965A;
             border-radius: 4px;
           }
         `}</style>
 
-        <button onClick={handleClose} className="absolute top-3 right-3 z-20 p-2 bg-white/90 rounded-full text-[#1A2744]/60 hover:text-[#CC2A7A] shadow-sm">
+        <button onClick={handleClose} className="absolute top-3 right-3 z-20 p-2 bg-cream/90 rounded-full text-dark/60 hover:text-rose transition-colors shadow-sm">
           <X size={24} />
         </button>
 
@@ -131,29 +131,29 @@ export default function DesignerModal({ isOpen, onClose }: DesignerModalProps) {
             </div>
 
             <div className="w-full md:w-3/5 p-5 sm:p-6 md:p-8 lg:p-10 flex flex-col">
-              <span className="text-[#CC2A7A] text-xs tracking-[0.3em] uppercase font-medium mb-2">Meet The Designer</span>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#1A2744] mb-4">
+              <span className="text-gold text-xs tracking-[0.3em] uppercase font-medium mb-2">Meet The Designer</span>
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-dark mb-4">
                 Creating Tables That
-                <span className="block text-[#CC2A7A] mt-1" style={{ fontFamily: 'var(--font-script), cursive' }}>Feel Like Home</span>
+                <span className="block text-rose mt-1 italic">Feel Like Home</span>
               </h2>
-              <p className="text-[#CC2A7A] text-sm sm:text-base italic mb-4">April is your local crafty mamma bear that would love an invite to your next event!</p>
+              <p className="text-rose text-sm sm:text-base italic mb-4">April is your local crafty mamma bear that would love an invite to your next event!</p>
 
-              <div className="space-y-3 text-[#1A2744] text-base sm:text-lg leading-relaxed">
-                <p>I'm an event stylist who believes a beautiful gathering is really about making people feel special when they're sitting at the table.</p>
-                <p>I'm known for bold florals, layered place settings, and that golden-hour glow that makes everyone linger a little longer.</p>
+              <div className="space-y-3 text-dark text-base sm:text-lg leading-relaxed">
+                <p>I&apos;m an event stylist who believes a beautiful gathering is really about making people feel special when they&apos;re sitting at the table.</p>
+                <p>I&apos;m known for bold florals, layered place settings, and that golden-hour glow that makes everyone linger a little longer.</p>
                 <p>I have spent years perfecting the little details most people overlook. Napkins can be bunny ears and everything should sparkle.</p>
-                <p className="text-[#2c2420] font-medium italic border-l-2 border-[#C9A96E] pl-4 mt-4">
+                <p className="text-dark font-medium italic border-l-2 border-gold pl-4 mt-4">
                   <span className="text-lg sm:text-xl">My philosophy is simple: when people feel cared for, they remember the evening long after the dishes are washed!</span>
                 </p>
               </div>
 
-              <div className="mt-6 pt-5 border-t border-[#C9A96E]">
+              <div className="mt-6 pt-5 border-t border-gold/30">
                 <a 
                   href="https://calendar.app.google/mEhKoq1ZgiX9uZUa8" 
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleClose} 
-                  className="inline-block w-full sm:w-auto text-center px-6 py-3 bg-[#CC2A7A] text-white text-sm tracking-widest uppercase hover:bg-[#1A2744]"
+                  className="inline-block w-full sm:w-auto text-center px-8 py-3 bg-gold text-cream text-sm tracking-[0.2em] uppercase hover:bg-dark transition-colors duration-400"
                 >
                   Schedule a Consultation
                 </a>

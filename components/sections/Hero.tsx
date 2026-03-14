@@ -144,116 +144,15 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           }}
         />
 
-        {/* SVG Illustration */}
-        <svg 
-          viewBox="0 0 500 600" 
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute inset-0 w-full h-full"
-          preserveAspectRatio="xMidYMid slice"
-        >
-          <defs>
-            <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#B8D4E8" stopOpacity="0.4"/>
-              <stop offset="100%" stopColor="#E8C0B0" stopOpacity="0.2"/>
-            </linearGradient>
-            <linearGradient id="houseGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#F2EDE4"/>
-              <stop offset="100%" stopColor="#E8DDD0"/>
-            </linearGradient>
-            <linearGradient id="shadowGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#2A1F1A" stopOpacity="0.08"/>
-              <stop offset="100%" stopColor="#2A1F1A" stopOpacity="0"/>
-            </linearGradient>
-            <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#C2965A"/>
-              <stop offset="100%" stopColor="#DFC08A"/>
-            </linearGradient>
-            <linearGradient id="leafGrad1" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#9BAD98"/>
-              <stop offset="100%" stopColor="#7A9477"/>
-            </linearGradient>
-            <linearGradient id="petalGrad1" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#E8C0B0"/>
-              <stop offset="100%" stopColor="#C9897A"/>
-            </linearGradient>
-          </defs>
-
-          {/* Ground */}
-          <rect x="0" y="480" width="500" height="120" fill="#E8DDD0" rx="0"/>
-
-          {/* Mid-century house - Carport */}
-          <rect x="30" y="290" width="140" height="8" fill="url(#goldGrad)" rx="0"/>
-          <rect x="30" y="298" width="140" height="120" fill="url(#houseGrad)"/>
-          <rect x="35" y="305" width="125" height="50" fill="rgba(168,189,208,0.35)" rx="0"/>
-          <rect x="82" y="298" width="4" height="182" fill="rgba(194,150,90,0.5)"/>
-          <rect x="155" y="298" width="4" height="182" fill="rgba(194,150,90,0.5)"/>
-
-          {/* Main house */}
-          <rect x="170" y="260" width="270" height="220" fill="url(#houseGrad)"/>
-          <rect x="165" y="255" width="280" height="8" fill="url(#goldGrad)" rx="0"/>
-
-          {/* Glass wall */}
-          <rect x="180" y="270" width="180" height="140" fill="rgba(168,189,208,0.4)" rx="0"/>
-          <line x1="270" y1="270" x2="270" y2="410" stroke="rgba(194,150,90,0.5)" strokeWidth="1.5"/>
-          <line x1="225" y1="270" x2="225" y2="410" stroke="rgba(194,150,90,0.3)" strokeWidth="1"/>
-          <line x1="315" y1="270" x2="315" y2="410" stroke="rgba(194,150,90,0.3)" strokeWidth="1"/>
-          <line x1="180" y1="335" x2="360" y2="335" stroke="rgba(194,150,90,0.3)" strokeWidth="1"/>
-
-          {/* Door */}
-          <rect x="380" y="340" width="48" height="120" fill="rgba(168,189,208,0.5)"/>
-          <path d="M380 340 Q404 315 428 340" fill="rgba(168,189,208,0.5)" stroke="rgba(194,150,90,0.4)" strokeWidth="1"/>
-          <line x1="390" y1="400" x2="390" y2="415" stroke="url(#goldGrad)" strokeWidth="3" strokeLinecap="round"/>
-
-          {/* Roof shadow */}
-          <rect x="165" y="263" width="280" height="30" fill="url(#shadowGrad)"/>
-
-          {/* Ground level */}
-          <rect x="0" y="478" width="500" height="6" fill="rgba(194,150,90,0.2)"/>
-
-          {/* Palm Tree Left */}
-          <g transform="translate(60, 100)">
-            <path d="M0 380 C-2 300 2 220 0 140" stroke="#8B6B4A" strokeWidth="6" strokeLinecap="round" fill="none"/>
-            <path d="M0 140 C-40 80 -90 60 -110 30" stroke="url(#leafGrad1)" strokeWidth="4" strokeLinecap="round" fill="none"/>
-            <path d="M0 140 C-30 110 -20 70 -10 40" stroke="#9BAD98" strokeWidth="3.5" strokeLinecap="round" fill="none"/>
-            <path d="M0 140 C20 110 40 80 50 50" stroke="#9BAD98" strokeWidth="3.5" strokeLinecap="round" fill="none"/>
-            <path d="M0 140 C40 100 80 90 110 70" stroke="url(#leafGrad1)" strokeWidth="4" strokeLinecap="round" fill="none"/>
-            <path d="M0 140 C-10 105 10 70 20 30" stroke="#8BA888" strokeWidth="3" strokeLinecap="round" fill="none"/>
-            <path d="M0 140 C-50 120 -70 140 -100 130" stroke="#9BAD98" strokeWidth="3" strokeLinecap="round" fill="none"/>
-          </g>
-
-          {/* Palm Tree Right */}
-          <g transform="translate(445, 50)">
-            <path d="M0 430 C-2 350 2 260 0 160" stroke="#8B6B4A" strokeWidth="5" strokeLinecap="round" fill="none"/>
-            <path d="M0 160 C-50 90 -100 70 -120 35" stroke="url(#leafGrad1)" strokeWidth="3.5" strokeLinecap="round" fill="none"/>
-            <path d="M0 160 C-20 130 -10 90 -5 55" stroke="#9BAD98" strokeWidth="3" strokeLinecap="round" fill="none"/>
-            <path d="M0 160 C25 120 50 95 65 60" stroke="#9BAD98" strokeWidth="3" strokeLinecap="round" fill="none"/>
-            <path d="M0 160 C50 115 90 105 110 85" stroke="url(#leafGrad1)" strokeWidth="3.5" strokeLinecap="round" fill="none"/>
-          </g>
-
-          {/* Floral Arrangement */}
-          <g transform="translate(240, 460)">
-            <path d="M0 20 C0 0 -15 -40 -25 -80" stroke="#9BAD98" strokeWidth="2" fill="none" strokeLinecap="round"/>
-            <path d="M0 20 C0 0 5 -30 10 -70" stroke="#8BA888" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-            <path d="M0 20 C5 5 25 -20 35 -55" stroke="#9BAD98" strokeWidth="2" fill="none" strokeLinecap="round"/>
-            <path d="M0 20 C-5 0 -30 -25 -45 -50" stroke="#9BAD98" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-            <path d="M0 20 C8 5 50 -10 65 -35" stroke="#8BA888" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-            <circle cx="-25" cy="-85" r="22" fill="url(#petalGrad1)" opacity="0.9"/>
-            <circle cx="-25" cy="-85" r="14" fill="#D4A59A"/>
-            <circle cx="-25" cy="-85" r="7" fill="#C9897A"/>
-            <circle cx="35" cy="-60" r="16" fill="#C9D8C5" opacity="0.9"/>
-            <circle cx="35" cy="-60" r="9" fill="#9BAD98"/>
-            <circle cx="10" cy="-74" r="10" fill="#DFC08A" opacity="0.9"/>
-            <circle cx="10" cy="-74" r="5" fill="#C2965A"/>
-            <circle cx="-65" cy="-43" r="12" fill="url(#petalGrad1)" opacity="0.85"/>
-            <circle cx="-65" cy="-43" r="6" fill="#C9897A"/>
-          </g>
-
-          {/* Gold decorative element */}
-          <g transform="translate(420, 200)" opacity="0.4">
-            <polygon points="0,-25 22,12 -22,12" fill="none" stroke="url(#goldGrad)" strokeWidth="1"/>
-            <polygon points="0,-15 13,7 -13,7" fill="none" stroke="url(#goldGrad)" strokeWidth="0.5"/>
-          </g>
-        </svg>
+        {/* Hero Image - Rotated 90 degrees */}
+        <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+          <img
+            src="/images/Gemini_Generated_Image_7pemq97pemq97pem.png"
+            alt="Delicate Flowers floral arrangement"
+            className="w-[150%] h-[150%] object-cover"
+            style={{ transform: 'rotate(90deg)' }}
+          />
+        </div>
 
         {/* Overlay Text */}
         <div 
