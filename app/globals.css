@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  background: #F5F0E8;
+  background: #FAF9F6;
   color: #2A2A2A;
   font-family: 'Jost', system-ui, sans-serif;
   font-weight: 300;
@@ -48,7 +48,7 @@ body::before {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #8FA8B8;
+  background: #2DA9C2;
   border-radius: 3px;
 }
 
@@ -111,7 +111,7 @@ body::before {
 
 .section-title em {
   font-style: italic;
-  color: #8FA8B8;
+  color: #FF6F61;
 }
 
 /* ── BUTTONS ── */
@@ -140,7 +140,7 @@ body::before {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: #8FA8B8;
+  background: #FF6F61;
   transition: left 0.4s ease;
 }
 
@@ -172,7 +172,7 @@ body::before {
 }
 
 .btn-text:hover {
-  color: #8FA8B8;
+  color: #2DA9C2;
 }
 
 .btn-text::after {
@@ -202,7 +202,7 @@ body::before {
 }
 
 .btn-dark:hover {
-  background: #8FA8B8;
+  background: #FF6F61;
   color: #F5F0E8;
 }
 
@@ -252,7 +252,7 @@ body::before {
 
 .ticker-item::after {
   content: '✦';
-  color: #8FA8B8;
+  color: #FF6F61;
   font-size: 0.5rem;
 }
 
@@ -295,19 +295,19 @@ body::before {
   font-family: 'Playfair Display', serif;
   font-size: 3.5rem;
   font-weight: 700;
-  color: rgba(143, 168, 184, 0.3);
+  color: rgba(45, 169, 194, 0.3);
   line-height: 1;
   margin-bottom: 1rem;
   transition: color 0.4s;
 }
 
 .service-card:hover .service-num {
-  color: rgba(143, 168, 184, 0.5);
+  color: rgba(45, 169, 194, 0.5);
 }
 
 /* ── TESTIMONIAL CARDS ── */
 .testimonial-card {
-  border-top: 1px solid rgba(143, 168, 184, 0.4);
+  border-top: 1px solid rgba(45, 169, 194, 0.4);
   padding-top: 2rem;
   position: relative;
 }
@@ -348,6 +348,6 @@ input:focus, textarea:focus, select:focus {
 
 /* ── SELECTION ── */
 ::selection {
-  background: rgba(143, 168, 184, 0.3);
+  background: rgba(255, 111, 97, 0.3);
   color: #1F4D4F;
 }

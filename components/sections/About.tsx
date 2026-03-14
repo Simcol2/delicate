@@ -50,7 +50,7 @@ export default function About() {
             >
               Creating Moments
               <br />
-              <em className="text-dusty-blue not-italic">That Linger</em>
+              <em className="not-italic" style={{ color: '#FF6F61' }}>That Linger</em>
             </h2>
             
             <div className="space-y-6 text-text-mid text-base lg:text-lg leading-relaxed">
@@ -67,7 +67,7 @@ export default function About() {
                 tablescapes that tell your unique story.
               </p>
 
-              <p className="font-serif text-xl lg:text-2xl text-dusty-blue italic pt-4">
+              <p className="font-serif text-xl lg:text-2xl italic pt-4" style={{ color: '#FF6F61' }}>
                 Let us dress your table better than your guests.
               </p>
             </div>
@@ -106,7 +106,7 @@ export default function About() {
 
           {/* Right Visual */}
           <div className="relative h-[400px] lg:h-[500px]">
-            <div className="absolute inset-0 bg-gradient-to-br from-dusty-blue/40 via-cream to-ivory/50 opacity-70" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#2DA9C2]/30 via-[#FAF9F6] to-[#F5F0E8]/50 opacity-70" />
             <div className="absolute inset-4 border border-midnight/30" />
             <div className="absolute bottom-8 left-8 right-8 bg-cream/90 backdrop-blur-sm p-6">
               <p className="font-serif italic text-midnight text-center">

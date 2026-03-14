@@ -60,7 +60,7 @@ export function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`font-sans text-[0.7rem] font-normal tracking-[0.22em] uppercase text-midnight no-underline transition-colors duration-300 relative hover:text-dusty-blue group`}
+                className={`font-sans text-[0.7rem] font-normal tracking-[0.22em] uppercase text-midnight no-underline transition-colors duration-300 relative hover:text-[#FF6F61] group`}
               >
                 {link.label}
                 <span 
@@ -111,7 +111,7 @@ export function Navbar() {
             key={link.href}
             href={link.href}
             onClick={() => setMobileMenuOpen(false)}
-            className="font-display text-4xl font-bold text-midnight no-underline tracking-[0.02em] transition-colors duration-300 hover:text-dusty-blue"
+            className="font-display text-4xl font-bold text-midnight no-underline tracking-[0.02em] transition-colors duration-300 hover:text-[#2DA9C2]"
             style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
           >
             {link.label}
@@ -120,7 +120,7 @@ export function Navbar() {
         <Link
           href="/client/login"
           onClick={() => setMobileMenuOpen(false)}
-          className="font-display text-4xl font-bold text-midnight no-underline tracking-[0.02em] transition-colors duration-300 hover:text-dusty-blue"
+          className="font-display text-4xl font-bold text-midnight no-underline tracking-[0.02em] transition-colors duration-300 hover:text-[#2DA9C2]"
           style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
         >
           Client Portal

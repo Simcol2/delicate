@@ -15,26 +15,26 @@ module.exports = {
         'tangerine': '#F28C38',
         'midnight': '#1F4D4F',
         
-        // Neutral base colors - textured cream/beige
-        cream: '#F5F0E8',
-        ivory: '#EDE6DB',
-        sand: '#E8E0D5',
-        stone: '#D8CFC4',
+        // Neutral base colors - clean cream/beige
+        cream: '#FAF9F6',
+        ivory: '#F5F3EF',
+        sand: '#EDE9E3',
+        stone: '#E5E0D8',
         dark: '#1F4D4F',
         'dark-text': '#2A2A2A',
         'text-mid': '#5A5A5A',
         'text-light': '#8A8A8A',
         
         // Legacy mappings for compatibility (map old names to new colors)
-        blush: '#E0D5C8',
+        blush: '#E8E0D8',
         rose: '#FF6F61',
         sage: '#4F7A5A',
         'sage-light': '#6B9A7A',
         gold: '#F28C38',
-        'gold-light': '#C4B8A8',
-        'gold-pale': '#D8CFC4',
-        'dusty-blue': '#8FA8B8',
-        'blue-light': '#C5D5E0',
+        'gold-light': '#F4A261',
+        'gold-pale': '#F7C59F',
+        'dusty-blue': '#2DA9C2',
+        'blue-light': '#7DD3E8',
       },
       fontFamily: {
         // New Playfair Display for headers

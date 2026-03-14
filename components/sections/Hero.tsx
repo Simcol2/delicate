@@ -64,7 +64,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
         >
           You Host.
           <br />
-          <em className="text-coral not-italic">We Style.</em>
+          <em className="not-italic" style={{ color: '#FF6F61' }}>We Style.</em>
         </h1>
 
         {/* Sub-tagline */}
@@ -106,7 +106,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
         {/* Meet Designer Button */}
         <button
           onClick={onOpenDesigner}
-          className={`group inline-flex items-center gap-3 px-6 py-4 bg-midnight text-cream hover:bg-dusty-blue transition-all duration-400 shadow-lg w-fit transition-all duration-1000 ${
+          className={`group inline-flex items-center gap-3 px-6 py-4 bg-[#FF6F61] text-cream hover:bg-[#2DA9C2] transition-all duration-400 shadow-lg w-fit transition-all duration-1000 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
           style={{ transitionDelay: '1.1s' }}

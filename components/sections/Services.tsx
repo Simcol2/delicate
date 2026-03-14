@@ -99,7 +99,7 @@ export default function Services({ onOpenContact }: ServicesProps) {
           >
             Three Elements
             <br />
-            <em className="text-dusty-blue not-italic">Of Style</em>
+            <em className="not-italic" style={{ color: '#FF6F61' }}>Of Style</em>
           </h2>
           <p className="font-sans text-text-mid text-base lg:text-lg max-w-xl mx-auto">
             Every gathering deserves intentional design. Our curated approach 
@@ -116,8 +116,8 @@ export default function Services({ onOpenContact }: ServicesProps) {
             >
               {/* Playfair Display Bold for numbers */}
               <span 
-                className="text-5xl lg:text-6xl text-dusty-blue/30"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}
+                className="text-5xl lg:text-6xl"
+                style={{ color: 'rgba(45, 169, 194, 0.3)', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}
               >
                 {service.num}
               </span>
