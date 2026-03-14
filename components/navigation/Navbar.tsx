@@ -31,7 +31,7 @@ export function Navbar() {
   return (
     <>
       <nav 
-        className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 lg:px-12 py-3 lg:py-6 transition-all duration-400"
+        className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 lg:px-12 py-4 transition-all duration-400"
         style={{
           background: 'rgba(250, 246, 239, 0.9)',
           backdropFilter: 'blur(16px)',
