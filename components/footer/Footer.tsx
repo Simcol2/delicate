@@ -54,11 +54,9 @@ export default function Footer() {
           </p>
           <ul className="flex flex-col gap-3 list-none">
             {[
-              'Wedding Florals',
-              'Event Design',
-              'Residential',
-              'Same-Day Delivery',
-              'Hospitality',
+              'Tablescapes',
+              'Cocktail Bar',
+              'Smoked Meats',
             ].map((service) => (
               <li key={service}>
                 <Link
