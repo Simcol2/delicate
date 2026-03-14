@@ -15,11 +15,11 @@ module.exports = {
         'tangerine': '#F28C38',
         'midnight': '#1F4D4F',
         
-        // Neutral base colors - clean cream/beige
-        cream: '#FAF9F6',
-        ivory: '#F5F3EF',
-        sand: '#EDE9E3',
-        stone: '#E5E0D8',
+        // Neutral base colors - cool cream/beige (not orangey)
+        cream: '#F5F2EB',
+        ivory: '#EEEBE3',
+        sand: '#E6E2D8',
+        stone: '#D9D5CC',
         dark: '#1F4D4F',
         'dark-text': '#2A2A2A',
         'text-mid': '#5A5A5A',
