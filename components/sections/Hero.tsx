@@ -64,7 +64,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
         >
           You Host.
           <br />
-          <em className="not-italic" style={{ color: '#FF6F61' }}>We Style.</em>
+          <span style={{ color: '#FF6F61', fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 400 }}>We Style.</span>
         </h1>
 
         {/* Sub-tagline */}

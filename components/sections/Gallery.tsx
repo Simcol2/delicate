@@ -71,22 +71,22 @@ export default function Gallery({ onOpenContact }: GalleryProps) {
     <section
       ref={sectionRef}
       id="gallery"
-      className="py-32 lg:py-40 bg-[#fffdf9]"
+      className="py-32 lg:py-40 bg-cream"
     >
       <div className="w-full px-6 lg:px-12">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between max-w-7xl mx-auto mb-16">
           <div>
-            <span className="text-[#CC2A7A] text-sm tracking-[0.3em] uppercase font-sans block mb-4">
+            <span className="text-midnight text-sm tracking-[0.3em] uppercase font-sans block mb-4">
               Portfolio
             </span>
-            <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-[#1A2744] leading-tight">
+            <h2 className="font-display text-4xl lg:text-5xl xl:text-6xl text-midnight leading-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}>
               Recent
               <br />
-              <span className="text-[#CC2A7A]">Experiences</span>
+              <span style={{ color: '#FF6F61' }}>Experiences</span>
             </h2>
           </div>
-          <p className="font-sans text-[#1A2744] text-lg max-w-md mt-6 lg:mt-0">
+          <p className="font-sans text-text-mid text-lg max-w-md mt-6 lg:mt-0">
             Each gathering tells a unique story. Here&apos;s a glimpse into 
             the moments we&apos;ve helped create.
           </p>
@@ -137,7 +137,7 @@ export default function Gallery({ onOpenContact }: GalleryProps) {
                 key={index}
                 onClick={() => setCurrentSlide(index)}
                 className={`w-2 h-2 rounded-full transition-colors ${
-                  index === currentSlide ? 'bg-[#CC2A7A]' : 'bg-[#e8d5b0]'
+                  index === currentSlide ? 'bg-midnight' : 'bg-stone'
                 }`}
               />
             ))}
@@ -156,7 +156,7 @@ export default function Gallery({ onOpenContact }: GalleryProps) {
                 alt={item.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-[#CC2A7A]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+              <div className="absolute inset-0 bg-midnight/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                 <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                   <h3 className="font-serif text-2xl text-[#faf6f0]">
                     {item.title}
@@ -171,7 +171,7 @@ export default function Gallery({ onOpenContact }: GalleryProps) {
         <div className="text-center mt-16">
           <a
             href="/experiences"
-            className="inline-block px-10 py-4 border-2 border-[#CC2A7A] text-[#8f0e04] font-sans text-sm tracking-widest uppercase hover:bg-[#CC2A7A] hover:text-[#faf6f0] transition-all duration-300"
+            className="inline-block px-10 py-4 border-2 border-midnight text-midnight font-sans text-sm tracking-widest uppercase hover:bg-midnight hover:text-cream transition-all duration-300"
           >
             View All Experiences
           </a>
