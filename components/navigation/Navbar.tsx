@@ -40,17 +40,12 @@ export function Navbar() {
             : '1px solid rgba(31, 77, 79, 0.15)',
         }}
       >
-        {/* Logo Image with Flower */}
-        <Link href="/" className="flex items-center gap-3 no-underline">
+        {/* Logo Image */}
+        <Link href="/" className="no-underline">
           <img 
-            src="/images/df-logo.png" 
+            src="/images/Delicate Flower-12 (4).png" 
             alt="Delicate Flowers" 
             className="h-20 lg:h-12 w-auto object-contain"
-          />
-          <img 
-            src="/images/Delicate Flower-12 (3).png" 
-            alt="" 
-            className="h-14 lg:h-10 w-auto object-contain"
           />
         </Link>
 
@@ -95,14 +90,14 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div 
-        className={`fixed inset-0 z-[99] bg-cream flex flex-col items-center justify-center gap-10 transition-opacity duration-400 ${
+        className={`fixed inset-0 z-[200] bg-cream flex flex-col items-center justify-center gap-10 transition-opacity duration-400 ${
           mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
         }`}
       >
         {/* Close Button */}
         <button
           onClick={() => setMobileMenuOpen(false)}
-          className="absolute top-6 right-6 z-10 w-12 h-12 flex items-center justify-center bg-midnight text-cream rounded-full text-2xl font-bold cursor-pointer shadow-lg hover:bg-coral transition-colors"
+          className="absolute top-6 right-6 z-[201] w-14 h-14 flex items-center justify-center bg-coral text-cream rounded-full text-3xl font-bold cursor-pointer shadow-xl hover:bg-midnight transition-colors border-4 border-cream"
           aria-label="Close menu"
         >
           ✕
