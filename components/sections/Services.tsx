@@ -13,21 +13,21 @@ interface ServicesProps {
 const services = [
   {
     num: '01',
-    title: 'Tablescapes',
+    title: 'The Look',
     description: 'Curated, high-end floral and tablescape styling designed to transform your dining space into an immersive visual experience.',
     image: '/images/Delicate%20Flower-4-table%20setting2.png',
   },
   {
     num: '02',
-    title: 'Cocktail Bar',
-    description: 'Bespoke, custom-formulated signature cocktails designed to perfectly complement the exact aesthetic and flavor profile of your gathering.',
-    image: '/images/Delicate%20Flower-4-drink%20(1).png',
+    title: 'The Smoke',
+    description: 'Artisan, slow-smoked heritage meats crafted to provide a rich, savory centerpiece for your curated menu. Inquire about our signature seasoning.',
+    image: '/images/Delicate%20Flower-5-smoker.png',
   },
   {
     num: '03',
-    title: 'Smoked Meats',
-    description: 'Artisan, slow-smoked heritage meats crafted to provide a rich, savory centerpiece for your curated menu. Inquire about our signature seasoning.',
-    image: '/images/Delicate%20Flower-5-smoker.png',
+    title: 'The Treats',
+    description: 'Bespoke, custom-formulated signature cocktails designed to perfectly complement the exact aesthetic and flavor profile of your gathering.',
+    image: '/images/Delicate%20Flower-4-drink%20(1).png',
   },
 ]
 
@@ -97,9 +97,11 @@ export default function Services({ onOpenContact }: ServicesProps) {
             className="text-4xl lg:text-5xl xl:text-6xl font-bold text-midnight mt-4 mb-6"
             style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
           >
-            Our Services
+            Three Elements
+            <br />
+            <em className="not-italic" style={{ color: '#FF6F61' }}>Of Style</em>
           </h2>
-          <p className="font-sans text-text-mid text-base lg:text-lg font-semibold max-w-xl mx-auto">
+          <p className="font-sans text-text-mid text-base lg:text-lg max-w-xl mx-auto">
             Every gathering deserves intentional design. Our curated approach 
             brings together sight, taste, and atmosphere.
           </p>
@@ -126,7 +128,7 @@ export default function Services({ onOpenContact }: ServicesProps) {
               >
                 {service.title}
               </h3>
-              <p className="font-sans text-sm text-text-mid font-semibold leading-relaxed">
+              <p className="font-sans text-sm text-text-mid leading-relaxed">
                 {service.description}
               </p>
             </div>
@@ -135,7 +137,7 @@ export default function Services({ onOpenContact }: ServicesProps) {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <p className="font-sans text-text-mid text-sm font-semibold mb-6">
+          <p className="font-sans text-text-mid text-sm mb-6">
             Not sure what you need? Let&apos;s discuss your vision.
           </p>
           <a
