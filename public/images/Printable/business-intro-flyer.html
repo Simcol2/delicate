@@ -70,13 +70,24 @@
       color: #2DA9C2;
     }
 
-    /* Divider */
-    .divider {
-      width: 240px;
-      height: 2px;
-      background: #1F4D4F;
-      margin: 0 auto;
-      opacity: 0.3;
+    /* Logo Space */
+    .logo-space {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .logo-placeholder {
+      font-family: 'Jost', sans-serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: #1F4D4F;
+      opacity: 0.4;
+      letter-spacing: 0.1em;
     }
 
     /* Main Tagline Section */
@@ -254,7 +265,10 @@
       <div class="brand-location">Palm Springs, California</div>
     </div>
 
-    <div class="divider"></div>
+    <!-- Logo Space -->
+    <div class="logo-space">
+      <span class="logo-placeholder">[LOGO]</span>
+    </div>
 
     <!-- Main Tagline -->
     <div class="tagline-section">
