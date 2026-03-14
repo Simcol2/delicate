@@ -68,46 +68,46 @@ export default function ContactPage() {
         {/* Contact Cards */}
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16">
           {/* Phone */}
-          <div className="bg-ivory p-8 text-center border border-midnight/10 hover:border-midnight/30 transition-all duration-300">
+          <div className="bg-white p-8 text-center border border-midnight/10 hover:border-midnight/30 transition-all duration-300 shadow-sm">
             <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-midnight/10">
               <Phone className="w-5 h-5 text-midnight" />
             </div>
             <h3 className="font-display text-lg text-midnight mb-2" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}>
-              Call Us
+              Call
             </h3>
             <a 
               href="tel:7606736636" 
-              className="font-sans text-text-mid hover:text-coral transition-colors"
+              className="font-sans font-semibold text-midnight hover:text-coral transition-colors"
             >
               (760) 673-6636
             </a>
           </div>
 
           {/* Email */}
-          <div className="bg-ivory p-8 text-center border border-midnight/10 hover:border-midnight/30 transition-all duration-300">
+          <div className="bg-white p-8 text-center border border-midnight/10 hover:border-midnight/30 transition-all duration-300 shadow-sm">
             <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-midnight/10">
               <Mail className="w-5 h-5 text-midnight" />
             </div>
             <h3 className="font-display text-lg text-midnight mb-2" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}>
-              Email Us
+              Email
             </h3>
             <a 
               href="mailto:april@delicateflowers.co" 
-              className="font-sans text-text-mid hover:text-coral transition-colors"
+              className="font-sans font-semibold text-midnight hover:text-coral transition-colors"
             >
               april@delicateflowers.co
             </a>
           </div>
 
           {/* Location */}
-          <div className="bg-ivory p-8 text-center border border-midnight/10 hover:border-midnight/30 transition-all duration-300">
+          <div className="bg-white p-8 text-center border border-midnight/10 hover:border-midnight/30 transition-all duration-300 shadow-sm">
             <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-midnight/10">
               <MapPin className="w-5 h-5 text-midnight" />
             </div>
             <h3 className="font-display text-lg text-midnight mb-2" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}>
               Location
             </h3>
-            <p className="font-sans text-text-mid">
+            <p className="font-sans font-semibold text-midnight">
               Palm Springs, CA
             </p>
           </div>
