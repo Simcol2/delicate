@@ -46,7 +46,7 @@ export function Navbar() {
           <img 
             src="/images/df-logo.png" 
             alt="Delicate Flowers" 
-            className="h-10 lg:h-12 w-auto object-contain"
+            className="h-20 lg:h-12 w-auto object-contain"
           />
         </Link>
 
