@@ -70,7 +70,7 @@ export function Navbar() {
           <li>
             <Link
               href="/client/login"
-              className="px-6 py-3 border border-midnight text-midnight font-sans text-[0.65rem] font-bold tracking-[0.25em] uppercase no-underline transition-all duration-350 hover:bg-midnight hover:text-cream"
+              className="inline-block px-5 py-2.5 border border-midnight text-midnight font-sans text-[0.65rem] font-bold tracking-[0.2em] uppercase no-underline transition-all duration-350 hover:bg-midnight hover:text-cream whitespace-nowrap"
             >
               Client Portal
             </Link>
