@@ -17,11 +17,25 @@ html {
 }
 
 body {
-  background: #FAF6EF;
+  background: #F5F0E8;
   color: #2A2A2A;
   font-family: 'Jost', system-ui, sans-serif;
   font-weight: 300;
   overflow-x: hidden;
+}
+
+/* Subtle paper texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
 }
 
 /* ── SCROLLBAR ── */
@@ -30,11 +44,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F2EDE4;
+  background: #EDE6DB;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #F28C38;
+  background: #8FA8B8;
   border-radius: 3px;
 }
 
@@ -62,7 +76,7 @@ body {
   font-weight: 400;
   letter-spacing: 0.45em;
   text-transform: uppercase;
-  color: #F28C38;
+  color: #1F4D4F;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -74,7 +88,7 @@ body {
   display: block;
   width: 30px;
   height: 1px;
-  background: #F28C38;
+  background: #1F4D4F;
 }
 
 .section-label-center {
@@ -97,15 +111,15 @@ body {
 
 .section-title em {
   font-style: italic;
-  color: #FF6F61;
+  color: #8FA8B8;
 }
 
 /* ── BUTTONS ── */
 .btn-primary {
   display: inline-block;
   padding: 1rem 2.5rem;
-  background: #F28C38;
-  color: #FAF6EF;
+  background: #1F4D4F;
+  color: #F5F0E8;
   font-family: 'Jost', sans-serif;
   font-size: 0.65rem;
   font-weight: 500;
@@ -126,7 +140,7 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: #1F4D4F;
+  background: #8FA8B8;
   transition: left 0.4s ease;
 }
 
@@ -146,7 +160,7 @@ body {
   font-weight: 400;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #5A5A5A;
+  color: #1F4D4F;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -158,7 +172,7 @@ body {
 }
 
 .btn-text:hover {
-  color: #F28C38;
+  color: #8FA8B8;
 }
 
 .btn-text::after {
@@ -174,7 +188,7 @@ body {
   display: inline-block;
   padding: 1.2rem 3rem;
   background: #1F4D4F;
-  color: #FFD9B3;
+  color: #E8E0D5;
   font-family: 'Jost', sans-serif;
   font-size: 0.65rem;
   font-weight: 500;
@@ -188,8 +202,8 @@ body {
 }
 
 .btn-dark:hover {
-  background: #F28C38;
-  color: #FAF6EF;
+  background: #8FA8B8;
+  color: #F5F0E8;
 }
 
 /* ── REVEAL ANIMATIONS ── */
@@ -211,7 +225,7 @@ body {
 
 /* ── TICKER ── */
 .ticker {
-  background: #1F4D4F;
+  background: #2A3F4D;
   padding: 0.9rem 0;
   overflow: hidden;
   position: relative;
@@ -229,7 +243,7 @@ body {
   font-size: 0.75rem;
   font-weight: 300;
   letter-spacing: 0.3em;
-  color: #FFD9B3;
+  color: #E8E0D5;
   padding: 0 3rem;
   display: flex;
   align-items: center;
@@ -238,7 +252,7 @@ body {
 
 .ticker-item::after {
   content: '✦';
-  color: #F28C38;
+  color: #8FA8B8;
   font-size: 0.5rem;
 }
 
@@ -249,7 +263,7 @@ body {
 
 /* ── SERVICE CARDS ── */
 .service-card {
-  background: #FAF6EF;
+  background: #F5F0E8;
   padding: 3rem 2.5rem;
   position: relative;
   overflow: hidden;
@@ -264,13 +278,13 @@ body {
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(to right, #F28C38, #FFB366);
+  background: linear-gradient(to right, #1F4D4F, #8FA8B8);
   transform: scaleX(0);
   transition: transform 0.5s ease;
 }
 
 .service-card:hover {
-  background: #F2EDE4;
+  background: #EDE6DB;
 }
 
 .service-card:hover::before {
@@ -281,19 +295,19 @@ body {
   font-family: 'Playfair Display', serif;
   font-size: 3.5rem;
   font-weight: 700;
-  color: rgba(242, 140, 56, 0.18);
+  color: rgba(143, 168, 184, 0.3);
   line-height: 1;
   margin-bottom: 1rem;
   transition: color 0.4s;
 }
 
 .service-card:hover .service-num {
-  color: rgba(242, 140, 56, 0.35);
+  color: rgba(143, 168, 184, 0.5);
 }
 
 /* ── TESTIMONIAL CARDS ── */
 .testimonial-card {
-  border-top: 1px solid rgba(242, 140, 56, 0.3);
+  border-top: 1px solid rgba(143, 168, 184, 0.4);
   padding-top: 2rem;
   position: relative;
 }
@@ -306,7 +320,7 @@ input, textarea, select {
 
 input:focus, textarea:focus, select:focus {
   outline: none;
-  border-color: #F28C38;
+  border-color: #1F4D4F;
 }
 
 /* ── RESPONSIVE ── */
@@ -334,6 +348,6 @@ input:focus, textarea:focus, select:focus {
 
 /* ── SELECTION ── */
 ::selection {
-  background: rgba(242, 140, 56, 0.3);
+  background: rgba(143, 168, 184, 0.3);
   color: #1F4D4F;
 }

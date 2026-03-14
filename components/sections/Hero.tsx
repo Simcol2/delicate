@@ -24,31 +24,31 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           className="absolute inset-0 pointer-events-none opacity-40"
           style={{
             backgroundImage: `
-              linear-gradient(135deg, rgba(242, 140, 56, 0.04) 25%, transparent 25%),
-              linear-gradient(225deg, rgba(242, 140, 56, 0.04) 25%, transparent 25%),
-              linear-gradient(315deg, rgba(242, 140, 56, 0.04) 25%, transparent 25%),
-              linear-gradient(45deg, rgba(242, 140, 56, 0.04) 25%, transparent 25%)
+              linear-gradient(135deg, rgba(143, 168, 184, 0.04) 25%, transparent 25%),
+              linear-gradient(225deg, rgba(143, 168, 184, 0.04) 25%, transparent 25%),
+              linear-gradient(315deg, rgba(143, 168, 184, 0.04) 25%, transparent 25%),
+              linear-gradient(45deg, rgba(143, 168, 184, 0.04) 25%, transparent 25%)
             `,
             backgroundSize: '60px 60px',
           }}
         />
 
-        {/* Gold Bar - Now Tangerine */}
+        {/* Gold Bar - Now Midnight */}
         <div 
           className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-32 hidden lg:block"
           style={{
-            background: 'linear-gradient(to bottom, transparent, #F28C38, transparent)',
+            background: 'linear-gradient(to bottom, transparent, #1F4D4F, transparent)',
           }}
         />
 
         {/* Eyebrow */}
         <p 
-          className={`font-sans text-[0.65rem] font-normal tracking-[0.4em] uppercase text-tangerine mb-8 flex items-center gap-4 transition-all duration-1000 ${
+          className={`font-sans text-[0.65rem] font-normal tracking-[0.4em] uppercase text-midnight mb-8 flex items-center gap-4 transition-all duration-1000 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
           style={{ transitionDelay: '0.3s' }}
         >
-          <span className="block w-10 h-[1px] bg-tangerine"></span>
+          <span className="block w-10 h-[1px] bg-midnight"></span>
           Luxury Floral & Tablescape Design
         </p>
 
@@ -106,7 +106,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
         {/* Meet Designer Button */}
         <button
           onClick={onOpenDesigner}
-          className={`group inline-flex items-center gap-3 px-6 py-4 bg-tangerine text-cream hover:bg-midnight transition-all duration-400 shadow-lg w-fit transition-all duration-1000 ${
+          className={`group inline-flex items-center gap-3 px-6 py-4 bg-midnight text-cream hover:bg-dusty-blue transition-all duration-400 shadow-lg w-fit transition-all duration-1000 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
           style={{ transitionDelay: '1.1s' }}
@@ -134,7 +134,7 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           <div 
             className="w-[1px] h-12"
             style={{
-              background: 'linear-gradient(to bottom, #F28C38, transparent)',
+              background: 'linear-gradient(to bottom, #1F4D4F, transparent)',
               animation: 'scrollDrop 2s ease infinite',
             }}
           />
@@ -146,11 +146,11 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
 
       {/* Right Side - Visual */}
       <div className="relative overflow-hidden min-h-[400px] lg:min-h-screen bg-gradient-to-br from-turquoise/30 via-blush to-cactus/30">
-        {/* Sun Orb - Now Tangerine */}
+        {/* Sun Orb - Now Dusty Blue */}
         <div 
           className="absolute top-[12%] right-[15%] w-28 h-28 lg:w-32 lg:h-32 rounded-full animate-pulse-orb"
           style={{
-            background: 'radial-gradient(circle, rgba(242, 140, 56, 0.6) 0%, rgba(242, 140, 56, 0.1) 60%, transparent 100%)',
+            background: 'radial-gradient(circle, rgba(143, 168, 184, 0.6) 0%, rgba(143, 168, 184, 0.1) 60%, transparent 100%)',
           }}
         />
 

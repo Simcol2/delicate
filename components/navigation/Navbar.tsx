@@ -35,8 +35,8 @@ export function Navbar() {
           background: 'rgba(250, 246, 239, 0.9)',
           backdropFilter: 'blur(16px)',
           borderBottom: scrolled 
-            ? '1px solid rgba(242, 140, 56, 0.25)' 
-            : '1px solid rgba(242, 140, 56, 0.15)',
+            ? '1px solid rgba(31, 77, 79, 0.25)' 
+            : '1px solid rgba(31, 77, 79, 0.15)',
         }}
       >
         {/* Logo - Playfair Display Bold */}
@@ -48,7 +48,7 @@ export function Navbar() {
             Delicate Flowers
           </span>
           <span 
-            className="font-sans text-[0.6rem] font-light text-tangerine tracking-[0.35em] uppercase mt-[3px]"
+            className="font-sans text-[0.6rem] font-light text-midnight tracking-[0.35em] uppercase mt-[3px]"
           >
             Palm Springs, CA
           </span>
@@ -60,11 +60,11 @@ export function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`font-sans text-[0.7rem] font-normal tracking-[0.22em] uppercase text-text-mid no-underline transition-colors duration-300 relative hover:text-tangerine group`}
+                className={`font-sans text-[0.7rem] font-normal tracking-[0.22em] uppercase text-midnight no-underline transition-colors duration-300 relative hover:text-dusty-blue group`}
               >
                 {link.label}
                 <span 
-                  className={`absolute -bottom-1 left-0 h-[1px] bg-tangerine transition-all duration-350 ${
+                  className={`absolute -bottom-1 left-0 h-[1px] bg-midnight transition-all duration-350 ${
                     isActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 />
@@ -74,7 +74,7 @@ export function Navbar() {
           <li>
             <Link
               href="/client/login"
-              className="px-6 py-3 border border-tangerine text-tangerine font-sans text-[0.65rem] tracking-[0.25em] uppercase no-underline transition-all duration-350 hover:bg-tangerine hover:text-cream"
+              className="px-6 py-3 border border-midnight text-midnight font-sans text-[0.65rem] tracking-[0.25em] uppercase no-underline transition-all duration-350 hover:bg-midnight hover:text-cream"
             >
               Client Portal
             </Link>
@@ -87,9 +87,9 @@ export function Navbar() {
           className="lg:hidden flex flex-col gap-[5px] p-1 bg-transparent border-none cursor-pointer"
           aria-label="Menu"
         >
-          <span className="block w-6 h-[1px] bg-tangerine transition-all"></span>
-          <span className="block w-6 h-[1px] bg-tangerine transition-all"></span>
-          <span className="block w-6 h-[1px] bg-tangerine transition-all"></span>
+          <span className="block w-6 h-[1px] bg-midnight transition-all"></span>
+          <span className="block w-6 h-[1px] bg-midnight transition-all"></span>
+          <span className="block w-6 h-[1px] bg-midnight transition-all"></span>
         </button>
       </nav>
 
@@ -101,7 +101,7 @@ export function Navbar() {
       >
         <button
           onClick={() => setMobileMenuOpen(false)}
-          className="absolute top-7 right-8 bg-transparent border-none text-tangerine text-3xl font-extralight cursor-pointer"
+          className="absolute top-7 right-8 bg-transparent border-none text-midnight text-3xl font-extralight cursor-pointer"
         >
           ✕
         </button>
@@ -111,7 +111,7 @@ export function Navbar() {
             key={link.href}
             href={link.href}
             onClick={() => setMobileMenuOpen(false)}
-            className="font-display text-4xl font-bold text-midnight no-underline tracking-[0.02em] transition-colors duration-300 hover:text-coral"
+            className="font-display text-4xl font-bold text-midnight no-underline tracking-[0.02em] transition-colors duration-300 hover:text-dusty-blue"
             style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
           >
             {link.label}
@@ -120,7 +120,7 @@ export function Navbar() {
         <Link
           href="/client/login"
           onClick={() => setMobileMenuOpen(false)}
-          className="font-display text-4xl font-bold text-midnight no-underline tracking-[0.02em] transition-colors duration-300 hover:text-coral"
+          className="font-display text-4xl font-bold text-midnight no-underline tracking-[0.02em] transition-colors duration-300 hover:text-dusty-blue"
           style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
         >
           Client Portal

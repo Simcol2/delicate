@@ -50,7 +50,7 @@ export default function About() {
             >
               Creating Moments
               <br />
-              <em className="text-coral not-italic">That Linger</em>
+              <em className="text-dusty-blue not-italic">That Linger</em>
             </h2>
             
             <div className="space-y-6 text-text-mid text-base lg:text-lg leading-relaxed">
@@ -67,16 +67,16 @@ export default function About() {
                 tablescapes that tell your unique story.
               </p>
 
-              <p className="font-serif text-xl lg:text-2xl text-coral italic pt-4">
+              <p className="font-serif text-xl lg:text-2xl text-dusty-blue italic pt-4">
                 Let us dress your table better than your guests.
               </p>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 pt-10 mt-10 border-t border-tangerine/30">
+            <div className="grid grid-cols-3 gap-8 pt-10 mt-10 border-t border-midnight/30">
               <div>
                 <span 
-                  className="text-3xl lg:text-4xl text-tangerine"
+                  className="text-3xl lg:text-4xl text-midnight"
                   style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}
                 >
                   150+
@@ -85,7 +85,7 @@ export default function About() {
               </div>
               <div>
                 <span 
-                  className="text-3xl lg:text-4xl text-tangerine"
+                  className="text-3xl lg:text-4xl text-midnight"
                   style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}
                 >
                   5
@@ -94,7 +94,7 @@ export default function About() {
               </div>
               <div>
                 <span 
-                  className="text-3xl lg:text-4xl text-tangerine"
+                  className="text-3xl lg:text-4xl text-midnight"
                   style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}
                 >
                   100%
@@ -106,8 +106,8 @@ export default function About() {
 
           {/* Right Visual */}
           <div className="relative h-[400px] lg:h-[500px]">
-            <div className="absolute inset-0 bg-gradient-to-br from-cactus/40 via-blush to-tangerine/30 opacity-70" />
-            <div className="absolute inset-4 border border-tangerine/30" />
+            <div className="absolute inset-0 bg-gradient-to-br from-dusty-blue/40 via-cream to-ivory/50 opacity-70" />
+            <div className="absolute inset-4 border border-midnight/30" />
             <div className="absolute bottom-8 left-8 right-8 bg-cream/90 backdrop-blur-sm p-6">
               <p className="font-serif italic text-midnight text-center">
                 &ldquo;Every petal placed with purpose.&rdquo;

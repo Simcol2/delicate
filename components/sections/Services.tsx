@@ -83,7 +83,7 @@ export default function Services({ onOpenContact }: ServicesProps) {
       <div 
         className="absolute inset-0 pointer-events-none opacity-30"
         style={{
-          backgroundImage: `radial-gradient(circle at 20% 80%, rgba(242, 140, 56, 0.08) 0%, transparent 50%),
+          backgroundImage: `radial-gradient(circle at 20% 80%, rgba(143, 168, 184, 0.08) 0%, transparent 50%),
                            radial-gradient(circle at 80% 20%, rgba(79, 122, 90, 0.08) 0%, transparent 50%)`,
         }}
       />
@@ -99,7 +99,7 @@ export default function Services({ onOpenContact }: ServicesProps) {
           >
             Three Elements
             <br />
-            <em className="text-coral not-italic">Of Style</em>
+            <em className="text-dusty-blue not-italic">Of Style</em>
           </h2>
           <p className="font-sans text-text-mid text-base lg:text-lg max-w-xl mx-auto">
             Every gathering deserves intentional design. Our curated approach 
@@ -112,11 +112,11 @@ export default function Services({ onOpenContact }: ServicesProps) {
           {services.map((service) => (
             <div
               key={service.title}
-              className="group bg-cream border border-tangerine/20 p-8 lg:p-10 hover:border-tangerine/50 transition-all duration-500"
+              className="group bg-cream border border-midnight/20 p-8 lg:p-10 hover:border-midnight/50 transition-all duration-500"
             >
               {/* Playfair Display Bold for numbers */}
               <span 
-                className="text-5xl lg:text-6xl text-tangerine/30"
+                className="text-5xl lg:text-6xl text-dusty-blue/30"
                 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}
               >
                 {service.num}
