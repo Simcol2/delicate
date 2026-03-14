@@ -144,13 +144,12 @@ export default function Hero({ onOpenDesigner, onOpenContact }: HeroProps) {
           }}
         />
 
-        {/* Hero Image - Rotated 90 degrees */}
+        {/* Hero Image - Rotated 90 degrees on desktop, normal on mobile */}
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
           <img
             src="/images/Gemini_Generated_Image_7pemq97pemq97pem.png"
             alt="Delicate Flowers floral arrangement"
-            className="w-[150%] h-[150%] object-cover"
-            style={{ transform: 'rotate(90deg)' }}
+            className="w-[150%] h-[150%] object-cover lg:rotate-90"
           />
         </div>
 

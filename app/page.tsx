@@ -5,7 +5,7 @@ import Hero from '@/components/sections/Hero'
 import Ticker from '@/components/sections/Ticker'
 import DesignerModal from '@/components/ui/DesignerModal'
 import ContactModal from '@/components/ui/ContactModal'
-import MothersDayPopup from '@/components/ui/MothersDayPopup'
+
 
 export default function Page() {
   const [isDesignerModalOpen, setIsDesignerModalOpen] = useState(false)
@@ -234,7 +234,6 @@ export default function Page() {
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 
       />
-      <MothersDayPopup />
     </>
   )
 }
