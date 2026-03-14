@@ -33,8 +33,8 @@ module.exports = {
         gold: '#F28C38',
         'gold-light': '#F4A261',
         'gold-pale': '#F7C59F',
-        'dusty-blue': '#2DA9C2',
-        'blue-light': '#7DD3E8',
+        'dusty-blue': '#8FA8B8',
+        'blue-light': '#C5D5E0',
       },
       fontFamily: {
         // New Playfair Display for headers

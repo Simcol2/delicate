@@ -22,6 +22,7 @@ export function Navbar() {
     { href: '/services', label: 'Services' },
     { href: '/experiences', label: 'Gallery' },
     { href: '/faq', label: 'FAQ' },
+    { href: '/contact', label: 'Contact' },
   ]
 
   const isActive = (href: string) => pathname === href
