@@ -11,12 +11,11 @@ export default function Footer() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-16">
         {/* Brand */}
         <div className="lg:col-span-1">
-          <div className="font-serif-sc text-xl lg:text-[1.4rem] font-normal text-ivory tracking-[0.15em] mb-1">
-            Delicate Flowers
-          </div>
-          <div className="font-sans text-[0.58rem] tracking-[0.35em] uppercase text-gold mb-8">
-            Palm Springs, California
-          </div>
+          <img 
+            src="/images/df-logo.png" 
+            alt="Delicate Flowers" 
+            className="h-12 w-auto object-contain mb-4 brightness-200"
+          />
           <p className="font-serif italic text-base text-ivory/50 leading-relaxed max-w-[260px]">
             Floral artistry shaped by desert light, mid-century elegance, and an unwavering commitment to beauty.
           </p>

@@ -39,11 +39,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/icons/icon-192x192.png', sizes: '192x192' },
-      { url: '/icons/icon-512x512.png', sizes: '512x512' },
+      { url: '/images/df-logo.png', sizes: '192x192' },
     ],
     apple: [
-      { url: '/icons/icon-180x180.png', sizes: '180x180' },
+      { url: '/images/df-logo.png', sizes: '180x180' },
     ],
   },
 }
@@ -75,7 +74,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png" />
         <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
         <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-152x152.png" />
-        <link rel="shortcut icon" href="/icons/icon-192x192.png" />
+        <link rel="shortcut icon" href="/images/df-logo.png" />
       </head>
       <body className="bg-cream text-text font-sans font-light antialiased">
         <SmoothScrollProvider>

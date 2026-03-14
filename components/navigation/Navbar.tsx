@@ -41,19 +41,13 @@ export function Navbar() {
             : '1px solid rgba(31, 77, 79, 0.15)',
         }}
       >
-        {/* Logo - Playfair Display Bold */}
-        <Link href="/" className="flex flex-col no-underline">
-          <span 
-            className="text-xl lg:text-[1.5rem] font-bold text-midnight tracking-[0.02em] leading-none"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-          >
-            Delicate Flowers
-          </span>
-          <span 
-            className="font-sans text-[0.6rem] font-light text-midnight tracking-[0.35em] uppercase mt-[3px]"
-          >
-            Palm Springs, CA
-          </span>
+        {/* Logo Image */}
+        <Link href="/" className="no-underline">
+          <img 
+            src="/images/df-logo.png" 
+            alt="Delicate Flowers" 
+            className="h-10 lg:h-12 w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop Nav */}
