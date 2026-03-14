@@ -80,6 +80,17 @@ export default function Footer() {
           <div className="space-y-4">
             <div>
               <div className="font-sans text-[0.58rem] tracking-[0.3em] uppercase text-gold mb-1">
+                Phone
+              </div>
+              <a 
+                href="tel:7606736636"
+                className="font-sans text-[0.78rem] font-light text-ivory/60 no-underline hover:text-gold-pale transition-colors"
+              >
+                (760) 673-6636
+              </a>
+            </div>
+            <div>
+              <div className="font-sans text-[0.58rem] tracking-[0.3em] uppercase text-gold mb-1">
                 Email
               </div>
               <a 

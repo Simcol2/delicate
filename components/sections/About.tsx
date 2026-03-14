@@ -106,9 +106,14 @@ export default function About() {
 
           {/* Right Visual */}
           <div className="relative h-[400px] lg:h-[500px]">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#2DA9C2]/30 via-[#FAF9F6] to-[#F5F0E8]/50 opacity-70" />
-            <div className="absolute inset-4 border border-midnight/30" />
-            <div className="absolute bottom-8 left-8 right-8 bg-cream/90 backdrop-blur-sm p-6">
+            <img 
+              src="/Photo Slides/Outdoor Soiree/Delicate Flower-10.png"
+              alt="Outdoor soiree floral arrangement"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-midnight/40 via-transparent to-transparent" />
+            <div className="absolute inset-4 border border-cream/50" />
+            <div className="absolute bottom-8 left-8 right-8 bg-cream/95 backdrop-blur-sm p-6">
               <p className="font-serif italic text-midnight text-center">
                 &ldquo;Every petal placed with purpose.&rdquo;
               </p>
