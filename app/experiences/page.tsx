@@ -40,14 +40,7 @@ const photoFolders: PhotoFolder[] = [
       '/Photo Slides/Cocktails/DSC06748.JPEG',
     ]
   },
-  {
-    id: '3',
-    name: 'Floral Arrangements',
-    coverImage: '/P&P photos/IMG_0586.jpg?v=3',
-    photos: [
-      '/P&P photos/IMG_0586.jpg?v=3',
-    ]
-  },
+  // Floral Arrangements - Firebase only (admin panel uploads)
   {
     id: '4',
     name: 'Outdoor Soiree',

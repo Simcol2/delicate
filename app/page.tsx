@@ -8,6 +8,7 @@ import Services from '@/components/sections/Services'
 import Gallery from '@/components/sections/Gallery'
 import DesignerModal from '@/components/ui/DesignerModal'
 import ContactModal from '@/components/ui/ContactModal'
+import Footer from '@/components/footer/Footer'
 
 export default function Page() {
   const [isDesignerModalOpen, setIsDesignerModalOpen] = useState(false)
@@ -37,6 +38,8 @@ export default function Page() {
         
         <Gallery onOpenContact={() => setIsContactModalOpen(true)} />
       </main>
+
+      <Footer />
 
       <DesignerModal 
         isOpen={isDesignerModalOpen} 

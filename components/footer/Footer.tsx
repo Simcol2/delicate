@@ -4,7 +4,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-dark px-6 lg:px-20 pt-20 pb-8 relative overflow-hidden">
+    <footer className="bg-dark px-6 lg:px-20 pt-10 pb-6 relative overflow-hidden">
       {/* Gold line */}
       <div className="absolute top-0 left-6 right-6 lg:left-20 lg:right-20 h-[1px] bg-gradient-to-r from-transparent via-midnight to-transparent"></div>
 
