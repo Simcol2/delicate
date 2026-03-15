@@ -107,7 +107,6 @@ export default function Gallery({ onOpenContact }: GalleryProps) {
                   alt={item.title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <h3 className="font-serif text-2xl text-[#faf6f0]">{item.title}</h3>
                   <p className="text-[#faf6f0]/70 text-sm mt-1">{index + 1} / {galleryItems.length}</p>
@@ -156,9 +155,9 @@ export default function Gallery({ onOpenContact }: GalleryProps) {
                 alt={item.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-midnight/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                 <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <h3 className="font-serif text-2xl text-[#faf6f0]">
+                  <h3 className="font-serif text-2xl text-coral drop-shadow-lg" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
                     {item.title}
                   </h3>
                 </div>
