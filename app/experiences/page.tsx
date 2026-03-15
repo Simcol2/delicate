@@ -43,9 +43,9 @@ const photoFolders: PhotoFolder[] = [
   {
     id: '3',
     name: 'Floral Arrangements',
-    coverImage: '/P&P photos/IMG_0586.jpg',
+    coverImage: '/P&P photos/IMG_0586.jpg?v=3',
     photos: [
-      '/P&P photos/IMG_0586.jpg',
+      '/P&P photos/IMG_0586.jpg?v=3',
     ]
   },
   {
