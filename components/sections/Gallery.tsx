@@ -9,7 +9,6 @@ gsap.registerPlugin(ScrollTrigger)
 
 const galleryItems = [
   { id: 1, title: 'Celebrations', image: '/Photo Slides/Celebrations/Delicate Flower-3-table setting1.png' },
-  { id: 2, title: 'Floral Arrangements', image: '/floral-arrangements.jpg?v=2' },
   { id: 3, title: 'Cocktails', image: '/Photo Slides/Cocktails/DSC06742.JPEG' },
   { id: 4, title: 'Outdoor Soiree', image: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png' },
 ]
@@ -71,7 +70,7 @@ export default function Gallery({ onOpenContact }: GalleryProps) {
     <section
       ref={sectionRef}
       id="gallery"
-      className="py-32 lg:py-40 bg-cream"
+      className="relative py-32 lg:py-40 bg-cream"
     >
       <div className="w-full px-6 lg:px-12">
         {/* Header */}

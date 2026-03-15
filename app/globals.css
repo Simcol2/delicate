@@ -39,6 +39,24 @@ body::before {
   z-index: 9999;
 }
 
+/* Hide texture overlay on gallery section */
+section#gallery::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #FAF9F6;
+  z-index: 9998;
+  pointer-events: none;
+}
+
+section#gallery > * {
+  position: relative;
+  z-index: 9999;
+}
+
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar {
   width: 6px;
