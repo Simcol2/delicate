@@ -1,13 +1,10 @@
-const CACHE_NAME = 'delicate-flowers-v1';
-const urlsToCache = [
-  '/',
-  '/about',
-  '/services',
-  '/experiences',
-  '/faq',
-  '/terms',
-  '/client/login',
-  '/manifest.json'
+const CACHE_NAME = 'delicate-flowers-v2';
+
+// Only cache static assets, not HTML pages
+const STATIC_ASSETS = [
+  '/manifest.json',
+  '/icons/icon-192x192.png',
+  '/icons/icon-512x512.png'
 ];
 
 // Install service worker
@@ -16,7 +13,7 @@ self.addEventListener('install', (event) => {
     caches.open(CACHE_NAME)
       .then((cache) => {
         console.log('Cache opened');
-        return cache.addAll(urlsToCache);
+        return cache.addAll(STATIC_ASSETS);
       })
       .catch((err) => {
         console.log('Cache failed:', err);
@@ -25,7 +22,7 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
-// Activate service worker
+// Activate service worker - clear old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -39,7 +36,7 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Fetch event
+// Fetch event - Network first, only cache static assets
 self.addEventListener('fetch', (event) => {
   // Skip non-GET requests
   if (event.request.method !== 'GET') return;
@@ -47,34 +44,34 @@ self.addEventListener('fetch', (event) => {
   // Skip API calls
   if (event.request.url.includes('/api/')) return;
   
+  // For HTML pages - always fetch fresh (network first)
+  if (event.request.mode === 'navigate' || event.request.headers.get('accept').includes('text/html')) {
+    event.respondWith(
+      fetch(event.request)
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+  
+  // For static assets - cache first
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
-        // Return cached version or fetch new
         if (response) {
           return response;
         }
         return fetch(event.request)
           .then((response) => {
-            // Don't cache if not valid response
             if (!response || response.status !== 200 || response.type !== 'basic') {
               return response;
             }
-            
-            // Clone response
             const responseToCache = response.clone();
-            
             caches.open(CACHE_NAME)
               .then((cache) => {
                 cache.put(event.request, responseToCache);
               });
-              
             return response;
           });
-      })
-      .catch(() => {
-        // Return offline fallback if available
-        return caches.match('/');
       })
   );
 });
