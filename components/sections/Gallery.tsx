@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const galleryItems = [
   { id: 1, title: 'Celebrations', image: '/Photo Slides/Celebrations/Delicate Flower-3-table setting1.png' },
+  { id: 2, title: 'Floral Arrangements', image: '/P&P photos/IMG_0586.jpg' },
   { id: 3, title: 'Cocktails', image: '/Photo Slides/Cocktails/DSC06742.JPEG' },
   { id: 4, title: 'Outdoor Soiree', image: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png' },
 ]
