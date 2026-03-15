@@ -43,14 +43,9 @@ const photoFolders: PhotoFolder[] = [
   {
     id: '3',
     name: 'Floral Arrangements',
-    coverImage: '/Photo Slides/Floral Arrangements/Delicate Flower-13.png',
+    coverImage: '/P&P photos/IMG_0586.jpg',
     photos: [
-      '/Photo Slides/Floral Arrangements/Delicate Flower-13.png',
-      '/Photo Slides/Floral Arrangements/IMG_6169.jpg',
-      '/Photo Slides/Floral Arrangements/IMG_8300.jpg',
-      '/Photo Slides/Floral Arrangements/IMG_9442.jpg',
-      '/Photo Slides/Floral Arrangements/IMG_9479.jpg',
-      '/Photo Slides/Floral Arrangements/IMG_9480.jpg',
+      '/P&P photos/IMG_0586.jpg',
     ]
   },
   {
@@ -161,7 +156,7 @@ export default function ExperiencesPage() {
   }, [selectedFolder])
 
   return (
-    <main className="min-h-screen bg-cream pt-32 lg:pt-40 pb-20">
+    <main className="min-h-screen bg-cream pt-32 lg:pt-40 pb-20 relative z-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">

@@ -36,7 +36,13 @@ body::before {
     repeating-linear-gradient(90deg, transparent 0, transparent 2px, rgba(31, 77, 79, 0.02) 2px, rgba(31, 77, 79, 0.02) 4px),
     repeating-linear-gradient(0deg, transparent 0, transparent 2px, rgba(31, 77, 79, 0.02) 2px, rgba(31, 77, 79, 0.02) 4px);
   pointer-events: none;
-  z-index: 9999;
+  z-index: 1;
+}
+
+/* Ensure main content is above texture overlay */
+main {
+  position: relative;
+  z-index: 2;
 }
 
 /* ── SCROLLBAR ── */
