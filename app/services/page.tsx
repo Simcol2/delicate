@@ -67,8 +67,8 @@ const addOns = [
     description: 'A styled spread designed to be as beautiful as it is delicious.',
   },
   {
-    name: 'Signature Cocktail Station',
-    description: 'A fully styled cocktail setup that doubles as a conversation piece.',
+    name: 'Signature Mocktail Station',
+    description: 'A fully styled mocktail setup that doubles as a conversation piece.',
   },
   {
     name: 'Smoked Meats',
@@ -99,7 +99,7 @@ const byoItems = [
   },
   {
     name: 'Your Add-ons',
-    description: 'Dessert displays, cocktail stations, smoked meats, specialty florals, layer in anything you love.',
+    description: 'Dessert displays, mocktail stations, smoked meats, specialty florals, layer in anything you love.',
   },
 ]
 

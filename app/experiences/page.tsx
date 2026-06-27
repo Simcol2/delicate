@@ -33,7 +33,7 @@ const photoFolders: PhotoFolder[] = [
   },
   {
     id: '2',
-    name: 'Cocktails',
+    name: 'Mocktails',
     coverImage: '/Photo Slides/Cocktails/DSC06742.JPEG',
     photos: [
       '/Photo Slides/Cocktails/DSC06742.JPEG',
