@@ -26,7 +26,7 @@ const services = [
   {
     num: '03',
     title: 'The Treats',
-    description: 'Bespoke, custom-formulated signature cocktails designed to perfectly complement the exact aesthetic and flavor profile of your gathering.',
+    description: 'Bespoke, custom-formulated signature mocktails designed to perfectly complement the exact aesthetic and flavor profile of your gathering.',
     image: '/images/Delicate%20Flower-4-drink%20(1).png',
   },
 ]

@@ -44,7 +44,7 @@ If you're bringing people together around a beautiful table, we want to be part 
   },
   {
     question: 'Can I customize a package?',
-    answer: `Absolutely. Our packages are designed to give you a clear starting point, but we know that no two events are alike. You can add styling areas, layer on curated add-ons like a dessert display, cocktail station, or floral arrangements, or build something entirely bespoke from the ground up with our Build Your Own option. We'll work with you to match both your vision and your budget.`
+    answer: `Absolutely. Our packages are designed to give you a clear starting point, but we know that no two events are alike. You can add styling areas, layer on curated add-ons like a dessert display, mocktail station, or floral arrangements, or build something entirely bespoke from the ground up with our Build Your Own option. We'll work with you to match both your vision and your budget.`
   },
   {
     question: 'What is required to secure my date?',

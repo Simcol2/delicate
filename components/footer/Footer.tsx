@@ -54,7 +54,7 @@ export default function Footer() {
           <ul className="flex flex-col gap-3 list-none">
             {[
               'Tablescapes',
-              'Cocktail Bar',
+              'Mocktail Bar',
               'Smoked Meats',
             ].map((service) => (
               <li key={service}>

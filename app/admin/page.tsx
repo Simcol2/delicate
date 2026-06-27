@@ -23,7 +23,7 @@ interface PhotoItem {
 // Actual folders - Themed Events and The Smoker are Firebase-only
 const FOLDER_NAMES = [
   'Celebrations',
-  'Cocktails',
+  'Mocktails',
   'Floral Arrangements',
   'Outdoor Soiree',
   'Weddings'
@@ -44,7 +44,7 @@ const LOCAL_IMAGES: Record<string, {name: string, url: string}[]> = {
     { name: 'IMG_5877.jpg', url: '/Photo Slides/Celebrations/IMG_5877.jpg' },
     { name: 'IMG_9435.jpg', url: '/Photo Slides/Celebrations/IMG_9435.jpg' },
   ],
-  'Cocktails': [
+  'Mocktails': [
     { name: 'DSC06742.JPEG', url: '/Photo Slides/Cocktails/DSC06742.JPEG' },
     { name: 'DSC06748.JPEG', url: '/Photo Slides/Cocktails/DSC06748.JPEG' },
   ],
