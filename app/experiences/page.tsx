@@ -12,6 +12,11 @@ interface PhotoFolder {
   photos: string[]
 }
 
+// Subtle paper-grain noise, tiled as a page-wide overlay sitting between the
+// cream background and the page content.
+const TEXTURE_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0.12 0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(#n)'/></svg>`
+const TEXTURE_BACKGROUND = `url("data:image/svg+xml,${encodeURIComponent(TEXTURE_SVG)}")`
+
 const photoFolders: PhotoFolder[] = [
   {
     id: '1',
@@ -61,8 +66,9 @@ const photoFolders: PhotoFolder[] = [
   {
     id: '6',
     name: 'Weddings',
-    coverImage: '/Photo Slides/Weddings/Delicate Flower-4-drink.png',
+    coverImage: '/Photo Slides/Weddings/Delicate Flower-Wedding-Flower-Wall.jpg',
     photos: [
+      '/Photo Slides/Weddings/Delicate Flower-Wedding-Flower-Wall.jpg',
       '/Photo Slides/Weddings/Delicate Flower-4-drink.png',
     ]
   },
@@ -149,8 +155,21 @@ export default function ExperiencesPage() {
   }, [selectedFolder])
 
   return (
-    <main className="min-h-screen bg-cream pt-32 lg:pt-40 pb-20 relative z-10">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <main className="min-h-screen bg-cream pt-32 lg:pt-40 pb-20 relative">
+      {/* Layer 0 is the bg-cream above. Layer 1: page-wide texture overlay —
+          sits above the cream but stays behind every photo and piece of content. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          backgroundImage: TEXTURE_BACKGROUND,
+          backgroundRepeat: 'repeat',
+          backgroundSize: '220px 220px',
+          opacity: 0.5,
+        }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <p className="section-label justify-center">Portfolio</p>
@@ -173,7 +192,7 @@ export default function ExperiencesPage() {
               }`}
               style={{ transitionDelay: `${i * 100 + 200}ms` }}
             >
-              <div className="relative aspect-square overflow-hidden mb-4 bg-ivory">
+              <div className="relative mx-auto w-full max-w-[280px] aspect-[3/4] overflow-hidden mb-4 bg-ivory rounded-t-full">
                 <img
                   src={folder.coverImage}
                   alt={folder.name}
@@ -193,7 +212,7 @@ export default function ExperiencesPage() {
                   </div>
                 )}
               </div>
-              <div className="border-t border-midnight/10 pt-4">
+              <div className="border-t border-midnight/10 pt-4 text-center">
                 <h3 className="font-serif-sc text-base tracking-[0.1em] text-dark">
                   {folder.name}
                 </h3>

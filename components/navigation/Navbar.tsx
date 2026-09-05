@@ -30,15 +30,15 @@ export function Navbar() {
 
   return (
     <>
-      <nav 
-        className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 lg:px-12 py-4 transition-all duration-400 bg-cream border-b border-midnight/10"
+      <nav
+        className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 lg:px-12 py-2.5 transition-all duration-400 bg-cream border-b border-midnight/10"
       >
         {/* Logo Image */}
         <Link href="/" className="no-underline">
-          <img 
-            src="/images/Delicate Flower-12 (4).png?v=3" 
-            alt="Delicate Flowers" 
-            className="h-20 lg:h-12 w-auto object-contain"
+          <img
+            src="/images/Delicate Flower-12 (4).png?v=3"
+            alt="Delicate Flowers"
+            className="h-12 lg:h-11 w-auto object-contain"
           />
         </Link>
 
