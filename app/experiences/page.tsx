@@ -8,6 +8,10 @@ import { getImagesFromFolder } from '@/lib/firebase'
 interface PhotoFolder {
   id: string
   name: string
+  // Optional label shown to visitors when it differs from `name`, which
+  // stays fixed since it also keys the Firebase Storage folder used by
+  // the admin panel's uploads.
+  displayName?: string
   coverImage: string
   photos: string[]
 }
@@ -47,10 +51,15 @@ const photoFolders: PhotoFolder[] = [
   {
     id: '2',
     name: 'Mocktails',
+    displayName: 'Mocktails & Treats',
     coverImage: '/Photo Slides/Cocktails/DSC06742.JPEG',
     photos: [
       '/Photo Slides/Cocktails/DSC06742.JPEG',
       '/Photo Slides/Cocktails/DSC06748.JPEG',
+      '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Chocolate Cake Overhead.jpg',
+      '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Poolside Tea Table.jpg',
+      '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Fruit Garnish Glasses.jpg',
+      '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Chocolate Cake Side.jpg',
     ]
   },
   // Floral Arrangements - Firebase only (admin panel uploads)
@@ -208,7 +217,7 @@ export default function ExperiencesPage() {
               <div className="relative mx-auto w-full max-w-[280px] aspect-[3/4] overflow-hidden mb-4 bg-ivory rounded-t-full">
                 <img
                   src={folder.coverImage}
-                  alt={folder.name}
+                  alt={folder.displayName ?? folder.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-dark/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -227,7 +236,7 @@ export default function ExperiencesPage() {
               </div>
               <div className="border-t border-midnight/10 pt-4 text-center">
                 <h3 className="font-serif-sc text-base tracking-[0.1em] text-dark">
-                  {folder.name}
+                  {folder.displayName ?? folder.name}
                 </h3>
                 <p className="font-sans text-[0.65rem] tracking-[0.2em] uppercase text-midnight mt-1">
                   View Gallery
@@ -273,7 +282,7 @@ export default function ExperiencesPage() {
             </button>
 
             <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/60 to-transparent p-6">
-              <h2 className="font-serif text-2xl md:text-3xl text-cream">{selectedFolder.name}</h2>
+              <h2 className="font-serif text-2xl md:text-3xl text-cream">{selectedFolder.displayName ?? selectedFolder.name}</h2>
               <p className="text-cream/60 text-sm mt-1">
                 {currentPhotoIndex + 1} / {selectedFolder.photos.length}
               </p>
@@ -289,7 +298,7 @@ export default function ExperiencesPage() {
               <div className="relative w-full h-full flex items-center justify-center p-4">
                 <img
                   src={selectedFolder.photos[currentPhotoIndex]}
-                  alt={`${selectedFolder.name} - Photo ${currentPhotoIndex + 1}`}
+                  alt={`${selectedFolder.displayName ?? selectedFolder.name} - Photo ${currentPhotoIndex + 1}`}
                   className="max-w-full max-h-[70vh] object-contain"
                 />
               </div>
