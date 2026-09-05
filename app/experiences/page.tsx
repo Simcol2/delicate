@@ -21,8 +21,9 @@ const photoFolders: PhotoFolder[] = [
   {
     id: '1',
     name: 'Celebrations',
-    coverImage: '/Photo Slides/Celebrations/Delicate Flower-3-table setting1.png',
+    coverImage: '/Photo Slides/Celebrations/Delicate Flower-Celebrations-Centerpiece.jpg',
     photos: [
+      '/Photo Slides/Celebrations/Delicate Flower-Celebrations-Centerpiece.jpg',
       '/Photo Slides/Celebrations/Delicate Flower-12.png',
       '/Photo Slides/Celebrations/Delicate Flower-14.png',
       '/Photo Slides/Celebrations/Delicate Flower-3-table setting1.png',
@@ -34,6 +35,13 @@ const photoFolders: PhotoFolder[] = [
       '/Photo Slides/Celebrations/IMG_5714.jpg',
       '/Photo Slides/Celebrations/IMG_5877.jpg',
       '/Photo Slides/Celebrations/IMG_9435.jpg',
+      '/Photo Slides/Celebrations/Delicate Flower-Celebrations-Lime Arrangement.jpg',
+      '/Photo Slides/Celebrations/Delicate Flower-Celebrations-Gold Place Setting.jpg',
+      '/Photo Slides/Celebrations/Delicate Flower-Celebrations-Waterfront Bouquet.jpg',
+      '/Photo Slides/Celebrations/Delicate Flower-Celebrations-Garden Harvest 1.jpg',
+      '/Photo Slides/Celebrations/Delicate Flower-Celebrations-Garden Harvest 2.jpg',
+      '/Photo Slides/Celebrations/Delicate Flower-Celebrations-Amber Arrangement.jpg',
+      '/Photo Slides/Celebrations/Delicate Flower-Celebrations-Punch Bowl.jpg',
     ]
   },
   {
@@ -66,8 +74,9 @@ const photoFolders: PhotoFolder[] = [
   {
     id: '6',
     name: 'Weddings',
-    coverImage: '/Photo Slides/Weddings/Delicate Flower-Wedding-Flower-Wall.jpg',
+    coverImage: '/Photo Slides/Weddings/Delicate Flower-Bridal-Bouquet.jpg',
     photos: [
+      '/Photo Slides/Weddings/Delicate Flower-Bridal-Bouquet.jpg',
       '/Photo Slides/Weddings/Delicate Flower-Wedding-Flower-Wall.jpg',
       '/Photo Slides/Weddings/Delicate Flower-4-drink.png',
     ]
