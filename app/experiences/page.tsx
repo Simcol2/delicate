@@ -62,7 +62,14 @@ const photoFolders: PhotoFolder[] = [
       '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Chocolate Cake Side.jpg',
     ]
   },
-  // Floral Arrangements - Firebase only (admin panel uploads)
+  {
+    id: '3',
+    name: 'Floral Arrangements',
+    coverImage: '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Amber Arrangement.jpg',
+    photos: [
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Amber Arrangement.jpg',
+    ]
+  },
   {
     id: '4',
     name: 'Outdoor Soiree',
