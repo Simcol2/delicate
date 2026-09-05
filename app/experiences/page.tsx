@@ -12,7 +12,9 @@ interface PhotoFolder {
   // stays fixed since it also keys the Firebase Storage folder used by
   // the admin panel's uploads.
   displayName?: string
-  coverImage: string
+  // Absent for an album that has no static cover yet (Firebase-only,
+  // pending admin upload) — the card shows a placeholder instead.
+  coverImage?: string
   photos: string[]
 }
 
@@ -24,6 +26,11 @@ const TEXTURE_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='300' height=
 const TEXTURE_BACKGROUND = `url("data:image/svg+xml,${encodeURIComponent(TEXTURE_SVG)}")`
 
 const photoFolders: PhotoFolder[] = [
+  {
+    id: '3',
+    name: 'Floral Arrangements',
+    photos: []
+  },
   {
     id: '1',
     name: 'Celebrations',
@@ -60,14 +67,6 @@ const photoFolders: PhotoFolder[] = [
       '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Chocolate Cake Overhead.jpg',
       '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Poolside Tea Table.jpg',
       '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Chocolate Cake Side.jpg',
-    ]
-  },
-  {
-    id: '3',
-    name: 'Floral Arrangements',
-    coverImage: '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Amber Arrangement.jpg',
-    photos: [
-      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Amber Arrangement.jpg',
     ]
   },
   {
@@ -235,20 +234,30 @@ export default function ExperiencesPage() {
               }`}
               style={{ transitionDelay: `${i * 100 + 200}ms` }}
             >
-              <div className="relative mx-auto w-full max-w-[280px] aspect-[3/4] overflow-hidden mb-4 bg-ivory rounded-t-full">
-                <img
-                  src={folder.coverImage}
-                  alt={folder.displayName ?? folder.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+              <div className="relative mx-auto w-full max-w-[280px] aspect-[3/4] overflow-hidden mb-4 bg-ivory rounded-t-full shadow-[0_18px_35px_-12px_rgba(31,77,79,0.35)] transition-shadow duration-500 group-hover:shadow-[0_24px_42px_-10px_rgba(31,77,79,0.45)]">
+                {folder.coverImage ? (
+                  <img
+                    src={folder.coverImage}
+                    alt={folder.displayName ?? folder.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-ivory via-stone/30 to-ivory flex items-center justify-center">
+                    <span className="font-sans text-[0.65rem] tracking-[0.2em] uppercase text-midnight/40 px-6 text-center">
+                      Photos coming soon
+                    </span>
+                  </div>
+                )}
                 <div className="absolute inset-0 bg-dark/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <span className="text-cream font-sans text-xs tracking-[0.2em] uppercase border border-cream px-6 py-3">
                     View Photos
                   </span>
                 </div>
-                <div className="absolute bottom-3 right-3 bg-dark/60 text-cream text-xs px-3 py-1">
-                  {folder.photos.length} {folder.photos.length === 1 ? 'photo' : 'photos'}
-                </div>
+                {folder.photos.length > 0 && (
+                  <div className="absolute bottom-3 right-3 bg-dark/60 text-cream text-xs px-3 py-1">
+                    {folder.photos.length} {folder.photos.length === 1 ? 'photo' : 'photos'}
+                  </div>
+                )}
                 {loadingFolders.has(folder.name) && (
                   <div className="absolute inset-0 bg-dark/40 flex items-center justify-center">
                     <Loader2 className="animate-spin h-6 w-6 text-cream" />
@@ -256,7 +265,10 @@ export default function ExperiencesPage() {
                 )}
               </div>
               <div className="border-t border-midnight/10 pt-4 text-center">
-                <h3 className="font-serif-sc text-2xl md:text-3xl font-semibold tracking-[0.06em] text-midnight">
+                <h3
+                  className="font-serif-sc text-2xl md:text-3xl font-semibold tracking-[0.06em] text-midnight"
+                  style={{ textShadow: '0 2px 10px rgba(31,77,79,0.18)' }}
+                >
                   {folder.displayName ?? folder.name}
                 </h3>
                 <p className="font-sans text-[0.65rem] tracking-[0.2em] uppercase text-coral mt-1.5">
@@ -304,25 +316,35 @@ export default function ExperiencesPage() {
 
             <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/60 to-transparent p-6">
               <h2 className="font-serif text-2xl md:text-3xl text-cream">{selectedFolder.displayName ?? selectedFolder.name}</h2>
-              <p className="text-cream/60 text-sm mt-1">
-                {currentPhotoIndex + 1} / {selectedFolder.photos.length}
-              </p>
+              {selectedFolder.photos.length > 0 && (
+                <p className="text-cream/60 text-sm mt-1">
+                  {currentPhotoIndex + 1} / {selectedFolder.photos.length}
+                </p>
+              )}
             </div>
 
             <div className="relative flex items-center justify-center bg-dark min-h-[60dvh] max-h-[80dvh]">
-              {selectedFolder.photos.length > 1 && (
-                <button onClick={(e) => { e.stopPropagation(); prevPhoto() }} className="absolute left-4 z-20 p-3 bg-cream/10 hover:bg-cream/20 text-cream transition-colors">
-                  <ChevronLeft size={32} />
-                </button>
-              )}
+              {selectedFolder.photos.length === 0 ? (
+                <p className="font-sans text-cream/70 text-sm px-8 text-center">
+                  Photos for this album are coming soon.
+                </p>
+              ) : (
+                <>
+                  {selectedFolder.photos.length > 1 && (
+                    <button onClick={(e) => { e.stopPropagation(); prevPhoto() }} className="absolute left-4 z-20 p-3 bg-cream/10 hover:bg-cream/20 text-cream transition-colors">
+                      <ChevronLeft size={32} />
+                    </button>
+                  )}
 
-              <div className="relative w-full h-full flex items-center justify-center p-4">
-                <img
-                  src={selectedFolder.photos[currentPhotoIndex]}
-                  alt={`${selectedFolder.displayName ?? selectedFolder.name} - Photo ${currentPhotoIndex + 1}`}
-                  className="max-w-full max-h-[70dvh] object-contain"
-                />
-              </div>
+                  <div className="relative w-full h-full flex items-center justify-center p-4">
+                    <img
+                      src={selectedFolder.photos[currentPhotoIndex]}
+                      alt={`${selectedFolder.displayName ?? selectedFolder.name} - Photo ${currentPhotoIndex + 1}`}
+                      className="max-w-full max-h-[70dvh] object-contain"
+                    />
+                  </div>
+                </>
+              )}
 
               {selectedFolder.photos.length > 1 && (
                 <button onClick={(e) => { e.stopPropagation(); nextPhoto() }} className="absolute right-4 z-20 p-3 bg-cream/10 hover:bg-cream/20 text-cream transition-colors">
