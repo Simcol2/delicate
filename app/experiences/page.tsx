@@ -16,9 +16,11 @@ interface PhotoFolder {
   photos: string[]
 }
 
-// Subtle paper-grain noise, tiled as a page-wide overlay sitting between the
-// cream background and the page content.
-const TEXTURE_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0.12 0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(#n)'/></svg>`
+// Sparse warm-gold flecks, tiled as a page-wide overlay sitting between the
+// cream background and the page content. The alpha gamma curve crushes most
+// of the noise to fully transparent so only scattered bright specks survive,
+// instead of a flat grey grain.
+const TEXTURE_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch' result='noise'/><feColorMatrix in='noise' type='matrix' values='0 0 0 0 0.76  0 0 0 0 0.60  0 0 0 0 0.32  0 0 0 1 0' result='gold'/><feComponentTransfer in='gold'><feFuncA type='gamma' amplitude='1' exponent='9' offset='0'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(#n)'/></svg>`
 const TEXTURE_BACKGROUND = `url("data:image/svg+xml,${encodeURIComponent(TEXTURE_SVG)}")`
 
 const photoFolders: PhotoFolder[] = [
@@ -52,13 +54,11 @@ const photoFolders: PhotoFolder[] = [
     id: '2',
     name: 'Mocktails',
     displayName: 'Mocktails & Treats',
-    coverImage: '/Photo Slides/Cocktails/DSC06742.JPEG',
+    coverImage: '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Fruit Garnish Glasses.jpg',
     photos: [
-      '/Photo Slides/Cocktails/DSC06742.JPEG',
-      '/Photo Slides/Cocktails/DSC06748.JPEG',
+      '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Fruit Garnish Glasses.jpg',
       '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Chocolate Cake Overhead.jpg',
       '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Poolside Tea Table.jpg',
-      '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Fruit Garnish Glasses.jpg',
       '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Chocolate Cake Side.jpg',
     ]
   },
@@ -87,11 +87,13 @@ const photoFolders: PhotoFolder[] = [
   {
     id: '6',
     name: 'Weddings',
-    coverImage: '/Photo Slides/Weddings/Delicate Flower-Bridal-Bouquet.jpg',
+    coverImage: '/Photo Slides/Weddings/Delicate Flower-Weddings-Flower Wall Closeup.jpg',
     photos: [
+      '/Photo Slides/Weddings/Delicate Flower-Weddings-Flower Wall Closeup.jpg',
       '/Photo Slides/Weddings/Delicate Flower-Bridal-Bouquet.jpg',
       '/Photo Slides/Weddings/Delicate Flower-Wedding-Flower-Wall.jpg',
-      '/Photo Slides/Weddings/Delicate Flower-4-drink.png',
+      '/Photo Slides/Weddings/Delicate Flower-Weddings-Flower Wall Topper.jpg',
+      '/Photo Slides/Weddings/Delicate Flower-Weddings-Reception Centerpiece.jpg',
     ]
   },
 ]
@@ -186,8 +188,20 @@ export default function ExperiencesPage() {
         style={{
           backgroundImage: TEXTURE_BACKGROUND,
           backgroundRepeat: 'repeat',
-          backgroundSize: '220px 220px',
-          opacity: 0.5,
+          backgroundSize: '300px 300px',
+          opacity: 0.85,
+        }}
+      />
+      {/* Soft glossy sheen, same layer stack as the texture above the cream
+          and behind all content. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            'linear-gradient(115deg, transparent 15%, rgba(255,255,255,0.55) 40%, rgba(255,255,255,0.15) 48%, transparent 60%)',
+          backgroundSize: '160% 160%',
+          mixBlendMode: 'soft-light',
         }}
       />
 
@@ -235,10 +249,10 @@ export default function ExperiencesPage() {
                 )}
               </div>
               <div className="border-t border-midnight/10 pt-4 text-center">
-                <h3 className="font-serif-sc text-base tracking-[0.1em] text-dark">
+                <h3 className="font-serif-sc text-2xl md:text-3xl font-semibold tracking-[0.06em] text-midnight">
                   {folder.displayName ?? folder.name}
                 </h3>
-                <p className="font-sans text-[0.65rem] tracking-[0.2em] uppercase text-midnight mt-1">
+                <p className="font-sans text-[0.65rem] tracking-[0.2em] uppercase text-coral mt-1.5">
                   View Gallery
                 </p>
               </div>
@@ -276,7 +290,7 @@ export default function ExperiencesPage() {
         >
           <div className="absolute inset-0 bg-dark/90 backdrop-blur-sm" />
           
-          <div className={`relative bg-ivory max-w-5xl w-full max-h-[90vh] overflow-hidden transition-all duration-300 ${isVisible ? 'scale-100' : 'scale-95'}`}>
+          <div className={`relative bg-ivory max-w-5xl w-full max-h-[90dvh] overflow-hidden transition-all duration-300 ${isVisible ? 'scale-100' : 'scale-95'}`}>
             <button onClick={closeModal} className="absolute top-4 right-4 z-20 p-2 bg-dark/10 hover:bg-dark/20 text-dark transition-colors">
               <X size={24} />
             </button>
@@ -288,7 +302,7 @@ export default function ExperiencesPage() {
               </p>
             </div>
 
-            <div className="relative flex items-center justify-center bg-dark min-h-[60vh] max-h-[80vh]">
+            <div className="relative flex items-center justify-center bg-dark min-h-[60dvh] max-h-[80dvh]">
               {selectedFolder.photos.length > 1 && (
                 <button onClick={(e) => { e.stopPropagation(); prevPhoto() }} className="absolute left-4 z-20 p-3 bg-cream/10 hover:bg-cream/20 text-cream transition-colors">
                   <ChevronLeft size={32} />
@@ -299,7 +313,7 @@ export default function ExperiencesPage() {
                 <img
                   src={selectedFolder.photos[currentPhotoIndex]}
                   alt={`${selectedFolder.displayName ?? selectedFolder.name} - Photo ${currentPhotoIndex + 1}`}
-                  className="max-w-full max-h-[70vh] object-contain"
+                  className="max-w-full max-h-[70dvh] object-contain"
                 />
               </div>
 
