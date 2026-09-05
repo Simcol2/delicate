@@ -61,6 +61,8 @@ const photoFolders: PhotoFolder[] = [
     photos: [
       '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png',
       '/Photo Slides/Outdoor Soiree/Delicate Flower-9-outdoor.png',
+      '/Photo Slides/Outdoor Soiree/Delicate Flower-Outdoor Soiree-Berry Dessert.jpg',
+      '/Photo Slides/Outdoor Soiree/Delicate Flower-Outdoor Soiree-Poolside Tea Table.jpg',
     ]
   },
   {
@@ -69,6 +71,8 @@ const photoFolders: PhotoFolder[] = [
     coverImage: '/Photo Slides/Celebrations/Delicate Flower-5-chrismtas.png',
     photos: [
       '/Photo Slides/Celebrations/Delicate Flower-5-chrismtas.png',
+      '/Photo Slides/Themed Events/Delicate Flower-Themed Events-NYE Place Setting.jpg',
+      '/Photo Slides/Themed Events/Delicate Flower-Themed Events-Patriotic Table.jpg',
     ]
   },
   {
