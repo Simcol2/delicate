@@ -8,9 +8,9 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 gsap.registerPlugin(ScrollTrigger)
 
 const galleryItems = [
-  { id: 1, title: 'Celebrations', image: '/Photo Slides/Celebrations/Delicate Flower-3-table setting1.png' },
-  { id: 2, title: 'Floral Arrangements', image: '/P&P photos/IMG_0586.jpg' },
-  { id: 3, title: 'Mocktails & Treats', image: '/Photo Slides/Cocktails/DSC06742.JPEG' },
+  { id: 1, title: 'Celebrations', image: '/Photo Slides/Celebrations/Delicate Flower-Celebrations-Centerpiece.jpg' },
+  { id: 2, title: 'Floral Arrangements', image: '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Amber Arrangement.jpg' },
+  { id: 3, title: 'Mocktails & Treats', image: '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Fruit Garnish Glasses.jpg' },
   { id: 4, title: 'Outdoor Soiree', image: '/Photo Slides/Outdoor Soiree/Delicate Flower-10.png' },
 ]
 

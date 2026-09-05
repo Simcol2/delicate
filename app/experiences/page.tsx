@@ -29,7 +29,10 @@ const photoFolders: PhotoFolder[] = [
   {
     id: '3',
     name: 'Floral Arrangements',
-    photos: []
+    coverImage: '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Amber Arrangement.jpg',
+    photos: [
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Amber Arrangement.jpg',
+    ]
   },
   {
     id: '1',
