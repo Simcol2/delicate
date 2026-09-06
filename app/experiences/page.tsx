@@ -32,6 +32,22 @@ const photoFolders: PhotoFolder[] = [
     coverImage: '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Amber Arrangement.jpg',
     photos: [
       '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Amber Arrangement.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Silver Vase Hydrangea.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Blush Peony Cascade.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Orange Gerbera Mix.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Red Rose Wax Flower.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Red Rose Cluster.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Sunhat Corsage.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Blush Peony Rose.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Sunflower Gerbera.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Jeweled Goblet Vases.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Lily Rose Blush.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Greek Key Vase.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Pastel Mixed Bouquet.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Lime Citrus Roses.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Gold Rose Boutonniere.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Sunflower Toffee Box.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Wedding Flower Wall.jpg',
     ]
   },
   {
