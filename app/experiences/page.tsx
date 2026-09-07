@@ -126,6 +126,13 @@ const photoFolders: PhotoFolder[] = [
       '/Photo Slides/Weddings/Delicate Flower-Weddings-Flower Wall Topper.jpg',
       '/Photo Slides/Weddings/Delicate Flower-Weddings-Reception Centerpiece.jpg',
       '/Photo Slides/Weddings/Delicate Flower-Weddings-Wrist Bouquet.jpg',
+      '/Photo Slides/Weddings/Delicate Flower-Weddings-Gold Dusted Rose Arrangement.jpg',
+      '/Photo Slides/Weddings/Delicate Flower-Weddings-Tall Mixed Arrangement.jpg',
+      '/Photo Slides/Weddings/Delicate Flower-Weddings-Accent Flowers Arrangement.jpg',
+      '/Photo Slides/Weddings/Delicate Flower-Weddings-Cascading Greenery Arrangement.jpg',
+      '/Photo Slides/Weddings/Delicate Flower-Weddings-Tropical Tulip Arrangement.jpg',
+      '/Photo Slides/Weddings/Delicate Flower-Weddings-Large Peony Arrangement.jpg',
+      '/Photo Slides/Weddings/Delicate Flower-Weddings-Beach Wedding Arrangement.jpg',
     ]
   },
 ]
