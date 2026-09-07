@@ -73,6 +73,7 @@ const photoFolders: PhotoFolder[] = [
       '/Photo Slides/Celebrations/Delicate Flower-Celebrations-Garden Harvest 2.jpg',
       '/Photo Slides/Celebrations/Delicate Flower-Celebrations-Amber Arrangement.jpg',
       '/Photo Slides/Celebrations/Delicate Flower-Celebrations-Punch Bowl.jpg',
+      '/Photo Slides/Celebrations/Delicate Flower-Celebrations-Blue Wrapped Gift Arrangement.jpg',
     ]
   },
   {
@@ -92,6 +93,7 @@ const photoFolders: PhotoFolder[] = [
       '/Photo Slides/Cocktails/Delicate Flower-Mocktails-King Crab Legs.jpg',
       '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Holiday Table Setting.jpg',
       '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Gerbera Daisy Cake.jpg',
+      '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Poolside Table Setting.jpg',
     ]
   },
   {
