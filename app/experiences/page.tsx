@@ -138,7 +138,6 @@ const photoFolders: PhotoFolder[] = [
       '/Photo Slides/Weddings/Delicate Flower-Weddings-Gold Dusted Rose Arrangement.jpg',
       '/Photo Slides/Weddings/Delicate Flower-Weddings-Tall Mixed Arrangement.jpg',
       '/Photo Slides/Weddings/Delicate Flower-Weddings-Accent Flowers Arrangement.jpg',
-      '/Photo Slides/Weddings/Delicate Flower-Weddings-Cascading Greenery Arrangement.jpg',
       '/Photo Slides/Weddings/Delicate Flower-Weddings-Tropical Tulip Arrangement.jpg',
       '/Photo Slides/Weddings/Delicate Flower-Weddings-Large Peony Arrangement.jpg',
       '/Photo Slides/Weddings/Delicate Flower-Weddings-Beach Wedding Arrangement.jpg',
@@ -154,6 +153,7 @@ export default function ExperiencesPage() {
   const [loadingFolders, setLoadingFolders] = useState<Set<string>>(new Set())
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [imageLoading, setImageLoading] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -379,10 +379,18 @@ export default function ExperiencesPage() {
                   )}
 
                   <div className="relative w-full h-full flex items-center justify-center p-4">
+                    {imageLoading && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-dark/40">
+                        <Loader2 size={40} className="text-cream animate-spin" />
+                      </div>
+                    )}
                     <img
                       src={selectedFolder.photos[currentPhotoIndex]}
                       alt={`${selectedFolder.displayName ?? selectedFolder.name} - Photo ${currentPhotoIndex + 1}`}
                       className="max-w-full max-h-[70dvh] object-contain"
+                      onLoadStart={() => setImageLoading(true)}
+                      onLoad={() => setImageLoading(false)}
+                      onError={() => setImageLoading(false)}
                     />
                   </div>
                 </>
@@ -421,7 +429,7 @@ export default function ExperiencesPage() {
             )}
 
             {/* Book Button */}
-            <div className="bg-ivory p-4 pt-0 flex justify-center">
+            <div className="bg-ivory px-6 py-8 pt-6 flex justify-center border-t border-stone/10">
               <a
                 href="https://calendar.app.google/mEhKoq1ZgiX9uZUa8"
                 target="_blank"
