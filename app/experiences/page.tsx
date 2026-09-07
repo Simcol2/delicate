@@ -58,12 +58,11 @@ const photoFolders: PhotoFolder[] = [
       '/Photo Slides/Celebrations/Delicate Flower-Celebrations-Centerpiece.jpg',
       '/Photo Slides/Celebrations/Delicate Flower-12.png',
       '/Photo Slides/Celebrations/Delicate Flower-14.png',
-      '/Photo Slides/Celebrations/Delicate Flower-3-table setting1.png',
       '/Photo Slides/Celebrations/Delicate Flower-3.png',
       '/Photo Slides/Celebrations/Delicate Flower-5-chrismtas.png',
       '/Photo Slides/Celebrations/Delicate Flower-6-table3.png',
       '/Photo Slides/Celebrations/Delicate Flower-7.png',
-      '/Photo Slides/Celebrations/IMG_5548.jpeg',
+      '/Photo Slides/Celebrations/Delicate Flower-Celebrations-Easter Table.jpg',
       '/Photo Slides/Celebrations/IMG_5714.jpg',
       '/Photo Slides/Celebrations/IMG_5877.jpg',
       '/Photo Slides/Celebrations/IMG_9435.jpg',
@@ -119,6 +118,7 @@ const photoFolders: PhotoFolder[] = [
       '/Photo Slides/Weddings/Delicate Flower-Wedding-Flower-Wall.jpg',
       '/Photo Slides/Weddings/Delicate Flower-Weddings-Flower Wall Topper.jpg',
       '/Photo Slides/Weddings/Delicate Flower-Weddings-Reception Centerpiece.jpg',
+      '/Photo Slides/Weddings/Delicate Flower-Weddings-Wrist Bouquet.jpg',
     ]
   },
 ]

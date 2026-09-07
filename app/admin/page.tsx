@@ -34,12 +34,11 @@ const LOCAL_IMAGES: Record<string, {name: string, url: string}[]> = {
   'Celebrations': [
     { name: 'Delicate Flower-12.png', url: '/Photo Slides/Celebrations/Delicate Flower-12.png' },
     { name: 'Delicate Flower-14.png', url: '/Photo Slides/Celebrations/Delicate Flower-14.png' },
-    { name: 'Delicate Flower-3-table setting1.png', url: '/Photo Slides/Celebrations/Delicate Flower-3-table setting1.png' },
     { name: 'Delicate Flower-3.png', url: '/Photo Slides/Celebrations/Delicate Flower-3.png' },
     { name: 'Delicate Flower-5-chrismtas.png', url: '/Photo Slides/Celebrations/Delicate Flower-5-chrismtas.png' },
     { name: 'Delicate Flower-6-table3.png', url: '/Photo Slides/Celebrations/Delicate Flower-6-table3.png' },
     { name: 'Delicate Flower-7.png', url: '/Photo Slides/Celebrations/Delicate Flower-7.png' },
-    { name: 'IMG_5548.jpeg', url: '/Photo Slides/Celebrations/IMG_5548.jpeg' },
+    { name: 'Delicate Flower-Celebrations-Easter Table.jpg', url: '/Photo Slides/Celebrations/Delicate Flower-Celebrations-Easter Table.jpg' },
     { name: 'IMG_5714.jpg', url: '/Photo Slides/Celebrations/IMG_5714.jpg' },
     { name: 'IMG_5877.jpg', url: '/Photo Slides/Celebrations/IMG_5877.jpg' },
     { name: 'IMG_9435.jpg', url: '/Photo Slides/Celebrations/IMG_9435.jpg' },
