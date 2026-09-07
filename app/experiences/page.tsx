@@ -48,6 +48,10 @@ const photoFolders: PhotoFolder[] = [
       '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Gold Rose Boutonniere.jpg',
       '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Sunflower Toffee Box.jpg',
       '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Wedding Flower Wall.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Mixed Rose Arrangement.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Easter Egg Peony.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Pampas Grass Rose.jpg',
+      '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Orchid Lei.jpg',
     ]
   },
   {
