@@ -351,12 +351,12 @@ export default function ExperiencesPage() {
         >
           <div className="absolute inset-0 bg-dark/90 backdrop-blur-sm" />
           
-          <div className={`relative bg-ivory max-w-5xl w-full max-h-[90dvh] overflow-hidden transition-all duration-300 ${isVisible ? 'scale-100' : 'scale-95'}`}>
+          <div className={`relative bg-ivory max-w-5xl w-full max-h-[95dvh] overflow-y-auto flex flex-col transition-all duration-300 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}>
             <button onClick={closeModal} className="absolute top-4 right-4 z-20 p-2 bg-dark/10 hover:bg-dark/20 text-dark transition-colors">
               <X size={24} />
             </button>
 
-            <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/60 to-transparent p-6">
+            <div className="sticky top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/80 to-black/40 p-6">
               <h2 className="font-serif text-2xl md:text-3xl text-cream">{selectedFolder.displayName ?? selectedFolder.name}</h2>
               {selectedFolder.photos.length > 0 && (
                 <p className="text-cream/60 text-sm mt-1">
@@ -365,7 +365,7 @@ export default function ExperiencesPage() {
               )}
             </div>
 
-            <div className="relative flex items-center justify-center bg-dark min-h-[60dvh] max-h-[80dvh]">
+            <div className="relative flex items-center justify-center bg-dark py-6 px-4">
               {selectedFolder.photos.length === 0 ? (
                 <p className="font-sans text-cream/70 text-sm px-8 text-center">
                   Photos for this album are coming soon.
@@ -387,7 +387,7 @@ export default function ExperiencesPage() {
                     <img
                       src={selectedFolder.photos[currentPhotoIndex]}
                       alt={`${selectedFolder.displayName ?? selectedFolder.name} - Photo ${currentPhotoIndex + 1}`}
-                      className="max-w-full max-h-[70dvh] object-contain"
+                      className="max-w-full max-h-[60vh] object-contain"
                       onLoadStart={() => setImageLoading(true)}
                       onLoad={() => setImageLoading(false)}
                       onError={() => setImageLoading(false)}
@@ -405,7 +405,7 @@ export default function ExperiencesPage() {
 
             {/* Thumbnail Navigation */}
             {selectedFolder.photos.length > 1 && (
-              <div className="bg-ivory p-4">
+              <div className="bg-ivory px-4 py-6">
                 <div className="flex gap-2 overflow-x-auto pb-2 justify-center">
                   {selectedFolder.photos.map((photo, index) => (
                     <button
