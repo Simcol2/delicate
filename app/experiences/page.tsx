@@ -85,6 +85,13 @@ const photoFolders: PhotoFolder[] = [
       '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Chocolate Cake Overhead.jpg',
       '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Poolside Tea Table.jpg',
       '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Chocolate Cake Side.jpg',
+      '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Layered Salad.jpg',
+      '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Game Hens.jpg',
+      '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Chocolate Mousse.jpg',
+      '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Braided Chocolate Cake.jpg',
+      '/Photo Slides/Cocktails/Delicate Flower-Mocktails-King Crab Legs.jpg',
+      '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Holiday Table Setting.jpg',
+      '/Photo Slides/Cocktails/Delicate Flower-Mocktails-Gerbera Daisy Cake.jpg',
     ]
   },
   {
