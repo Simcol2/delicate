@@ -119,6 +119,9 @@ const photoFolders: PhotoFolder[] = [
       '/Photo Slides/Celebrations/Delicate Flower-5-chrismtas.png',
       '/Photo Slides/Themed Events/Delicate Flower-Themed Events-NYE Place Setting.jpg',
       '/Photo Slides/Themed Events/Delicate Flower-Themed Events-Patriotic Table.jpg',
+      '/Photo Slides/Themed Events/Delicate Flower-Themed Events-Elegant Peony Table Setting.jpg',
+      '/Photo Slides/Themed Events/Delicate Flower-Themed Events-Valentines Day Place Setting.jpg',
+      '/Photo Slides/Themed Events/Delicate Flower-Themed Events-Romantic Dinner Setting.jpg',
     ]
   },
   {
