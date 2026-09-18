@@ -141,6 +141,8 @@ const photoFolders: PhotoFolder[] = [
       '/Photo Slides/Weddings/Delicate Flower-Weddings-Tropical Tulip Arrangement.jpg',
       '/Photo Slides/Weddings/Delicate Flower-Weddings-Large Peony Arrangement.jpg',
       '/Photo Slides/Weddings/Delicate Flower-Weddings-Beach Wedding Arrangement.jpg',
+      '/Photo Slides/Weddings/Delicate Flower-Weddings-Boutonnieres.jpg',
+      '/Photo Slides/Weddings/Delicate Flower-Weddings-Boutonniere on Suit.jpg',
     ]
   },
 ]
