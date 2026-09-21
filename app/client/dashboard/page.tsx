@@ -617,5 +617,49 @@ export default function ClientDashboard() {
           </div>
         </section>
 
-        {/* MESSAGES */}
-        <MessagesPanel cus
+                {/* MESSAGES */}
+        <MessagesPanel customerEmail={user?.email} />
+
+        {/* QUICK LINKS */}
+        <div className="mt-8 grid sm:grid-cols-3 gap-4">
+
+          <a
+            href="/terms"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-ivory p-4 text-center hover:bg-cream transition-colors"
+          >
+            <FileText className="w-5 h-5 text-rose mx-auto mb-2" />
+
+            <span className="text-sm text-dark">
+              Terms of Service
+            </span>
+          </a>
+
+          <a
+            href="/#contact"
+            className="bg-ivory p-4 text-center hover:bg-cream transition-colors"
+          >
+            <ExternalLink className="w-5 h-5 text-rose mx-auto mb-2" />
+
+            <span className="text-sm text-dark">
+              Contact Us
+            </span>
+          </a>
+
+          <Link
+            href="/floral"
+            className="bg-ivory p-4 text-center hover:bg-cream transition-colors"
+          >
+            <Flower2 className="w-5 h-5 text-rose mx-auto mb-2" />
+
+            <span className="text-sm text-dark">
+              Shop Flowers
+            </span>
+          </Link>
+
+        </div>
+      </div>
+    </main>
+  )
+}
