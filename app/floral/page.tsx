@@ -85,7 +85,7 @@ export const bouquets: Bouquet[] = [
 export default function FloralPage() {
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-white">
       <Navbar />
 
       {/* Header Bar */}
@@ -96,7 +96,7 @@ export default function FloralPage() {
       </div>
 
       {/* Page Title */}
-      <div className="bg-gray-50 px-6 py-12">
+      <div className="bg-white px-6 py-12">
         <h1 className="font-serif-sc text-5xl md:text-6xl text-[#1B5E4F] text-center tracking-[0.08em]">
           Bouquets
         </h1>

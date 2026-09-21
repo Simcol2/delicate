@@ -64,7 +64,7 @@ export default function BouquetDetailPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-white">
       <Navbar />
 
       <div className="max-w-6xl mx-auto px-6 lg:px-12 py-20">

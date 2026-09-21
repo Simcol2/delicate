@@ -205,7 +205,7 @@ function CheckoutContent() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Checkout Form */}
             <div className="md:col-span-2">
-              <form onSubmit={handleSubmit} className="bg-ivory p-8 border border-midnight/10">
+              <form onSubmit={handleSubmit} className="bg-white p-8 border border-gray-200">
                 {error && (
                   <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded">
                     {error}
@@ -323,7 +323,7 @@ function CheckoutContent() {
 
             {/* Order Summary */}
             <div>
-              <div className="bg-ivory p-6 border border-midnight/10 sticky top-32">
+              <div className="bg-white p-6 border border-gray-200 sticky top-32">
                 <h3 className="font-serif text-lg font-semibold text-midnight mb-4">
                   Order Summary
                 </h3>
@@ -361,9 +361,9 @@ function CheckoutContent() {
 
 export default function CheckoutPage() {
   return (
-    <main className="min-h-screen bg-cream pt-32 pb-20 relative">
+    <main className="min-h-screen bg-white pt-32 pb-20 relative">
       <Navbar />
-      <Suspense fallback={<div className="max-w-4xl mx-auto px-6 py-12 text-center text-text-mid">Loading...</div>}>
+      <Suspense fallback={<div className="max-w-4xl mx-auto px-6 py-12 text-center text-[#999]">Loading...</div>}>
         <CheckoutContent />
       </Suspense>
       <Footer />
