@@ -15,17 +15,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!bouquet) {
     return {
-      title: 'Bouquet Not Found',
+      title: 'Bouquet Not Found | Delicate Flowers',
     }
   }
 
+  const title = `${bouquet.name} | Premium Floral Arrangement | Delicate Flowers`
+  const description = `${bouquet.shortDescription} Hand-designed by Delicate Flowers in Palm Springs. $${bouquet.price}.`
+
   return {
-    title: `${bouquet.name} - Delicate Flowers`,
-    description: bouquet.shortDescription,
+    title,
+    description,
+    alternates: {
+      canonical: `/floral/${bouquet.id}`,
+    },
     openGraph: {
       title: bouquet.name,
       description: bouquet.shortDescription,
-      images: [bouquet.image],
+      type: 'website',
+      url: `/floral/${bouquet.id}`,
+      images: [
+        {
+          url: bouquet.image,
+          width: 1200,
+          height: 1200,
+          alt: bouquet.name,
+        },
+      ],
     },
   }
 }

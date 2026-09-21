@@ -29,6 +29,7 @@ const jost = Jost({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://delicateflowers.co'),
   title: 'Delicate Flowers | Palm Springs',
   description: 'Bespoke floral artistry rooted in the light and landscape of Palm Springs. We design with the precision of an architect and the soul of a botanist.',
   manifest: '/manifest.json',

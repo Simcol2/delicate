@@ -1,7 +1,14 @@
+import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import { Navbar } from '@/components/navigation/Navbar'
 import Footer from '@/components/footer/Footer'
 import CheckoutContent from './CheckoutContent'
+
+export const metadata: Metadata = {
+  title: 'Checkout | Delicate Flowers',
+  description: 'Complete your floral purchase securely. Review your order and proceed to payment with Delicate Flowers.',
+  robots: 'noindex',
+}
 
 export default function CheckoutPage() {
   return (
