@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import { ShoppingBag } from 'lucide-react'
-import type { FloralCatalogItem } from '@/lib/squareCatalog'
+import type { FloralCatalogItem } from '@/lib/floralCatalogShared'
 
 export default function ProductPurchase({
   item,
