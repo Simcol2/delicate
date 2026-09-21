@@ -29,7 +29,7 @@ export default function FloralPage() {
     .filter((bouquet): bouquet is (typeof bouquets)[number] => Boolean(bouquet))
 
   return (
-    <main className="min-h-screen bg-[#F7F3EA] text-[#1F4D4F]">
+    <main className="min-h-screen bg-[#F7FBF7] text-[#1F4D4F]">
       <section className="pt-28 lg:pt-32">
         <div className="max-w-[1180px] mx-auto px-6 lg:px-10">
           <div className="flex items-center gap-5 mb-7">
