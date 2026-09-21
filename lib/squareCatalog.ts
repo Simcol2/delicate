@@ -22,7 +22,6 @@ const SQUARE_API_URL = 'https://connect.squareup.com/v2'
 const SQUARE_ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN
 const SQUARE_LOCATION_ID = process.env.SQUARE_LOCATION_ID
 const SQUARE_VERSION = '2026-09-16'
-const TARGET_CATEGORY = 'floral'
 
 type RawSquareObject = {
   type?: string
@@ -99,8 +98,9 @@ function isAvailableAtLocation(object: RawSquareObject) {
   return present.length === 0 || present.includes(SQUARE_LOCATION_ID)
 }
 
-async function findFloralCategory() {
+async function findCategory(categoryName: string) {
   let cursor: string | undefined
+  const target = categoryName.trim().toLowerCase()
 
   do {
     const url = new URL(`${SQUARE_API_URL}/catalog/list`)
@@ -131,7 +131,7 @@ async function findFloralCategory() {
 
       return (
         !category.is_deleted &&
-        name === TARGET_CATEGORY &&
+        name === target &&
         (!type || type === 'REGULAR_CATEGORY')
       )
     })
@@ -238,18 +238,20 @@ async function loadImages(imageIds: string[]) {
   return imageMap
 }
 
-export async function getFloralCatalog(): Promise<FloralCatalog> {
+async function buildCatalog(
+  categoryName: string
+): Promise<FloralCatalog> {
   if (!SQUARE_ACCESS_TOKEN) {
     throw new Error('Square API is not configured. Missing SQUARE_ACCESS_TOKEN.')
   }
 
-  const category = await findFloralCategory()
+  const category = await findCategory(categoryName)
 
   if (!category) {
     return {
       category: {
         id: '',
-        name: TARGET_CATEGORY,
+        name: categoryName,
       },
       items: [],
     }
@@ -317,7 +319,7 @@ export async function getFloralCatalog(): Promise<FloralCatalog> {
       imageAlt: imageData?.caption || data.name || 'Floral arrangement',
       category: {
         id: category.id,
-        name: category.category_data?.name || TARGET_CATEGORY,
+        name: category.category_data?.name || categoryName,
       },
       variations,
     }
@@ -326,13 +328,28 @@ export async function getFloralCatalog(): Promise<FloralCatalog> {
   return {
     category: {
       id: category.id,
-      name: category.category_data?.name || TARGET_CATEGORY,
+      name: category.category_data?.name || categoryName,
     },
     items,
   }
 }
 
+export async function getFloralCatalog() {
+  return buildCatalog('floral')
+}
+
+export async function getFeaturedCatalog() {
+  return buildCatalog('features')
+}
+
 export async function getFloralItemById(id: string) {
-  const catalog = await getFloralCatalog()
-  return catalog.items.find((item) => item.id === id) || null
+  const floral = await getFloralCatalog()
+  const floralMatch = floral.items.find((item) => item.id === id)
+
+  if (floralMatch) return floralMatch
+
+  // Allows a featured item to still open correctly even if it was only
+  // assigned to the Square "features" category.
+  const features = await getFeaturedCatalog()
+  return features.items.find((item) => item.id === id) || null
 }
