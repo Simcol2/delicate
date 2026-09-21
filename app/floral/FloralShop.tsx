@@ -3,8 +3,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ShoppingBag } from 'lucide-react'
-import type { FloralCatalogItem } from '@/lib/squareCatalog'
-import { floralProductHref } from '@/lib/squareCatalog'
+import type { FloralCatalogItem } from '@/lib/floralCatalogShared'
+import { floralProductHref } from '@/lib/floralCatalogShared'
 
 interface Props {
   categoryName: string
