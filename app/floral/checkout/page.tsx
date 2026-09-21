@@ -20,6 +20,7 @@ interface CheckoutData {
 function CheckoutContent() {
   const searchParams = useSearchParams()
   const [checkoutData, setCheckoutData] = useState<CheckoutData | null>(null)
+  const [isMounted, setIsMounted] = useState(false)
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
@@ -35,6 +36,8 @@ function CheckoutContent() {
   const [success, setSuccess] = useState(false)
 
   useEffect(() => {
+    setIsMounted(true)
+
     const cartParam = searchParams.get('cart')
     if (cartParam) {
       try {
@@ -42,6 +45,25 @@ function CheckoutContent() {
         setCheckoutData(decoded)
       } catch (e) {
         setError('Failed to load cart data')
+      }
+    } else {
+      // Try to get from localStorage
+      try {
+        const cartData = localStorage.getItem('floralCart')
+        if (cartData) {
+          const cart = JSON.parse(cartData)
+          if (cart.length > 0) {
+            const items = cart.map((item: any) => ({
+              name: item.name,
+              quantity: item.quantity,
+              price: item.price
+            }))
+            const total = items.reduce((sum: number, item: any) => sum + (item.price * item.quantity), 0)
+            setCheckoutData({ items, total })
+          }
+        }
+      } catch (e) {
+        console.error('Failed to load cart from localStorage', e)
       }
     }
   }, [searchParams])
