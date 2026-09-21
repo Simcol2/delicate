@@ -8,55 +8,59 @@ import { ShoppingCart, X, Loader2 } from 'lucide-react'
 interface Bouquet {
   id: string
   name: string
-  description: string
+  category: string
   price: number
   image: string
+  available: number
 }
-
-const TEXTURE_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch' result='noise'/><feColorMatrix in='noise' type='matrix' values='0 0 0 0 0.76  0 0 0 0 0.60  0 0 0 0 0.32  0 0 0 1 0' result='gold'/><feComponentTransfer in='gold'><feFuncA type='gamma' amplitude='1' exponent='9' offset='0'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(#n)'/></svg>`
-const TEXTURE_BACKGROUND = `url("data:image/svg+xml,${encodeURIComponent(TEXTURE_SVG)}")`
 
 const bouquets: Bouquet[] = [
   {
     id: 'blush-romance',
     name: 'Blush Romance',
-    description: 'Soft pink peonies and garden roses with delicate greenery',
+    category: 'ARRANGEMENT',
     price: 85,
+    available: 3,
     image: '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Blush Peony Rose.jpg'
   },
   {
     id: 'garden-harvest',
     name: 'Garden Harvest',
-    description: 'Vibrant mixed florals with sunflowers, gerberas, and roses',
+    category: 'ARRANGEMENT',
     price: 75,
+    available: 2,
     image: '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Sunflower Gerbera.jpg'
   },
   {
     id: 'jeweled-elegance',
     name: 'Jeweled Elegance',
-    description: 'Rich jewel tones in an elegant vase arrangement',
+    category: 'ARRANGEMENT',
     price: 95,
+    available: 1,
     image: '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Jeweled Goblet Vases.jpg'
   },
   {
     id: 'citrus-bliss',
     name: 'Citrus Bliss',
-    description: 'Warm citrus and gold tones with premium roses',
+    category: 'ARRANGEMENT',
     price: 80,
+    available: 4,
     image: '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Lime Citrus Roses.jpg'
   },
   {
     id: 'rose-cascade',
     name: 'Rose Cascade',
-    description: 'Cascading arrangement of premium red roses',
+    category: 'ARRANGEMENT',
     price: 90,
+    available: 2,
     image: '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Red Rose Cluster.jpg'
   },
   {
     id: 'silver-hydrangea',
     name: 'Silver Hydrangea',
-    description: 'Elegant blue hydrangea in a modern silver vase',
+    category: 'ARRANGEMENT',
     price: 70,
+    available: 5,
     image: '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Silver Vase Hydrangea.jpg'
   }
 ]
@@ -159,107 +163,87 @@ export default function FloralPage() {
   }
 
   return (
-    <main className="min-h-screen bg-cream pt-32 lg:pt-40 pb-20 relative">
+    <main className="min-h-screen bg-white">
       <Navbar />
 
-      {/* Layer 0 is the bg-cream above. Layer 1: page-wide texture overlay */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 z-0 pointer-events-none"
-        style={{
-          backgroundImage: TEXTURE_BACKGROUND,
-          backgroundRepeat: 'repeat',
-          backgroundSize: '300px 300px',
-          opacity: 0.85,
-        }}
-      />
-      {/* Soft glossy sheen */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 z-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            'linear-gradient(115deg, transparent 15%, rgba(255,255,255,0.55) 40%, rgba(255,255,255,0.15) 48%, transparent 60%)',
-          backgroundSize: '160% 160%',
-          mixBlendMode: 'soft-light',
-        }}
-      />
+      {/* Header Bar */}
+      <div className="bg-[#1B5E4F] text-center py-3 mt-20">
+        <p className="text-white font-sans text-xs tracking-[0.2em] uppercase">
+          Fresh Bouquets For Every Occasion · <span className="text-[#D4AF37] font-semibold cursor-pointer hover:underline">Change</span>
+        </p>
+      </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="section-label justify-center">Shop</p>
-          <h1 className="section-title">
-            Exquisite <em className="text-rose">Bouquets</em>
-          </h1>
-          <p className="font-sans text-text-mid text-lg mt-6">
-            Hand-arranged fresh flowers delivered to celebrate your special moments.
-          </p>
-        </div>
+      {/* Page Title */}
+      <div className="bg-white px-6 py-8">
+        <h1 className="font-serif-sc text-4xl md:text-5xl text-[#1B5E4F] text-center tracking-[0.08em]">
+          Bouquets
+        </h1>
+      </div>
 
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 pb-20">
         {/* Bouquets Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {bouquets.map((bouquet, i) => (
             <div
               key={bouquet.id}
-              className={`group transition-all duration-700 ${
-                mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
+              className={`bg-white border border-gray-200 transition-all duration-700 ${
+                mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
-              style={{ transitionDelay: `${i * 100 + 200}ms` }}
+              style={{ transitionDelay: `${i * 100 + 100}ms` }}
             >
-              <div className="relative mx-auto w-full max-w-[280px] aspect-[3/4] overflow-hidden mb-4 bg-ivory rounded-t-full shadow-[0_18px_35px_-12px_rgba(31,77,79,0.35)] transition-shadow duration-500 group-hover:shadow-[0_24px_42px_-10px_rgba(31,77,79,0.45)]">
+              {/* Image */}
+              <div className="relative w-full aspect-square overflow-hidden bg-gray-100">
                 <img
                   src={bouquet.image}
                   alt={bouquet.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-dark/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3">
-                  <span className="text-cream font-sans text-xs tracking-[0.2em] uppercase">
-                    ${bouquet.price}
-                  </span>
-                  <button
-                    onClick={() => addToCart(bouquet.id, bouquet.price)}
-                    className="bg-rose text-cream font-sans text-xs tracking-[0.2em] uppercase px-6 py-2 transition-all hover:bg-coral"
-                  >
-                    Add to Cart
-                  </button>
-                </div>
               </div>
-              <div className="border-t border-midnight/10 pt-4 text-center">
-                <h3 className="font-serif-sc text-2xl md:text-3xl font-semibold tracking-[0.06em] text-midnight">
+
+              {/* Content */}
+              <div className="p-6">
+                <p className="text-[#999] font-sans text-xs tracking-[0.15em] uppercase mb-2">
+                  {bouquet.category}
+                </p>
+                <h3 className="font-serif text-2xl text-[#1B5E4F] mb-2">
                   {bouquet.name}
                 </h3>
-                <p className="font-sans text-sm text-text-mid mt-2">
-                  {bouquet.description}
+                <p className="text-[#999] font-sans text-sm mb-4">
+                  {bouquet.available} available
                 </p>
-                <p className="font-sans text-lg font-semibold text-midnight mt-3">
-                  ${bouquet.price}
-                </p>
+
+                {/* Actions */}
+                <div className="flex items-center gap-4">
+                  <div className="flex-1">
+                    <p className="text-[#D4AF37] font-sans text-sm font-semibold tracking-[0.1em]">
+                      RENT ${bouquet.price} / EVENT
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => addToCart(bouquet.id, bouquet.price)}
+                    className="text-[#1B5E4F] font-sans text-xs font-semibold tracking-[0.1em] uppercase hover:text-[#D4AF37] transition-colors"
+                  >
+                    View Details
+                  </button>
+                </div>
               </div>
             </div>
           ))}
         </div>
-
-        {/* Shop Now CTA */}
-        {cartItems.length === 0 && (
-          <div className="text-center">
-            <p className="text-text-mid mb-6">Select bouquets above to get started</p>
-          </div>
-        )}
       </div>
 
       {/* Cart Sidebar */}
       <div
-        className={`fixed right-0 top-0 h-full w-full sm:w-96 bg-cream shadow-2xl transition-transform duration-300 z-[200] ${
+        className={`fixed right-0 top-0 h-full w-full sm:w-96 bg-white shadow-2xl transition-transform duration-300 z-[200] border-l border-gray-200 ${
           isCartOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         {/* Cart Header */}
-        <div className="sticky top-0 bg-midnight text-cream p-6 flex items-center justify-between">
+        <div className="sticky top-0 bg-[#1B5E4F] text-white p-6 flex items-center justify-between">
           <h2 className="font-serif text-2xl">Cart</h2>
           <button
             onClick={() => setIsCartOpen(false)}
-            className="p-2 hover:bg-dark/20 transition-colors"
+            className="p-2 hover:bg-white/20 transition-colors"
           >
             <X size={24} />
           </button>
@@ -268,18 +252,18 @@ export default function FloralPage() {
         {/* Cart Items */}
         <div className="flex-1 overflow-y-auto p-6">
           {cartItems.length === 0 ? (
-            <p className="text-text-mid text-center py-12">Your cart is empty</p>
+            <p className="text-gray-500 text-center py-12 font-sans text-sm">Your cart is empty</p>
           ) : (
             <div className="space-y-6">
               {cartItems.map(item => {
                 const bouquet = bouquets.find(b => b.id === item.bouquetId)
                 return (
-                  <div key={item.bouquetId} className="border-b border-midnight/10 pb-4">
+                  <div key={item.bouquetId} className="border-b border-gray-200 pb-4">
                     <div className="flex items-start justify-between mb-3">
-                      <h3 className="font-serif text-lg text-midnight">{bouquet?.name}</h3>
+                      <h3 className="font-serif text-lg text-[#1B5E4F]">{bouquet?.name}</h3>
                       <button
                         onClick={() => removeFromCart(item.bouquetId)}
-                        className="text-coral hover:text-rose transition-colors"
+                        className="text-gray-400 hover:text-[#1B5E4F] transition-colors"
                       >
                         <X size={20} />
                       </button>
@@ -287,18 +271,18 @@ export default function FloralPage() {
                     <div className="flex items-center gap-3 mb-3">
                       <button
                         onClick={() => updateQuantity(item.bouquetId, item.quantity - 1)}
-                        className="px-3 py-1 border border-midnight/20 hover:bg-midnight/5 transition-colors"
+                        className="px-3 py-1 border border-gray-300 hover:bg-gray-50 transition-colors text-[#1B5E4F] font-sans text-sm"
                       >
                         −
                       </button>
-                      <span className="w-8 text-center">{item.quantity}</span>
+                      <span className="w-8 text-center text-[#1B5E4F]">{item.quantity}</span>
                       <button
                         onClick={() => updateQuantity(item.bouquetId, item.quantity + 1)}
-                        className="px-3 py-1 border border-midnight/20 hover:bg-midnight/5 transition-colors"
+                        className="px-3 py-1 border border-gray-300 hover:bg-gray-50 transition-colors text-[#1B5E4F] font-sans text-sm"
                       >
                         +
                       </button>
-                      <span className="ml-auto font-semibold text-midnight">
+                      <span className="ml-auto font-semibold text-[#1B5E4F]">
                         ${(item.price * item.quantity).toFixed(2)}
                       </span>
                     </div>
@@ -311,15 +295,15 @@ export default function FloralPage() {
 
         {/* Cart Footer */}
         {cartItems.length > 0 && (
-          <div className="sticky bottom-0 bg-ivory border-t border-midnight/10 p-6 space-y-4">
-            <div className="flex justify-between text-lg font-semibold text-midnight">
+          <div className="sticky bottom-0 bg-gray-50 border-t border-gray-200 p-6 space-y-4">
+            <div className="flex justify-between text-lg font-semibold text-[#1B5E4F]">
               <span>Total:</span>
               <span>${cartTotal.toFixed(2)}</span>
             </div>
             <button
               onClick={handleCheckout}
               disabled={isCheckingOut}
-              className="w-full bg-midnight text-cream py-3 font-sans font-bold tracking-[0.2em] uppercase transition-all hover:bg-rose disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full bg-[#1B5E4F] text-white py-3 font-sans font-bold tracking-[0.2em] uppercase transition-all hover:bg-[#0f3d36] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isCheckingOut ? (
                 <>
@@ -337,11 +321,11 @@ export default function FloralPage() {
       {/* Cart Toggle Button */}
       <button
         onClick={() => setIsCartOpen(!isCartOpen)}
-        className="fixed bottom-8 right-8 bg-rose text-cream p-4 rounded-full shadow-lg hover:bg-coral transition-colors z-[150] flex items-center justify-center gap-2"
+        className="fixed bottom-8 right-8 bg-[#1B5E4F] text-white p-4 rounded-full shadow-lg hover:bg-[#0f3d36] transition-colors z-[150] flex items-center justify-center gap-2"
       >
         <ShoppingCart size={24} />
         {cartCount > 0 && (
-          <span className="absolute -top-2 -right-2 bg-midnight text-cream text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center">
+          <span className="absolute -top-2 -right-2 bg-[#D4AF37] text-[#1B5E4F] text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center">
             {cartCount}
           </span>
         )}
