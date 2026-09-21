@@ -5,9 +5,15 @@ const SQUARE_ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN
 
 export async function POST(request: Request) {
   try {
-    const { email, givenName, familyName, phoneNumber } = await request.json()
+    const body = await request.json()
+    const { email, firstName, lastName, phone, address, givenName, familyName, phoneNumber } = body
 
-    if (!email) {
+    const emailToUse = email || ''
+    const firstNameToUse = firstName || givenName || emailToUse.split('@')[0]
+    const lastNameToUse = lastName || familyName || ''
+    const phoneToUse = phone || phoneNumber || ''
+
+    if (!emailToUse) {
       return NextResponse.json(
         { error: 'Email is required' },
         { status: 400 }
@@ -33,7 +39,7 @@ export async function POST(request: Request) {
         query: {
           filter: {
             email_address: {
-              exact: email
+              exact: emailToUse
             }
           }
         }
@@ -47,11 +53,11 @@ export async function POST(request: Request) {
     }
 
     const searchData = await searchResponse.json()
-    
+
     // If customer already exists, return their ID
     if (searchData.customers && searchData.customers.length > 0) {
       console.log('Customer already exists in Square:', searchData.customers[0].id)
-      return NextResponse.json({ 
+      return NextResponse.json({
         customerId: searchData.customers[0].id,
         created: false,
         message: 'Customer already exists'
@@ -67,11 +73,18 @@ export async function POST(request: Request) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email_address: email,
-        given_name: givenName || email.split('@')[0],
-        family_name: familyName || '',
-        phone_number: phoneNumber || '',
-        note: 'Created via Client Portal signup'
+        email_address: emailToUse,
+        given_name: firstNameToUse,
+        family_name: lastNameToUse,
+        phone_number: phoneToUse,
+        address: address ? {
+          address_line_1: address.addressLine1,
+          locality: address.locality,
+          administrative_district_level_1: address.administrativeDistrictLevel1,
+          postal_code: address.postalCode,
+          country: address.country
+        } : undefined,
+        note: 'Created via Floral Shop'
       })
     })
 
@@ -84,7 +97,7 @@ export async function POST(request: Request) {
     const createData = await createResponse.json()
     console.log('Customer created in Square:', createData.customer.id)
 
-    return NextResponse.json({ 
+    return NextResponse.json({
       customerId: createData.customer.id,
       created: true,
       message: 'Customer created successfully'
