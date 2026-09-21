@@ -1,5 +1,23 @@
 import 'server-only'
 
+import type {
+  FloralCatalog,
+  FloralCatalogItem,
+  FloralVariation,
+} from '@/lib/floralCatalogShared'
+
+export type {
+  FloralCatalog,
+  FloralCatalogItem,
+  FloralVariation,
+} from '@/lib/floralCatalogShared'
+
+export {
+  floralProductHref,
+  slugifyFloralName,
+  squareIdFromRouteParam,
+} from '@/lib/floralCatalogShared'
+
 const SQUARE_API_URL = 'https://connect.squareup.com/v2'
 const SQUARE_ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN
 const SQUARE_LOCATION_ID = process.env.SQUARE_LOCATION_ID
@@ -40,36 +58,6 @@ type RawSquareObject = {
       }
     }>
   }
-}
-
-export interface FloralVariation {
-  id: string
-  name: string
-  price: number | null
-  priceAmount: number | null
-  currency: string
-}
-
-export interface FloralCatalogItem {
-  id: string
-  name: string
-  description: string
-  descriptionHtml: string
-  image: string | null
-  imageAlt: string
-  category: {
-    id: string
-    name: string
-  }
-  variations: FloralVariation[]
-}
-
-export interface FloralCatalog {
-  category: {
-    id: string
-    name: string
-  }
-  items: FloralCatalogItem[]
 }
 
 function squareHeaders() {
@@ -148,9 +136,7 @@ async function findFloralCategory() {
       )
     })
 
-    if (match) {
-      return match
-    }
+    if (match) return match
 
     cursor = data.cursor
   } while (cursor)
@@ -349,22 +335,4 @@ export async function getFloralCatalog(): Promise<FloralCatalog> {
 export async function getFloralItemById(id: string) {
   const catalog = await getFloralCatalog()
   return catalog.items.find((item) => item.id === id) || null
-}
-
-export function slugifyFloralName(name: string) {
-  return name
-    .toLowerCase()
-    .trim()
-    .replace(/['’]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-}
-
-export function floralProductHref(item: Pick<FloralCatalogItem, 'id' | 'name'>) {
-  return `/floral/${slugifyFloralName(item.name)}--${encodeURIComponent(item.id)}`
-}
-
-export function squareIdFromRouteParam(routeParam: string) {
-  const parts = decodeURIComponent(routeParam).split('--')
-  return parts[parts.length - 1]
 }
