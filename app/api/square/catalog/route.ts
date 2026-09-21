@@ -1,241 +1,130 @@
 import { NextResponse } from 'next/server'
+import crypto from 'crypto'
 
 const SQUARE_API_URL = 'https://connect.squareup.com/v2'
 const SQUARE_ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN
 const SQUARE_LOCATION_ID = process.env.SQUARE_LOCATION_ID
 const SQUARE_VERSION = '2026-09-16'
-const TARGET_CATEGORY = 'floral'
 
-type SquareObject = {
-  type?: string
-  id: string
-  is_deleted?: boolean
-  present_at_all_locations?: boolean
-  present_at_location_ids?: string[]
-  absent_at_location_ids?: string[]
-  category_data?: {
-    name?: string
-    category_type?: string
-  }
-  item_data?: {
-    name?: string
-    description?: string
-    description_html?: string
-    categories?: Array<{ id: string }>
-    variations?: Array<{
-      id: string
-      item_variation_data?: {
-        name?: string
-        price_money?: {
-          amount?: number
-          currency?: string
-        }
-      }
-    }>
-  }
-}
-
-function squareHeaders() {
-  return {
-    'Square-Version': SQUARE_VERSION,
-    Authorization: `Bearer ${SQUARE_ACCESS_TOKEN}`,
-    'Content-Type': 'application/json',
-  }
-}
-
-function htmlToPlainText(html?: string) {
-  if (!html) return ''
-  return html
-    .replace(/<br\s*\/?>/gi, '\n')
-    .replace(/<\/p>/gi, '\n')
-    .replace(/<[^>]*>/g, '')
-    .replace(/&nbsp;/gi, ' ')
-    .replace(/&amp;/gi, '&')
-    .replace(/&quot;/gi, '"')
-    .replace(/&#39;/gi, "'")
-    .trim()
-}
-
-function isAvailableAtLocation(object: SquareObject) {
-  if (!SQUARE_LOCATION_ID) return true
-
-  if (object.present_at_all_locations) {
-    return !(object.absent_at_location_ids || []).includes(SQUARE_LOCATION_ID)
-  }
-
-  const present = object.present_at_location_ids || []
-  return present.length === 0 || present.includes(SQUARE_LOCATION_ID)
-}
-
-async function findFloralCategory() {
-  let cursor: string | undefined
-
-  do {
-    const url = new URL(`${SQUARE_API_URL}/catalog/list`)
-    url.searchParams.set('types', 'CATEGORY')
-    if (cursor) url.searchParams.set('cursor', cursor)
-
-    const response = await fetch(url.toString(), {
-      headers: squareHeaders(),
-      cache: 'no-store',
-    })
-
-    if (!response.ok) {
-      const details = await response.text()
-      throw new Error(
-        `Square category request failed (${response.status}): ${details}`
-      )
-    }
-
-    const data = await response.json()
-    const categories: SquareObject[] = data.objects || []
-
-    const match = categories.find((category) => {
-      const name = category.category_data?.name?.trim().toLowerCase()
-      const type = category.category_data?.category_type
-
-      return (
-        !category.is_deleted &&
-        name === TARGET_CATEGORY.toLowerCase() &&
-        (!type || type === 'REGULAR_CATEGORY')
-      )
-    })
-
-    if (match) return match
-
-    cursor = data.cursor
-  } while (cursor)
-
-  return null
-}
-
-async function getItemsForCategory(categoryId: string) {
-  const items: SquareObject[] = []
-  let cursor: string | undefined
-
-  do {
-    const response = await fetch(`${SQUARE_API_URL}/catalog/search-catalog-items`, {
-      method: 'POST',
-      headers: squareHeaders(),
-      cache: 'no-store',
-      body: JSON.stringify({
-        category_ids: [categoryId],
-        enabled_location_ids: SQUARE_LOCATION_ID
-          ? [SQUARE_LOCATION_ID]
-          : undefined,
-        archived_state: 'ARCHIVED_STATE_NOT_ARCHIVED',
-        sort_order: 'ASC',
-        limit: 100,
-        ...(cursor ? { cursor } : {}),
-      }),
-    })
-
-    if (!response.ok) {
-      const details = await response.text()
-      throw new Error(
-        `Square item request failed (${response.status}): ${details}`
-      )
-    }
-
-    const data = await response.json()
-
-    for (const item of data.items || []) {
-      if (
-        item.type === 'ITEM' &&
-        !item.is_deleted &&
-        isAvailableAtLocation(item)
-      ) {
-        items.push(item)
-      }
-    }
-
-    cursor = data.cursor
-  } while (cursor)
-
-  return items
-}
-
-export async function GET() {
+export async function POST(request: Request) {
   try {
-    if (!SQUARE_ACCESS_TOKEN) {
+    const { customerId, lineItems } = await request.json()
+
+    if (
+      !customerId ||
+      !Array.isArray(lineItems) ||
+      lineItems.length === 0
+    ) {
       return NextResponse.json(
         {
-          error: 'Square API is not configured.',
-          details: 'Missing SQUARE_ACCESS_TOKEN.',
+          error: 'Missing required fields',
+          details: 'customerId and at least one line item are required.',
+        },
+        { status: 400 }
+      )
+    }
+
+    if (!SQUARE_ACCESS_TOKEN || !SQUARE_LOCATION_ID) {
+      return NextResponse.json(
+        {
+          error: 'Square API not configured',
+          details:
+            'SQUARE_ACCESS_TOKEN and SQUARE_LOCATION_ID must be configured.',
         },
         { status: 500 }
       )
     }
 
-    const category = await findFloralCategory()
+    const squareLineItems = lineItems.map((item: any) => {
+      const quantity = String(item.quantity || '1')
 
-    if (!category) {
-      return NextResponse.json(
-        {
-          error: 'Square category not found.',
-          details:
-            'Create a Square catalog category named "floral" and assign the floral products you want displayed on the website to that category.',
-          category: TARGET_CATEGORY,
-          items: [],
-        },
-        { status: 404 }
-      )
-    }
-
-    const squareItems = await getItemsForCategory(category.id)
-
-    const items = squareItems.map((item) => {
-      const data = item.item_data || {}
-
-      const descriptionHtml = data.description_html || ''
-      const description =
-        data.description?.trim() || htmlToPlainText(descriptionHtml)
-
-      const variations = (data.variations || []).map((variation) => {
-        const variationData = variation.item_variation_data || {}
-        const priceMoney = variationData.price_money || {}
-
+      // Real Square catalog product.
+      // Let Square populate the product name and catalog price from the variation.
+      if (item.squareVariationId) {
         return {
-          id: variation.id,
-          name: variationData.name || 'Regular',
-          price:
-            typeof priceMoney.amount === 'number'
-              ? priceMoney.amount / 100
-              : null,
-          priceAmount: priceMoney.amount ?? null,
-          currency: priceMoney.currency || 'USD',
+          quantity,
+          catalog_object_id: item.squareVariationId,
         }
-      })
+      }
+
+      // Fallback for an ad hoc item if no Square variation ID is available.
+      if (
+        !item.name ||
+        !item.basePriceMoney ||
+        typeof item.basePriceMoney.amount !== 'number'
+      ) {
+        throw new Error(
+          `Line item "${item.name || 'Unnamed item'}" is missing a Square variation ID or valid price.`
+        )
+      }
 
       return {
-        id: item.id,
-        name: data.name || '',
-        description,
-        descriptionHtml,
-        category: {
-          id: category.id,
-          name: category.category_data?.name || TARGET_CATEGORY,
+        name: item.name,
+        quantity,
+        base_price_money: {
+          amount: item.basePriceMoney.amount,
+          currency: item.basePriceMoney.currency || 'USD',
         },
-        variations,
+        note: 'Floral arrangement',
       }
     })
 
-    return NextResponse.json({
-      category: {
-        id: category.id,
-        name: category.category_data?.name || TARGET_CATEGORY,
+    const orderResponse = await fetch(`${SQUARE_API_URL}/orders`, {
+      method: 'POST',
+      headers: {
+        'Square-Version': SQUARE_VERSION,
+        Authorization: `Bearer ${SQUARE_ACCESS_TOKEN}`,
+        'Content-Type': 'application/json',
       },
-      count: items.length,
-      items,
+      body: JSON.stringify({
+        idempotency_key: crypto.randomUUID(),
+        order: {
+          location_id: SQUARE_LOCATION_ID,
+          customer_id: customerId,
+          line_items: squareLineItems,
+          reference_id: `FLORAL_${Date.now()}`,
+          note: 'Delicate Flowers online floral shop order',
+        },
+      }),
     })
-  } catch (error) {
-    console.error('Square catalog API error:', error)
+
+    const responseData = await orderResponse.json().catch(() => null)
+
+    if (!orderResponse.ok) {
+      const squareDetails =
+        responseData?.errors
+          ?.map((error: any) => error.detail || error.code)
+          .filter(Boolean)
+          .join(' | ') || `Square returned HTTP ${orderResponse.status}`
+
+      console.error(
+        'Square order creation error:',
+        orderResponse.status,
+        responseData
+      )
+
+      return NextResponse.json(
+        {
+          error: 'Failed to create order',
+          details: squareDetails,
+          squareErrors: responseData?.errors || [],
+        },
+        { status: orderResponse.status }
+      )
+    }
+
+    return NextResponse.json({
+      orderId: responseData.order.id,
+      totalMoney: responseData.order.total_money,
+      message: 'Order created successfully',
+    })
+  } catch (error: any) {
+    console.error('Square orders API error:', error)
 
     return NextResponse.json(
       {
-        error: 'Failed to load Square floral catalog.',
-        details:
-          error instanceof Error ? error.message : 'Unknown Square API error',
+        error: 'Failed to create order',
+        details: error?.message || 'Unknown order error',
       },
       { status: 500 }
     )
