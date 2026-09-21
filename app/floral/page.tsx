@@ -2,7 +2,10 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ShoppingCart } from 'lucide-react'
 import { PAGES } from '@/lib/seo'
-import { getFloralCatalog } from '@/lib/squareCatalog'
+import {
+  getFeaturedCatalog,
+  getFloralCatalog,
+} from '@/lib/squareCatalog'
 import FloralShop from './FloralShop'
 
 const floralMeta = PAGES.floral
@@ -25,14 +28,24 @@ export const metadata: Metadata = {
 }
 
 export default async function FloralPage() {
-  let catalog
+  let floralCatalog
+  let featuredCatalog
 
   try {
-    catalog = await getFloralCatalog()
+    ;[floralCatalog, featuredCatalog] = await Promise.all([
+      getFloralCatalog(),
+      getFeaturedCatalog(),
+    ])
   } catch (error) {
-    console.error('Unable to load floral catalog:', error)
-    catalog = {
+    console.error('Unable to load Square floral catalogs:', error)
+
+    floralCatalog = {
       category: { id: '', name: 'floral' },
+      items: [],
+    }
+
+    featuredCatalog = {
+      category: { id: '', name: 'features' },
       items: [],
     }
   }
@@ -94,8 +107,10 @@ export default async function FloralPage() {
       </section>
 
       <FloralShop
-        categoryName={catalog.category.name}
-        items={catalog.items}
+        featuredCategoryName={featuredCatalog.category.name}
+        featuredItems={featuredCatalog.items}
+        catalogCategoryName={floralCatalog.category.name}
+        catalogItems={floralCatalog.items}
       />
 
       <section className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-0">
