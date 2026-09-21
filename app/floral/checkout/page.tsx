@@ -7,9 +7,12 @@ import Footer from '@/components/footer/Footer'
 import { Loader2 } from 'lucide-react'
 
 interface CartItem {
+  id?: string
   name: string
   quantity: number
   price: number
+  image?: string
+  squareVariationId?: string | null
 }
 
 interface CheckoutData {
@@ -94,6 +97,7 @@ export default function CheckoutPage() {
           lineItems: checkoutData.items.map(item => ({
             name: item.name,
             quantity: item.quantity.toString(),
+            squareVariationId: item.squareVariationId || null,
             basePriceMoney: {
               amount: Math.round(item.price * 100),
               currency: 'USD'

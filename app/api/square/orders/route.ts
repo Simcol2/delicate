@@ -33,12 +33,18 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         location_id: SQUARE_LOCATION_ID,
         customer_id: customerId,
-        line_items: lineItems.map((item: any) => ({
-          name: item.name,
-          quantity: item.quantity,
-          base_price_money: item.basePriceMoney,
-          note: 'Floral arrangement'
-        })),
+        line_items: lineItems.map((item: any) => {
+          const lineItem: any = {
+            name: item.name,
+            quantity: item.quantity,
+            base_price_money: item.basePriceMoney,
+            note: 'Floral arrangement'
+          }
+          if (item.squareVariationId) {
+            lineItem.catalog_object_id = item.squareVariationId
+          }
+          return lineItem
+        }),
         reference_id: `ORDER_${Date.now()}`,
         note: 'Online floral shop order'
       })
