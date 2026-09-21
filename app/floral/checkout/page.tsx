@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Navbar } from '@/components/navigation/Navbar'
 import Footer from '@/components/footer/Footer'
@@ -17,7 +17,7 @@ interface CheckoutData {
   total: number
 }
 
-export default function CheckoutPage() {
+function CheckoutContent() {
   const searchParams = useSearchParams()
   const [checkoutData, setCheckoutData] = useState<CheckoutData | null>(null)
   const [formData, setFormData] = useState({
@@ -142,20 +142,14 @@ export default function CheckoutPage() {
 
   if (!checkoutData) {
     return (
-      <main className="min-h-screen bg-cream pt-32 pb-20">
-        <Navbar />
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-text-mid">Loading checkout...</p>
-        </div>
-        <Footer />
-      </main>
+      <div className="text-center py-12">
+        <p className="text-text-mid">Loading checkout...</p>
+      </div>
     )
   }
 
   return (
-    <main className="min-h-screen bg-cream pt-32 pb-20 relative">
-      <Navbar />
-
+    <div>
       {/* Background texture */}
       <div
         aria-hidden="true"
@@ -339,7 +333,17 @@ export default function CheckoutPage() {
           </div>
         )}
       </div>
+    </div>
+  )
+}
 
+export default function CheckoutPage() {
+  return (
+    <main className="min-h-screen bg-cream pt-32 pb-20 relative">
+      <Navbar />
+      <Suspense fallback={<div className="max-w-4xl mx-auto px-6 py-12 text-center text-text-mid">Loading...</div>}>
+        <CheckoutContent />
+      </Suspense>
       <Footer />
     </main>
   )
