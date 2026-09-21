@@ -3,26 +3,22 @@ import Link from 'next/link'
 import { bouquets } from '@/lib/floral'
 import { Navbar } from '@/components/navigation/Navbar'
 import Footer from '@/components/footer/Footer'
+import { PAGES } from '@/lib/seo'
+
+const floralMeta = PAGES.floral
 
 export const metadata: Metadata = {
-  title: 'Premium Floral Arrangements | Palm Springs | Delicate Flowers',
-  description: 'Handcrafted floral arrangements in Palm Springs. Shop our curated collection of premium bouquets designed for celebrations, special occasions, and gifting.',
+  title: floralMeta.title,
+  description: floralMeta.description,
+  keywords: floralMeta.keywords,
   alternates: {
-    canonical: '/floral',
+    canonical: floralMeta.canonical,
   },
   openGraph: {
-    title: 'Premium Floral Arrangements | Palm Springs',
-    description: 'Handcrafted floral arrangements designed for celebrations, special occasions, and gifting. Custom florals by Delicate Flowers in Palm Springs.',
+    title: floralMeta.ogTitle,
+    description: floralMeta.ogDescription,
     type: 'website',
-    url: '/floral',
-    images: [
-      {
-        url: '/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Blush Peony Rose.jpg',
-        width: 1200,
-        height: 1200,
-        alt: 'Premium Floral Arrangements',
-      },
-    ],
+    url: floralMeta.canonical,
   },
 }
 

@@ -5,6 +5,8 @@ import { getBouquetById, bouquets } from '@/lib/floral'
 import BouquetPurchase from './BouquetPurchase'
 import { Navbar } from '@/components/navigation/Navbar'
 import Footer from '@/components/footer/Footer'
+import { generateProductSchema, generateBreadcrumbSchema } from '@/lib/structuredData'
+import { SITE_URL } from '@/lib/seo'
 
 interface Props {
   params: { id: string }
@@ -70,9 +72,37 @@ export default function BouquetPage({ params }: Props) {
     .filter((b) => b.id !== bouquet.id)
     .slice(0, 3)
 
+  const productSchema = generateProductSchema({
+    name: bouquet.name,
+    description: bouquet.description,
+    price: bouquet.price,
+    image: `${SITE_URL}${bouquet.image}`,
+    url: `/floral/${bouquet.id}`,
+    availability: bouquet.available > 0 ? 'InStock' : 'OutOfStock',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema({
+    items: [
+      { name: 'Home', url: '/' },
+      { name: 'Floral', url: '/floral' },
+      { name: bouquet.name, url: `/floral/${bouquet.id}` },
+    ],
+  })
+
   return (
     <main className="min-h-screen bg-white pt-32 pb-20">
       <Navbar />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+        suppressHydrationWarning
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        suppressHydrationWarning
+      />
 
       <div className="max-w-6xl mx-auto px-6">
         {/* Back Button */}

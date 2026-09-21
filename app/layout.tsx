@@ -5,6 +5,8 @@ import { SmoothScrollProvider } from '@/components/providers/SmoothScroll'
 import Footer from '@/components/footer/Footer'
 import PWARegister from '@/components/PWARegister'
 import { Navbar } from '@/components/navigation/Navbar'
+import { PAGES, SITE_URL } from '@/lib/seo'
+import { generateOrganizationSchema } from '@/lib/structuredData'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -28,10 +30,13 @@ const jost = Jost({
   display: 'swap',
 })
 
+const homeMeta = PAGES.home
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://delicateflowers.co'),
-  title: 'Delicate Flowers | Palm Springs',
-  description: 'Bespoke floral artistry rooted in the light and landscape of Palm Springs. We design with the precision of an architect and the soul of a botanist.',
+  metadataBase: new URL(SITE_URL),
+  title: homeMeta.title,
+  description: homeMeta.description,
+  keywords: homeMeta.keywords,
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
@@ -45,6 +50,12 @@ export const metadata: Metadata = {
     apple: [
       { url: '/images/df-logo.png?v=4', sizes: '180x180' },
     ],
+  },
+  openGraph: {
+    title: homeMeta.ogTitle,
+    description: homeMeta.ogDescription,
+    type: 'website',
+    url: SITE_URL,
   },
 }
 
@@ -79,6 +90,17 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png?v=3" />
         <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-152x152.png?v=3" />
         <link rel="shortcut icon" href="/images/df-logo.png?v=4" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              generateOrganizationSchema({
+                telephone: '+1-760-555-0000',
+                email: 'hello@delicateflowers.co',
+              })
+            ),
+          }}
+        />
       </head>
       <body className="bg-cream text-text font-sans font-light antialiased">
         <SmoothScrollProvider>
