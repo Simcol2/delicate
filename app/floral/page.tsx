@@ -39,9 +39,9 @@ export default function FloralPage() {
             </p>
           </div>
 
-          <h1 className="font-display text-[3.35rem] sm:text-6xl lg:text-[5.4rem] leading-[0.95] tracking-[-0.035em] font-bold text-[#1F4D4F]">
+          <h1 className="font-serif text-[3.35rem] sm:text-6xl lg:text-[5.4rem] leading-[0.95] tracking-[-0.035em] font-bold text-[#1F4D4F]">
             The{' '}
-            <em className="font-display font-normal italic text-[#FF6F61]">
+            <em className="font-serif font-normal italic text-[#FF6F61]">
               Floral
             </em>{' '}
             Edit
@@ -62,7 +62,7 @@ export default function FloralPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#1F4D4F]/5" />
 
           <div className="absolute right-6 sm:right-12 lg:right-[8%] bottom-12 sm:bottom-16 text-white">
-            <p className="font-serif-sc text-sm sm:text-base tracking-[0.28em] leading-[1.75]">
+            <p className="font-serif text-sm sm:text-base tracking-[0.28em] leading-[1.75]">
               BEAUTY
               <br />
               BRINGS
@@ -154,9 +154,9 @@ export default function FloralPage() {
               </p>
             </div>
 
-            <h2 className="font-display text-[2.4rem] sm:text-[3.2rem] lg:text-[4rem] font-bold leading-[0.95] text-[#1F4D4F]">
+            <h2 className="font-serif text-[2.4rem] sm:text-[3.2rem] lg:text-[4rem] font-bold leading-[0.95] text-[#1F4D4F]">
               Explore{' '}
-              <em className="font-display font-normal italic">
+              <em className="font-serif font-normal italic">
                 Tablescapes
               </em>
             </h2>
