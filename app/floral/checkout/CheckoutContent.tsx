@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Loader2 } from 'lucide-react'
 
@@ -180,9 +180,21 @@ export default function CheckoutContent() {
       setSuccess(true)
       localStorage.removeItem('floralCart')
 
-      if (invoiceData.paymentLink) {
-        window.location.href = invoiceData.paymentLink
-      }
+      const estimatedDeliveryDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+        .toISOString()
+        .split('T')[0]
+
+      const confirmationParams = new URLSearchParams({
+        order_id: orderData.orderId || '',
+        email: formData.email,
+        delivery_country: 'US',
+        estimated_delivery_date: estimatedDeliveryDate,
+        payment_link: invoiceData.paymentLink || '',
+      })
+
+      setTimeout(() => {
+        router.push(`/floral/confirmation?${confirmationParams.toString()}`)
+      }, 1200)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
       setIsProcessing(false)
