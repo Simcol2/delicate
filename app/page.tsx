@@ -17,37 +17,55 @@ export default function Page() {
   return (
     <>
       <Navbar />
+
       <main>
         {/* Shared background wrapper for Hero + About + Services */}
         <div className="relative">
           {/* Background image that spans all three sections */}
-          <div 
+          <div
             className="fixed inset-0 w-full h-full -z-10 sm:bg-fixed bg-cover bg-center"
             style={{
               backgroundImage: 'url(/images/hero-bg-optimized.jpg)',
             }}
           />
-          
-          <Hero 
-            onOpenDesigner={() => setIsDesignerModalOpen(true)} 
+
+          <Hero
+            onOpenDesigner={() => setIsDesignerModalOpen(true)}
             onOpenContact={() => setIsContactModalOpen(true)}
           />
+
+          {/* Signature birds divider */}
+          <div className="relative z-20 bg-[#F8F3E9] flex justify-center items-center py-7 lg:py-10">
+            <img
+              src="/images/3-birds.png"
+              alt=""
+              aria-hidden="true"
+              className="w-[120px] sm:w-[140px] md:w-[160px] lg:w-[175px] h-auto object-contain"
+            />
+          </div>
+
           <About />
-          <Services onOpenContact={() => setIsContactModalOpen(true)} />
+
+          <Services
+            onOpenContact={() => setIsContactModalOpen(true)}
+          />
         </div>
-        
-        <Gallery onOpenContact={() => setIsContactModalOpen(true)} />
+
+        <Gallery
+          onOpenContact={() => setIsContactModalOpen(true)}
+        />
       </main>
 
       <Footer />
 
-      <DesignerModal 
-        isOpen={isDesignerModalOpen} 
-        onClose={() => setIsDesignerModalOpen(false)} 
+      <DesignerModal
+        isOpen={isDesignerModalOpen}
+        onClose={() => setIsDesignerModalOpen(false)}
       />
-      <ContactModal 
-        isOpen={isContactModalOpen} 
-        onClose={() => setIsContactModalOpen(false)} 
+
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
       />
     </>
   )
