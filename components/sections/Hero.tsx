@@ -24,13 +24,8 @@ export default function Hero({
 
   return (
     <>
-      {/* =========================================================
-          MOBILE HERO
-          This is intentionally separate from desktop so mobile
-          can match the approved mockup without changing desktop.
-         ========================================================= */}
-      <section className="lg:hidden relative min-h-[1120px] overflow-hidden bg-[#F8F3E9]">
-        {/* Flyer-style cream background */}
+      {/* MOBILE HERO */}
+      <section className="lg:hidden relative overflow-hidden bg-[#F8F3E9]">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -39,7 +34,6 @@ export default function Hero({
           }}
         />
 
-        {/* Linen texture */}
         <div
           className="absolute inset-0 pointer-events-none opacity-25"
           style={{
@@ -62,7 +56,7 @@ export default function Hero({
           }}
         />
 
-        {/* Palm shadow, top right */}
+        {/* top-right palm shadow */}
         <div
           className="absolute top-0 right-[-10%] w-[72%] h-[45%] pointer-events-none opacity-[0.22]"
           style={{
@@ -73,9 +67,9 @@ export default function Hero({
           }}
         />
 
-        {/* Palm shadow, lower left */}
+        {/* lower-left palm shadow */}
         <div
-          className="absolute left-[-18%] bottom-[6%] w-[65%] h-[34%] pointer-events-none opacity-[0.16] rotate-180"
+          className="absolute left-[-18%] bottom-[1%] w-[64%] h-[32%] pointer-events-none opacity-[0.15] rotate-180"
           style={{
             backgroundImage: 'url(/images/palm-shadow.png)',
             backgroundRepeat: 'no-repeat',
@@ -84,7 +78,7 @@ export default function Hero({
           }}
         />
 
-        {/* Floral arrangement */}
+        {/* floral arrangement */}
         <img
           src="/images/file_00000000c09881f6ab4000ca9355e001.png"
           alt="Delicate Flowers floral arrangement"
@@ -92,7 +86,7 @@ export default function Hero({
             absolute
             z-[5]
             right-[-23%]
-            top-[265px]
+            top-[250px]
             w-[75%]
             max-w-none
             object-contain
@@ -107,8 +101,8 @@ export default function Hero({
           }}
         />
 
-        <div className="relative z-20 px-7 pt-[138px] pb-12">
-          {/* Eyebrow */}
+        {/* auto-height content: removes the giant cream gap */}
+        <div className="relative z-20 px-7 pt-[138px] pb-16">
           <p
             className={`font-sans text-[0.60rem] font-bold tracking-[0.36em] uppercase text-[#1F4D4F] mb-7 flex items-center gap-4 transition-all duration-1000 ${reveal}`}
             style={{ transitionDelay: '0.15s' }}
@@ -119,7 +113,6 @@ export default function Hero({
             </span>
           </p>
 
-          {/* Title */}
           <h1
             className={`relative z-20 mb-7 transition-all duration-1000 ${reveal}`}
             style={{ transitionDelay: '0.25s' }}
@@ -147,7 +140,6 @@ export default function Hero({
             </span>
           </h1>
 
-          {/* Tagline */}
           <p
             className={`relative z-20 w-[58%] font-serif text-[1.62rem] text-[#1F4D4F] italic font-semibold leading-[1.08] mb-7 transition-all duration-1000 ${reveal}`}
             style={{ transitionDelay: '0.4s' }}
@@ -155,9 +147,8 @@ export default function Hero({
             Dressing your tables better than your guests
           </p>
 
-          {/* Description */}
           <p
-            className={`relative z-20 w-[56%] font-sans text-[0.98rem] font-normal text-[#555555] leading-[1.55] mb-7 transition-all duration-1000 ${reveal}`}
+            className={`relative z-20 w-[56%] font-sans text-[0.98rem] font-normal text-[#555555] leading-[1.55] mb-6 transition-all duration-1000 ${reveal}`}
             style={{ transitionDelay: '0.55s' }}
           >
             Curated in-home entertaining experiences for those who appreciate
@@ -165,14 +156,13 @@ export default function Hero({
             communities.
           </p>
 
-          {/* CTA area */}
           <div
             className={`relative z-20 flex flex-col items-start gap-5 transition-all duration-1000 ${reveal}`}
             style={{ transitionDelay: '0.7s' }}
           >
             <Link
               href="/services"
-              className="inline-flex w-[56%] min-w-[238px] items-center justify-between px-7 py-5 bg-[#1F4D4F] text-[#F8F3E9] font-sans text-[0.66rem] font-bold tracking-[0.25em] uppercase shadow-[0_12px_28px_rgba(31,77,79,0.14)]"
+              className="inline-flex w-[56%] min-w-[250px] h-[60px] items-center justify-between px-7 bg-[#1F4D4F] text-[#F8F3E9] font-sans text-[0.66rem] font-bold tracking-[0.25em] uppercase shadow-[0_12px_28px_rgba(31,77,79,0.14)]"
             >
               <span>Explore Services</span>
               <span>→</span>
@@ -188,7 +178,7 @@ export default function Hero({
 
             <button
               onClick={onOpenDesigner}
-              className="inline-flex w-[57%] min-w-[245px] items-center justify-between px-7 py-5 bg-[#FF6F61] text-white font-sans text-[0.66rem] font-bold tracking-[0.23em] uppercase shadow-[0_12px_28px_rgba(255,111,97,0.16)]"
+              className="inline-flex w-[56%] min-w-[250px] h-[60px] items-center justify-between px-7 bg-[#FF6F61] text-white font-sans text-[0.66rem] font-bold tracking-[0.23em] uppercase shadow-[0_12px_28px_rgba(255,111,97,0.16)]"
             >
               <span>Meet the Designer</span>
               <span className="text-xl leading-none">›</span>
@@ -197,12 +187,8 @@ export default function Hero({
         </div>
       </section>
 
-      {/* =========================================================
-          DESKTOP HERO
-          Kept separate so the mobile redesign cannot disturb it.
-         ========================================================= */}
+      {/* DESKTOP HERO - unchanged layout */}
       <section className="hidden lg:block relative min-h-screen overflow-hidden bg-[#F8F3E9]">
-        {/* Soft flyer-style background */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -211,7 +197,6 @@ export default function Hero({
           }}
         />
 
-        {/* Subtle linen texture */}
         <div
           className="absolute inset-0 pointer-events-none opacity-30"
           style={{
@@ -234,7 +219,6 @@ export default function Hero({
           }}
         />
 
-        {/* Palm shadows */}
         <div
           className="absolute top-20 right-0 w-[55%] h-[55%] pointer-events-none opacity-25 blur-[1px]"
           style={{
@@ -256,7 +240,6 @@ export default function Hero({
         />
 
         <div className="relative z-10 max-w-[1500px] mx-auto px-16 pt-44 pb-20 min-h-screen flex flex-col justify-center">
-          {/* Eyebrow */}
           <p
             className={`font-sans text-[0.68rem] font-bold tracking-[0.42em] uppercase text-[#1F4D4F] mb-8 flex items-center gap-4 transition-all duration-1000 ${reveal}`}
             style={{ transitionDelay: '0.2s' }}
@@ -266,7 +249,6 @@ export default function Hero({
           </p>
 
           <div className="grid grid-cols-[0.95fr_1.05fr] items-center gap-8">
-            {/* LEFT CONTENT */}
             <div className="relative z-20 max-w-2xl">
               <h1
                 className={`mb-8 transition-all duration-1000 ${reveal}`}
@@ -343,7 +325,6 @@ export default function Hero({
               </div>
             </div>
 
-            {/* DESKTOP FLORAL ARRANGEMENT */}
             <div className="relative min-h-[760px] flex items-end justify-end">
               <div
                 className="absolute bottom-[5%] right-[8%] w-[72%] h-[11%] rounded-[50%] blur-2xl opacity-20"
