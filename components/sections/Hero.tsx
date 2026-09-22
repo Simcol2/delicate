@@ -88,10 +88,10 @@ export default function Hero({
           Luxury Floral & Tablescape Design
         </p>
 
-        <div className="grid lg:grid-cols-[0.95fr_1.05fr] items-center gap-4 lg:gap-8">
+        <div className="relative grid lg:grid-cols-[0.95fr_1.05fr] items-center gap-4 lg:gap-8">
 
           {/* LEFT CONTENT */}
-          <div className="relative z-20 max-w-2xl">
+          <div className="relative z-20 max-w-2xl pr-[18%] sm:pr-[12%] lg:pr-0">
 
             {/* Heading */}
             <h1
@@ -189,36 +189,74 @@ export default function Hero({
             </div>
           </div>
 
-          {/* RIGHT FLORAL ARRANGEMENT */}
-          <div className="relative min-h-[620px] lg:min-h-[760px] flex items-end justify-center lg:justify-end mt-4 lg:mt-0">
+          {/* FLORAL ARRANGEMENT */}
+<div
+  className="
+    absolute
+    right-[-38%]
+    top-[31rem]
+    w-[92%]
+    z-[5]
 
-            {/* soft base shadow */}
-            <div
-              className="absolute bottom-[5%] right-[5%] lg:right-[8%] w-[72%] h-[11%] rounded-[50%] blur-2xl opacity-20"
-              style={{
-                background:
-                  'radial-gradient(ellipse, rgba(67,52,35,0.38), transparent 68%)',
-              }}
-            />
+    sm:right-[-24%]
+    sm:top-[29rem]
+    sm:w-[78%]
 
-            {/* supplied arrangement */}
-            <img
-              src="/images/file_00000000c09881f6ab4000ca9355e001.png"
-              alt="Delicate Flowers floral arrangement"
-              className={`relative z-10 w-[115%] sm:w-[100%] lg:w-[112%] xl:w-[108%] max-w-none object-contain object-bottom transition-all duration-[1400ms] ${
-                mounted
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-10'
-              }`}
-              style={{
-                transitionDelay: '0.35s',
-                filter:
-                  'brightness(1.035) contrast(1.04) saturate(1.03)',
-              }}
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
+    lg:relative
+    lg:right-auto
+    lg:top-auto
+    lg:w-auto
+    lg:min-h-[760px]
+    lg:flex
+    lg:items-end
+    lg:justify-end
+    lg:mt-0
+  "
+>
+  {/* soft base shadow */}
+  <div
+    className="
+      absolute
+      bottom-[4%]
+      right-[8%]
+      w-[75%]
+      h-[10%]
+      rounded-[50%]
+      blur-2xl
+      opacity-20
+    "
+    style={{
+      background:
+        'radial-gradient(ellipse, rgba(67,52,35,0.38), transparent 68%)',
+    }}
+  />
+
+  <img
+    src="/images/file_00000000c09881f6ab4000ca9355e001.png"
+    alt="Delicate Flowers floral arrangement"
+    className={`
+      relative
+      z-10
+      w-full
+      max-w-none
+      object-contain
+      object-bottom
+      transition-all
+      duration-[1400ms]
+
+      lg:w-[112%]
+      xl:w-[108%]
+
+      ${
+        mounted
+          ? 'opacity-100 translate-y-0'
+          : 'opacity-0 translate-y-10'
+      }
+    `}
+    style={{
+      transitionDelay: '0.35s',
+      filter:
+        'brightness(1.035) contrast(1.04) saturate(1.03)',
+    }}
+  />
+</div>
