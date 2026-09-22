@@ -74,7 +74,6 @@ export default function Hero({
       />
 
       <div className="relative z-10 max-w-[1500px] mx-auto px-6 sm:px-10 lg:px-16 pt-36 lg:pt-44 pb-16 lg:pb-20 min-h-screen flex flex-col justify-center">
-
         {/* Eyebrow */}
         <p
           className={`font-sans text-[0.62rem] sm:text-[0.68rem] font-bold tracking-[0.42em] uppercase text-[#1F4D4F] mb-8 flex items-center gap-4 transition-all duration-1000 ${
@@ -89,10 +88,8 @@ export default function Hero({
         </p>
 
         <div className="relative grid lg:grid-cols-[0.95fr_1.05fr] items-center gap-4 lg:gap-8">
-
           {/* LEFT CONTENT */}
-          <div className="relative z-20 max-w-2xl pr-[18%] sm:pr-[12%] lg:pr-0">
-
+          <div className="relative z-20 max-w-2xl">
             {/* Heading */}
             <h1
               className={`mb-8 transition-all duration-1000 ${
@@ -189,78 +186,103 @@ export default function Hero({
             </div>
           </div>
 
-          {/* FLORAL ARRANGEMENT */}
-<div
-  className="
-    absolute
-    right-[-38%]
-    top-[31rem]
-    w-[92%]
-    z-[5]
+          {/* MOBILE FLORAL ARRANGEMENT */}
+          <div
+            className="
+              absolute
+              lg:hidden
+              right-[-31%]
+              top-[17rem]
+              w-[78%]
+              z-[6]
+              pointer-events-none
 
-    sm:right-[-24%]
-    sm:top-[29rem]
-    sm:w-[78%]
+              sm:right-[-22%]
+              sm:top-[16rem]
+              sm:w-[70%]
+            "
+          >
+            <img
+              src="/images/file_00000000c09881f6ab4000ca9355e001.png"
+              alt="Delicate Flowers floral arrangement"
+              className={`
+                w-full
+                max-w-none
+                object-contain
+                transition-all
+                duration-[1400ms]
 
-    lg:relative
-    lg:right-auto
-    lg:top-auto
-    lg:w-auto
-    lg:min-h-[760px]
-    lg:flex
-    lg:items-end
-    lg:justify-end
-    lg:mt-0
-  "
->
-  {/* soft base shadow */}
-  <div
-    className="
-      absolute
-      bottom-[4%]
-      right-[8%]
-      w-[75%]
-      h-[10%]
-      rounded-[50%]
-      blur-2xl
-      opacity-20
-    "
-    style={{
-      background:
-        'radial-gradient(ellipse, rgba(67,52,35,0.38), transparent 68%)',
-    }}
-  />
+                ${
+                  mounted
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-8'
+                }
+              `}
+              style={{
+                transitionDelay: '0.35s',
+                filter:
+                  'brightness(1.035) contrast(1.04) saturate(1.03)',
+              }}
+            />
+          </div>
 
-  <img
-    src="/images/file_00000000c09881f6ab4000ca9355e001.png"
-    alt="Delicate Flowers floral arrangement"
-    className={`
-      relative
-      z-10
-      w-full
-      max-w-none
-      object-contain
-      object-bottom
-      transition-all
-      duration-[1400ms]
+          {/* DESKTOP FLORAL ARRANGEMENT */}
+          <div
+            className="
+              hidden
+              lg:flex
+              relative
+              min-h-[760px]
+              items-end
+              justify-end
+            "
+          >
+            {/* soft base shadow */}
+            <div
+              className="
+                absolute
+                bottom-[5%]
+                right-[8%]
+                w-[72%]
+                h-[11%]
+                rounded-[50%]
+                blur-2xl
+                opacity-20
+              "
+              style={{
+                background:
+                  'radial-gradient(ellipse, rgba(67,52,35,0.38), transparent 68%)',
+              }}
+            />
 
-      lg:w-[112%]
-      xl:w-[108%]
+            <img
+              src="/images/file_00000000c09881f6ab4000ca9355e001.png"
+              alt="Delicate Flowers floral arrangement"
+              className={`
+                relative
+                z-10
+                w-[112%]
+                xl:w-[108%]
+                max-w-none
+                object-contain
+                object-bottom
+                transition-all
+                duration-[1400ms]
 
-      ${
-        mounted
-          ? 'opacity-100 translate-y-0'
-          : 'opacity-0 translate-y-10'
-      }
-    `}
-    style={{
-      transitionDelay: '0.35s',
-      filter:
-        'brightness(1.035) contrast(1.04) saturate(1.03)',
-    }}
-  />
-</div>
-                  </div>
+                ${
+                  mounted
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-10'
+                }
+              `}
+              style={{
+                transitionDelay: '0.35s',
+                filter:
+                  'brightness(1.035) contrast(1.04) saturate(1.03)',
+              }}
+            />
+          </div>
+        </div>
       </div>
     </section>
   )
