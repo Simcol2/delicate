@@ -21,19 +21,40 @@ export function Navbar() {
 
   return (
     <>
-      {/* MOBILE NAV */}
-      <nav className="lg:hidden fixed top-0 left-0 right-0 z-[100] h-[112px] flex items-center justify-between px-5 bg-[#F8F3E9]/95 backdrop-blur-[5px] border-b border-[#1F4D4F]/10">
-        <Link href="/" className="no-underline flex items-center">
-          <img
-            src="/images/Delicate Flower-12 (4).png?v=3"
-            alt="Delicate Flowers"
-            className="h-[58px] w-auto object-contain"
-          />
+      {/* MOBILE NAV
+          Transparent on purpose so the hero background flows through it.
+          The existing horizontal logo is clipped to show only the circular mark;
+          the teal wordmark is rendered as text to match the mockup.
+      */}
+      <nav className="lg:hidden fixed top-0 left-0 right-0 z-[100] h-[112px] flex items-center justify-between px-7 bg-transparent border-0">
+        <Link
+          href="/"
+          className="no-underline flex items-center gap-4 min-w-0"
+        >
+          {/* Crop only the round mark from the existing horizontal logo */}
+          <div className="w-[62px] h-[62px] overflow-hidden flex-shrink-0">
+            <img
+              src="/images/Delicate Flower-12 (4).png?v=3"
+              alt=""
+              aria-hidden="true"
+              className="h-[62px] w-auto max-w-none object-contain object-left"
+            />
+          </div>
+
+          <span
+            className="text-[#1F4D4F] text-[1.45rem] sm:text-[1.7rem] tracking-[0.07em] whitespace-nowrap"
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontWeight: 500,
+            }}
+          >
+            DELICATE FLOWERS
+          </span>
         </Link>
 
         <button
           onClick={() => setMobileMenuOpen(true)}
-          className="w-12 h-12 flex flex-col items-center justify-center gap-[7px] bg-transparent border-none cursor-pointer"
+          className="w-11 h-11 flex flex-col items-center justify-center gap-[7px] bg-transparent border-none cursor-pointer flex-shrink-0"
           aria-label="Open menu"
         >
           <span className="block w-8 h-[2px] bg-[#1F4D4F]" />
@@ -42,7 +63,7 @@ export function Navbar() {
         </button>
       </nav>
 
-      {/* DESKTOP NAV - preserves the existing desktop look */}
+      {/* DESKTOP NAV - unchanged */}
       <nav className="hidden lg:flex fixed top-0 left-0 right-0 z-[100] items-center justify-between px-12 py-2.5 bg-cream border-b border-midnight/10">
         <Link href="/" className="no-underline">
           <img
@@ -60,6 +81,7 @@ export function Navbar() {
                 className="font-sans text-[0.7rem] font-normal tracking-[0.22em] uppercase text-midnight no-underline transition-colors duration-300 relative hover:text-[#FF6F61] group"
               >
                 {link.label}
+
                 <span
                   className={`absolute -bottom-1 left-0 h-[1px] bg-midnight transition-all duration-350 ${
                     isActive(link.href)
