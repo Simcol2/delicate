@@ -35,14 +35,14 @@ export default function Page() {
           />
 
           {/* Signature birds divider */}
-          <div className="relative z-20 bg-[#F8F3E9] flex justify-center items-center py-7 lg:py-10">
-            <img
-              src="/images/3-birds.png"
-              alt=""
-              aria-hidden="true"
-              className="w-[120px] sm:w-[140px] md:w-[160px] lg:w-[175px] h-auto object-contain"
-            />
-          </div>
+<div className="relative z-20 bg-[#F8F3E9] flex justify-center items-center -mt-2 -mb-10 lg:my-0 py-2">
+  <img
+    src="/images/3-birds.png"
+    alt=""
+    aria-hidden="true"
+    className="w-[95px] sm:w-[110px] md:w-[125px] lg:w-[160px] h-auto object-contain"
+  />
+</div>
 
           <About />
 
