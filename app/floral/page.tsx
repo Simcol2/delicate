@@ -1,10 +1,16 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ShoppingCart } from 'lucide-react'
-import { bouquets } from '@/lib/floral'
 import { PAGES } from '@/lib/seo'
+import {
+  getFeaturedCatalog,
+  getFloralCatalog,
+} from '@/lib/squareCatalog'
+import FloralShop from './FloralShop'
 
 const floralMeta = PAGES.floral
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: floralMeta.title,
@@ -21,15 +27,38 @@ export const metadata: Metadata = {
   },
 }
 
-const featuredIds = ['blush-romance', 'garden-harvest', 'silver-hydrangea']
+export default async function FloralPage() {
+  let floralCatalog
+  let featuredCatalog
 
-export default function FloralPage() {
-  const featuredBouquets = featuredIds
-    .map((id) => bouquets.find((bouquet) => bouquet.id === id))
-    .filter((bouquet): bouquet is (typeof bouquets)[number] => Boolean(bouquet))
+  try {
+    ;[floralCatalog, featuredCatalog] = await Promise.all([
+      getFloralCatalog(),
+      getFeaturedCatalog(),
+    ])
+  } catch (error) {
+    console.error('Unable to load Square floral catalogs:', error)
+
+    floralCatalog = {
+      category: { id: '', name: 'floral' },
+      items: [],
+    }
+
+    featuredCatalog = {
+      category: { id: '', name: 'features' },
+      items: [],
+    }
+  }
 
   return (
-    <main className="min-h-screen bg-[#F7F3EA] text-[#1F4D4F]">
+    <main
+      className="min-h-screen bg-[#FCFBF7] text-[#1F4D4F]"
+      style={{
+        backgroundImage:
+          'radial-gradient(circle at 1px 1px, rgba(31,77,79,0.045) 1px, transparent 0)',
+        backgroundSize: '18px 18px',
+      }}
+    >
       <section className="pt-28 lg:pt-32">
         <div className="max-w-[1180px] mx-auto px-6 lg:px-10">
           <div className="flex items-center gap-5 mb-7">
@@ -56,10 +85,11 @@ export default function FloralPage() {
         <div className="relative mt-7 h-[360px] sm:h-[500px] lg:h-[590px] overflow-hidden">
           <img
             src="/Photo Slides/Floral Arrangements/Delicate Flower-Floral Arrangements-Blush Peony Cascade.jpg"
-            alt="Luxury blush floral arrangement by Delicate Flowers in Palm Springs"
+            alt="Luxury floral design by Delicate Flowers in Palm Springs"
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#1F4D4F]/5" />
+
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#1F4D4F]/10" />
 
           <div className="absolute right-6 sm:right-12 lg:right-[8%] bottom-12 sm:bottom-16 text-white">
             <p className="font-serif text-sm sm:text-base tracking-[0.28em] leading-[1.75]">
@@ -76,67 +106,17 @@ export default function FloralPage() {
         </div>
       </section>
 
-      <section className="max-w-[1180px] mx-auto px-6 lg:px-10 pt-8 sm:pt-10 pb-5">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-[#1F4D4F]/20 pb-5">
-          <p className="font-sans text-[0.64rem] sm:text-xs font-semibold tracking-[0.34em] uppercase text-[#1F4D4F]">
-            Our Signature Arrangements
-          </p>
-          <p className="font-serif italic text-base sm:text-lg text-[#5A625F]">
-            Fresh. Refined. Always a Good Idea.
-          </p>
-        </div>
+      <FloralShop
+        featuredCategoryName={featuredCatalog.category.name}
+        featuredItems={featuredCatalog.items}
+        catalogCategoryName={floralCatalog.category.name}
+        catalogItems={floralCatalog.items}
+      />
 
-        <div>
-          {featuredBouquets.map((bouquet) => (
-            <article
-              key={bouquet.id}
-              className="border-b border-[#1F4D4F]/15 py-4 sm:py-5"
-            >
-              <Link
-                href={`/floral/${bouquet.id}`}
-                className="group grid grid-cols-[128px_1fr] sm:grid-cols-[240px_1fr] lg:grid-cols-[300px_1fr] gap-4 sm:gap-8 lg:gap-10 items-center"
-              >
-                <div className="aspect-[1.16/1] sm:aspect-[1.18/1] overflow-hidden bg-[#EDE6DB]">
-                  <img
-                    src={bouquet.image}
-                    alt={`${bouquet.name} floral arrangement by Delicate Flowers`}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.035]"
-                  />
-                </div>
-
-                <div className="min-w-0 py-1">
-                  <h2 className="font-serif text-[1.75rem] sm:text-[2.35rem] lg:text-[2.7rem] leading-none text-[#1F4D4F] group-hover:text-[#FF6F61] transition-colors">
-                    {bouquet.name}
-                  </h2>
-
-                  <p className="font-serif text-[0.98rem] sm:text-[1.23rem] lg:text-[1.35rem] leading-[1.15] text-[#505552] mt-2 max-w-[650px]">
-                    {bouquet.shortDescription}
-                  </p>
-
-                  <p className="font-sans text-[0.72rem] sm:text-sm font-medium tracking-[0.24em] uppercase text-[#C3913F] mt-4">
-                    ${bouquet.price} / Event
-                  </p>
-
-                  <span className="inline-flex items-center gap-4 font-sans text-[0.62rem] sm:text-xs font-semibold tracking-[0.25em] uppercase text-[#1F4D4F] mt-3">
-                    View Arrangement
-                    <span
-                      aria-hidden="true"
-                      className="transition-transform duration-300 group-hover:translate-x-1"
-                    >
-                      →
-                    </span>
-                  </span>
-                </div>
-              </Link>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 mt-1 mb-0">
+      <section className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-0">
         <Link
-          href="/services"
-          className="group grid grid-cols-1 sm:grid-cols-[46%_54%] overflow-hidden bg-[#E6EEE9]"
+          href="/services/tablescape-design"
+          className="group grid grid-cols-1 sm:grid-cols-[46%_54%] overflow-hidden bg-[#F1F7F3] border border-[#1F4D4F]/10 shadow-[0_18px_50px_rgba(31,77,79,0.08)]"
         >
           <div className="h-[220px] sm:h-[280px] lg:h-[320px] overflow-hidden">
             <img
@@ -175,12 +155,12 @@ export default function FloralPage() {
       <Link
         href="/floral/checkout"
         aria-label="View floral cart"
-        className="fixed z-40 right-5 bottom-5 sm:right-8 sm:bottom-8 w-[68px] h-[68px] rounded-full bg-[#0F6A5D] text-white flex items-center justify-center shadow-[0_12px_30px_rgba(15,106,93,0.3)] transition-transform hover:scale-105"
+        className="fixed z-40 right-5 bottom-5 sm:right-8 sm:bottom-8 w-[68px] h-[68px] rounded-full bg-[#0F6A5D] text-white flex items-center justify-center shadow-[0_14px_35px_rgba(15,106,93,0.28)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(15,106,93,0.34)]"
       >
         <ShoppingCart size={29} strokeWidth={1.8} />
       </Link>
 
-      <div className="bg-[#0F6A5D] text-[#F7F3EA] text-center px-6 py-5 mt-4">
+      <div className="bg-[#0F6A5D] text-[#FCFBF7] text-center px-6 py-5 mt-10">
         <p className="font-sans text-[0.6rem] sm:text-xs tracking-[0.28em] uppercase">
           Serving Palm Springs &amp; Surrounding Desert Communities
         </p>

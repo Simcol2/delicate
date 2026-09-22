@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
+import Link from 'next/link'
 import { Loader2 } from 'lucide-react'
 
 interface CartItem {
@@ -22,6 +23,8 @@ export default function CheckoutContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [checkoutData, setCheckoutData] = useState<CheckoutData | null>(null)
+  const [cartLoaded, setCartLoaded] = useState(false)
+
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
@@ -32,29 +35,75 @@ export default function CheckoutContent() {
     state: '',
     zipCode: '',
   })
+
   const [isProcessing, setIsProcessing] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
 
   useEffect(() => {
-    const cartParam = searchParams.get('cart')
-    if (cartParam) {
-      try {
+    try {
+      // Legacy / direct-link support first
+      const cartParam = searchParams.get('cart')
+
+      if (cartParam) {
         const decoded = JSON.parse(decodeURIComponent(cartParam))
-        setCheckoutData(decoded)
-      } catch (e) {
-        setError('Failed to load cart data')
+
+        if (decoded?.items && Array.isArray(decoded.items)) {
+          setCheckoutData(decoded)
+          setCartLoaded(true)
+          return
+        }
       }
+
+      // Normal cart flow: BouquetPurchase writes an ARRAY to localStorage.
+      const storedCart = localStorage.getItem('floralCart')
+
+      if (!storedCart) {
+        setCheckoutData(null)
+        setCartLoaded(true)
+        return
+      }
+
+      const parsed = JSON.parse(storedCart)
+
+      if (!Array.isArray(parsed) || parsed.length === 0) {
+        setCheckoutData(null)
+        setCartLoaded(true)
+        return
+      }
+
+      const items: CartItem[] = parsed.map((item: any) => ({
+        id: item.id,
+        name: item.name,
+        quantity: Number(item.quantity) || 1,
+        price: Number(item.price) || 0,
+        image: item.image,
+        squareVariationId: item.squareVariationId || null,
+      }))
+
+      const total = items.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+      )
+
+      setCheckoutData({ items, total })
+    } catch (e) {
+      console.error('Failed to load floral cart:', e)
+      setError('We could not load your floral cart. Please return to the floral page and try again.')
+      setCheckoutData(null)
+    } finally {
+      setCartLoaded(true)
     }
   }, [searchParams])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
+    setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
     if (!checkoutData) return
 
     setIsProcessing(true)
@@ -74,9 +123,9 @@ export default function CheckoutContent() {
             locality: formData.city,
             administrativeDistrictLevel1: formData.state,
             postalCode: formData.zipCode,
-            country: 'US'
-          }
-        })
+            country: 'US',
+          },
+        }),
       })
 
       if (!customerResponse.ok) {
@@ -91,21 +140,22 @@ export default function CheckoutContent() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           customerId,
-          lineItems: checkoutData.items.map(item => ({
+          lineItems: checkoutData.items.map((item) => ({
             name: item.name,
             quantity: item.quantity.toString(),
             squareVariationId: item.squareVariationId || null,
             basePriceMoney: {
               amount: Math.round(item.price * 100),
-              currency: 'USD'
-            }
+              currency: 'USD',
+            },
           })),
-          total: Math.round(checkoutData.total * 100)
-        })
+          total: Math.round(checkoutData.total * 100),
+        }),
       })
 
       if (!orderResponse.ok) {
-        throw new Error('Failed to create order')
+        const result = await orderResponse.json().catch(() => null)
+        throw new Error(result?.details || result?.error || 'Failed to create order')
       }
 
       const orderData = await orderResponse.json()
@@ -116,69 +166,68 @@ export default function CheckoutContent() {
         body: JSON.stringify({
           orderId: orderData.orderId,
           customerId,
-          email: formData.email
-        })
+          email: formData.email,
+        }),
       })
 
       if (!invoiceResponse.ok) {
-        throw new Error('Failed to create invoice')
+        const result = await invoiceResponse.json().catch(() => null)
+        throw new Error(result?.details || result?.error || 'Failed to create invoice')
       }
 
       const invoiceData = await invoiceResponse.json()
 
       setSuccess(true)
+      localStorage.removeItem('floralCart')
 
-      try {
-        localStorage.removeItem('floralCart')
-      } catch (e) {
-        // ignore storage errors
+      if (invoiceData.paymentLink) {
+        window.location.href = invoiceData.paymentLink
       }
-
-      const estimatedDeliveryDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
-        .toISOString()
-        .split('T')[0]
-
-      const confirmationParams = new URLSearchParams({
-        order_id: orderData.orderId || '',
-        email: formData.email,
-        delivery_country: 'US',
-        estimated_delivery_date: estimatedDeliveryDate,
-        payment_link: invoiceData.paymentLink || '',
-      })
-
-      setTimeout(() => {
-        router.push(`/floral/confirmation?${confirmationParams.toString()}`)
-      }, 1200)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
-    } finally {
       setIsProcessing(false)
     }
   }
 
-  if (!checkoutData) {
+  if (!cartLoaded) {
     return (
       <div className="max-w-4xl mx-auto px-6 text-center">
+        <Loader2 className="animate-spin mx-auto mb-4" size={24} />
         <p className="text-text-mid">Loading checkout...</p>
+      </div>
+    )
+  }
+
+  if (!checkoutData || checkoutData.items.length === 0) {
+    return (
+      <div className="max-w-xl mx-auto px-6 text-center">
+        <h1 className="font-serif text-4xl md:text-5xl text-midnight mb-4">
+          Your floral cart is empty
+        </h1>
+
+        <p className="text-text-mid mb-8">
+          Choose an arrangement from The Floral Edit and it will appear here.
+        </p>
+
+        {error && (
+          <p className="mb-6 text-red-700">
+            {error}
+          </p>
+        )}
+
+        <Link
+          href="/floral"
+          className="inline-flex bg-midnight text-cream px-8 py-3 font-sans font-bold tracking-[0.2em] uppercase transition-all hover:bg-rose"
+        >
+          Return to Floral Edit
+        </Link>
       </div>
     )
   }
 
   return (
     <div className="relative z-10 max-w-4xl mx-auto px-6">
-      {/* Background texture */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 z-0 pointer-events-none opacity-30"
-        style={{
-          backgroundImage:
-            'repeating-linear-gradient(90deg, transparent 0, transparent 2px, rgba(31, 77, 79, 0.02) 2px, rgba(31, 77, 79, 0.02) 4px)',
-          backgroundSize: '4px 100%',
-        }}
-      />
-
       <div className="relative z-10">
-        {/* Header */}
         <div className="text-center mb-12">
           <h1 className="font-serif text-4xl md:text-5xl text-midnight mb-4">
             Checkout
@@ -197,9 +246,11 @@ export default function CheckoutContent() {
           </div>
         ) : (
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Checkout Form */}
             <div className="md:col-span-2">
-              <form onSubmit={handleSubmit} className="bg-ivory p-8 border border-midnight/10">
+              <form
+                onSubmit={handleSubmit}
+                className="bg-ivory p-8 border border-midnight/10"
+              >
                 {error && (
                   <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded">
                     {error}
@@ -207,11 +258,11 @@ export default function CheckoutContent() {
                 )}
 
                 <div className="space-y-6">
-                  {/* Contact Information */}
                   <div>
                     <h3 className="font-serif text-lg font-semibold text-midnight mb-4">
                       Contact Information
                     </h3>
+
                     <input
                       type="email"
                       name="email"
@@ -221,6 +272,7 @@ export default function CheckoutContent() {
                       required
                       className="w-full px-4 py-2 border border-midnight/20 rounded mb-3 focus:outline-none focus:border-midnight"
                     />
+
                     <div className="grid sm:grid-cols-2 gap-3">
                       <input
                         type="text"
@@ -231,6 +283,7 @@ export default function CheckoutContent() {
                         required
                         className="px-4 py-2 border border-midnight/20 rounded focus:outline-none focus:border-midnight"
                       />
+
                       <input
                         type="text"
                         name="lastName"
@@ -241,6 +294,7 @@ export default function CheckoutContent() {
                         className="px-4 py-2 border border-midnight/20 rounded focus:outline-none focus:border-midnight"
                       />
                     </div>
+
                     <input
                       type="tel"
                       name="phone"
@@ -252,11 +306,11 @@ export default function CheckoutContent() {
                     />
                   </div>
 
-                  {/* Shipping Address */}
                   <div>
                     <h3 className="font-serif text-lg font-semibold text-midnight mb-4">
                       Delivery Address
                     </h3>
+
                     <input
                       type="text"
                       name="address"
@@ -266,6 +320,7 @@ export default function CheckoutContent() {
                       required
                       className="w-full px-4 py-2 border border-midnight/20 rounded mb-3 focus:outline-none focus:border-midnight"
                     />
+
                     <div className="grid sm:grid-cols-2 gap-3 mb-3">
                       <input
                         type="text"
@@ -276,6 +331,7 @@ export default function CheckoutContent() {
                         required
                         className="px-4 py-2 border border-midnight/20 rounded focus:outline-none focus:border-midnight"
                       />
+
                       <input
                         type="text"
                         name="state"
@@ -286,6 +342,7 @@ export default function CheckoutContent() {
                         className="px-4 py-2 border border-midnight/20 rounded focus:outline-none focus:border-midnight"
                       />
                     </div>
+
                     <input
                       type="text"
                       name="zipCode"
@@ -315,22 +372,33 @@ export default function CheckoutContent() {
               </form>
             </div>
 
-            {/* Order Summary */}
             <div>
               <div className="bg-ivory p-6 border border-midnight/10 sticky top-32">
                 <h3 className="font-serif text-lg font-semibold text-midnight mb-4">
                   Order Summary
                 </h3>
 
-                <div className="space-y-3 mb-6 pb-6 border-b border-midnight/10">
+                <div className="space-y-4 mb-6 pb-6 border-b border-midnight/10">
                   {checkoutData.items.map((item, idx) => (
-                    <div key={idx} className="flex justify-between text-sm">
-                      <span className="text-text-mid">
-                        {item.name} x{item.quantity}
-                      </span>
-                      <span className="font-semibold text-midnight">
-                        ${(item.price * item.quantity).toFixed(2)}
-                      </span>
+                    <div key={`${item.id || item.name}-${idx}`} className="flex gap-3">
+                      {item.image && (
+                        <img
+                          src={item.image}
+                          alt=""
+                          className="w-14 h-14 object-cover flex-none"
+                        />
+                      )}
+
+                      <div className="flex-1 min-w-0">
+                        <div className="flex justify-between gap-3 text-sm">
+                          <span className="text-text-mid">
+                            {item.name} × {item.quantity}
+                          </span>
+                          <span className="font-semibold text-midnight">
+                            ${(item.price * item.quantity).toFixed(2)}
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -341,8 +409,12 @@ export default function CheckoutContent() {
                 </div>
 
                 <div className="mt-6 p-4 bg-rose/10 border border-rose/20 rounded text-sm text-text-mid">
-                  <p className="font-semibold text-midnight mb-2">Secure Payment</p>
-                  <p>Powered by Square. Your payment information is encrypted and secure.</p>
+                  <p className="font-semibold text-midnight mb-2">
+                    Secure Payment
+                  </p>
+                  <p>
+                    Powered by Square. Your payment information is encrypted and secure.
+                  </p>
                 </div>
               </div>
             </div>
