@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { Loader2 } from 'lucide-react'
 
 interface CartItem {
@@ -19,6 +19,7 @@ interface CheckoutData {
 }
 
 export default function CheckoutContent() {
+  const router = useRouter()
   const searchParams = useSearchParams()
   const [checkoutData, setCheckoutData] = useState<CheckoutData | null>(null)
   const [formData, setFormData] = useState({
@@ -126,11 +127,28 @@ export default function CheckoutContent() {
       const invoiceData = await invoiceResponse.json()
 
       setSuccess(true)
+
+      try {
+        localStorage.removeItem('floralCart')
+      } catch (e) {
+        // ignore storage errors
+      }
+
+      const estimatedDeliveryDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+        .toISOString()
+        .split('T')[0]
+
+      const confirmationParams = new URLSearchParams({
+        order_id: orderData.orderId || '',
+        email: formData.email,
+        delivery_country: 'US',
+        estimated_delivery_date: estimatedDeliveryDate,
+        payment_link: invoiceData.paymentLink || '',
+      })
+
       setTimeout(() => {
-        if (invoiceData.paymentLink) {
-          window.location.href = invoiceData.paymentLink
-        }
-      }, 2000)
+        router.push(`/floral/confirmation?${confirmationParams.toString()}`)
+      }, 1200)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {
